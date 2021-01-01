@@ -1,3 +1,3 @@
 # LDACourse1
 
-This is the source code for the [Online Tutorial on Regression Modeling with Actuarial and Financial Applications](https://ewfreesres.github.io/RegressModel/index.html).
+This is the source code for the [Online Tutorial on Loss Data Analytics](https://openacttextdev.github.io/LDACourse1/).
