@@ -59,7 +59,7 @@ In this section, you learn how to:
   </div>
 <div id="InsCompOperationsB" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
-  <iframe src="./Overheads/Chap1Beamer_01Jan2021.pdf#page=10" width="100%" height="400"> </iframe>
+  <iframe src="./Chap1Beamer_01Jan2021.pdf#InsuranceCompanyOperations" width="100%" height="400"> </iframe>
   </div>
 <div id="InsCompOperationsC" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
@@ -109,7 +109,7 @@ R Code</button>
 
 <div id="RatingVariablesA" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
-  <iframe src="./Overheads/Chap1Beamer_01Jan2021.pdf#InsuranceCompanyOperations" width="100%" height="400"> </iframe>
+  <iframe src="./Overheads/Chap1Beamer_01Jan2021.pdf#RatingVariables" width="100%" height="400"> </iframe>
   </div>
 <div id="RatingVariablesB" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
