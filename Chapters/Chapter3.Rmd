@@ -1,0 +1,1463 @@
+# Multiple Linear Regression
+
+**Chapter description**
+
+This chapter introduces linear regression in the case of several explanatory variables, known as multiple linear regression (**MLR**). Many basic linear regression concepts extend directly, including goodness of fit measures such as the coefficient of determination and inference using t-statistics. Multiple linear regression models provide a framework for summarizing highly complex, multivariate data. Because this framework requires only linearity in the parameters, we are able to fit models that are nonlinear functions of the explanatory variables, thus providing a wide scope of potential applications.
+
+
+```{r comment = "", eval = FALSE, echo = FALSE, warning = FALSE}
+# Reformat Data Set
+Term <- read.csv("CSVData\\TermLife.csv", header = TRUE)
+str(Term)
+head(Term)
+# Change Variable Names to lower case
+Term$education <- Term$EDUCATION
+Term$face      <- Term$FACE
+Term$income    <- Term$INCOME
+Term$logface   <- log(Term$FACE)
+Term$logface[is.infinite(Term$logface)] <- NA
+Term$logincome <- log(Term$INCOME)
+Term$numhh     <- Term$NUMHH
+Term$marstat   <- Term$MARSTAT
+Term2 <- Term[c("education", "face", "income", "logface", "logincome", "numhh", "marstat")]
+summary(Term2)
+#write.csv(Term2,"CSVData\\term_life.csv", row.names = FALSE)
+```
+
+```{r comment = "", eval = FALSE, echo = FALSE, warning = FALSE}
+# Reformat Data Set
+Hcost <- read.csv("CSVData\\WiscHospCosts.csv", header = TRUE)
+str(Hcost)
+# Change Variable Names to lower case
+Hcost$drg <- Hcost$DRG
+Hcost$hsa <- Hcost$HSA
+Hcost$payer <- Hcost$PAYER
+Hcost$log_numdschg <- log(Hcost$NO_DSCHG)
+Hcost$logcharge <- log(Hcost$CHG_NUM)
+Hcost2 <- Hcost[c("drg", "hsa", "payer", "logcharge", "log_numdschg")]
+summary(Hcost2)
+#write.csv(Hcost2,"CSVData\\WiscHcosts.csv", row.names = FALSE)
+```
+
+```{r comment = "", eval = FALSE, echo = FALSE, warning = FALSE}
+# Reformat Data Set
+AutoC <- read.csv("CSVData\\AutoClaims.csv", header = TRUE)
+str(AutoC)
+head(AutoC)
+# Change Variable Names to lower case
+AutoC$state <- AutoC$STATE
+AutoC$class <- AutoC$CLASS
+AutoC$gender <- AutoC$GENDER
+AutoC$age <- AutoC$AGE
+AutoC$paid <- AutoC$PAID
+AutoC$logpaid <- log(AutoC$paid)
+AutoC2 <- AutoC[c("state", "class", "gender", "age", "paid", "logpaid" )]
+summary(AutoC2)
+write.csv(AutoC2,"CSVData\\Auto_claims.csv", row.names = FALSE)
+```
+
+```{r comment = "", eval = FALSE, echo = FALSE, warning = FALSE}
+# Reformat Data Set
+Refrig <- read.csv("CSVData\\Refrigerator.csv", header = TRUE)
+str(Refrig)
+head(Refrig)
+# Change Variable Names to lower case
+Refrig$price <- Refrig$PRICE
+Refrig$ecost <- Refrig$ECOST
+Refrig$rsize <- Refrig$RSIZE
+Refrig$fsize <- Refrig$FSIZE
+Refrig$shelves <- Refrig$SHELVES
+Refrig$s_sq_ft <- Refrig$S_SQ_FT
+Refrig$features <- Refrig$FEATURES
+Refrig$brandnam <- Refrig$BRANDNAM
+Refrig2 <- Refrig[c("price", "ecost", "rsize", "fsize", "shelves", "s_sq_ft", "features")]
+summary(Refrig2)
+#write.csv(Refrig2,"CSVData\\Refrig.csv", row.names = FALSE)
+```
+
+
+## Term Life Data {-}
+
+<center>
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=0_izascs5a&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=0_cxgam03z" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
+</center>
+
+#### Video Overhead Details {-}
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Over3.0A')">A Details. Demand for term life insurance</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.0B')">B Details. Term life insurance summary statistics</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.0C')">C Details. Summary statistics</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.0D')">D Details. Scatter plots of income versus face in original and logarithmic units</button>
+</div>
+
+
+<div id="Over3.0A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>A Details. Demand for term life insurance</h3>
+  <p>
+
+"Who buys insurance and how much do they buy?"
+
+- Companies have data on current customers
+- How do get info on potential (new) customers?
+
+To understand demand, consider the Survey of Consumer Finances (*SCF*)
+
+- This is a nationally representative sample that contains extensive information on potential U.S. customers.
+- We study a random sample of 500 of the 4,519 households with positive income that were interviewed in the 2004 survey.
+- We now focus on *n* = 275 households that purchased term life insurance
+
+</p>
+</div> 
+
+<div id="Over3.0B" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>B Details. Term life insurance summary statistics</h3>
+  <p>
+
+We study *y = face*, the amount that the company will pay in the event of the death of the named insured.
+
+ We focus on *k* = 3 explanatory variables
+- annual *income*,
+- the number of years of *education* of the survey respondent and
+- the number of household members, *numhh*.
+
+The data suggest that *income* and *face* are skewed so we also introduce logarithmic versions.
+
+</p>
+</div> 
+
+<div id="Over3.0C" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>C Details. Summary statistics</h3>
+  <p>
+
+```{r comment = "", warning = FALSE, message = FALSE, eval = EVALUATE_CHAP3}
+#Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
+Term <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv", header = TRUE)
+#  PICK THE SUBSET OF THE DATA CORRESPONDING TO TERM PURCHASE
+Term1 <- subset(Term, subset = face > 0)
+str(Term1)
+head(Term1)
+
+library(psych)
+Term2 <- Term1[, c("education", "face", "income", "logface", "logincome", "numhh")]
+#options(scipen = 100, digits = 4)
+head(Term2)
+describe(Term2)[,c(3,4,8,5,9,2)]
+```
+
+</p>
+</div> 
+
+<div id="Over3.0D" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>D Details. Scatter plots of income versus face in original and logarithmic units</h3>
+  <p>
+
+```{r comment = "", eval = EVALUATE_CHAP3}
+par(mfrow = c(1, 2))
+plot(Term2$income, Term2$face, xlab = "income", ylab = "face")
+plot(Term2$logincome, Term2$logface, xlab = "log", ylab = "log face")
+```
+
+</p>
+</div> 
+
+## Method of least squares
+
+***
+
+In this section, you learn how to:
+  
+-  Interpret correlation coefficients by visualizing a scatterplot matrix
+-  Fit a plane to data using the method of least squares
+-  Predict an observation using a least squares fitted plane
+
+***
+
+###Video 
+
+<center>
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=0_9zszyh42&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=0_0xy78e1p" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
+</center>
+
+#### Video Overhead Details {-}
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Over3.1A')">A Details. Correlation table</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.1B')">B Details. Scatterplot matrix</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.1C')">C Details. Visualizing a regression plane</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.1D')">D Details. Method of least squares</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.1E')">E Details. Fit a multiple linear regression model</button>
+</div>
+
+
+<div id="Over3.1A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>A Details. Correlation table</h3>
+  <p>
+
+```{r comment = "", eval = EVALUATE_CHAP3}
+round(cor(Term2), digits=3)
+```
+
+</p>
+</div> 
+
+<div id="Over3.1B" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>B Details. Scatterplot matrix</h3>
+  <p>
+
+```{r comment = "", eval = EVALUATE_CHAP3}
+Term3 <- Term1[,c("numhh", "education", "logincome", "logface")]
+pairs(Term3, upper.panel = NULL, gap = 0, cex.labels = 1.25)
+```
+
+</p>
+</div> 
+
+<div id="Over3.1C" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>C Details. Visualizing a regression plane</h3>
+  <p>
+
+```{r comment = "", eval = EVALUATE_CHAP3}
+education <- seq(3, 16, length = 15)
+logincome <- seq(5, 15, length = 15)
+f <- function(education,logincome){ 
+  r <- 5 + 0.221*education + 0.354*logincome
+}
+logface <- outer(education, logincome, f)
+persp(education, logincome, logface, theta = 30, 
+      phi = 30, expand = 0.5, ticktype = "detailed")
+rm(education,logincome,logface)
+
+```
+
+
+```{r comment = "", eval = EVALUATE_CHAP3}
+education <- seq(3, 16, length = 15)
+logincome <- seq(5, 15, length = 15)
+f <- function(education,logincome){ 
+  r <- 5 + 0.221*education + 0.354*logincome
+}
+logface <- outer(education, logincome, f)
+persp(education, logincome, logface, theta = 30, 
+      phi = 30, expand = 0.5, ticktype = "simple", #ticktype = "detailed", #
+      xlab = "x1", ylab="x2",zlab="y", nticks = 1)
+rm(education,logincome,logface)
+
+```
+
+</p>
+</div> 
+
+
+<div id="Over3.1D" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>D Details. Method of least squares</h3>
+  <p>
+
+-  For observation $\{(y, x_1, \ldots, x_k)\}$,   the height of the regression plane is $$b_0 + b_1 x_1 + \cdots + b_k x_k .$$
+-  Thus, $y - (b_0 + b_1 x_1 + \cdots + b_k x_k)$ represents the deviation.
+- The sum of squared deviations is $$SS(b_0, \ldots, b_k) = \sum (y - (b_0 + b_1 x_1 + \cdots + b_k x_k))^2 .$$
+- The *method of least squares* -- determine values of $b_0, \ldots, b_k$ that minimize $SS$.
+
+</p>
+</div> 
+
+<div id="Over3.1E" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>E Details. Fit a multiple linear regression model</h3>
+  <p>
+
+```{r comment = "", eval = EVALUATE_CHAP3}
+Term_mlr <- lm(logface ~ education + numhh + logincome, data = Term2)
+round(coefficients(Term_mlr), digits=4)
+newdata <- data.frame(logincome = log(60000), education = 12, numhh = 3)
+exp(predict(Term_mlr, newdata))
+
+```
+
+</p>
+</div> 
+
+###Exercise. Least squares and term life data
+
+**Assignment Text**
+
+The prior video introduced the *Survey of Consumer Finances* (SCF) term life data. A subset consisting of only those who purchased term life insurance, has already been read into a dataframe `Term2`.
+  
+Suppose that you wish to predict the amount of term life insurance that someone will purchase but are uneasy about the `education` variable. The SCF `education` variable is the number of completed years of schooling and so 12 corresponds to completing high school in the US. Your sense is that, for purposes of purchasing life insurance, high school graduates and those that attend college should be treated the same. So, in this exercise, your will create a new variable, `education1`, that is equal to years of education for those with education less than or equal to 12 and is equal to 12 otherwise.
+
+**Instructions**
+
+- Use the [pmin()](https://www.rdocumentation.org/packages/mc2d/versions/0.1-17/topics/pmin) function to create the `education1` variable as part of the `Term2` dataframe.
+- Check your work by examining summary statistics for the revised `Term2` dataframe.
+- Examine correlations for the revised dataframe.
+- Using the method of least squares and the function [lm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/lm), fit a MLR model using `logface` as the dependent variables and using `education`, `numhh`, and `logincome` as explanatory variables.
+- With this fitted model and the function [predict()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/predict), predict the face amount of insurance that someone with income of 40,000, 11 years of education, and 4 people in the household would purchase.
+
+```{r ex="ExerRegMod3.1.2", type="hint", tut=TRUE}
+Remember that your prediction is in log dollars so you need to exponentiate it to get the results in the original dollar units
+```
+
+```{r ex="ExerRegMod3.1.2", type="pre-exercise-code", tut=TRUE}
+#Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
+Term <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv", header = TRUE)
+Term1 <- subset(Term, subset = face > 0)
+Term2 <- Term1[, c("education", "face", "income", "logface", "logincome", "numhh")]
+```
+
+```{r ex="ExerRegMod3.1.2", type="sample-code", tut=TRUE}
+# Create the `education1` variable as part of the `Term2` dataframe.
+Term2$education1 <- pmin(12, Term2$education)
+
+# Check your work by examining summary statistics for the revised `Term2` dataframe.
+summary(___)
+
+# Examine correlations for the revised dataframe.
+round(cor(___), digits=3)
+
+# Fit a MLR model using `logface` as the dependent variables and using `education`, `numhh`, and `logincome` as explanatory variables.
+Term_mlr2 <- lm(logface ~ ___ + numhh + logincome, data = Term2)
+
+# Predict the face amount of insurance that someone with income of 40,000, 11 years of education, and 4 people in the household would purchase.
+newdata <- data.frame(logincome = log(40000), education1 = 11, numhh = 4)
+exp(predict(___, newdata))
+
+```
+
+
+
+```{r ex="ExerRegMod3.1.2", type="solution", tut=TRUE}
+Term2$education1 <- pmin(12, Term2$education)
+summary(Term2)
+round(cor(Term2), digits=3)
+Term_mlr2 <- lm(logface ~ education1 + numhh + logincome, data = Term2)
+newdata <- data.frame(logincome = log(40000), education1 = 11, numhh = 4)
+exp(predict(Term_mlr2, newdata))
+
+```
+
+```{r ex="ExerRegMod3.1.2", type="sct", tut=TRUE}
+ex() %>% check_object("Term2") %>% check_column("education1") %>% check_equal(incorrect_msg="Make sure to assign the modified education variable to `education1` using `pmin`.")
+ex() %>% check_function("summary", not_called_msg="Make use of `summary` to find summary stats of `Term2`.") %>% {
+  check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to run summary on `Term2`.")
+  check_result() %>% check_equal()
+}
+ex() %>% check_function("round", not_called_msg="Use `round` to round the correlations to 3 digits. " ) %>% {
+  check_arg(., "x") %>% check_equal(incorrect_msg="Make sure to call `round` on the correlations of all variables in `Term2`.")
+  check_arg(., "digits") %>% check_equal(incorrect_msg="Please round these correlations to 3 digits. ")
+}
+ex() %>% check_object("Term_mlr2", not_defined_msg="Make sure to assign your linear model to `Term_mlr2`.") %>% check_equal(incorrect_msg="Make sure to model `logface` based on `education1`, `numhh`, and `logincome`.")
+ex() %>% check_function("lm") %>% {
+  check_arg(., "formula") %>% check_equal(incorrect_msg="Make sure to model `logface` based on `education1`, `numhh`, and `logincome`.")
+  check_arg(., "data") %>% check_equal(incorrect_msg="Make sure to specify our data comes from `Term2`.")
+}
+ex() %>% check_object("newdata", undefined_msg="Make sure to assign our new data to `newdata`.") %>% check_equal(incorrect_msg="make sure to assign each column of the dataframe to its stated value. ")
+ex() %>% check_function("exp", not_called_msg="Make sure to take the exponential of your prediction! ") %>% check_result() %>% check_equal(incorrect_msg="The argument in `exp` should be called on the prediction. ")
+ex() %>% check_function("predict", not_called_msg="Utilize `predict` to create predictions using this model. ") %>% {
+  check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to specify that we want to create predictions based off of `Term2_mlr2`.")
+  check_arg(., "newdata") %>% check_equal(incorrect_msg="Make sure to specify we want to make predictions for the data we entered in `newdata`.")
+}
+success_msg("Congratulations! You now have experience fitting a regression plane and using this plane for predictions. Prediction is one of the key tasks of 'predictive modeling.' Well done!")
+
+```
+
+###Exercise. Interpreting coefficients as proportional changes
+
+**Assignment Text**
+
+In a previous exercise, you fit a MLR model using `logface` as the outcome variable and using `education`, `numhh`, and `logincome` as explanatory variables; the resulting fit is in the object `Term_mlr`. For this fit, the coefficient associated with `education` is 0.2064. We now wish to interpret this regression coefficient.
+
+The typical interpretation of coefficients in a regression model is as a partial slope. That is, for the coefficient $b_1$ associated with $x_1$, we interpret $b_1$ to be amount that the expected outcome changes per unit change in $x_1$, holding the other explanatory variables fixed. 
+
+For the term life example, the units of the outcome are in logarithmic dollars. So, for small values of $b_1$, we can interpret this to be a *proportional* change in dollars.
+
+**Instructions**
+
+- Determine least square fitted values for several selected values of `education`, holding other explantory variables fixed. For this part of the demonstration, we used their mean values.
+- Determine the proportional changes. Note the relation between these values from a discrete change approximation to the regression coefficient for `education` equal to 0.2064.
+
+```{r ex="ExerRegMod3.1.3", type="hint", tut=TRUE}
+To find the proportional changes, take the 2nd-4th observations of `lsfits` and subtract the 1st-3rd observations, then exponentiate the results. 
+```
+
+```{r ex="ExerRegMod3.1.3", type="pre-exercise-code", tut=TRUE}
+#Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
+Term <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv", header = TRUE)
+Term1 <- subset(Term, subset = face > 0)
+Term2 <- Term1[, c("education", "face", "income", "logface", "logincome", "numhh")]
+Term_mlr <- lm(logface ~ education + numhh + logincome, data = Term2)
+```
+
+```{r ex="ExerRegMod3.1.3", type="sample-code", tut=TRUE}
+Term_mlr <- lm(logface ~ education + numhh + logincome, data = Term2)
+summary(Term_mlr)$coefficients[,1]
+
+# Determine least square fitted values for several selected values of `education`, holding other explantory variables fixed.
+educ_predict <- c(14,14.1,14.2,14.3)
+newdata1 <- data.frame(logincome = mean(Term2$logincome), education = educ_predict, numhh = mean(Term2$numhh))
+lsfits1 <- predict(Term_mlr, newdata1)
+lsfits1
+
+# Determine the proportional changes. Note the relation between these values from a discrete change approximation to the regression coefficient for `education` equal to 0.2064.
+lsfits1[2:4] - lsfits1[1:3]
+pchange_fits1 <- exp(lsfits1[2:4] - lsfits1[1:3])
+pchange_fits1
+
+```
+
+
+```{r ex="ExerRegMod3.1.3", type="solution", tut=TRUE}
+educ_predict <- c(14,14.1,14.2,14.3)
+newdata1 <- data.frame(logincome = mean(Term2$logincome), education = educ_predict, numhh = mean(Term2$numhh))
+lsfits1 <- predict(Term_mlr, newdata1)
+lsfits1
+lsfits1[2:4] - lsfits1[1:3]
+pchange_fits1 <- exp(lsfits1[2:4] - lsfits1[1:3])
+pchange_fits1
+
+```
+
+```{r ex="ExerRegMod3.1.3", type="sct", tut=TRUE}
+ex() %>% check_object("educ_predict", undefined_msg="Make sure to assign the values of `education` to `educ_predict`.") %>% check_equal(incorrect_msg="These numbers should be the values from 14 to 14.3 by .1 increments. ")
+ex() %>% check_object("newdata1",undefined_msg="Make sure to create a dataframe named `newdata1` for predicting. ") %>% check_equal(incorrect_msg="Set log income to be the mean of the logincome of our data, education equal to `educ_predict`, and numhh equal to the mean of numhh. ")
+ex() %>% check_function("predict", not_called_msg="Use `predict` to make predictions given our model and data.") %>% {
+  check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to specify that we want to make predictions based on `Term_mlr`.")
+  check_arg(., "newdata") %>% check_equal(incorrect_msg="Make sure to specify that we would like to use the values in `newdata1` as the data for our predictions. ")
+}
+ex() %>% check_object("lsfits1", undefined_msg="Make sure to assign the predicted values to `lsfits1`.") %>% check_equal(incorrect_msg="Use `predict` to make predictions given our model and data.")
+ex() %>% check_object("pchange_fits1", undefined_msg="Make sure to assign exponential of the differences between the fit values to `pchange_fits1`.") %>% check_equal(incorrect_msg="This should be equal to the exponential of each `lsfits1` minus the `lsfits1` that came directly before it.")
+
+ex() %>% check_function("exp") %>% check_arg(., "x") %>% check_equal()
+
+
+success_msg("Congratulations! From calculus, small changes in logarithmic values can be interpreted as proportional changes. This is the reason for using natural logarithms.")
+
+```
+
+###Exercise. Interpreting coefficients as elasticities
+
+**Assignment Text**
+
+In a previous exercise, you fit a MLR model using `logface` as the outcome variable and using `education`, `numhh`, and `logincome` as explanatory variables; the resulting fit is in the object `Term_mlr`. From this fit, the coefficient associated with `logincome` is 0.4935. We now wish to interpret this regression coefficient. 
+
+The typical interpretation of coefficients in a regression model is as a partial slope. When both $x_1$ and $y$ are in logarithmic units, then we can interpret $b_1$ to be ratio of two percentage changes, known as an *elasticity* in economics. Mathematically, we summarize this as
+$$
+\frac{\partial \ln y}{\partial \ln x} = \left(\frac{\partial y}{y}\right) ~/ ~\left(\frac{\partial x}{x}\right) .
+$$
+
+
+**Instructions**
+
+- For several selected values of `logincome`, determine the corresponding proportional changes.
+- Determine least square fitted values for several selected values of `logincome`, holding other explantory variables fixed.
+- Determine the corresponding proportional changes for the fitted values. 
+- Calculate the ratio of proportional changes of fitted values to those for income. Note the relation between these values (from a discrete change approximation) to the regression coefficient for `logincome` equal to 0.4935.
+  
+**Hint.** When you calculate the ratio of proportional changes of fitted values to those for income, note the relation between these values (from a discrete change approximation) to the regression coefficient for `logincome` equal to 0.4935.
+
+```{r ex="ExerRegMod3.1.4", type="hint", tut=TRUE}
+When you calculate the ratio of proportional changes of fitted values to those for income, note the relation between these values (from a discrete change approximation) to the regression coefficient for `logincome` equal to 0.4935.
+```
+
+```{r ex="ExerRegMod3.1.4", type="pre-exercise-code", tut=TRUE}
+#Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
+Term <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv", header = TRUE)
+Term1 <- subset(Term, subset = face > 0)
+Term2 <- Term1[, c("education", "face", "income", "logface", "logincome", "numhh")]
+Term_mlr <- lm(logface ~ education + numhh + logincome, data = Term2)
+```
+
+```{r ex="ExerRegMod3.1.4", type="sample-code", tut=TRUE}
+Term_mlr <- lm(logface ~ education + numhh + logincome, data = Term2)
+summary(Term_mlr)$coefficients[,1]
+# For several selected values of `logincome`, determine the corresponding proportional changes.
+logincome_pred <- c(11,11.1,11.2,11.3)
+pchange_income <- 100*(exp(logincome_pred[2:4])/exp(logincome_pred[1:3])-1)
+pchange_income
+
+# Determine least square fitted values for several selected values of `logincome`, holding other explantory variables fixed.
+newdata2 <- data.frame(logincome = logincome_pred, education = mean(Term2$education), numhh = mean(Term2$numhh))
+lsfits2 <- predict(Term_mlr, newdata2)
+
+# Determine the corresponding proportional changes for the fitted values. 
+pchange_fits2 <- 100*(exp(lsfits2[2:4])/exp(lsfits2[1:3])-1)
+pchange_fits2
+
+# Calculate the ratio of proportional changes of fitted values to those for income.
+pchange_fits2/pchange_income
+
+```
+
+
+```{r ex="ExerRegMod3.1.4", type="solution", tut=TRUE}
+logincome_pred <- c(11,11.1,11.2,11.3)
+pchange_income <- 100*(exp(logincome_pred[2:4])/exp(logincome_pred[1:3])-1)
+pchange_income
+newdata2 <- data.frame(logincome = logincome_pred, education = mean(Term2$education), numhh = mean(Term2$numhh))
+lsfits2 <- predict(Term_mlr, newdata2)
+pchange_fits2 <- 100*(exp(lsfits2[2:4])/exp(lsfits2[1:3])-1)
+pchange_fits2
+pchange_fits2/pchange_income
+
+```
+
+
+```{r ex="ExerRegMod3.1.4", type="sct", tut=TRUE}
+ex() %>% check_object("logincome_pred", undefined_msg="Assign the string of values to `logincome_pred`.") %>% check_equal(incorrect_msg="The values should be `11`, `11.1`, `11.2`, and `11.3`.")
+ex() %>% check_object("pchange_income", undefiened_msg="assign the values of the percentage change in income. ") %>% check_equal(incorrect_msg="it should be equal to the following: `100*(exp(logincome_pred[2:4])/exp(logincome_pred[1:3])-1`.")
+ex() %>% check_object("newdata2", undefined_msg="create some new data, and name it to `newdata2`.") %>% check_equal(incorrect_msg="This new data should have `logincome` equal to `logincome_pred`, `education` equal to the mean of `education`, and `numhh` equal to the mean of `numhh`.")
+ex() %>% check_object("lsfits2", undefined_msg="Set the predicted values to be stored in `lsfits2`.") %>% check_equal(incorrect_msg="you should run predict on `Term_mlr` and `newdata2`.")
+ex() %>% check_function("predict", not_called_msg="Use `predict` to create the predicted values. ") %>% {
+  check_arg(., "object") %>% check_equal(incorrect_msg="The model that we want to use is `Term_mlr`.")
+  check_arg(., "newdata") %>% check_equal(incorrect_msg="The data we want to use to create predictions is found in `newdata2`.")
+}
+ex() %>% check_object("pchange_fits2", undefined_msg="now find the percentage change in each of the fits, and store them in `pchange_fits2`.") %>% check_equal(incorrect_msg="Do the exact same thing you did for `pchange_income`, except use the fits instead of the predictions. ")
+success_msg("Congratulations! When both $x_1$ and $y$ are in logarithmic units, then we can interpret $b_1$ to be ratio of two percentage changes, known as an *elasticity* in economics.")
+
+```
+
+
+
+<!-- ## Foundations of multiple linear regresson -->
+
+
+<!-- *** -->
+
+<!-- In this section, you learn how to: -->
+
+<!-- -  Contrast the observable to the error representation of the model -->
+<!-- -  Describe the unbiasedness and determine the variance of least squares regression coefficients -->
+<!-- -  Motivate the least squares method using the Gauss-Markov and normality of estimators -->
+
+<!-- *** -->
+
+<!-- BLANK FOR NOW.... -->
+
+
+## Statistical inference and multiple linear regresson
+
+***
+
+In this section, you learn how to:
+  
+-  Explain mean square error and residual standard error in terms of degrees of freedom
+-  Develop an ANOVA table and use it to derive the coefficient of determination
+-  Calculate and interpret the coefficient of determination adjusted for degrees of freedom
+-  Conduct a test of a regression coefficient
+-  Summarize regression coefficients using point and interval estimators
+
+***
+
+###Video 
+
+<center>
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=0_n9542z90&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=0_1rrbi7qd" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
+</center>
+
+#### Video Overhead Details {-}
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Over3.2A')">A Details. Goodness of fit</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.2B')">B Details. Goodness of fit and term life</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.2C')">C Details. Statistical inference</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.2D')">D Details. Statistical inference and term life</button>
+</div>
+
+<div id="Over3.2A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>A Details. Goodness of fit</h3>
+  <p>
+
+Summarize 
+
+- deviations
+- $s^2$
+- $R^2$
+- $R_a^2$
+- ANOVA table
+
+</p>
+</div> 
+
+
+<div id="Over3.2B" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>B Details. Goodness of fit and term life</h3>
+  <p>
+
+```{r comment = "", eval = EVALUATE_CHAP3}
+Term_mlr <- lm(logface ~ education + numhh + logincome, data = Term2)
+summary(Term_mlr)
+anova(Term_mlr)
+
+```
+
+</p>
+</div> 
+
+<div id="Over3.2C" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>C Details. Statistical inference</h3>
+  <p>
+
+- hypothesis testing of a regression coefficient
+- confidence intervals
+
+</p>
+</div> 
+
+<div id="Over3.2D" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>D Details. Statistical inference and term life</h3>
+  <p>
+
+```{r comment = "", eval = EVALUATE_CHAP3}
+Term_mlr <- lm(logface ~ education + numhh + logincome, data = Term2)
+model_sum <- summary(Term_mlr)
+model_sum$coefficients
+
+round(confint(Term_mlr, level = .95), digits = 3)
+
+round(confint(Term_mlr, level = .95), digits = 3)
+
+```
+  
+</p>  
+</div> 
+  
+###Exercise. Statistical inference and term life
+
+
+**Assignment Text**
+
+In later chapters, we will learn how to specify a model using diagnostics techniques; these techniques were used to specify face in log dollars for the outcome and similarly income in log dollars as an explanatory variable. Just to see how things work, in this exercise we will create new variables `face` and `income` that are in the original units and run a regression with these. We have already seen that rescaling by constants do not affect relationships but can be helpful with interpretations, so we define both  `face` and `income` to be in thousands of dollars. A prior video introduced the term life dataframe `Term2`.
+
+
+**Instructions**
+
+- Create `Term2$face` by exponentiating `logface` and dividing by 1000. For convenience, we are storing this variable in the data set `Term2`. Use the same process to create `Term2$income`.
+- Run a regression using `face` as the outcome variable and `education`, `numhh`, and `income` as explanatory variables.
+- Summarize this model and identify the residual standard error ($s$) as well as the coefficient of determination ($R^2$) and the version adjusted for degrees of freedom ($R_a^2$).
+
+```{r ex="ExerRegMod3.2.2", type="hint", tut=TRUE}
+Remember that we can call a `column` from a `dataframe` using `dataframe$column`.
+```
+
+```{r ex="ExerRegMod3.2.2", type="pre-exercise-code", tut=TRUE}
+#Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
+Term <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv", header = TRUE)
+Term1 <- subset(Term, subset = face > 0)
+Term2 <- Term1[, c("education", "face", "income", "logface", "logincome", "numhh")]
+```
+
+
+```{r ex="ExerRegMod3.2.2", type="sample-code", tut=TRUE}
+
+# Create `Term2$face` and  `Term2$income`
+Term2$face <- exp(___)/___
+Term2$income <- exp(___)/___
+
+# Run a regression using `face` as the outcome variable and `education`, `numhh`, and `income` as explanatory variables.
+Term_mlr1 <- lm(face ~ ___, data = Term2)
+
+# Summarize this model
+summary(Term_mlr1)
+
+```
+
+
+```{r ex="ExerRegMod3.2.2", type="solution", tut=TRUE}
+Term2$face <- exp(Term2$logface)/1000
+Term2$income <- exp(Term2$logincome)/1000
+Term_mlr1 <- lm(face ~ education + numhh + income, data = Term2)
+summary(Term_mlr1)
+
+```
+
+  
+```{r ex="ExerRegMod3.2.2", type="sct", tut=TRUE}
+ex() %>% check_object("Term2", undefined_msg="You should have a dataframe named `Term2`.") %>% {
+  check_column(., "face", col_missing_msg="You should make a new column named `face`.") %>% check_equal(incorrect_msg="to create the data, take the exponential of the data in `logface` and divide by 1000. ")
+  check_column(., "income", col_missing_msg="You should make a new column named `income`.") %>% check_equal(incorrect_msg="To create the data, take the exponential of the data in `logincome` and divide by 1000. ")
+ }
+ex() %>% check_object("Term_mlr1", undefined_msg="Use `lm` to create a linear model, and store it in `Term_mlr1`.") %>% check_equal(incorrect_msg="When you create your model, make sure to model `face` based on `education`, `numhh`, and `income` from the data set `Term2`.")
+ex() %>% check_function("summary", not_called_msg="Use `summary` to view a summary of our linear model. ") %>% check_result() %>% check_equal(incorrect_msg="Make sure to specify that we would like a summary of `Term_mlr1`.")
+success_msg("Congratulations! Compare these goodness of fit measures to those where income and face are in logarithmic units. Although not the only indicators, you will see that the proportion of variability explained (R square) and the statistical significance of coefficients are strikingly higher in the model with variables in logged units.")
+
+```
+
+
+##  Binary variables
+
+***
+
+In this section, you learn how to:
+  
+- Interpret regression coefficients associated with binary variables
+- Use binary variables and interaction terms to create regression models that are nonlinear in the covariates
+
+***
+
+###Video 
+
+<center>
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=0_jfmz8kg0&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_qxygjiq2" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
+</center>
+
+#### Video Overhead Details {-}
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Over3.3A')">A Details. Binary variables</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.3B')">B Details. Visualize effect of binary variables</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.3C')">C Details. R script for visualization</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.3D')">D Details. Interaction Terms</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.3E')">E Details. Visualizing binary variables with interactions terms</button>    
+</div>
+
+
+<div id="Over3.3A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>A Details. Binary variables</h3>
+  <p>
+
+- We can define a new variable
+$$
+single= \left\{ \begin{array}{ll}
+        0 & \text{for other respondents} \\
+        1 & \text{for single respondents}
+\end{array} \right.
+$$
+
+- The variable *single* is said to be an *indicator*, or *dummy*, variable.
+- To interpret coefficients, we now consider the regression function
+
+$$
+\text{E }logface = \beta_0 + \beta_1 logincome + \beta_2 single
+$$
+- This can be expressed as two lines
+$$
+\text{E }logface = \left\{ \begin{array}{ll}
+        \beta_0 + \beta_1  logincome           & \textrm{for other respondents} \\
+        \beta_0 + \beta_2 + \beta_1  logincome & \textrm{for single respondents}
+\end{array} \right. .
+$$
+- The least squares method of calculating the estimators, and the resulting theoretical properties, are the still valid when using
+binary variables.
+
+</p>
+</div> 
+
+<div id="Over3.3B" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>B Details. Visualize effect of binary variables</h3>
+  <p>
+
+
+</p>
+</div> 
+
+<div id="Over3.3C" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>C Details. R script for visualization</h3>
+  <p>
+
+```{r comment = "", eval = EVALUATE_CHAP3}
+Term4 <- Term1[,c("numhh", "education", "logincome", "logface", "marstat")]
+Term4$marstat <- as.factor(Term4$marstat)
+table(Term4$marstat)
+Term4$single <- 1*(Term4$marstat == 0)
+model_single <- lm(logface ~ logincome + single, data = Term4)
+summary(model_single)
+
+plot(Term4$logincome,Term4$logface,xlab="logarithmic income", ylab="log face",
+    pch= 1+16*Term4$single, col = c("red", "black", "black")[Term4$marstat])
+Ey1 <- model_single$coefficients[1]+model_single$coefficients[2]*Term4$logincome
+Ey2 <- Ey1 + model_single$coefficients[3]
+lines(Term4$logincome, Ey1)
+lines(Term4$logincome, Ey2, col="red")
+
+```
+
+</p>
+</div> 
+
+<div id="Over3.3D" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>D Details. Interaction Terms</h3>
+  <p>
+
+- Linear regression models are defined in terms of linear combinations of explanatory varibles but we can expand their scope through nonlinear transformations
+   - One type of nonlinear transform is the product of two varibles that is used to create what is known as an *interaction* variable
+- To interpret coefficients, we now consider the regression function
+
+$$
+\text{E }logface = \beta_0 + \beta_1 logincome + \beta_2 single + \beta_3 single*logincome
+$$
+- This can be expressed as two lines with different slopes
+$$
+\text{E }logface = \left\{ \begin{array}{ll}
+        \beta_0 + \beta_1   logincome           & \textrm{for other respondents} \\
+        \beta_0 + \beta_2 + (\beta_1  + \beta_3) logincome & \textrm{for single respondents}
+\end{array} \right. .
+$$
+</p>
+</div> 
+
+<div id="Over3.3E" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>E Details. Visualizing binary variables with interactions terms</h3>
+  <p>
+
+```{r comment = "", eval = EVALUATE_CHAP3}
+Term4 <- Term1[,c("numhh", "education", "logincome", "logface", "marstat")]
+Term4$marstat <- as.factor(Term4$marstat)
+table(Term4$marstat)
+Term4$single <- 1*(Term4$marstat == 0)
+model_single_inter <- lm(logface ~ logincome + single + single*logincome, data = Term4)
+summary(model_single_inter)
+
+plot(Term4$logincome,Term4$logface,xlab="logarithmic income", ylab="log face",
+    pch= 1+16*Term4$single, col = c("red", "black", "black")[Term4$marstat])
+Ey1 <- model_single_inter$coefficients[1]+model_single_inter$coefficients[2]*Term4$logincome
+Ey2 <- Ey1 + model_single_inter$coefficients[3]+model_single_inter$coefficients[4]*Term4$logincome
+lines(Term4$logincome, Ey1)
+lines(Term4$logincome, Ey2, col="red")
+
+```
+
+</p>
+</div> 
+
+###Exercise. Binary variables and term life
+
+
+**Assignment Text**
+
+In the prior video, we saw how the variable `single` can be used with logarithmic income to explain logarithmic face amounts of term life insurance that people purchase. The coefficient associated with this variable turns out to be negative which is intuitively appealing; if an individual is single, then that person may not have the strong need to purchase financial security for others in the event of unexpected death. 
+
+In this exercise, we will extend this by incorporating `single` into our larger regression model that contains other explanatory varibles, `logincome`, `education` and `numhh`. The data have been pre-loaded into the dataframe `Term4`. 
+
+
+**Instructions**
+
+- Calculate a table of correlation coefficients to examine pairwise linear relationships among the variables `numhh`, `education`, `logincome`, `single`, and  `logface`.
+- Fit a MLR model of `logface` using explanatory variables `numhh`, `education`, `logincome`, and `single`. Examine the residual standard deviation $s$, the coefficient of determination $R^2$, and the adjusted version $R_a^2$. Also note the statistical significance of the coefficient associated with `single`.
+- Repeat the MLR model fit while adding the interaction term  `single*logincome`.
+
+```{r ex="ExerRegMod3.3.2", type="hint", tut=TRUE}
+To get a table of correlations, the `cor()` function can be used.
+After that, a combination of `lm()` and `summary()` can be used to achieve the desired results
+```
+
+```{r ex="ExerRegMod3.3.2", type="pre-exercise-code", tut=TRUE}
+#Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
+Term <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv", header = TRUE)
+Term1 <- subset(Term, subset = face > 0)
+Term4 <- Term1[,c("numhh", "education", "logincome", "marstat", "logface")]
+Term4$single <- 1*(Term4$marstat == 0)
+```
+
+ 
+```{r ex="ExerRegMod3.3.2", type="sample-code", tut=TRUE}
+# Calculate a table of correlation coefficients
+round(___(Term4[,c("numhh", "education", "logincome", "single", "logface")]), digits = 3)
+
+# Fit a MLR model of `logface` using explanatory variables `numhh`, `education`, `logincome`, and `single`.
+Term_mlr3 <- lm(logface ~ education + numhh + logincome + single, data = Term4)
+summary(Term_mlr3)
+
+# Repeat the MLR model fit while adding the interaction term  `single*logincome`.
+Term_mlr4 <- lm(logface ~ education + numhh + logincome + single + single*logincome, data = Term4)
+summary(Term_mlr4)
+
+```
+
+
+```{r ex="ExerRegMod3.3.2", type="solution", tut=TRUE}
+round(cor(Term4[,c("numhh", "education", "logincome", "single", "logface")]), digits = 3)
+Term_mlr3 <- lm(logface ~ education + numhh + logincome + single, data = Term4)
+summary(Term_mlr3)
+Term_mlr4 <- lm(logface ~ education + numhh + logincome + single + single*logincome, data = Term4)
+summary(Term_mlr4)
+
+```
+
+
+```{r ex="ExerRegMod3.3.2", type="sct", tut=TRUE}
+ex() %>% check_function("round", not_called_msg="Use `round` on the correlation coefficients found using `cor` to 3 digits.") %>% check_result() %>% check_equal(incorrect_msg="Use `cor` to find the correlations, and then round them to 3 digits. ")
+ex() %>% check_object("Term_mlr3", undefined_msg="Use `lm` to create a linear model named `Term_mlr3`.") %>% check_equal(incorrect_msg="You linear model should model `logface` based on `education`, `numhh`, `logincome`, and `single` from the data in `Term4`.")
+ex() %>% check_function("summary",index=1,not_called_msg="Use `summary` to view a summary of `Term_mlr3`.") %>% check_result() %>% check_equal(incorrect_msg="Make sure to specify that we want a summary of `Term_mlr3`.")
+ ex() %>% check_object("Term_mlr4", undefined_msg="Use `lm` to create a linear model named `Term_mlr4`.") %>% check_equal(incorrect_msg="You linear model should model `logface` based on `education`, `numhh`, `logincome`, and the product of `single` and `logincome` from the data in `Term4`.")
+ex() %>% check_function("summary",index=2,not_called_msg="Use `summary` to view a summary of `Term_mlr4`.") %>% check_result() %>% check_equal(incorrect_msg="Make sure to specify that we want a summary of `Term_mlr4`.")
+success_msg("Congratulations! From a correlation table, you saw that there are relationships with among explanatory variables and so it is not clear whether adding `single` to the model would be helpful. You explored this by first fitting a model by just adding the binary variable single, examined summary statistics, and checked the significance of the variable. Then, you explored the utility of the interaction of `single` with logarithmic income. Well done!")
+
+```
+
+##  Categorical variables
+
+***
+
+In this section, you learn how to:
+  
+- Represent categorical variables using a set of binary variables
+- Interpret the regression coefficients associated with categorical variables
+- Describe the effect of the reference level choice on the model fit
+
+***
+
+###Video 
+
+<center>
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=0_gkywbwai&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_n73q1ka4" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
+</center>
+
+#### Video Overhead Details {-}
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Over3.4A')">A Details. Categorical variables</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.4B')">B Details. Term life example</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.4C')">C Details. Term life boxplots</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.4D')">D Details. Regression with a categorical variable</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.4E')">E Details. t-ratios depend on the reference level</button>
+</div>
+
+
+<div id="Over3.4A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>A Details. Categorical variables</h3>
+  <p>
+
+- *Categorical variables* provide labels for observations to denote membership in distinct groups, or categories.
+- A *binary variable* is a special case of a categorical variable.
+    - To illustrate, a binary variable may tell us whether or not someone has
+health insurance.
+    - A categorical variable could tell us whether someone has (i) private individual health insurance, (ii) private group insurance, (iii) public insurance or (iv) no health insurance.
+- For categorical variables, there may or may not be an ordering of the groups.
+    - For health insurance, it is difficult to say which is 'larger', private individual versus public health insurance (such as Medicare).
+    - However, for education, we may group individuals from a dataset into 'low', 'intermediate' and 'high' years of education.
+- *Factor* is another term used for a (unordered) categorical explanatory variable.
+
+</p>
+</div> 
+
+<div id="Over3.4B" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>B Details. Term life example</h3>
+  <p>
+
+- We studied *y = logface*, the amount that the company will pay in the event
+of the death of the named insured (in logarithmic dollars), focusing on the explanatory variables *logincome*, *education*, and *numhh*.
+- We now supplement this by including the categorical variable, *marstat*, that is the marital status of the survey respondent. This may be:
+    - 1, for married
+    - 2, for living with partner
+    - 0, for other (SCF actually breaks this category into separated, divorced, widowed, never married and inapplicable, for persons age 17 or less or no further persons)
+ 
+</p>    
+</div> 
+
+<div id="Over3.4C" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>C Details. Term life boxplots</h3>
+  <p>
+
+```{r comment = "", warning = FALSE, message = FALSE, eval = EVALUATE_CHAP3}
+# Pre-exercise code
+#Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
+Term <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv", header = TRUE)
+Term1 <- subset(Term, subset = face > 0)
+Term4 <- Term1[,c("numhh", "education", "logincome", "marstat", "logface")]
+Term4$single <- 1*(Term4$marstat == 0)
+Term4$marstat<- as.factor(Term4$marstat)
+boxplot(logface ~ marstat, ylab = "log face", xlab = "Marital Status", data = Term4)
+table(Term4$marstat)
+#  SUMMARY BY LEVEL OF MARSTAT
+#library(Rcmdr)
+#numSummary(Term4[, "logface"], groups = Term4$marstat, statistics = c("mean", "sd"))
+#numSummary(Term4[, "logface"], statistics = c("mean", "sd"))
+
+```
+
+</p>
+</div> 
+
+<div id="Over3.4D" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>D Details. Regression with a categorical variable</h3>
+  <p>
+
+```{r comment = "", eval = EVALUATE_CHAP3}
+Term4$marstat <- as.factor(Term4$marstat)
+Term4$marstat <- relevel(Term4$marstat, ref = "2")
+summary(lm(logface ~ logincome+education+numhh+marstat, data = Term4))
+
+```
+
+</p>
+</div> 
+
+<div id="Over3.4E" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>E Details. t-ratios depend on the reference level</h3>
+  <p>
+
+$$
+\begin{array}{l|rr|rr|rr}
+ \hline
+ & \text{Model 1}&& \text{Model 2}&& \text{Model 3}&\\
+ \hline
+ \text{Var}& \text{Coef} & \text{t-stat} & \text{Coef} & \text{t-stat} &\text{Coef} & \text{t-stat} \\\hline
+logincome & 0.452 & 5.74 & 0.452 & 5.74 & 0.452 & 5.74 \\
+education &0.205 & 5.30 &0.205 & 5.30&0.205 & 5.30 \\
+numhh     & 0.248 & 3.57 & 0.248 & 3.57 & 0.248 & 3.57 \\\hline
+\text{Intercept} & 3.395 & 3.77  & 2.605&  2.74 & 2.838 & 3.34\\
+\text{mar=0}    & -0.557 & -2.15&  0.232 &  0.44\\
+\text{mar=1} & & & 0.789 & 1.59 & 0.557 & 2.15\\
+\text{mar=2}& -0.789 & -1.59 & & & -0.232 & -0.44\\
+\hline
+\end{array}
+$$
+</p>
+</div> 
+
+###Exercise. Categorical variables and Wisconsin hospital costs
+
+**Assignment Text**
+
+This exercise examines the impact of various predictors on hospital charges. Identifying predictors of hospital charges can provide direction for hospitals, government, insurers and consumers in controlling these variables that in turn leads to better control of hospital costs. The data, from 1989, are aggregated by: 
+
+- `drg`, diagnostic related groups of costs, 
+- `payer`, type of health care provider (Fee for service, HMO, and other), and 
+- `hsa`, nine major geographic areas in Wisconsin.
+
+Some preliminary analysis of the data has already been done. In this exercise, we will analyze `logcharge`, the logarithm of total hospital charges per number of discharges, in terms of `log_numdschg`, the logarithm of the number of discharges. In the dataframe `Hcost` which has been loaded in advance, we restrict consideration to three types of drgs, numbers 209, 391, and 431.
+
+
+**Instructions**
+
+- Fit a basic linear regression model using logarithmic number of discharges to predict logarithmic hospital costs and superimposed the fitted regression line on the scatter plot.
+- Produce a scatter plot of logarithmic number of discharges to predict logarithmic hospital costs. Allow plotting symbols and colors to vary by diagnostic related group.
+- Fit a MLR model using logarithmic number of discharges to predict logarithmic hospital costs, allowing intercepts and slopes to vary by diagnostic related groups.
+- Superimpose the fits from the MLR model on the scatter plot of logarithmic number of discharges to predict logarithmic hospital costs.
+
+```{r ex="ExerRegMod3.4.2", type="hint", tut=TRUE}
+There is currently nothing to change in this tutorial! Simply look over the code and try to understand what each line does.
+```
+
+```{r ex="ExerRegMod3.4.2", type="pre-exercise-code", tut=TRUE}
+#Hcost <- read.csv("CSVData\\WiscHcosts.csv", header = TRUE)
+Hcost <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/2cc1e2739bf827093db31d7c4e6dcdc348ac984e/WiscHcosts.csv", header = TRUE)
+Hcost1 <- subset(Hcost, drg == 209|drg == 391|drg == 430)
+```
+
+
+```{r ex="ExerRegMod3.4.2", type="sample-code", tut=TRUE}
+# Fit a basic linear regression model using logarithmic number of discharges to predict logarithmic hospital costs and superimposed the fitted regression line on the scatter plot.
+hosp_blr <- lm(logcharge~log_numdschg, data=Hcost1)
+plot(logcharge~log_numdschg, data=Hcost1, xlab = "log number discharges", ylab = "log charge")
+abline(hosp_blr, col="red")
+
+# Produce a scatter plot of logarithmic number of discharges to predict logarithmic hospital costs. Allow plotting symbols and colors to vary by diagnostic related group.
+plot(logcharge~log_numdschg, data=Hcost1, xlab = "log number discharges", ylab = "log charge",
+    pch= as.numeric(as.factor(Hcost1$drg)), 
+    col = c("red", "black", "blue")[as.factor(Hcost1$drg)])
+legend("left", legend=c("drg 209","drg 391", "drg 430"), col=c("red", "black", "blue"), pch = c(1,2,3))
+
+# Fit a MLR model allowing intercepts and slopes to vary by drg.
+hosp_mlr <- lm(logcharge~log_numdschg + as.factor(drg)*log_numdschg, data=Hcost1)
+
+# Superimpose the fits from the MLR model on the scatter plot of logarithmic number of discharges to predict logarithmic hospital costs.
+plot(logcharge~log_numdschg, data=Hcost1, xlab = "log number discharges", ylab = "log charge",
+         pch= as.numeric(as.factor(Hcost1$drg)), 
+    col = c("red", "black", "blue")[as.factor(Hcost1$drg)])
+xseq <- seq(0,10,length.out=100)
+coef <- summary(hosp_mlr)$coefficients[,1]
+fit209 <- coef[1] + coef[2]*xseq
+lines(xseq,fit209, col="red")
+fit391 <- coef[1] + coef[3] + (coef[2] + coef[5])*xseq
+lines(xseq,fit391, col="black")
+fit430 <- coef[1] + coef[4] + (coef[2] + coef[6])*xseq
+lines(xseq,fit430, col="blue")
+
+```
+
+
+```{r ex="ExerRegMod3.4.2", type="solution", tut=TRUE}
+#par(mfrow = c(2, 1))
+hosp_blr <- lm(logcharge~log_numdschg, data=Hcost1)
+plot(logcharge~log_numdschg, data=Hcost1, xlab = "log number discharges", ylab = "log charge")
+abline(hosp_blr, col="red")
+
+plot(logcharge~log_numdschg, data=Hcost1, xlab = "log number discharges", ylab = "log charge",
+    pch= as.numeric(as.factor(Hcost1$drg)), 
+    col = c("red", "black", "blue")[as.factor(Hcost1$drg)])
+legend("left", legend=c("drg 209","drg 391", "drg 430"), col=c("red", "black", "blue"), pch = c(1,2,3))
+
+hosp_mlr <- lm(logcharge~log_numdschg + as.factor(drg)*log_numdschg, data=Hcost1)
+#summary(hosp_mlr)$coefficients[,1]
+plot(logcharge~log_numdschg, data=Hcost1, xlab = "log number discharges", ylab = "log charge",
+         pch= as.numeric(as.factor(Hcost1$drg)), 
+    col = c("red", "black", "blue")[as.factor(Hcost1$drg)])
+xseq <- seq(0,10,length.out=100)
+coef <- summary(hosp_mlr)$coefficients[,1]
+fit209 <- coef[1] + coef[2]*xseq
+lines(xseq,fit209, col="red")
+fit391 <- coef[1] + coef[3] + (coef[2] + coef[5])*xseq
+lines(xseq,fit391, col="black")
+fit430 <- coef[1] + coef[4] + (coef[2] + coef[6])*xseq
+lines(xseq,fit430, col="blue")
+
+```
+
+```{r ex="ExerRegMod3.4.2", type="sct", tut=TRUE}
+success_msg("Congratulations! When you superimposed the fits from the MLR model on the scatter plot of logarithmic number of discharges to predict logarithmic hospital costs, note how slopes differ dramatically from the slope from the basic linear regression model.")
+```
+
+## General linear hypothesis
+
+***
+
+In this section, you learn how to:
+
+-  Jointly test the significance of a set of regression coefficients using the general linear hypothesis
+-  Conduct a test of a regression coefficient versus one- or two-side alternatives
+
+***
+
+###Video 
+
+<center>
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=0_gs9oqymi&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_j9btj8ns" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
+</center>
+
+#### Video Overhead Details {-}
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Over3.5A')">A Details. Testing the significance of a categorical variable</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.5B')">B Details. Overview of the general linear hypothesis</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.5C')">C Details.  Procedure for conducting the general linear hypothesis</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.5D')">D Details. The general linear hypothesis for a single variable</button>
+</div>
+
+<div id="Over3.5A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>A Details. Testing the significance of a categorical variable</h3>
+  <p>
+
+```{r comment = "", warning = FALSE, message = FALSE, eval = EVALUATE_CHAP3}
+#Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
+Term <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv", header = TRUE)
+Term1 <- subset(Term, subset = face > 0)
+Term4 <- Term1[,c("numhh", "education", "logincome", "marstat", "logface")]
+Term_mlr1 <- lm(logface ~ logincome + education + numhh + as.factor(Term4$marstat), data = Term4)
+anova(Term_mlr1)
+Term_mlr2 <- lm(logface ~ logincome + education + numhh, data = Term4)
+
+Fstat <- (anova(Term_mlr2)$`Sum Sq`[4] - anova(Term_mlr1)$`Sum Sq`[5])/(2*anova(Term_mlr1)$`Mean Sq`[5])
+Fstat
+cat("p-value is", 1 - pf(Fstat, df1 = 2 , df2 = anova(Term_mlr1)$Df[5]))
+
+```
+
+</p>
+</div> 
+
+<div id="Over3.5B" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>B Details. Overview of the general linear hypothesis</h3>
+  <p>
+
+- The likelihood ratio is a general statistical test procedure that compares a model to a subset
+- The general linear hypothesis test procedure is similar.
+    - Start with a (large) linear regression model, examine the fit to a set of data
+    - Compare this to smaller model that is a subset of the large model.
+    - "Subset" is the sense that regression coefficients from the small model are linear combinations of regression coefficients of the large model (e.g., set them to zero)
+- Although the likelihood ratio test is more generally available, the general linear hypothesis test is more accurate for smaller data sets (for normally distributed data)
+
+</p>
+</div> 
+
+<div id="Over3.5C" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>C Details.  Procedure for conducting the general linear hypothesis</h3>
+  <p>
+
+- Run the full regression and get the error sum of squares and mean square error, which we label as $(Error SS)_{full}$ and $s^2_{full}$, respectively.
+- Run a reduced regression and get the error sum of squares, labelled $(Error SS)_{reduced}$.
+- Using $p$ for the number of linear restrictions, calculate
+$$
+F-ratio = \frac{(Error SS)_{reduced}-(Error SS)_{full}}{p s^2_{full}} .
+$$
+- The probability value is $p-value = \Pr(F_{p,df} > F-ratio)$ where $F_{p,df}$ has an *F* distribution with  degrees of freedom *p* and  *df*, respectively. (Here, *df* is the degrees of freedom for the full model.)
+
+</p>
+</div> 
+
+<div id="Over3.5D" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>D Details. The general linear hypothesis for a single variable</h3>
+  <p>
+
+- Suppose that you wish to test the hypothesisthat a regression coefficient equals 0.
+    - One could use the general linear hypothsis procedure with $p=1$.
+    - One could also examine the corresponding $t-ratio$.
+    - Which is correct?
+-  Both. One can show that $(t-ratio)^2 = F-ratio$, so they are equivalent statistics.
+    - The general linear hypothesis is useful because it can be extended to multiple coefficients.
+    - The *t-ratio* is useful because it can be used to examine one-sided alternative hypotheses.
+
+</p>
+</div> 
+
+###Exercise. Hypothesis testing and term life
+
+
+**Assignment Text**
+
+With our `Term life` data, let us compare a model based on the binary variable that indicates whether a survey respondent is single versus the more complex marital status, `marstat`. In principle, more detailed information is better. But, it may be that the additional information in `marstat`, compared to `single`, does not help fit the data in a significantly better way. 
+
+As part of the preparatory work, the dataframe `Term4` is available that includes the binary variable `single` and the factor `marstat`. Moreover, the regression object `Term_mlr` contains information in a multiple linear regression fit of `logface` on the base explanatory variables 'logincome`, `education`, and `numhh`. 
+
+
+**Instructions**
+
+- Fit a MLR model using the base explanatory variables plus `single` and another model using the base variables plus `marstat`.
+- Use the F test to decide whether the additional complexity `marstat` is warranted by calculating the p-value associated with this test.
+- Fit a MLR model using the base explanatory variables plus `single` interacted with `logincome` and another model using the base variables plus `marstat` interacted with `logincome`.
+- Use the F test to decide whether the additional complexity `marstat` is warranted by calculating the p-value associated with this test.
+
+**Hint**
+
+```
+Here is the code to calculate it by hand
+Fstat12 <- (anova(Term_mlr1)$`Sum Sq`[5] - 
+              anova(Term_mlr2)$`Sum Sq`[5])/(1*anova(Term_mlr2)$`Mean Sq`[5])
+Fstat12
+cat("p-value is", 1 - pf(Fstat12, df1 = 1 , df2 = anova(Term_mlr2)$Df[5]))
+```
+
+```{r ex="ExerRegMod3.5.2", type="hint", tut=TRUE}
+Here is the code to calculate it by hand
+Fstat12 <- (anova(Term_mlr1)$`Sum Sq`[5] - 
+              anova(Term_mlr2)$`Sum Sq`[5])/(1*anova(Term_mlr2)$`Mean Sq`[5])
+Fstat12
+cat("p-value is", 1 - pf(Fstat12, df1 = 1 , df2 = anova(Term_mlr2)$Df[5]))
+```
+
+```{r ex="ExerRegMod3.5.2", type="pre-exercise-code", tut=TRUE}
+#Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
+Term <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv", header = TRUE)
+Term1 <- subset(Term, subset = face > 0)
+Term4 <- Term1[,c("numhh", "education", "logincome", "marstat", "logface")]
+Term4$single <- 1*(Term4$marstat == 0)
+Term4$marstat <- as.factor(Term4$marstat)
+Term_mlr <- lm(logface ~ logincome + education + numhh , data = Term4)
+anova(Term_mlr)
+```
+
+
+```{r ex="ExerRegMod3.5.2", type="sample-code", tut=TRUE}
+# Fit a MLR model using the base explanatory variables plus `single` and another model using the base variables plus `marstat`.
+Term_mlr1 <- lm(logface ~ logincome + education + numhh +single, data = Term4)
+Term_mlr2 <- lm(logface ~ logincome + education + numhh +marstat, data = Term4)
+
+# Use the F test to decide whether the additional complexity `marstat` is warranted by calculating the p-value associated with this test.
+anova(Term_mlr1,Term_mlr2)
+
+# Fit a MLR model using the base explanatory variables plus `single` interacted with `logincome` and another model using the base variables plus `marstat` interacted with `logincome`.
+Term_mlr3 <- lm(logface ~ logincome + education + numhh + single*logincome, data = Term4)
+Term_mlr4 <- lm(logface ~ logincome + education + numhh +marstat*logincome, data = Term4)
+
+# Use the F test to decide whether the additional complexity `marstat` is warranted by calculating the p-value associated with this test.
+anova(Term_mlr3,Term_mlr4)
+
+```
+
+
+```{r ex="ExerRegMod3.5.2", type="solution", tut=TRUE}
+Term_mlr1 <- lm(logface ~ logincome + education + numhh +single, data = Term4)
+Term_mlr2 <- lm(logface ~ logincome + education + numhh +marstat, data = Term4)
+anova(Term_mlr1,Term_mlr2)
+#Fstat12 <- (anova(Term_mlr1)$`Sum Sq`[5] - 
+#              anova(Term_mlr2)$`Sum Sq`[5])/(1*anova(Term_mlr2)$`Mean Sq`[5])
+#Fstat12
+#cat("p-value is", 1 - pf(Fstat12, df1 = 1 , df2 = anova(Term_mlr2)$Df[5]))
+Term_mlr3 <- lm(logface ~ logincome + education + numhh + single*logincome, data = Term4)
+Term_mlr4 <- lm(logface ~ logincome + education + numhh +marstat*logincome, data = Term4)
+anova(Term_mlr3,Term_mlr4)
+
+```
+
+
+```{r ex="ExerRegMod3.5.2", type="sct", tut=TRUE}
+ex() %>% check_object("Term_mlr1" , undefined_msg="Use `lm` to create a linear model and store it under the name `Term_mlr1`.") %>% check_equal(incorrect_msg="Your model should explain `logface` based on `logincome`, `education`, `numhh`, and `single` from the data set `Term4`.")
+ex() %>% check_object("Term_mlr2" , undefined_msg="Use `lm` to create a linear model and store it under the name `Term_mlr2`.") %>% check_equal(incorrect_msg="Your model should explain `logface` based on `logincome`, `education`, `numhh`, and `marstat` from the data set `Term4`.")
+ex() %>% check_function("anova",index=1, not_called_msg="Run an anova test to compare the two models we just created. ") %>% check_result() %>% check_equal(incorrect_msg="You should run the `anova` test on `Term_mlr1` and `Term_mlr2`.")
+ex() %>% check_object("Term_mlr3" , undefined_msg="Use `lm` to create a linear model and store it under the name `Term_mlr3`.") %>% check_equal(incorrect_msg="Your model should explain `logface` based on `logincome`, `education`, `numhh`, and the product of `single` and `logincome` from the data set `Term4`.")
+ex() %>% check_object("Term_mlr4" , undefined_msg="Use `lm` to create a linear model and store it under the name `Term_mlr4`.") %>% check_equal(incorrect_msg="Your model should explain `logface` based on `logincome`, `education`, `numhh`, and the product of `marstat` and `logincome` from the data set `Term4`.")
+ex() %>% check_function("anova",index=2, not_called_msg="Run an anova test to compare the two new models we just created. ") %>% check_result() %>% check_equal(incorrect_msg="You should run the `anova` test on `Term_mlr3` and `Term_mlr4`.")
+success_msg("Congratulations! Hypothesis testing is a primary tool for  'inferring' about the real world {in contrast to mathematical 'deduction'.} Moreover, as we will see in the next chapter, it can also be used to develop a model.")  
+
+```
+
+###Exercise. Hypothesis testing and Wisconsin hospital costs
+
+
+**Assignment Text**
+
+In a previous exercise, you were introduced to a dataset with hospital charges aggregated by:
+
+- `drg`, diagnostic related groups of costs, 
+- `payer`, type of health care provider (Fee for service, HMO, and other), and 
+- `hsa`, nine major geographic areas.
+
+We continue our analysis of the outcome variable  `logcharge`, the logarithm of total hospital charges per number of discharges, in terms of `log_numdschg`, the logarithm of the number of discharges, as well as the three categorical variables used in the aggregation. As before, we restrict consideration to three types of drgs, numbers 209, 391, and 431 that has been preloaded in the dataframe `Hcost1`.
+
+
+**Instructions**
+
+- Fit a basic linear regression model using logarithmic hospital costs as the outcome variable and explanatory variable logarithmic number of discharges.
+- Fit a MLR model using logarithmic hospital costs as the outcome variable and explanatory variables logarithmic number of discharges and the categorical variable diagnostic related group. Identify the *F* statistic and *p* value that test the importance of diagnostic related group. 
+- Fit a MLR model using logarithmic hospital costs as the outcome variable and explanatory variable logarithmic number of discharges interacted with diagnostic related group. Identify the *F* statistic and *p* value that test the importance of diagnostic related group interaction with logarithmic number of discharges.
+- Calculate a coefficient of determination, $R^2$, for each of these models as well as for a model using logarithmic number of discharges and categorical variable `hsa` as predictors.
+
+```{r ex="ExerRegMod3.5.3", type="hint", tut=TRUE}
+This entire exercise can be completed using 3 functions:`lm()`, `anova()`, and `summary()`
+```
+
+```{r ex="ExerRegMod3.5.3", type="pre-exercise-code", tut=TRUE}
+#Hcost <- read.csv("CSVData\\WiscHcosts.csv", header = TRUE)
+Hcost <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/2cc1e2739bf827093db31d7c4e6dcdc348ac984e/WiscHcosts.csv", header = TRUE)
+Hcost1 <- subset(Hcost, drg == 209|drg == 391|drg == 430)
+```
+
+
+```{r ex="ExerRegMod3.5.3", type="sample-code", tut=TRUE}
+# Regress log charges on log number of discharges
+hosp_blr <- lm(logcharge ~ log_numdschg , data=Hcost1)
+anova(hosp_blr)
+
+# Regress log charges on log number of discharges and drg. Identify the *F* statistic and *p* value that test the importance of diagnostic related group.
+hosp_mlr1 <- lm(logcharge ~ log_numdschg + as.factor(drg), data=Hcost1)
+anova(hosp_mlr1)
+
+# Regress log charges on the interaction of log number of discharges and drg. 
+hosp_mlr2 <- lm(logcharge ~ log_numdschg + as.factor(drg)*log_numdschg, data=Hcost1)
+anova(hosp_mlr2)
+
+# Calculate a coefficient of determination, $R^2$, for each of these models as well as for a model using logarithmic number of discharges and categorical variable `hsa` as predictors.
+summary(hosp_blr)$r.squared
+summary(hosp_mlr1)$r.squared
+summary(hosp_mlr2)$r.squared
+
+hosp_mlr3 <- lm(logcharge ~ log_numdschg + as.factor(hsa)*log_numdschg, data=Hcost1)
+summary(hosp_mlr3)$r.squared
+
+```
+
+
+```{r ex="ExerRegMod3.5.3", type="solution", tut=TRUE}
+hosp_blr <- lm(logcharge ~ log_numdschg , data=Hcost1)
+anova(hosp_blr)
+hosp_mlr1 <- lm(logcharge ~ log_numdschg + as.factor(drg), data=Hcost1)
+anova(hosp_mlr1)
+hosp_mlr2 <- lm(logcharge ~ log_numdschg + as.factor(drg)*log_numdschg, data=Hcost1)
+anova(hosp_mlr2)
+summary(hosp_blr)$r.squared
+summary(hosp_mlr1)$r.squared
+summary(hosp_mlr2)$r.squared
+
+hosp_mlr3 <- lm(logcharge ~ log_numdschg + as.factor(hsa)*log_numdschg, data=Hcost1)
+summary(hosp_mlr3)$r.squared
+
+```
+
+```{r ex="ExerRegMod3.5.3", type="sct", tut=TRUE}
+success_msg("Congratulations! By examining the coefficients of determination, $R^2$, for each of these models, you see that this provides one piece of evidence that the `hsa` is a far poorer predictor of costs than `drg`.")
+```
+
+###Exercise. Hypothesis testing and auto claims
+
+
+**Assignment Text**
+
+As an actuarial analyst, you are working with a large insurance company to help them understand their claims distribution for their private passenger automobile policies. You have available claims data for a recent year, consisting of:
+
+- `state`: codes 01 through 17 used, with each code randomly assigned to an actual individual state
+- `class`: rating class of operator, based on age, gender, marital status, and use of vehicle
+- `gender`: operator gender 
+- `age`: operator age
+- `paid`: amount paid to settle and close a claim.
+
+You are focusing on older drivers, 50 and higher, for which there are *n* = 6,773 claims available.
+
+
+
+**Instructions**
+
+a. Run a regression of `logpaid` on `age`. Is `age` a statistically significant variable? To respond to this question, use a formal test of hypothesis. State your null and alternative hypotheses, decision-making criterion, and your decision-making rule. Also comment on the goodness of fit of this variable.
+
+b. Consider using class as a single explanatory variable. Use the one factor to estimate the model and respond to the following questions.
+
+    b (i). What is the point estimate of claims in class C7, drivers 50-69, driving to work or school, less than 30 miles per week with annual mileage under 7500, in natural logarithmic units?
+
+    b (ii). Determine the corresponding 95\% confidence interval of expected claims, in natural logarithmic units.
+
+    b (iii). Convert the 95\% confidence interval of expected claims that you determined in part b(ii) to dollars.
+
+c. Run a regression of `logpaid` on `age`, `gender` and the categorical variables `state` and `class`.
+
+    c (i). Is `gender` a statistically significant variable? To respond to this question, use a formal test of hypothesis. State your null and alternative hypotheses, decision-making criterion, and your decision-making rule.
+
+    c (ii). Is `class` a statistically significant variable? To respond to this question, use a formal test of hypothesis. State your null and alternative hypotheses, decision-making criterion, and your decision-making rule.
+
+    c (iii). Use the model to provide a point estimate of claims in dollars (not log dollars) for a male age 60 in STATE 2 in `class` C7.
+
+    c (iv). Write down the coefficient associated with `class` C7 and interpret this coefficient.
+
+
+
+
+
+```{r comment = "", eval = EVALUATE_CHAP3, echo = FALSE, warning = FALSE, message = FALSE}
+#  AUTO CLAIMS
+
+AutoC <- read.csv("CSVData\\Auto_claims.csv", header = TRUE)
+boxplot(logpaid ~ class, data = AutoC)
+
+#library(Rcmdr)
+#numSummary(AutoC[, c("logpaid","paid")], groups = AutoC$class, statistics = c("mean", "sd", "quantiles"), quantiles = c(0, .5, 1))
+
+#  Alternatively, you can use the following codes, and write the output out to a word processor: 
+#  library(Hmisc)
+#  t1 <- summarize(logpaid, class, length) 
+#  t2 <- summarize(paid, class, median) 
+#  t3 <- summarize(logpaid, class, median) 
+#  t4 <- summarize(logpaid, class, mean) 
+#  t5 <- summarize(logpaid, class, sd) 
+#  tableout <- cbind(t1,t2[2],t3[2],t4[2],t5[2])
+#  tableout
+
+aut0_blr <- lm(logpaid ~ class, data = AutoC)
+summary(aut0_blr)
+
+boxplot(logpaid ~ state, data = AutoC)
+
+model2 <- lm(logpaid~ state, data = AutoC)
+summary(model2)
+anova(model2)
+
+model3 <- lm(logpaid ~ class + state + age + gender, data = AutoC)
+summary(model3)
+anova(model3)
+
+```
+  
+
+
+

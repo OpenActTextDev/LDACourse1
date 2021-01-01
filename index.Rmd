@@ -1,0 +1,213 @@
+--- 
+title: "Loss Data Analytics: Short Course"
+author: "A short course authored by the Actuarial Community"
+site: bookdown::bookdown_site
+output:
+  bookdown::gitbook
+documentclass: book
+bibliography: ["References/LDAReference2020A.bib"]
+biblio-style: econPeriod
+link-citations: yes
+references:
+- type: article-journal
+github-repo: https://github.com/OpenActTextDev/LDAShortCourse1
+description: "This is an interactive, online, freely available short course. It will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning."
+---
+
+
+```{r include = FALSE}
+knitr::opts_chunk$set(results = "hold")
+EVALUATE_CHAP1 <- FALSE
+EVALUATE_CHAP1 <- TRUE
+EVALUATE_CHAP2 <- FALSE
+EVALUATE_CHAP2 <- TRUE
+EVALUATE_CHAP3 <- FALSE
+EVALUATE_CHAP3 <- TRUE
+EVALUATE_CHAP4 <- FALSE
+EVALUATE_CHAP4 <- TRUE
+EVALUATE_CHAP5 <- FALSE
+EVALUATE_CHAP5 <- TRUE
+tutorial::go_interactive(greedy = FALSE)
+QUIZ <- TRUE
+```
+
+
+# Preface {-}
+
+<p style="text-align:right;">
+*Date: `r format(Sys.Date(), "%d %B %Y")`*</p>
+
+
+## Why Loss Data Analytics? {-}
+
+The intent is that this type of short course will eventually permeate throughout the actuarial curriculum. Given the dramatic changes in the way that actuaries treat data, analysis of loss data seems like a natural place to start. The idea behind the name **loss data analytics** is to integrate classical loss data models from applied probability with modern analytic tools. In particular, we recognize that big data (including social media and usage based insurance) are here to stay and that high speed computation is readily available.
+
+## Resources {-}
+
+- This tutorial is based on the first five chapters of the open and freely available book [Loss Data Analytics](https://openacttexts.github.io/).
+    -  [Sample code](https://openacttexts.github.io/LDARcode/) is available for the book, although not needed for this tutorial.
+- As described in how to navigate this tutorial below, you will not need to download any data for this course. However, if you want to have the data to follow up, we generally make it available through buttons such as:
+    *  <button download><a href="https://raw.githubusercontent.com/OpenActTextDev/LDAShortCourse1/main/Data/PropertyFundInsample.csv">View the Property Fund Data as a .csv file.</a></button> Then, do a "Save Page as" if you wish to download.
+    *  Alternatively, go directly to the [Github page](https://github.com/OpenActTextDev/LDAShortCourse1/tree/main/Data) to access the data.
+- For advanced data applications in insurance, you may be interested in the series, [Predictive Modeling Applications in Actuarial Science](http://www.cambridge.org/us/academic/subjects/statistics-probability/statistics-econometrics-finance-and-insurance/predictive-modeling-applications-actuarial-science-volume-1). 
+
+
+## How to Navigate this Tutorial {-}
+
+-  This online tutorial is designed to guide you through the foundations of modeling loss data. 
+-  The anticipated completion time is approximately six hours.
+-  The tutorial assumes that you are familiar with the foundations in the statistical software `R`, such as Datacamp's [Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r%20).
+
+**Role of Video Introductions.** There are five chapters in this tutorial that summarize the foundations. Each chapter is subdivided into several sections. At the beginning of each section is a short video, typically 4-8 minutes, that summarizes the section key learning outcomes. Following the video, you can see more details about the underlying `R` code for the analysis presented in the video. 
+
+**Role of Exercises.** Following each video introduction, there are one or two exercises that allow you to practice skills to make sure that you fully grasp the learning outcomes. The exercises are implented using an online learning platform provided by [Datacamp](https://www.datacamp.com/) so that you need not install `R`. Feedback is programmed into the exercises so that you will learn a lot by making mistakes! You will be pacing yourself, so always feel free to reveal the answers by hitting the `Solution` tab. Remember, going through quickly is not equivalent to learning deeply. Use this tool to enhance your understanding of one of the foundations of data science.
+
+
+#### (Placeholder) Video Overview of Tutorial Navigation {-}
+
+<center>
+
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=0_bj34urmj&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=0_tp96kyab" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
+
+</center>
+
+#### (Placeholder) Video Overheads (Click Tab to View) {-}
+
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'OverWelcomeA')">A. Galton's 1885 Regression Data</button>
+  <button class="tablinks" onclick="openTab(event, 'OverWelcomeB')">B. Supporting R Code</button>
+</div>
+
+<div id="OverWelcomeA" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>A. Galton's 1885 Regression Data</h3>
+  <p>
+  
+$$
+\small{\begin{array}{l|ccccccccccc|c}
+\hline
+\text{Height of }&  &  &  &  &  &  &  &  &  &  &  &  \\
+\text{adult child }&  &  &  &  &  &  &  &  &  &  &  &  \\
+\text{in inches }& <64.0 & 64.5 & 65.5 & 66.5 & 67.5 & 68.5 &
+69.5 & 70.5 & 71.5 & 72.5 & >73.0 & \text{Totals} \\
+\hline
+>73.7 & - & - & - & - & - & - & 5 & 3 & 2 & 4 & - & 14 \\
+73.2 & - & - & - & - & - & 3 & 4 & 3 & 2 & 2 & 3 & 17 \\
+72.2 & - & - & 1 & - & 4 & 4 & 11 & 4 & 9 & 7 & 1 & 41 \\
+71.2 & - & - & 2 & - & 11 & 18 & 20 & 7 & 4 & 2 & - & 64 \\
+70.2 & - & - & 5 & 4 & 19 & 21 & 25 & 14 & 10 & 1 & - & 99 \\
+69.2 & 1 & 2 & 7 & 13 & 38 & 48 & 33 & 18 & 5 & 2 & - & 167 \\
+68.2 & 1 & - & 7 & 14 & 28 & 34 & 20 & 12 & 3 & 1 & - & 120 \\
+67.2 & 2 & 5 & 11 & 17 & 38 & 31 & 27 & 3 & 4 & - & - & 138 \\
+66.2 & 2 & 5 & 11 & 17 & 36 & 25 & 17 & 1 & 3 & - & - & 117 \\
+65.2 & 1 & 1 & 7 & 2 & 15 & 16 & 4 & 1 & 1 & - & - & 48 \\
+64.2 & 4 & 4 & 5 & 5 & 14 & 11 & 16 & - & - & - & - & 59 \\
+63.2 & 2 & 4 & 9 & 3 & 5 & 7 & 1 & 1 & - & - & - & 32 \\
+62.2 & - & 1 & - & 3 & 3 & - & - & - & - & - & - & 7 \\
+<61.2 & 1 & 1 & 1 & - & - & 1 & - & 1 & - & - & - & 5 \\ \hline
+\text{Totals }& 14 & 23 & 66 & 78 & 211 & 219 & 183 & 68 & 43 & 19 & 4 & 928 \\
+\hline
+\end{array}}
+$$
+</p>
+</div>
+
+<div id="OverWelcomeB" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>B. Supporting R Code</h3>
+  <p>
+  
+```{r comment = "", eval = FALSE, warning = FALSE}
+# Reformat Data Set
+#heights <- read.csv("CSVData\\GaltonFamily.csv",header = TRUE)
+heights <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv", header = TRUE)
+str(heights)
+head(heights)
+heights$child_ht <- heights$CHILDC
+heights$parent_ht <- heights$PARENTC
+heights2 <- heights[c("child_ht","parent_ht")]
+```
+
+```{r comment = "", eval = EVALUATE_CHAP1}
+#heights <- read.csv("CSVData\\galton_height.csv",header = TRUE)
+heights <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv", header = TRUE)
+plot(jitter(heights$parent_ht),jitter(heights$child_ht), ylim = c(60,80), xlim = c(60,80),
+     ylab = "height of child", xlab = "height of parents")
+abline(lm(heights$child_ht~heights$parent_ht))
+abline(0,1,col = "red", lty=2)
+summary(lm(heights$child_ht~heights$parent_ht))
+
+```
+
+</p>
+</div>
+
+## A word from our Sponsors: <br> Astin + Education = Astin Academy {-}
+
+***
+
+In this video, you learn about:
+
+-  the role of the [ASTIN section](https://www.actuaries.org/iaa/IAA/Sections/ASTIN_NEW/IAA/Sections/ASTIN_NEW/ASTIN_HOME.aspx), the non-life section of the International Actuarial Association
+-  their recent interest in education
+-  their development of the recently formed *Astin Academy*.
+
+>"*The mission of the ASTIN Academy is to provide high quality free educational materials in non-life insurance to actuarial students across the world. The Academy is committed to open course development under Creative Commons licence and seeks innovation in teaching methodologies and application of technology. Let’s build the future of actuarial education together.*"
+
+***
+
+#### (Placeholder) Video Overview of the Astin Academy {-}
+
+
+***
+
+## Contributors {-}
+
+The project goal is to have the actuarial community author our textbooks in a collaborative fashion. The following contributors have taken a leadership role in developing this short course for *Loss Data Analytics*.
+
+- **Yvonne Chueh**, Central Washington University
+
+-  **Miyuki Ebisaki**, Sompo Research Institute
+
+-  **Rob Erhardt**, Wake Forest University
+
+
+<img src = "ContributorPics\Frees_Jed2018_150x188.jpg" width = "150" height = "180" style = "float:right; margin-left: 10px; margin-top: 7px" />
+
+- **Edward W. (Jed) Frees** is an emeritus professor, formerly the Hickman-Larson Chair of Actuarial Science at the University of Wisconsin-Madison and currently affiliated with Australian National University. He is a Fellow of both the Society of Actuaries and the American Statistical Association. He has published extensively (a four-time winner of the Halmstad and Prize for best paper published in the actuarial literature) and has written three books. He also is a co-editor of the two-volume series *Predictive Modeling Applications in Actuarial Science* published by Cambridge University Press.
+
+-  **Brian Hartman**, Brigham Young University
+
+-  **Tim Higgins**, Australian National University
+
+-  **Fei Huang**, University of New South Wales
+
+-  **Himchan Jeong**, Simon Fraser University
+
+- **Paul Johnson**, University of Wisconsin-Madison
+
+
+<img src = "ContributorPics\JosephKimPic.jpg" width = "150" height = "150" style = "float:right; margin-left: 10px; margin-top: 7px" />
+
+- **Joseph H.T. Kim**, Ph.D., FSA, CERA, is Associate Professor of Applied Statistics at Yonsei University, Seoul, Korea. He holds a Ph.D. degree in Actuarial Science from the University of Waterloo, at which he taught as Assistant Professor. He also worked in the life insurance industry. He has published papers in *Insurance Mathematics and Economics*, *Journal of Risk and Insurance*, *Journal of Banking and Finance*, *ASTIN Bulletin*, and *North American Actuarial Journal*, among others. 
+
+
+<img src = "ContributorPics\Shi_Peng_150x188.jpg" width = "150" height = "180" style = "float:right; margin-left: 10px; margin-top: 7px" />
+
+- **Peng Shi** is an associate professor in the Risk and Insurance Department at the Wisconsin School of Business. He is also the Charles & Laura Albright Professor in Business and Finance. Professor Shi is an Associate of the Casualty Actuarial Society (ACAS) and a Fellow of the Society of Actuaries (FSA). He received a Ph.D. in actuarial science from the University of Wisconsin-Madison. His research interests are problems at the intersection of insurance and statistics. He has won several research awards, including the Charles A. Hachemeister Prize, the Ronald Bornhuetter Loss Reserve Prize, and the American Risk and Insurance Association Prize.
+
+
+
+-  **Rajesh Sahasrabuddhe**, Olivery Wyman
+
+
+<img src = "ContributorPics\Shyamal.jpg" width = "150" height = "180" style = "float:right; margin-left: 10px; margin-top: 7px" />
+
+- **Nariankadu D. Shyamalkumar (Shyamal)** is an associate professor in the Department of Statistics and Actuarial Science at The University of Iowa. He is an Associate of the Society of Actuaries, and has volunteered in various elected and non-elected roles within the SoA. Having a broad theoretical interest as well as interest in computing, he has published in prominent actuarial, computer science, probability theory, and statistical journals. Moreover, he has worked in the financial industry, and since then served as an independent consultant to the insurance industry. He has experience educating actuaries in both Mexico and the US, serving in the roles of directing an undergraduate program, and as a graduate  adviser for both masters and doctoral students. 
+
+-  **Zhiyu (Frank) Quan**, University of Illinois at Urbana-Champaign
+
+
+-  **Michelle Xia**, Northern Illinois University
+

@@ -1,0 +1,133 @@
+
+# Introduction to Loss Data Analytics 
+
+**Chapter description**
+
+This book introduces readers to methods of analyzing insurance data. Section \@ref(S:Intro) begins with a discussion of why the use of data is important in the insurance industry. Section \@ref(S:PredModApps) gives a general overview of the purposes of analyzing insurance data which is reinforced in the Section \@ref(S:LGPIF) case study. Naturally, there is a huge gap between the broad goals summarized in the overview and a case study application; this gap is covered through the methods and techniques of data analysis covered in the rest of the text.
+
+
+## Relevance of Analytics to Insurance Activities  {#S:Intro}
+
+
+***
+In this section, you learn how to:
+
+- Summarize the importance of insurance to consumers and the economy
+- Describe analytics
+- Identify data generating events associated with the timeline of a typical insurance contract
+
+***
+
+
+
+```{r child = './Quizzes/Quiz11.html', eval = QUIZ}
+```
+
+
+
+## Insurance Company Operations {#S:PredModApps}
+
+***
+In this section, you learn how to:
+
+- Describe five major operational areas of insurance companies.
+- Identify the role of data and analytics opportunities within each operational area.
+
+***
+
+
+#### Video Overview of Insurance Company Operations {-}
+
+<center>
+
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25717641/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_zbdyak23&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_8q8agp9h" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *"  frameborder="0" title="Kaltura Player"></iframe>
+
+</center>
+
+#### Overheads of Insurance Company Operations (Click Tab to View) {-}
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'InsCompOperationsA')">A. Insurance Company Operations I</button>
+  <button class="tablinks" onclick="openTab(event, 'InsCompOperationsB')">B. Insurance Company Operations II</button>
+  <button class="tablinks" onclick="openTab(event, 'InsCompOperationsC')">C. Operations – Initiating Insurance</button>
+  <button class="tablinks" onclick="openTab(event, 'InsCompOperationsD')">D. Big Data</button>
+      </div>
+
+<div id="InsCompOperationsA" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/Chap1Beamer_01Jan2021.pdf#page=9" width="100%" height="400"> </iframe>
+  </div>
+<div id="InsCompOperationsB" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/Chap1Beamer_01Jan2021.pdf#page=10" width="100%" height="400"> </iframe>
+  </div>
+<div id="InsCompOperationsC" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/Chap1Beamer_01Jan2021.pdf#page=11" width="100%" height="400"> </iframe>
+  </div>
+<div id="InsCompOperationsD" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/Chap1Beamer_01Jan2021.pdf#page=12" width="100%" height="400"> </iframe>
+  </div>
+
+
+```{r child = './Quizzes/Quiz12.html', eval = QUIZ}
+```
+
+
+## Case Study: Wisconsin Property Fund {#S:LGPIF}
+
+***
+In this section, we use the Wisconsin Property Fund as a case study. You learn how to:
+
+- Describe how data generating events can produce data of interest to insurance analysts.
+- Produce relevant summary statistics for each variable.
+- Describe how these summary statistics can be used in each of the major operational areas of an insurance company.
+
+***
+
+
+
+#### Video Overview of Rating Variables for the Wisconsin Property Fund {-}
+
+<center>
+
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25717641/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_her84m65&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_6kmvke4f" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *"  frameborder="0" title="Kaltura Player"></iframe>
+
+</center>
+
+#### Overheads of Rating Variables for the Wisconsin Property Fund (Click Tab to View) {-}
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'RatingVariablesA')">A. Description of Rating Variables</button>
+  <button class="tablinks" onclick="openTab(event, 'RatingVariablesB')">B. Claims by Entity Type, Fire Class, and No Claim Credit</button>
+  <button class="tablinks" onclick="openTab(event, 'RatingVariablesC')">C. Claim Frequency and Severity, Deductibles, and Coverage -
+R Code</button>
+  <button class="tablinks" onclick="openTab(event, 'RatingVariablesD')">D. Claims by Entity Type and Alarm Credit Category</button>
+  <button class="tablinks" onclick="openTab(event, 'RatingVariablesE')">E. Initiating Insurance</button>
+</div>
+
+<div id="RatingVariablesA" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/Chap1Beamer_01Jan2021.pdf#page=28" width="100%" height="400"> </iframe>
+  </div>
+<div id="RatingVariablesB" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/Chap1Beamer_01Jan2021.pdf#page=29" width="100%" height="400"> </iframe>
+  </div>
+<div id="RatingVariablesC" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/Chap1Beamer_01Jan2021.pdf#page=30" width="100%" height="400"> </iframe>
+  </div>
+<div id="RatingVariablesD" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/Chap1Beamer_01Jan2021.pdf#page=31" width="100%" height="400"> </iframe>
+  </div>
+<div id="RatingVariablesE" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/Chap1Beamer_01Jan2021.pdf#page=32" width="100%" height="400"> </iframe>
+  </div>
+
+
+```{r child = './Quizzes/Quiz13.html', eval = QUIZ}
+```
