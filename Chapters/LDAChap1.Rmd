@@ -125,7 +125,7 @@ R Code</button>
   </div>
 <div id="RatingVariablesE" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
-  <iframe src="./Overheads/Chap1Beamer_01Jan2021.pdf#page=32" width="100%" height="400"> </iframe>
+  ![](./Overheads/Chap1Beamer_01Jan2021.pdf#page=32){width="100%" height="400"}
   </div>
 
 
