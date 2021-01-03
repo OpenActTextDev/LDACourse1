@@ -1,0 +1,332 @@
+
+# Introduction to Loss Data Analytics 
+
+**Chapter description**
+
+This course introduces readers to methods of analyzing insurance data. Section \@ref(Sec:Intro) begins with a discussion of why the use of data is important in the insurance industry. Section \@ref(Sec:PredModApps) gives a general overview of the purposes of analyzing insurance data which is reinforced in the Section \@ref(Sec:LGPIF) case study. Naturally, there is a huge gap between the broad goals summarized in the overview and a case study application; this gap is covered through the methods and techniques of data analysis covered in the rest of the text.
+
+Although not needed to go through the tutorials, some users may wish to download the overheads used in the videos. <button download><a href="https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/Overheads/LDA1.Chap1.pdf">Download Chapter One overheads as a .pdf file.</a></button>
+
+## Relevance of Analytics to Insurance Activities  {#Sec:Intro}
+
+***
+
+In this section, you learn how to:
+
+- Summarize the importance of insurance to consumers and the economy
+- Describe analytics
+- Identify data generating events associated with the timeline of a typical insurance contract
+
+***
+
+####  (Placeholder) Video Overview of Insurance Activities - Yvonne {-}
+
+
+```{r child = './Quizzes/Quiz11.html', eval = QUIZ}
+```
+
+## Insurance Company Operations {#Sec:PredModApps}
+
+***
+In this section, you learn how to:
+
+- Describe five major operational areas of insurance companies.
+- Identify the role of data and analytics opportunities within each operational area.
+
+***
+
+
+#### Video Overview of Insurance Company Operations {-}
+
+<center>
+
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25717641/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_zbdyak23&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_8q8agp9h" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *"  frameborder="0" title="Kaltura Player"></iframe>
+
+</center>
+
+#### Overheads of Insurance Company Operations (Click Tab to View) {-}
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'InsCompOperationsA')">A. Insurance Company Operations I</button>
+  <button class="tablinks" onclick="openTab(event, 'InsCompOperationsB')">B. Insurance Company Operations II</button>
+  <button class="tablinks" onclick="openTab(event, 'InsCompOperationsC')">C. Operations – Initiating Insurance</button>
+  <button class="tablinks" onclick="openTab(event, 'InsCompOperationsD')">D. Big Data</button>
+      </div>
+
+<div id="InsCompOperationsA" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/Chap1Beamer_01Jan2021.pdf#InsuranceCompanyOperations" width="100%" height="400"> </iframe>
+  </div>
+<div id="InsCompOperationsB" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/Chap1Beamer_01Jan2021.pdf#InsuranceCompanyOperations" width="100%" height="400"> </iframe>
+  </div>
+<div id="InsCompOperationsC" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/Chap1Beamer_01Jan2021.pdf#page=11" width="100%" height="400"> </iframe>
+  </div>
+<div id="InsCompOperationsD" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/Chap1Beamer_01Jan2021.pdf#page=13" width="100%" height="400"> </iframe>
+  </div>
+
+
+```{r child = './Quizzes/Quiz12.html', eval = QUIZ}
+```
+
+## Case Study: Property Fund Introduction {#Sec:LGPIF}
+
+***
+In this section, we use the Wisconsin Property Fund as a case study. You learn how to:
+
+- Describe how data generating events can produce data of interest to insurance analysts.
+- Produce relevant summary statistics for each variable.
+- Describe how these summary statistics can be used in each of the major operational areas of an insurance company.
+
+***
+
+####  (Placeholder) Video Claim Frequency for the Wisconsin Property Fund - Paul {-}
+
+
+### Exercise. Claim Frequency
+
+**Assignment Text**
+
+The Wisconsin Property Fund data has already been read into a data frame called `Insample`. These data consist of claim experience for fund members over the years 2006-2010, inclusive. It includes the frequency of claims `Freq` as well as the claim year `Year`. The video explored the distribution of the claims frequency for year 2010; in this assignment, we replicate this analysis and conduct a similar investigation for year 2009.
+
+**Instructions**. For each year:
+
+
+-  Use the function [subset()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/subset) to create a smaller data set based on a single year.
+-  Define the frequency as a global variable.
+-  Use the function [length()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/length) to determine the number of observations in a vector.
+-  Use the function [mean()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/mean/) to calculate the average.
+-  Use the function [table()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/table) to tabulate the frequency distribution.
+
+```{r ex="LDA1.1.3.1", type="hint", tut=TRUE}
+Take some time to explore the online `R` documentation.
+
+Note the double equal signs `==` needed for the the `subset()` function.
+```
+
+
+```{r ex="LDA1.1.3.1", type="pre-exercise-code", tut=TRUE}
+Insample <- read.csv("https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/Data/Insample.csv", header=T,
+                      na.strings=c("."), stringsAsFactors=FALSE)
+```
+
+
+```{r ex="LDA1.1.3.1", type="sample-code", tut=TRUE}
+#  Analysis for Year 2010
+Insample2010 <- subset(Insample, Year==2010)
+Freq2010 <- Insample2010$Freq
+length(Freq2010)
+mean(Freq2010)
+table(Freq2010)
+
+#  Analysis for Year 2009
+Insample2009 <- ___
+Freq2009 <- ___
+length(___)
+mean(___)
+table(___)
+```
+
+
+```{r ex="LDA1.1.3.1", type="solution", tut=TRUE}
+#  Analysis for Year 2010
+Insample2010 <- subset(Insample, Year==2010)
+Freq2010 <- Insample2010$Freq
+length(Freq2010)
+mean(Freq2010)
+table(Freq2010)
+
+#  Analysis for Year 2009
+Insample2009 <- subset(Insample, Year==2009)
+Freq2009 <- Insample2009$Freq
+length(Freq2009)
+mean(Freq2009)
+table(Freq2009)
+```
+
+```{r ex="LDA1.1.3.1", type="sct", tut=TRUE}
+success_msg("Getting started is always the hardest thing to do. Excellent start!")
+```
+
+## Property Fund Claim Severity 
+
+####  (Placeholder) Video Claim Severity for the Wisconsin Property Fund - Yvonne {-}
+
+
+### Exercise. Exploring Claim Severities
+
+**Assignment Text**
+
+The Wisconsin Property Fund data covering years 2006-2010 has already been read into a data frame called `Insample`. These data includes the average claim severity `yAvg`. The video explored the distribution of the claims severity for year 2010; in this assignment, we conduct a similar investigation for year 2009.
+
+**Instructions**. 
+
+-  Use the function [subset()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/subset) twice, once to create a smaller data set based on year 2009 experience and again to restrict consideration to fund members with positive claims.
+-  From this subset, define the average claim severity as a global variable.
+-  Use the function [length()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/length) to determine the number of members with positive claims.
+-  Use the function [summary()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/summary) to calculate several summary statistics.
+-  Use the function [hist()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/hist) to produce histograms that visualize the claim severity distribution. Do this once on the original scale and again on the logarithmic scale. Use the `mfrow` switch in the function [par()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/par) to set the graphical parameters so that the graphs can be viewed side-by-side to promote comparisons.
+
+
+```{r ex="LDA1.1.4.1", type="pre-exercise-code", tut=TRUE}
+Insample <- read.csv("https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/Data/Insample.csv", header=T,
+                      na.strings=c("."), stringsAsFactors=FALSE)
+```
+
+
+
+```{r ex="LDA1.1.4.1", type="hint", tut=TRUE}
+The `R` function [log()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/log) defaults to natural logarithms. It can also be used to produce common (base 10) as well as other bases.
+
+```
+
+
+```{r ex="LDA1.1.4.1", type="sample-code", tut=TRUE}
+Insample2009<- subset(Insample, Year==2009)
+InsamplePos2009<- subset(Insample2009, yAvg>0)
+AvgClaim <- InsamplePos2009$yAvg
+# Table
+summary(AvgClaim)
+length(AvgClaim)
+
+# Figures
+par(mfrow=c(1, 2))
+hist(AvgClaim, main="", xlab="Average Claims")
+hist(log(AvgClaim), main="", xlab="Logarithmic Average Claims")
+
+```
+
+```{r ex="LDA1.1.4.1", type="solution", tut=TRUE}
+Insample2009<- subset(Insample, Year==2009)
+InsamplePos2009<- subset(Insample2009, yAvg>0)
+AvgClaim <- InsamplePos2009$yAvg
+# Table
+summary(AvgClaim)
+length(AvgClaim)
+
+# Figures
+par(mfrow=c(1, 2))
+hist(AvgClaim, main="", xlab="Average Claims")
+hist(log(AvgClaim), main="", xlab="Logarithmic Average Claims")
+
+```
+
+```{r ex="LDA1.1.4.1", type="sct", tut=TRUE}
+success_msg("Getting started is always the hardest thing to do. Excellent start!")
+```
+
+
+### Exercise. Skewness of the Claim Severity Distribution
+
+**Assignment Text**
+
+Many distributions used in insurance analytics are skewed. In this assignment, we demonstrate how to detect the skewness and show that skewness is a feature of an entire data set, not the result of a handful of outlying observations. Specifically, we consider the average claim for year 2010 of the Wisconsin Property Fund data that has been made available in the variable `AvgClaim`; this variable is only for fund members with positive claims. The video remarked on the skewness of this variable and used a logarithmic transformation to facilitate the analysis. In this assignment, we show how an alternative strategy, omitting unusually large observations, does not address the skewed nature of the distribution.
+
+**Instructions**
+
+-  Use the functions [mean()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/mean) and [median()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/median) to compute both the mean and median of `AvgClaim`. You will see that the mean is much larger than the median, a classic diagnostic approach for establishing the right skewness of a distribution.
+-  Use the function [order()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/order) to order the data in terms of decreasing size.
+-  Use the function [head()](https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/head) to examine the 10 largest observations.
+-  Create 6 histograms, graphically presenting them in panels that have 2 rows and 3 columns. In the first histogram, omit the 9 largest observations. In the second, omit the 6 largest. Continuing this pattern, omit 5 in the third histogram, omit 3 in the fourth, omit 1 in the fifth, and do not admit any in the sixth. A careful inspection of this panel of histograms reveals that the distribution remains skewed, despite repeatedly removing large outlying observations.
+
+
+
+```{r ex="LDA1.1.4.2", type="pre-exercise-code", tut=TRUE}
+Insample <- read.csv("https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/Data/Insample.csv", header=T,
+                      na.strings=c("."), stringsAsFactors=FALSE)
+Insample2010<- subset(Insample, Year==2010)
+InsamplePos2010<- subset(Insample2010, yAvg>0)
+AvgClaim <- InsamplePos2010$yAvg
+```
+
+```{r ex="LDA1.1.4.2", type="sample-code", tut=TRUE}
+mean(AvgClaim)
+median(AvgClaim)
+
+Order.AvgClaim <- AvgClaim[order(AvgClaim, decreasing = TRUE)]
+head(Order.AvgClaim, n = 10)
+
+# Figures
+par(mfrow=c(2,3))
+hist(Order.AvgClaim[-c(1:9)], main="", xlab="Claims - Drop 9")
+hist(Order.AvgClaim[-c(1:6)], main="", xlab="Claims - Drop 6")
+hist(Order.AvgClaim[-c(1:5)], main="", xlab="Claims - Drop 5")
+hist(Order.AvgClaim[-c(1:3)], main="", xlab="Claims - Drop 3")
+hist(Order.AvgClaim[-1], main="", xlab="Claims - Drop 1")
+hist(Order.AvgClaim, main="", xlab="Claims - All")
+```
+
+```{r ex="LDA1.1.4.2", type="solution", tut=TRUE}
+
+mean(AvgClaim)
+median(AvgClaim)
+
+Order.AvgClaim <- AvgClaim[order(AvgClaim, decreasing = TRUE)]
+head(Order.AvgClaim, n = 10)
+
+# Figures
+par(mfrow=c(2,3))
+hist(Order.AvgClaim[-c(1:9)], main="", xlab="Claims - Drop 9")
+hist(Order.AvgClaim[-c(1:6)], main="", xlab="Claims - Drop 6")
+hist(Order.AvgClaim[-c(1:5)], main="", xlab="Claims - Drop 5")
+hist(Order.AvgClaim[-c(1:3)], main="", xlab="Claims - Drop 3")
+hist(Order.AvgClaim[-1], main="", xlab="Claims - Drop 1")
+hist(Order.AvgClaim, main="", xlab="Claims - All")
+```
+
+
+```{r ex="LDA1.1.4.2", type="sct", tut=TRUE}
+success_msg("Excellent! Removing large unusual observations has its place in statistics. However, in insurance analytics, large observations are not unusual for distributions that are skewed. Removing large observations is not a technique that changes the skewed nature of these distributions.")
+```
+
+
+## Property Fund Rating Variables 
+
+#### Video Overview of Rating Variables for the Wisconsin Property Fund {-}
+
+<center>
+
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25717641/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_her84m65&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_6kmvke4f" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *"  frameborder="0" title="Kaltura Player"></iframe>
+
+</center>
+
+#### Overheads of Rating Variables for the Wisconsin Property Fund (Click Tab to View) {-}
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'RatingVariablesA')">A. Description of Rating Variables</button>
+  <button class="tablinks" onclick="openTab(event, 'RatingVariablesB')">B. Claims by Entity Type, Fire Class, and No Claim Credit</button>
+  <button class="tablinks" onclick="openTab(event, 'RatingVariablesC')">C. Claim Frequency and Severity, Deductibles, and Coverage -
+R Code</button>
+  <button class="tablinks" onclick="openTab(event, 'RatingVariablesD')">D. Claims by Entity Type and Alarm Credit Category</button>
+  <button class="tablinks" onclick="openTab(event, 'RatingVariablesE')">E. Initiating Insurance</button>
+</div>
+
+<div id="RatingVariablesA" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/Chap1Beamer_01Jan2021.pdf#RatingVariables" width="100%" height="400"> </iframe>
+  </div>
+<div id="RatingVariablesB" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/Chap1Beamer_01Jan2021.pdf#page=29" width="100%" height="400"> </iframe>
+  </div>
+<div id="RatingVariablesC" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/Chap1Beamer_01Jan2021.pdf#page=30" width="100%" height="400"> </iframe>
+  </div>
+<div id="RatingVariablesD" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/Chap1Beamer_01Jan2021.pdf#page=31" width="100%" height="400"> </iframe>
+  </div>
+<div id="RatingVariablesE" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  ![](./Overheads/Chap1Beamer_01Jan2021.pdf#page=32){width="100%" height="400"}
+  </div>
+
+
+```{r child = './Quizzes/Quiz13.html', eval = QUIZ}
+```

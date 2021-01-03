@@ -17,16 +17,6 @@ description: "This is an interactive, online, freely available short course. It 
 
 ```{r include = FALSE}
 knitr::opts_chunk$set(results = "hold")
-EVALUATE_CHAP1 <- FALSE
-EVALUATE_CHAP1 <- TRUE
-EVALUATE_CHAP2 <- FALSE
-EVALUATE_CHAP2 <- TRUE
-EVALUATE_CHAP3 <- FALSE
-EVALUATE_CHAP3 <- TRUE
-EVALUATE_CHAP4 <- FALSE
-EVALUATE_CHAP4 <- TRUE
-EVALUATE_CHAP5 <- FALSE
-EVALUATE_CHAP5 <- TRUE
 tutorial::go_interactive(greedy = FALSE)
 QUIZ <- TRUE
 ```
@@ -63,7 +53,7 @@ The intent is that this type of short course will eventually permeate throughout
 **Role of Exercises.** Following each video introduction, there are one or two exercises that allow you to practice skills to make sure that you fully grasp the learning outcomes. The exercises are implented using an online learning platform provided by [Datacamp](https://www.datacamp.com/) so that you need not install `R`. Feedback is programmed into the exercises so that you will learn a lot by making mistakes! You will be pacing yourself, so always feel free to reveal the answers by hitting the `Solution` tab. Remember, going through quickly is not equivalent to learning deeply. Use this tool to enhance your understanding of one of the foundations of data science.
 
 
-#### (Placeholder) Video Overview of Tutorial Navigation {-}
+#### (Placeholder) Video Overview of Tutorial Navigation - Paul {-}
 
 <center>
 
@@ -71,77 +61,6 @@ The intent is that this type of short course will eventually permeate throughout
 
 </center>
 
-#### (Placeholder) Video Overheads (Click Tab to View) {-}
-
-
-<div class="tab">
-  <button class="tablinks" onclick="openTab(event, 'OverWelcomeA')">A. Galton's 1885 Regression Data</button>
-  <button class="tablinks" onclick="openTab(event, 'OverWelcomeB')">B. Supporting R Code</button>
-</div>
-
-<div id="OverWelcomeA" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
-  <h3>A. Galton's 1885 Regression Data</h3>
-  <p>
-  
-$$
-\small{\begin{array}{l|ccccccccccc|c}
-\hline
-\text{Height of }&  &  &  &  &  &  &  &  &  &  &  &  \\
-\text{adult child }&  &  &  &  &  &  &  &  &  &  &  &  \\
-\text{in inches }& <64.0 & 64.5 & 65.5 & 66.5 & 67.5 & 68.5 &
-69.5 & 70.5 & 71.5 & 72.5 & >73.0 & \text{Totals} \\
-\hline
->73.7 & - & - & - & - & - & - & 5 & 3 & 2 & 4 & - & 14 \\
-73.2 & - & - & - & - & - & 3 & 4 & 3 & 2 & 2 & 3 & 17 \\
-72.2 & - & - & 1 & - & 4 & 4 & 11 & 4 & 9 & 7 & 1 & 41 \\
-71.2 & - & - & 2 & - & 11 & 18 & 20 & 7 & 4 & 2 & - & 64 \\
-70.2 & - & - & 5 & 4 & 19 & 21 & 25 & 14 & 10 & 1 & - & 99 \\
-69.2 & 1 & 2 & 7 & 13 & 38 & 48 & 33 & 18 & 5 & 2 & - & 167 \\
-68.2 & 1 & - & 7 & 14 & 28 & 34 & 20 & 12 & 3 & 1 & - & 120 \\
-67.2 & 2 & 5 & 11 & 17 & 38 & 31 & 27 & 3 & 4 & - & - & 138 \\
-66.2 & 2 & 5 & 11 & 17 & 36 & 25 & 17 & 1 & 3 & - & - & 117 \\
-65.2 & 1 & 1 & 7 & 2 & 15 & 16 & 4 & 1 & 1 & - & - & 48 \\
-64.2 & 4 & 4 & 5 & 5 & 14 & 11 & 16 & - & - & - & - & 59 \\
-63.2 & 2 & 4 & 9 & 3 & 5 & 7 & 1 & 1 & - & - & - & 32 \\
-62.2 & - & 1 & - & 3 & 3 & - & - & - & - & - & - & 7 \\
-<61.2 & 1 & 1 & 1 & - & - & 1 & - & 1 & - & - & - & 5 \\ \hline
-\text{Totals }& 14 & 23 & 66 & 78 & 211 & 219 & 183 & 68 & 43 & 19 & 4 & 928 \\
-\hline
-\end{array}}
-$$
-</p>
-</div>
-
-<div id="OverWelcomeB" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
-  <h3>B. Supporting R Code</h3>
-  <p>
-  
-```{r comment = "", eval = FALSE, warning = FALSE}
-# Reformat Data Set
-#heights <- read.csv("CSVData\\GaltonFamily.csv",header = TRUE)
-heights <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv", header = TRUE)
-str(heights)
-head(heights)
-heights$child_ht <- heights$CHILDC
-heights$parent_ht <- heights$PARENTC
-heights2 <- heights[c("child_ht","parent_ht")]
-```
-
-```{r comment = "", eval = EVALUATE_CHAP1}
-#heights <- read.csv("CSVData\\galton_height.csv",header = TRUE)
-heights <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv", header = TRUE)
-plot(jitter(heights$parent_ht),jitter(heights$child_ht), ylim = c(60,80), xlim = c(60,80),
-     ylab = "height of child", xlab = "height of parents")
-abline(lm(heights$child_ht~heights$parent_ht))
-abline(0,1,col = "red", lty=2)
-summary(lm(heights$child_ht~heights$parent_ht))
-
-```
-
-</p>
-</div>
 
 ## A word from our Sponsors: <br> Astin + Education = Astin Academy {-}
 
@@ -157,7 +76,7 @@ In this video, you learn about:
 
 ***
 
-#### (Placeholder) Video Overview of the Astin Academy {-}
+#### (Placeholder) Video Overview of the Astin Academy - Miyuki {-}
 
 
 ***

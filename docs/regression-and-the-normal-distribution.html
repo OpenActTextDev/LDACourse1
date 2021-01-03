@@ -513,7 +513,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="introduction-to-loss-data-analytics.html"><a href="introduction-to-loss-data-analytics.html"><i class="fa fa-check"></i><b>1</b> Introduction to Loss Data Analytics</a><ul>
 <li class="chapter" data-level="1.1" data-path="introduction-to-loss-data-analytics.html"><a href="introduction-to-loss-data-analytics.html#S:Intro"><i class="fa fa-check"></i><b>1.1</b> Relevance of Analytics to Insurance Activities</a></li>
 <li class="chapter" data-level="1.2" data-path="introduction-to-loss-data-analytics.html"><a href="introduction-to-loss-data-analytics.html#S:PredModApps"><i class="fa fa-check"></i><b>1.2</b> Insurance Company Operations</a></li>
-<li class="chapter" data-level="1.3" data-path="introduction-to-loss-data-analytics.html"><a href="introduction-to-loss-data-analytics.html#S:LGPIF"><i class="fa fa-check"></i><b>1.3</b> Case Study: Wisconsin Property Fund</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-loss-data-analytics.html"><a href="introduction-to-loss-data-analytics.html#S:LGPIF"><i class="fa fa-check"></i><b>1.3</b> Case Study: Wisconsin Property Fund</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="introduction-to-loss-data-analytics.html"><a href="introduction-to-loss-data-analytics.html#exercise.-claim-frequency"><i class="fa fa-check"></i><b>1.3.1</b> Exercise. Claim Frequency</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introduction-to-loss-data-analytics.html"><a href="introduction-to-loss-data-analytics.html#exercise.-exploring-the-claim-severity-distribution"><i class="fa fa-check"></i><b>1.3.2</b> Exercise. Exploring the Claim Severity Distribution</a></li>
+<li class="chapter" data-level="1.3.3" data-path="introduction-to-loss-data-analytics.html"><a href="introduction-to-loss-data-analytics.html#exercise.-skewness-claim-severity-distribution"><i class="fa fa-check"></i><b>1.3.3</b> Exercise. Skewness Claim Severity Distribution</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html"><i class="fa fa-check"></i><b>2</b> Regression and the Normal Distribution</a><ul>
 <li class="chapter" data-level="2.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#fitting-a-normal-distribution"><i class="fa fa-check"></i><b>2.1</b> Fitting a normal distribution</a><ul>
@@ -587,7 +591,7 @@ A Details. Description of the data
 <a class="sourceLine" id="cb5-4" title="4">     <span class="dt">ylab =</span> <span class="st">&quot;height of child&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;height of parents&quot;</span>)</a>
 <a class="sourceLine" id="cb5-5" title="5"><span class="kw">abline</span>(<span class="kw">lm</span>(heights<span class="op">$</span>child_ht<span class="op">~</span>heights<span class="op">$</span>parent_ht))</a>
 <a class="sourceLine" id="cb5-6" title="6"><span class="kw">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a></code></pre></div>
-<p><img src="LDAShortCourse_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="LDAShortCourse_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 </p>
 </div>
 <div id="Over1.1B" class="tabcontent">
@@ -622,7 +626,7 @@ C Details. Summary stats for parents’ height
 <p>Next, examine the distribution of the child’s height and then examine the distribution of the parents height.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">ht_par &lt;-<span class="st"> </span>heights<span class="op">$</span>parent_ht</a>
 <a class="sourceLine" id="cb8-2" title="2"><span class="kw">hist</span>(ht_par)</a></code></pre></div>
-<p><img src="LDAShortCourse_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="LDAShortCourse_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">mean</span>(ht_par)</a>
 <a class="sourceLine" id="cb9-2" title="2"><span class="kw">sd</span>(ht_par)</a></code></pre></div>
 <pre><code>[1] 69.26293
@@ -640,7 +644,7 @@ D. Fit a normal curve to parents’ height details
 <a class="sourceLine" id="cb11-3" title="3">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">60</span>, <span class="dv">80</span>,<span class="dt">by =</span> <span class="fl">0.1</span>)</a>
 <a class="sourceLine" id="cb11-4" title="4"><span class="kw">hist</span>(ht_par, <span class="dt">freq =</span> <span class="ot">FALSE</span>)</a>
 <a class="sourceLine" id="cb11-5" title="5"><span class="kw">lines</span>(x, <span class="kw">dnorm</span>(x, <span class="dt">mean =</span> mparent, <span class="dt">sd =</span> sdparent), <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
-<p><img src="LDAShortCourse_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p><img src="LDAShortCourse_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 <pre><code>[1] 69.26293
 [1] 1.912274</code></pre>
 </p>
@@ -749,7 +753,7 @@ A Details. Bring in Data, Introduce Logarithmic Claims
 <a class="sourceLine" id="cb16-7" title="7"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</a>
 <a class="sourceLine" id="cb16-8" title="8"><span class="kw">hist</span>(claims)</a>
 <a class="sourceLine" id="cb16-9" title="9"><span class="kw">hist</span>(logclaims)</a></code></pre></div>
-<p><img src="LDAShortCourse_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<p><img src="LDAShortCourse_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
 <pre><code>&#39;data.frame&#39;:   272 obs. of  2 variables:
  $ claims   : int  45 47 70 75 77 92 117 117 140 145 ...
  $ logclaims: num  3.81 3.85 4.25 4.32 4.34 ...
@@ -771,7 +775,7 @@ B Details. Show how to get a finer grid for histograms
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</a>
 <a class="sourceLine" id="cb18-2" title="2"><span class="kw">hist</span>(logclaims)</a>
 <a class="sourceLine" id="cb18-3" title="3"><span class="kw">hist</span>(logclaims,<span class="dt">breaks =</span> <span class="dv">15</span>)</a></code></pre></div>
-<p><img src="LDAShortCourse_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<p><img src="LDAShortCourse_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
 </p>
 </div>
 <div id="Over1.2C" class="tabcontent">
@@ -784,7 +788,7 @@ C Details. Introduce the density plot
 <a class="sourceLine" id="cb19-2" title="2"><span class="kw">plot</span>(<span class="kw">density</span>(logclaims))</a>
 <a class="sourceLine" id="cb19-3" title="3"><span class="kw">hist</span>(logclaims, <span class="dt">breaks =</span> <span class="dv">15</span>,<span class="dt">freq =</span> <span class="ot">FALSE</span>)</a>
 <a class="sourceLine" id="cb19-4" title="4"><span class="kw">lines</span>(<span class="kw">density</span>(logclaims))</a></code></pre></div>
-<p><img src="LDAShortCourse_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p><img src="LDAShortCourse_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
 </p>
 </div>
 <p>###Exercise. Visualizing bodily injury claims with density plots</p>
@@ -858,7 +862,7 @@ B Details. Boxplot
 <p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1"><span class="co"># BASIC BOXPLOT</span></a>
 <a class="sourceLine" id="cb22-2" title="2"><span class="kw">boxplot</span>(logclaims)</a></code></pre></div>
-<p><img src="LDAShortCourse_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<p><img src="LDAShortCourse_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="kw">quantile</span>(logclaims, <span class="dt">probs =</span> <span class="fl">0.75</span>)</a>
 <a class="sourceLine" id="cb23-2" title="2"></a>
 <a class="sourceLine" id="cb23-3" title="3"><span class="co"># BOXPLOT WITH ANNOTATION</span></a>
@@ -869,7 +873,7 @@ B Details. Boxplot
 <a class="sourceLine" id="cb23-8" title="8"><span class="kw">arrows</span>(<span class="fl">1.05</span>, <span class="fl">4.9</span>, <span class="fl">1.05</span>, <span class="fl">3.6</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">code =</span> <span class="dv">3</span>, <span class="dt">angle =</span> <span class="dv">20</span>, <span class="dt">length =</span> <span class="fl">0.1</span>)</a>
 <a class="sourceLine" id="cb23-9" title="9"><span class="kw">text</span>(<span class="fl">1.1</span>,  <span class="fl">4.4</span>, <span class="st">&quot;outliers&quot;</span>, <span class="dt">cex =</span> <span class="fl">0.7</span>)</a>
 <a class="sourceLine" id="cb23-10" title="10"><span class="kw">text</span>(<span class="fl">1.1</span>, <span class="fl">10.9</span>, <span class="st">&quot;outlier&quot;</span>,  <span class="dt">cex =</span> <span class="fl">0.7</span>)</a></code></pre></div>
-<p><img src="LDAShortCourse_files/figure-html/unnamed-chunk-32-2.png" width="672" /></p>
+<p><img src="LDAShortCourse_files/figure-html/unnamed-chunk-45-2.png" width="672" /></p>
 <pre><code>     75% 
 8.075579 </code></pre>
 </p>
@@ -892,7 +896,7 @@ C Details. QQ Plot
 <a class="sourceLine" id="cb25-10" title="10"><span class="co">#  QUANTILE - QUANTILE PLOT</span></a>
 <a class="sourceLine" id="cb25-11" title="11"><span class="kw">qqnorm</span>(logclaims)</a>
 <a class="sourceLine" id="cb25-12" title="12"><span class="kw">qqline</span>(logclaims)   </a></code></pre></div>
-<p><img src="LDAShortCourse_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<p><img src="LDAShortCourse_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
 <pre><code>     claims          logclaims     
  Min.   :   45.0   Min.   : 3.807  
  1st Qu.:  892.5   1st Qu.: 6.794  
@@ -1006,7 +1010,7 @@ B Details. Visualize the distributions
 <a class="sourceLine" id="cb28-21" title="21"><span class="kw">hist</span>(X4, <span class="dt">freq =</span> <span class="ot">FALSE</span>,  <span class="dt">nclass =</span> <span class="dv">16</span>, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>,<span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">100</span>))</a>
 <a class="sourceLine" id="cb28-22" title="22"><span class="kw">mtext</span>(<span class="st">&quot;Density&quot;</span>, <span class="dt">side =</span> <span class="dv">2</span>, <span class="dt">at =</span> <span class="dv">110</span>, <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">cex =</span> <span class="fl">.75</span>)</a>
 <a class="sourceLine" id="cb28-23" title="23"><span class="kw">mtext</span>(<span class="st">&quot;Negative reciprocal of y&quot;</span>, <span class="dt">side =</span> <span class="dv">1</span>, <span class="dt">cex =</span> <span class="fl">.75</span>, <span class="dt">line =</span> <span class="dv">2</span>)</a></code></pre></div>
-<p><img src="LDAShortCourse_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
+<p><img src="LDAShortCourse_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
 </p>
 </div>
 <p>###Exercise. Distribution of transformed bodily injury claims</p>
