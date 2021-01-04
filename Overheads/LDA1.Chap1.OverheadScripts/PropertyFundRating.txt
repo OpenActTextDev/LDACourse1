@@ -20,20 +20,20 @@ The first thing to notice from the table is that there is substantial variation 
 
 As anticipated, we see both lower frequency and lower severity when the policyholder had no claims in the past two years, so that NoClaimCredit indicator is 1. This is also common in the analysis of insurance claims, past experience is often an excellent predictor of current and future behavior.
 
-Somewhat surprising is the higher frequency and severity for the Fire5 (=1) variable. This is counter-intuitive in that one would expect lower claim amounts for those policyholders in areas with better public protection (when the protection code is five or less). There are at least two possible explanations for this. One is that policyholders who greater public protection nearby become more careless. 
+Somewhat surprising is the higher frequency and severity for the Fire5 (=1) variable. This is counter-intuitive in that one would expect lower claim amounts for those policyholders in areas with better public protection (when the protection code is five or less). There are at least two possible explanations for this. One is that policyholders who have greater public protection nearby become more careless. 
 
-The second is that there may be a joint effect that is being masked by our univariate analysis. For example, it could be that there are many more Fire5=1 policyholders that are counties and we have already seen that counties are more risky compared to other entities. So, the Fire5=1 variable effect is being distorted by another variable. Or, it may be that areas with better public protection are naturally higher risk areas; the protection is there because it is thought to be needed and we have no other variable that indicates this need. 
+The second is that there may be a joint effect that is being masked by our univariate analysis. For example, it could be that there are many more Fire5=1 policyholders that are counties and we have already seen that counties are more risky compared to other entities. So, the Fire5=1 variable effect is being distorted by another variable. Or, it may be that areas with better public protection are naturally higher risk areas; the protection is there because it is thought to be needed -- we have no other variable that indicates this need. 
 
-This emphasizes a major drawback of this type of presentation. These tables look at the effects of each variable in isolation of the others and so are referred to as a "univariate" analyses. As another example, you may have seen "simple linear regression" in your other studies. In any case, you will find any type of univariate analysis to be very convenient because it is simple to execute and easy to explain to others. However, it is limiting in that does not permit an understanding of the joint effects of variables.
+This emphasizes a major drawback of this type of presentation. This table looks at the effects of each variable in isolation of the others and so is referred to as a "univariate" analysis. As another example, you may have seen "simple linear regression" in your other studies. In any case, you will find any type of univariate analysis to be very convenient because it is simple to execute and easy to explain to others. However, it is limiting in that does not permit an understanding of the joint effects of variables.
 
 
 OVERHEAD 3 - Claims by Entity Type, Fire Class, and No Claim Credit - R Code
 
 Here is the R code for this analysis.
 
-As in prior examples, we used the "subset" function to split the data set into smaller pieces of interest and then used the "summaryBy" function to pull out the relevant summary statistics. 
+As in prior examples, we used the "subset" function to create a smaller data set with only positive claim severities.
 
-Because we were interested in so many statistics, a small function was created to automate the tasks.
+Because we were interested in so many statistics, a small function was created to automate the tasks, also as before.
 
 OVERHEAD 4 - Claims by Entity Type and Alarm Credit Category
 
@@ -41,7 +41,7 @@ Here is an analysis of the fourth categorical variable, Alarm Credits.
 
 When you take a look at the totals by entity, we see the same counter intuitive results as we did for the fire protection code. For example, we would expect to see lower frequency and severity for 15% alarm credits compared to no alarm credits.
 
-In this analysis, we attempted to dig a little deeper by showing results by entity type. To illustrate, from this table, we can compare villages by different levels of alarm credits. Again, for example, comparing 15% to no alarm credits, we again see the same counter-intuitive results. Villages with 15% alarm credits actually experience higher frequency and severity compared to villages without alarm credits.
+In this analysis, we attempted to dig a little deeper by showing results by entity type. To illustrate, from this table, we can compare villages by different levels of alarm credits. Again, for example, comparing 15% to no alarm credits, we see the same counter-intuitive results. Villages with 15% alarm credits actually experience higher frequency and severity compared to villages without alarm credits.
 
 As before, the explanation could be that we are missing a hidden variable that causes this behavior. Or, it could be that managers who purchase expensive alarm systems become careless and suffer more accidents as a result.
 
