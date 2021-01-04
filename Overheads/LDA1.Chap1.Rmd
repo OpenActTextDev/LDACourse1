@@ -283,20 +283,16 @@ hist(log(InsamplePos2010$yAvg),
 
 ## Analysis by Year - R Code
 
-`R` documentation for the `doBy` package available at
-\url{https://www.rdocumentation.org/packages/doBy/versions/1.5/topics/summaryBy}
 
 \scalefont{0.9}
 
 ```{r eval = FALSE}
-library(doBy)
-FUN1 <- function(x) { c(m = mean(x), num =length(x)) }
-T1A <- summaryBy(Freq ~ Year,  data=Insample, FUN = FUN1)
-T1B <- summaryBy(yAvg ~ Year,  data=Insample, FUN = FUN1)
-T1C <- summaryBy(BCcov ~ Year, data=Insample, FUN = FUN1)
-Table1In <- cbind(T1A[1],T1A[2],T1B[2],T1C[2],T1A[3])
+library(plyr)
+Table1In <- ddply(Insample, c("Year"), summarize,
+               AvgFreq    = mean(Freq), AvgSev = mean(yAvg),
+               AvgCov   = mean(BCcov), NumPol = length(Freq) )
 names(Table1In) <- c("Year", "Average Frequency",
-                     "Average Severity", "Average",
+                     "Average Severity", "Average Coverage",
                      "Number of Policyholders")
 Table1In
 ```
@@ -314,10 +310,10 @@ Table1In
 \begin{table}
 \begin{tabular}{l|rrrrrr} \hline
                  &   Minimum  &   Median   &   Mean &   Maximum \\ \hline
-Claim Frequency  &          0 &          0 &   1.109 &        263      \\
+Claim Frequency  &          0 &          0 &   1   &        263      \\
 Claim Severity   &          0 &          0 &   9,292 &   12,922,218  \\
 Deductible       &        500 &      1,000 &   3,365 &   100,000 \\
-Coverage (000's) &      8.937 &     11,354 &   37,281 &    2,444,797 \\
+Coverage (000's) &          9 &     11,354 &   37,281 &    2,444,797 \\
 \hline
 \end{tabular}
 \end{table}
@@ -327,19 +323,15 @@ Coverage (000's) &      8.937 &     11,354 &   37,281 &    2,444,797 \\
 
 \scalefont{0.8}
 
-```{r eval = FALSE}
-FUN2 <- function(x) {c(minx=min(x), medx=median(x),m=mean(x),maxx=max(x))}
-Insample$BCcov.1000 <- Insample$BCcov/1000
-t1 <- as.numeric(summaryBy(Freq ~ 1,       data=Insample, FUN = FUN2 ))
-t2 <- as.numeric(summaryBy(yAvg ~ 1,       data=Insample, FUN = FUN2 ))
-t3 <- as.numeric(summaryBy(Deduct ~ 1,     data=Insample, FUN = FUN2 ))
-t4 <- as.numeric(summaryBy(BCcov.1000 ~ 1, data=Insample, FUN = FUN2 ))
-Table2 <- rbind(t1,t2,t3,t4)
-colnames(Table2) <- c("Minimum", "Median","Average", "Maximum")
-rownames(Table2) <- c("Claim Frequency","Claim Severity",
-                      "Deductible","Coverage (000's)")
-Table2
 
+```{r eval = FALSE}
+FUN2 <- function(x) { c(Minimum=min(x), Median=median(x), 
+                        Mean=mean(x),  Maximum=max(x) ) }
+Table2 <- rbind(FUN2(Insample$Freq), FUN2(Insample$yAvg),
+                FUN2(Insample$Deduct), FUN2(Insample$BCcov/1000))
+rownames(Table2) <- c("Claim Frequency", "Claim Severity", 
+                      "Deductible", "Coverage (000's)")
+round(Table2, digits = 0)
 ```
 
 \scalefont{1.25}
@@ -425,16 +417,14 @@ Variable  &      Policies&      Frequency& Severity \\
 \scalefont{0.5}
 
 ```{r eval = FALSE}
-
 ByVarSumm<-function(datasub){
-  tempA <- as.numeric(summaryBy(Freq ~ 1 , data = datasub,   
-           FUN = function(x) { c( numx=length(x), mx = mean(x))} ))
+  A1 <- length(datasub$Freq)
+  A2 <- mean(datasub$Freq)
   datasub1 <-  subset(datasub, yAvg>0)
-  tempB <- as.numeric(summaryBy(yAvg ~ 1, data = datasub1,
-           FUN = function(x) { c(mxx = mean(x)) } ))
-  tempC <- c(tempA,tempB)
-  return(tempC)
+  A3 <- mean(datasub1$yAvg)
+  return( c(A1,A2,A3) )
   }
+
 t1 <- ByVarSumm(subset(Insample, TypeVillage == 1))
 t2 <- ByVarSumm(subset(Insample, TypeCity == 1))
 t3 <- ByVarSumm(subset(Insample, TypeCounty == 1))
@@ -451,8 +441,8 @@ Tablea <- rbind(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)
 Table4 <- round(Tablea, digits = 3)
 colnames(Table4) <- c("Number of Policies", "Claim Frequency", "Average Severity")
 rownames(Table4) <- c("Village","City","County","Misc","School",
-          "Town","Fire5--No","Fire5--Yes","NoClaimCredit--No",
-        "NoClaimCredit--Yes","Total")
+                      "Town","Fire5--No","Fire5--Yes","NoClaimCredit--No",
+                      "NoClaimCredit--Yes","Total")
 Table4
 ```
 
