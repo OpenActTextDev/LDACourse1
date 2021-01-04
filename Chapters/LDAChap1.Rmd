@@ -55,11 +55,11 @@ In this section, you learn how to:
 
 <div id="InsCompOperationsA" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
-  <iframe src="./Overheads/LDA1.Chap1.pdf#InsuranceCompanyOperations" width="100%" height="400"> </iframe>
+  <iframe src="./Overheads/LDA1.Chap1.pdf#page=9" width="100%" height="400"> </iframe>
   </div>
 <div id="InsCompOperationsB" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
-  <iframe src="./Overheads/LDA1.Chap1.pdf#InsuranceCompanyOperations" width="100%" height="400"> </iframe>
+  <iframe src="./Overheads/LDA1.Chap1.pdf#page=10" width="100%" height="400"> </iframe>
   </div>
 <div id="InsCompOperationsC" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
@@ -366,24 +366,121 @@ R Code</button>
 
 <div id="RatingVariablesA" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
-  <iframe src="./Overheads/LDA1.Chap1.pdf#RatingVariables" width="100%" height="400"> </iframe>
+  <iframe src="./Overheads/LDA1.Chap1.pdf#page=30" width="100%" height="400"> </iframe>
   </div>
 <div id="RatingVariablesB" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
-  <iframe src="./Overheads/LDA1.Chap1.pdf#page=29" width="100%" height="400"> </iframe>
+  <iframe src="./Overheads/LDA1.Chap1.pdf#page=31" width="100%" height="400"> </iframe>
   </div>
 <div id="RatingVariablesC" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
-  <iframe src="./Overheads/LDA1.Chap1.pdf#page=30" width="100%" height="400"> </iframe>
+  <iframe src="./Overheads/LDA1.Chap1.pdf#page=32" width="100%" height="400"> </iframe>
   </div>
 <div id="RatingVariablesD" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
-  <iframe src="./Overheads/LDA1.Chap1.pdf#page=31" width="100%" height="400"> </iframe>
+  <iframe src="./Overheads/LDA1.Chap1.pdf#page=33" width="100%" height="400"> </iframe>
   </div>
 <div id="RatingVariablesE" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
-  ![](./Overheads/LDA1.Chap1.pdf#page=32){width="100%" height="400"}
+  ![](./Overheads/LDA1.Chap1.pdf#page=34){width="100%" height="400"}
   </div>
+  
+  
+  
+### Exercise. Claim by Entity Type, Fire Class, and No Claim Credit
+
+**Assignment Text**
+
+Analytics of insurance data has much in common with analytics in other areas but insurance also has its own peculiarities. One of example of this is how one only examines summary statistics for positive claims. (Mathematically, the claim severity distribution is defined conditional on the occurrence of a claim). As a consequence, we often need to write specialized routines for insurance applications.
+
+Your supervisor finds useful the analysis completed of claims outcomes by entity type, fire class, and no claim code. To make this analysis more impactful, the supervisor wants you to modify the code to include a basic measure of uncertainty, the standard deviation.
+
+**Instructions**
+
+-  Modify the function created for this specific analysis, `ByVarSumm`, to include the standard deviation statistic. Note that, like the mean, we only calculate the standard deviation on the sub-sample of positive claims.
+-  Include documentation of this standard deviation statistic in the table.
+
+
+
+```{r ex="LDA1.1.5.1", type="pre-exercise-code", tut=TRUE}
+Insample <- read.csv("https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/Data/Insample.csv", header=T,
+                      na.strings=c("."), stringsAsFactors=FALSE)
+```
+
+
+```{r ex="LDA1.1.4.3", type="hint", tut=TRUE}
+To compute standard deviations, you can use the function [sd()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/sd).
+```
+
+
+```{r ex="LDA1.1.5.1", type="sample-code", tut=TRUE}
+ByVarSumm <- function(datasub){
+  A1 <- length(datasub$Freq)
+  A2 <- mean(datasub$Freq)
+  datasub1 <-  subset(datasub, yAvg>0)
+  A3 <- mean(datasub1$yAvg)
+  A4 <- ___ 
+  return( c(A1,A2,A3, ___) )
+  }
+
+t1 <- ByVarSumm(subset(Insample, TypeVillage == 1))
+t2 <- ByVarSumm(subset(Insample, TypeCity == 1))
+t3 <- ByVarSumm(subset(Insample, TypeCounty == 1))
+t4 <- ByVarSumm(subset(Insample, TypeMisc == 1))
+t5 <- ByVarSumm(subset(Insample, TypeSchool == 1))
+t6 <- ByVarSumm(subset(Insample, TypeTown == 1))
+t7 <- ByVarSumm(subset(Insample, Fire5 == 0))
+t8 <- ByVarSumm(subset(Insample, Fire5 == 1))
+t9 <- ByVarSumm(subset(Insample, Insample$NoClaimCredit == 0))
+t10 <- ByVarSumm(subset(Insample, Insample$NoClaimCredit == 1))
+t11 <- ByVarSumm(Insample)
+
+Tablea <- rbind(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)
+Table4 <- round(Tablea, digits = 3)
+colnames(Table4) <- c("Number of Policies", "Claim Frequency", 
+                      "Average Severity", ___)
+rownames(Table4) <- c("Village","City","County","Misc","School",
+                      "Town","Fire5--No","Fire5--Yes","NoClaimCredit--No",
+                      "NoClaimCredit--Yes","Total")
+Table4
+```
+
+```{r ex="LDA1.1.5.1", type="solution", tut=TRUE}
+ByVarSumm <- function(datasub){
+  A1 <- length(datasub$Freq)
+  A2 <- mean(datasub$Freq)
+  datasub1 <-  subset(datasub, yAvg>0)
+  A3 <- mean(datasub1$yAvg)
+  A4 <- sd(datasub1$yAvg)  
+  return( c(A1,A2,A3,A4) )
+  }
+
+t1 <- ByVarSumm(subset(Insample, TypeVillage == 1))
+t2 <- ByVarSumm(subset(Insample, TypeCity == 1))
+t3 <- ByVarSumm(subset(Insample, TypeCounty == 1))
+t4 <- ByVarSumm(subset(Insample, TypeMisc == 1))
+t5 <- ByVarSumm(subset(Insample, TypeSchool == 1))
+t6 <- ByVarSumm(subset(Insample, TypeTown == 1))
+t7 <- ByVarSumm(subset(Insample, Fire5 == 0))
+t8 <- ByVarSumm(subset(Insample, Fire5 == 1))
+t9 <- ByVarSumm(subset(Insample, Insample$NoClaimCredit == 0))
+t10 <- ByVarSumm(subset(Insample, Insample$NoClaimCredit == 1))
+t11 <- ByVarSumm(Insample)
+
+Tablea <- rbind(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)
+Table4 <- round(Tablea, digits = 3)
+colnames(Table4) <- c("Number of Policies", "Claim Frequency", 
+                      "Average Severity", "Std Dev Severity")
+rownames(Table4) <- c("Village","City","County","Misc","School",
+                      "Town","Fire5--No","Fire5--Yes","NoClaimCredit--No",
+                      "NoClaimCredit--Yes","Total")
+Table4
+```
+
+
+```{r ex="LDA1.1.5.1", type="sct", tut=TRUE}
+success_msg("Excellent! Modifying someone else's code can be more difficult than writing your own. It is a necessary skill when working for large organizations. It also makes you appreciate the value of documenting your own code for future users.")
+```
 
 
 ```{r child = './Quizzes/Quiz13.html', eval = QUIZ}
