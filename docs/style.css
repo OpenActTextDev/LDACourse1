@@ -187,3 +187,15 @@ a.tooltip:hover span {
   color:white;
   background-color:#3b556e;
 }
+
+.blackbox {
+  padding: 1em;
+  background: #F5F5F5;
+  color: black;
+  border: 2px solid orange;
+  border-radius: 10px;
+}
+.center {
+  text-align: center;
+}
+

@@ -94,6 +94,8 @@ In this section, we use the Wisconsin Property Fund as a case study. You learn h
 
 The Wisconsin Property Fund data has already been read into a data frame called `Insample`. These data consist of claim experience for fund members over the years 2006-2010, inclusive. It includes the frequency of claims `Freq` as well as the claim year `Year`. The video explored the distribution of the claims frequency for year 2010; in this assignment, we replicate this analysis and conduct a similar investigation for year 2009.
 
+
+:::: {.blackbox data-latex=""}
 **Instructions**. For each year:
 
 
@@ -102,6 +104,8 @@ The Wisconsin Property Fund data has already been read into a data frame called 
 -  Use the function [length()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/length) to determine the number of observations in a vector.
 -  Use the function [mean()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/mean/) to calculate the average.
 -  Use the function [table()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/table) to tabulate the frequency distribution.
+::::
+
 
 ```{r ex="LDA1.1.3.1", type="hint", tut=TRUE}
 Take some time to explore the online `R` documentation.
@@ -164,13 +168,15 @@ success_msg("Getting started is always the hardest thing to do. Excellent start!
 
 The Wisconsin Property Fund data covering years 2006-2010 has already been read into a data frame called `Insample`. These data includes the average claim severity `yAvg`. The video explored the distribution of the claims severity for year 2010; in this assignment, we conduct a similar investigation for year 2009.
 
-**Instructions**. 
+:::: {.blackbox data-latex=""}
+**Instructions** 
 
 -  Use the function [subset()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/subset) twice, once to create a smaller data set based on year 2009 experience and again to restrict consideration to fund members with positive claims.
 -  From this subset, define the average claim severity as a global variable.
 -  Use the function [length()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/length) to determine the number of members with positive claims.
 -  Use the function [summary()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/summary) to calculate several summary statistics.
 -  Use the function [hist()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/hist) to produce histograms that visualize the claim severity distribution. Do this once on the original scale and again on the logarithmic scale. Use the `mfrow` switch in the function [par()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/par) to set the graphical parameters so that the graphs can be viewed side-by-side to promote comparisons.
+::::
 
 
 ```{r ex="LDA1.1.4.1", type="pre-exercise-code", tut=TRUE}
@@ -226,12 +232,14 @@ success_msg("Excellent! This exercise features data manipulation (through subset
 
 Many distributions used in insurance analytics are skewed. In this assignment, we demonstrate how to detect the skewness and show that skewness is a feature of an entire data set, not the result of a handful of outlying observations. Specifically, we consider the average claim for year 2010 of the Wisconsin Property Fund data that has been made available in the variable `AvgClaim`; this variable is only for fund members with positive claims. The video remarked on the skewness of this variable and used a logarithmic transformation to facilitate the analysis. In this assignment, we show how an alternative strategy, omitting unusually large observations, does not address the skewed nature of the distribution.
 
+:::: {.blackbox data-latex=""}
 **Instructions**
 
 -  Use the functions [mean()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/mean) and [median()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/median) to compute both the mean and median of `AvgClaim`. You will see that the mean is much larger than the median, a classic diagnostic approach for establishing the right skewness of a distribution.
 -  Use the function [order()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/order) to order the data in terms of decreasing size.
 -  Use the function [head()](https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/head) to examine the 10 largest observations.
 -  Create 6 histograms, graphically presenting them in panels that have 2 rows and 3 columns. In the first histogram, omit the 9 largest observations. In the second, omit the 6 largest. Continuing this pattern, omit 5 in the third histogram, omit 3 in the fourth, omit 1 in the fifth, and do not admit any in the sixth. A careful inspection of this panel of histograms reveals that the distribution remains skewed, despite repeatedly removing large outlying observations.
+::::
 
 
 
@@ -298,11 +306,12 @@ success_msg("Excellent! Removing large unusual observations has its place in sta
 
 Much of insurance analytics is about making predictions of future behavior. To understand distributions in future years, we look at *trends* in distributions from the current and preceding years. Some simple trends that are helpful not only for understanding but also communicating results to others involve looking at mean, or average, behavior. In this assignment, we examine 2006-2010 of the Wisconsin Property Fund that has been previously load into the data frame `Insample`. As in the video, by `Year` we calculate mean values of claims frequency (`Freq`), average claims severity (`yAvg`) and coverage (`BCcov`), as well as the number of fund members.
 
+:::: {.blackbox data-latex=""}
 **Instructions**
 
 -  Use the function [ddply()](https://www.rdocumentation.org/packages/plyr/versions/1.8.6/topics/ddply) to produce a data frame with the requisite summary statistics.
 -  To document results, provide intuitive names of these summary statistics.
-
+::::
 
 
 ```{r ex="LDA1.1.4.3", type="pre-exercise-code", tut=TRUE}
@@ -395,11 +404,12 @@ Analytics of insurance data has much in common with analytics in other areas but
 
 Your supervisor finds useful the analysis completed of claims outcomes by entity type, fire class, and no claim code. To make this analysis more impactful, the supervisor wants you to modify the code to include a basic measure of uncertainty, the standard deviation.
 
+:::: {.blackbox data-latex=""}
 **Instructions**
 
 -  Modify the function created for this specific analysis, `ByVarSumm`, to include the standard deviation statistic. Note that, like the mean, we only calculate the standard deviation on the sub-sample of positive claims.
 -  Include documentation of this standard deviation statistic in the table.
-
+::::
 
 
 ```{r ex="LDA1.1.5.1", type="pre-exercise-code", tut=TRUE}
