@@ -20,7 +20,7 @@ In this section, you learn how to:
 
 ***
 
-####  (Placeholder) Video Overview of Insurance Activities - Yvonne {-}
+####  (Placeholder) Video: Overview of Insurance Activities - Yvonne {-}
 
 
 ```{r child = './Quizzes/Quiz11.html', eval = QUIZ}
@@ -37,7 +37,7 @@ In this section, you learn how to:
 ***
 
 
-#### Video Overview of Insurance Company Operations {-}
+#### Video: Insurance Company Operations {-}
 
 <center>
 
@@ -45,7 +45,7 @@ In this section, you learn how to:
 
 </center>
 
-#### Overheads of Insurance Company Operations (Click Tab to View) {-}
+#### Overheads: Insurance Company Operations (Click Tab to View) {-}
 
 <div class="tab">
   <button class="tablinks" onclick="openTab(event, 'InsCompOperationsA')">A. Insurance Company Operations I</button>
@@ -86,7 +86,7 @@ In this section, we use the Wisconsin Property Fund as a case study. You learn h
 
 ***
 
-####  Video Introducing the Wisconsin Property Fund {-}
+####  Video: Introducing the Wisconsin Property Fund {-}
 
 <center>
 
@@ -94,7 +94,7 @@ In this section, we use the Wisconsin Property Fund as a case study. You learn h
 
 </center>
 
-#### Overheads of Introducing the Wisconsin Property Fund (Click Tab to View) {-}
+#### Overheads: Introducing the Wisconsin Property Fund (Click Tab to View) {-}
 
 <div class="tab">
   <button class="tablinks" onclick="openTab(event, 'PropertyFundIntroA')">A. Wisconsin Property Fund</button>
@@ -107,27 +107,27 @@ In this section, we use the Wisconsin Property Fund as a case study. You learn h
 
 <div id="PropertyFundIntroA" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
-  <iframe src="./Overheads/LDA1.Chap1.pdf#page=15" width="100%" height="400"> </iframe>
+  <iframe src="./Overheads/LDA1.Chap1.pdf#page=16" width="100%" height="400"> </iframe>
   </div>
 <div id="PropertyFundIntroB" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
-  <iframe src="./Overheads/LDA1.Chap1.pdf#page=16" width="100%" height="400"> </iframe>
+  <iframe src="./Overheads/LDA1.Chap1.pdf#page=17" width="100%" height="400"> </iframe>
   </div>
 <div id="PropertyFundIntroC" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
-  <iframe src="./Overheads/LDA1.Chap1.pdf#page=17" width="100%" height="400"> </iframe>
+  <iframe src="./Overheads/LDA1.Chap1.pdf#page=18" width="100%" height="400"> </iframe>
   </div>
 <div id="PropertyFundIntroD" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
-  <iframe src="./Overheads/LDA1.Chap1.pdf#page=18" width="100%" height="400"> </iframe>
+  <iframe src="./Overheads/LDA1.Chap1.pdf#page=19" width="100%" height="400"> </iframe>
   </div>
 <div id="PropertyFundIntroE" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
-  <iframe src="./Overheads/LDA1.Chap1.pdf#page=19" width="100%" height="400"> </iframe>
+  <iframe src="./Overheads/LDA1.Chap1.pdf#page=20" width="100%" height="400"> </iframe>
   </div>
 <div id="PropertyFundIntroF" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
-  <iframe src="./Overheads/LDA1.Chap1.pdf#page=20" width="100%" height="400"> </iframe>
+  <iframe src="./Overheads/LDA1.Chap1.pdf#page=21" width="100%" height="400"> </iframe>
   </div>
 
 
@@ -397,7 +397,7 @@ success_msg("Excellent!")
 
 ## Property Fund Rating Variables 
 
-#### Video Overview of Rating Variables for the Wisconsin Property Fund {-}
+#### Video: Rating Variables for the Wisconsin Property Fund {-}
 
 <center>
 
@@ -405,7 +405,7 @@ success_msg("Excellent!")
 
 </center>
 
-#### Overheads of Rating Variables for the Wisconsin Property Fund (Click Tab to View) {-}
+#### Overheads: Rating Variables for the Wisconsin Property Fund (Click Tab to View) {-}
 
 <div class="tab">
   <button class="tablinks" onclick="openTab(event, 'RatingVariablesA')">A. Description of Rating Variables</button>

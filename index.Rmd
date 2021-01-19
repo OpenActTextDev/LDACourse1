@@ -53,7 +53,7 @@ The intent is that this type of short course will eventually permeate throughout
 **Role of Exercises.** Following each video introduction, there are one or two exercises that allow you to practice skills to make sure that you fully grasp the learning outcomes. The exercises are implemented using an online learning platform provided by [Datacamp](https://www.datacamp.com/) so that you need not install `R`. Feedback is programmed into the exercises so that you will learn a lot by making mistakes! You will be pacing yourself, so always feel free to reveal the answers by hitting the `Solution` tab. Remember, going through quickly is not equivalent to learning deeply. Use this tool to enhance your understanding of one of the foundations of data science.
 
 
-#### Video Overview of Tutorial Navigation {-}
+#### Video: Overview of Tutorial Navigation {-}
 
 <center>
 
@@ -76,7 +76,7 @@ In this video, you learn about:
 
 ***
 
-#### (Placeholder) Video Overview of the Astin Academy - Miyuki {-}
+#### (Placeholder) Video: Overview of the Astin Academy - Miyuki {-}
 
 
 ***
