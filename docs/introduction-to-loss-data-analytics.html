@@ -49,121 +49,6 @@
 
 
 
-<script language="javascript">
-function openTab(evt, tabName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.className += " active";
-}
-
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
-</script>
-
-<script language="javascript">
-function toggle(id1,id2) {
-	var ele = document.getElementById(id1); var text = document.getElementById(id2);
-	if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Solution";}
-		else {ele.style.display = "block"; text.innerHTML = "Hide Solution";}}
-</script>
-
-<script language="javascript">
-function togglecode(id1,id2) {
-   var ele = document.getElementById(id1); var text = document.getElementById(id2);
-   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show R Code";}
-      else {ele.style.display = "block"; text.innerHTML = "Hide R Code";}}
-</script>
-<script language="javascript">
-function toggleEX(id1,id2) {
-   var ele = document.getElementById(id1); var text = document.getElementById(id2);
-   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Example";}
-      else {ele.style.display = "block"; text.innerHTML = "Hide Example";}}
-</script>
-<script language="javascript">
-function toggleTheory(id1,id2) {
-   var ele = document.getElementById(id1); var text = document.getElementById(id2);
-   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Theory";}
-      else {ele.style.display = "block"; text.innerHTML = "Hide Theory";}}
-</script>
-
-<script language="javascript">
-function toggleDet(id1,id2) {
-   var ele = document.getElementById(id1); var text = document.getElementById(id2);
-   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Details";}
-      else {ele.style.display = "block"; text.innerHTML = "Hide  Details";}}
-</script>
-
-<script language="javascript">
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();
-});
-</script>
-
-
-<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
-
-<script>
-$(document).ready(function(){
-    $('[data-toggle="popover"]').popover(); 
-});
-</script>
-
-<style>
-/* Rearrange console label */
-.datacamp-exercise ol li, .datacamp-exercise ul li {
-  margin-bottom: 0em !important;
-}
-
-/* Remove bullet marker */
-.datacamp-exercise ol li::before, .datacamp-exercise ul li::before {
-  content: '' !important;
-}
-</style>
-
-
-<script language="javascript">
-var submitAnswer = function() {
-
-  var radios = document.getElementsByName('choice');
-  var val= "";
-  for (var i = 0, length = radios.length; i < length; i++) {
-      if (radios[i].checked) {
-         val = radios[i].value; 
-         break;
-       }
-  }
-  
-  if (val == "" ) {
-    alert('please select choice answer');
-  } else if ( val == "Correct" ) {
-    alert('Answer is correct !');
-  } else {
-    alert('Answer is wrong');
-  }
-};
-</script>
-
-
-
-
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125587869-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-125587869-1');
-</script>
 
 
 <!-- Mathjax -->
@@ -422,6 +307,123 @@ document.getElementById("defaultOpen").click();
 
   gtag('config', 'UA-125587869-1');
 </script>
+<script language="javascript">
+function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+
+<script language="javascript">
+function toggle(id1,id2) {
+	var ele = document.getElementById(id1); var text = document.getElementById(id2);
+	if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Solution";}
+		else {ele.style.display = "block"; text.innerHTML = "Hide Solution";}}
+</script>
+
+<script language="javascript">
+function togglecode(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show R Code";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide R Code";}}
+</script>
+<script language="javascript">
+function toggleEX(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Example";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide Example";}}
+</script>
+<script language="javascript">
+function toggleTheory(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Theory";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide Theory";}}
+</script>
+
+<script language="javascript">
+function toggleDet(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Details";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide  Details";}}
+</script>
+
+<script language="javascript">
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover(); 
+});
+</script>
+
+
+<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
+
+
+<style>
+/* Rearrange console label */
+.datacamp-exercise ol li, .datacamp-exercise ul li {
+  margin-bottom: 0em !important;
+}
+
+/* Remove bullet marker */
+.datacamp-exercise ol li::before, .datacamp-exercise ul li::before {
+  content: '' !important;
+}
+</style>
+
+
+<script language="javascript">
+var submitAnswer = function() {
+
+  var radios = document.getElementsByName('choice');
+  var val= "";
+  for (var i = 0, length = radios.length; i < length; i++) {
+      if (radios[i].checked) {
+         val = radios[i].value; 
+         break;
+       }
+  }
+  
+  if (val == "" ) {
+    alert('please select choice answer');
+  } else if ( val == "Correct" ) {
+    alert('Answer is correct !');
+  } else {
+    alert('Answer is wrong');
+  }
+};
+</script>
+
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125587869-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-125587869-1');
+</script>
 
 
 
@@ -588,8 +590,47 @@ document.getElementById("defaultOpen").click();
 <li>Describe how these summary statistics can be used to develop the cost of insurance.</li>
 </ul>
 <hr />
-<div id="placeholder-video-claim-frequency-for-the-wisconsin-property-fund---paul" class="section level4 unnumbered">
-<h4>(Placeholder) Video Claim Frequency for the Wisconsin Property Fund - Paul</h4>
+<div id="video-introducing-the-wisconsin-property-fund" class="section level4 unnumbered">
+<h4>Video Introducing the Wisconsin Property Fund</h4>
+<center>
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25717641/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_hoil8k0e&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_j4brj49g" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
+</iframe>
+</center>
+</div>
+<div id="overheads-of-introducing-the-wisconsin-property-fund-click-tab-to-view" class="section level4 unnumbered">
+<h4>Overheads of Introducing the Wisconsin Property Fund (Click Tab to View)</h4>
+<div class="tab">
+<button class="tablinks" onclick="openTab(event, 'PropertyFundIntroA')">A. Wisconsin Property Fund</button>
+<button class="tablinks" onclick="openTab(event, 'PropertyFundIntroB')">B. LGPIF Policyholder A</button>
+<button class="tablinks" onclick="openTab(event, 'PropertyFundIntroC')">C. LGPIF Policyholder B</button>
+<button class="tablinks" onclick="openTab(event, 'PropertyFundIntroD')">D. Property Fund</button>
+<button class="tablinks" onclick="openTab(event, 'PropertyFundIntroE')">E. Claims Frequency - R Code</button>
+<button class="tablinks" onclick="openTab(event, 'PropertyFundIntroF')">F. Claims Frequency (2010)</button>
+</div>
+<div id="PropertyFundIntroA" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<iframe src="./Overheads/LDA1.Chap1.pdf#page=15" width="100%" height="400"> </iframe>
+</div>
+<div id="PropertyFundIntroB" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<iframe src="./Overheads/LDA1.Chap1.pdf#page=16" width="100%" height="400"> </iframe>
+</div>
+<div id="PropertyFundIntroC" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<iframe src="./Overheads/LDA1.Chap1.pdf#page=17" width="100%" height="400"> </iframe>
+</div>
+<div id="PropertyFundIntroD" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<iframe src="./Overheads/LDA1.Chap1.pdf#page=18" width="100%" height="400"> </iframe>
+</div>
+<div id="PropertyFundIntroE" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<iframe src="./Overheads/LDA1.Chap1.pdf#page=19" width="100%" height="400"> </iframe>
+</div>
+<div id="PropertyFundIntroF" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<iframe src="./Overheads/LDA1.Chap1.pdf#page=20" width="100%" height="400"> </iframe>
+</div>
 </div>
 <div id="exercise.-claim-frequency" class="section level3">
 <h3><span class="header-section-number">1.3.1</span> Exercise. Claim Frequency</h3>
@@ -800,6 +841,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

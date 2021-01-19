@@ -49,121 +49,6 @@
 
 
 
-<script language="javascript">
-function openTab(evt, tabName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.className += " active";
-}
-
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
-</script>
-
-<script language="javascript">
-function toggle(id1,id2) {
-	var ele = document.getElementById(id1); var text = document.getElementById(id2);
-	if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Solution";}
-		else {ele.style.display = "block"; text.innerHTML = "Hide Solution";}}
-</script>
-
-<script language="javascript">
-function togglecode(id1,id2) {
-   var ele = document.getElementById(id1); var text = document.getElementById(id2);
-   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show R Code";}
-      else {ele.style.display = "block"; text.innerHTML = "Hide R Code";}}
-</script>
-<script language="javascript">
-function toggleEX(id1,id2) {
-   var ele = document.getElementById(id1); var text = document.getElementById(id2);
-   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Example";}
-      else {ele.style.display = "block"; text.innerHTML = "Hide Example";}}
-</script>
-<script language="javascript">
-function toggleTheory(id1,id2) {
-   var ele = document.getElementById(id1); var text = document.getElementById(id2);
-   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Theory";}
-      else {ele.style.display = "block"; text.innerHTML = "Hide Theory";}}
-</script>
-
-<script language="javascript">
-function toggleDet(id1,id2) {
-   var ele = document.getElementById(id1); var text = document.getElementById(id2);
-   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Details";}
-      else {ele.style.display = "block"; text.innerHTML = "Hide  Details";}}
-</script>
-
-<script language="javascript">
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();
-});
-</script>
-
-
-<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
-
-<script>
-$(document).ready(function(){
-    $('[data-toggle="popover"]').popover(); 
-});
-</script>
-
-<style>
-/* Rearrange console label */
-.datacamp-exercise ol li, .datacamp-exercise ul li {
-  margin-bottom: 0em !important;
-}
-
-/* Remove bullet marker */
-.datacamp-exercise ol li::before, .datacamp-exercise ul li::before {
-  content: '' !important;
-}
-</style>
-
-
-<script language="javascript">
-var submitAnswer = function() {
-
-  var radios = document.getElementsByName('choice');
-  var val= "";
-  for (var i = 0, length = radios.length; i < length; i++) {
-      if (radios[i].checked) {
-         val = radios[i].value; 
-         break;
-       }
-  }
-  
-  if (val == "" ) {
-    alert('please select choice answer');
-  } else if ( val == "Correct" ) {
-    alert('Answer is correct !');
-  } else {
-    alert('Answer is wrong');
-  }
-};
-</script>
-
-
-
-
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125587869-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-125587869-1');
-</script>
 
 
 <!-- Mathjax -->
@@ -422,6 +307,123 @@ document.getElementById("defaultOpen").click();
 
   gtag('config', 'UA-125587869-1');
 </script>
+<script language="javascript">
+function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+
+<script language="javascript">
+function toggle(id1,id2) {
+	var ele = document.getElementById(id1); var text = document.getElementById(id2);
+	if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Solution";}
+		else {ele.style.display = "block"; text.innerHTML = "Hide Solution";}}
+</script>
+
+<script language="javascript">
+function togglecode(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show R Code";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide R Code";}}
+</script>
+<script language="javascript">
+function toggleEX(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Example";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide Example";}}
+</script>
+<script language="javascript">
+function toggleTheory(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Theory";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide Theory";}}
+</script>
+
+<script language="javascript">
+function toggleDet(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Details";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide  Details";}}
+</script>
+
+<script language="javascript">
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover(); 
+});
+</script>
+
+
+<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
+
+
+<style>
+/* Rearrange console label */
+.datacamp-exercise ol li, .datacamp-exercise ul li {
+  margin-bottom: 0em !important;
+}
+
+/* Remove bullet marker */
+.datacamp-exercise ol li::before, .datacamp-exercise ul li::before {
+  content: '' !important;
+}
+</style>
+
+
+<script language="javascript">
+var submitAnswer = function() {
+
+  var radios = document.getElementsByName('choice');
+  var val= "";
+  for (var i = 0, length = radios.length; i < length; i++) {
+      if (radios[i].checked) {
+         val = radios[i].value; 
+         break;
+       }
+  }
+  
+  if (val == "" ) {
+    alert('please select choice answer');
+  } else if ( val == "Correct" ) {
+    alert('Answer is correct !');
+  } else {
+    alert('Answer is wrong');
+  }
+};
+</script>
+
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125587869-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-125587869-1');
+</script>
 
 
 
@@ -490,7 +492,7 @@ document.getElementById("defaultOpen").click();
 <div id="preface" class="section level1 unnumbered">
 <h1>Preface</h1>
 <p style="text-align:right;">
-<em>Date: 11 January 2021</em>
+<em>Date: 19 January 2021</em>
 </p>
 <div id="why-loss-data-analytics" class="section level2 unnumbered">
 <h2>Why Loss Data Analytics?</h2>
@@ -523,10 +525,10 @@ Then, do a “Save Page as” if you wish to download.</li>
 </ul>
 <p><strong>Role of Video Introductions.</strong> There are five chapters in this tutorial that summarize the foundations. Each chapter is subdivided into several sections. At the beginning of each section is a short video, typically 4-8 minutes, that summarizes the section key learning outcomes. Following the video, you can see more details about the underlying <code>R</code> code for the analysis presented in the video.</p>
 <p><strong>Role of Exercises.</strong> Following each video introduction, there are one or two exercises that allow you to practice skills to make sure that you fully grasp the learning outcomes. The exercises are implemented using an online learning platform provided by <a href="https://www.datacamp.com/">Datacamp</a> so that you need not install <code>R</code>. Feedback is programmed into the exercises so that you will learn a lot by making mistakes! You will be pacing yourself, so always feel free to reveal the answers by hitting the <code>Solution</code> tab. Remember, going through quickly is not equivalent to learning deeply. Use this tool to enhance your understanding of one of the foundations of data science.</p>
-<div id="placeholder-video-overview-of-tutorial-navigation---paul" class="section level4 unnumbered">
-<h4>(Placeholder) Video Overview of Tutorial Navigation - Paul</h4>
+<div id="video-overview-of-tutorial-navigation" class="section level4 unnumbered">
+<h4>Video Overview of Tutorial Navigation</h4>
 <center>
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=0_bj34urmj&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=0_tp96kyab" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25717641/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_ouy8g8ib&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_a9yksglu" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
 </iframe>
 </center>
 </div>
@@ -551,7 +553,7 @@ Then, do a “Save Page as” if you wish to download.</li>
 </div>
 <div id="contributors" class="section level2 unnumbered">
 <h2>Contributors</h2>
-<p>The project goal is to have the actuarial community author our textbooks in a collaborative fashion. The following contributors have taken a leadership role in developing this short course for <em>Loss Data Analytics</em>.</p>
+<p>The project goal is to have the actuarial community author our textbooks in a collaborative fashion. The following contributors have taken a leadership role in developing this short course for <span class="math inline">\(Loss\)</span> <span class="math inline">\(Data\)</span> <span class="math inline">\(Analytics\)</span>.</p>
 <ul>
 <li><p><strong>Yvonne Chueh</strong>, Central Washington University</p></li>
 <li><p><strong>Miyuki Ebisaki</strong>, Sompo Research Institute</p></li>
@@ -640,6 +642,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

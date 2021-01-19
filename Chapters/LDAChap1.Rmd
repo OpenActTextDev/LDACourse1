@@ -7,6 +7,7 @@ This course introduces readers to methods of analyzing insurance data. Section \
 
 Although not needed to go through the tutorials, some users may wish to download the overheads used in the videos. <button download><a href="https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/Overheads/LDA1.Chap1.pdf">Download Chapter One overheads as a .pdf file.</a></button>
 
+
 ## Relevance of Analytics to Insurance Activities  {#Sec:Intro}
 
 ***
@@ -85,7 +86,49 @@ In this section, we use the Wisconsin Property Fund as a case study. You learn h
 
 ***
 
-####  (Placeholder) Video Claim Frequency for the Wisconsin Property Fund - Paul {-}
+####  Video Introducing the Wisconsin Property Fund {-}
+
+<center>
+
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25717641/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_hoil8k0e&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_j4brj49g" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *"  frameborder="0" title="Kaltura Player"></iframe>
+
+</center>
+
+#### Overheads of Introducing the Wisconsin Property Fund (Click Tab to View) {-}
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'PropertyFundIntroA')">A. Wisconsin Property Fund</button>
+  <button class="tablinks" onclick="openTab(event, 'PropertyFundIntroB')">B. LGPIF Policyholder A</button>
+  <button class="tablinks" onclick="openTab(event, 'PropertyFundIntroC')">C. LGPIF Policyholder B</button>
+  <button class="tablinks" onclick="openTab(event, 'PropertyFundIntroD')">D. Property Fund</button>
+  <button class="tablinks" onclick="openTab(event, 'PropertyFundIntroE')">E. Claims Frequency - R Code</button>
+  <button class="tablinks" onclick="openTab(event, 'PropertyFundIntroF')">F. Claims Frequency (2010)</button>
+      </div>
+
+<div id="PropertyFundIntroA" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap1.pdf#page=15" width="100%" height="400"> </iframe>
+  </div>
+<div id="PropertyFundIntroB" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap1.pdf#page=16" width="100%" height="400"> </iframe>
+  </div>
+<div id="PropertyFundIntroC" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap1.pdf#page=17" width="100%" height="400"> </iframe>
+  </div>
+<div id="PropertyFundIntroD" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap1.pdf#page=18" width="100%" height="400"> </iframe>
+  </div>
+<div id="PropertyFundIntroE" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap1.pdf#page=19" width="100%" height="400"> </iframe>
+  </div>
+<div id="PropertyFundIntroF" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap1.pdf#page=20" width="100%" height="400"> </iframe>
+  </div>
 
 
 ### Exercise. Claim Frequency

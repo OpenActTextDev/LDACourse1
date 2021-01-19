@@ -57,13 +57,15 @@ $(document).ready(function(){
 </script>
 
 
-<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
-
 <script>
 $(document).ready(function(){
     $('[data-toggle="popover"]').popover(); 
 });
 </script>
+
+
+<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
+
 
 <style>
 /* Rearrange console label */

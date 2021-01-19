@@ -1,7 +1,7 @@
 bookdown::gitbook:
   css: style.css
   includes:
-    in_header: ["tab.js", "ShowHide.js"]
+    in_header: ["ShowHide.js", "tab.js"]
   config:
     toc:
       collapse: subsection
