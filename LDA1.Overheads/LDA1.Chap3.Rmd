@@ -1,0 +1,751 @@
+---
+title: "Modeling Loss Severity"
+author: "A short course authored by the Actuarial Community"
+date: "19 Jan 2021"
+output: 
+  beamer_presentation:
+    includes:
+      in_header: preamble.tex
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Important Severity Distributions
+
+## Severity Distributions
+
+-  \textcolor{blue}{Severity} - Amount, or size, of an individual loss or claim for an insured event 
+-  We will consider continuous probability distributions in these overheads to model severity 
+
+
+## Important Severity Distributions
+
+Three important loss severity distributions:
+
+-  \textcolor{blue}{Gamma}
+   -  Fits medium tail lines like physical damage auto and homeowners well
+   -  Member of "exponential family of distributions" 
+-  Pareto
+-  GB2 - Generalized Beta of the Second Kind
+
+
+
+## Gamma Distribution
+
+-  Two positive parameters,  $\alpha$ and $\theta$ 
+-  \textcolor{blue}{Probability density function (pdf)} is 0 for $x \le 0$ and for $x>0$
+$$
+f(x) = \frac{(\frac{x}{\theta})^{\alpha}
+e^{-x/\theta}}{x\Gamma(\alpha)} = \frac{1}{\theta^{\alpha}
+\Gamma(\alpha)} x^{\alpha - 1} e^{-x/\theta}
+$$
+
+-  $\Gamma(\cdot)$ is the \textcolor{blue}{gamma function}, defined as
+$$
+\Gamma(\alpha) =  \int_0^{\infty} x^{\alpha-1} e^{-x} ~dx
+$$
+
+-  For a positive integer $n$, $\Gamma(n) = (n-1)!$ 
+-  For more general arguments, one needs to rely on numerical integration to evaluate $\Gamma(\cdot)$. Two main exceptions are:
+   -  For any $\alpha>0$, $\Gamma(\alpha+1)=\alpha\Gamma(\alpha)$
+   -  $\Gamma(0.5)=\sqrt{\pi}$
+-  If $\alpha=1$, gamma distribution reduces to the \textcolor{blue}{exponential} distribution
+
+## Gamma Moments
+
+-   Define the $k$th *raw moment* to be
+$$
+E(X^k) = \int_0^{\infty} x^k f(x) dx
+$$ 
+
+-   Using a change of variable, $t=x/\theta$, we have
+\begin{eqnarray*}
+E(X^k)
+&=& \frac{1}{\theta^{\alpha} \Gamma(\alpha)} \int_0^{\infty} x^{\alpha+k-1} \exp(-x/\theta) ~dx \\
+&=& \frac{\theta^{\alpha+k}}{\theta^{\alpha} \Gamma(\alpha)} \int_0^{\infty} t^{\alpha+k-1} \exp(-t) dt \\
+&=& \frac{\theta^k }{\Gamma(\alpha)} \Gamma(\alpha+k).
+\end{eqnarray*} 
+-   With $k=1$, we have $E(X)= \theta \frac{\Gamma(\alpha+1)}{\Gamma(\alpha)} = \alpha \theta$
+
+-   $E(X^2) = \theta^2 \alpha (\alpha+1),$  $\mathrm{Var}(X)  =\theta^2 \alpha,$ If $k$ is an integer: $E(X^k) =\theta^k(\alpha+k-1) \cdots \alpha$
+
+
+## Important Severity Distributions
+
+Three important loss severity distributions: 
+
+-   Gamma 
+-   \textcolor{blue}{Pareto} 
+
+    -   Fits longer tail lines like injury liability in auto and workers' compensation well 
+    -   Simple to work with analytically (hence can provide intuition as we develop theory and explain theory to others) 
+
+-   GB2 - Generalized Beta of the Second Kind
+
+
+## Two-Parameter Pareto Distribution
+
+-   Two positive parameters $\alpha$ and $\theta$. The pdf, for $x>0$, is
+$$
+\mathrm{f}(x) = \frac{\alpha \theta^{\alpha}}{(x+\theta)^{\alpha+1}}
+$$
+
+and the moments are
+$$
+E(X^k) = \frac{\theta^k k!}{(\alpha-1) \cdots (\alpha-k)}
+$$
+
+-   Unlike gamma, there is a simple expression for the cumulative distribution function (cdf)
+$$
+\mathrm{F}(x) = \int^x_0 \mathrm{f}(y) dy 
+= 1 - \left(\frac{\theta}{x+\theta}\right)^{\alpha}
+$$
+
+-   It is easy to compute quantiles
+
+## Important Severity Distributions
+
+Three important loss severity distributions: 
+
+-   Gamma 
+-   Pareto 
+-   \textcolor{blue}{GB2 - Generalized Beta of the Second Kind} 
+    -   A four parameter distribution family, complex 
+    -   Yet, many severity distributions can be expressed as a special case of this distribution (good for programming) 
+    -   Some applications have been fit well by GB2 where others do not seem to work 
+
+## GB2 - Generalized Beta of the Second Kind
+
+-   Distribution with **four positive parameters**: $\alpha$, $\tau$, $\gamma$, $\theta$
+
+-   Pdf, for $x>0$, is
+$$
+f(x) = \frac{\Gamma(\alpha + \tau)}{\Gamma(\alpha)\Gamma(\tau)}
+   \frac{\gamma \left(x/\theta\right)^{\gamma \tau}}
+   {x\left[1+\left(x/\theta\right)^{\gamma}\right]^{\alpha + \tau}}
+$$
+
+with moments
+$$
+E(X^k) = \theta^k \frac{\Gamma(\tau +
+\frac{k}{\gamma})\Gamma(\alpha-\frac{k}{\gamma})}{\Gamma(\alpha)\Gamma(\tau)} .
+$$
+
+## GB2 Special Cases
+
+GB2 captures many other distributions, either as special cases or as limiting results:
+
+-   \textcolor{red}{Special Case: Pareto Distribution}. Use GB2 distribution with $\gamma=\tau =1$ 
+-   \textcolor{red}{Limiting Case: Generalized Gamma Distribution} 
+
+Replace $\theta$ by $\theta \tau^{1/\gamma}$ 
+
+One can show that
+$$
+\lim_{\tau \to \infty} f_{GB2}(x; \theta \tau^{1/\gamma}, \alpha,
+\tau, \gamma) = f(x),
+$$
+a \textcolor{red}{generalized gamma} pdf
+
+
+## REVIEW
+
+In this section, you learned how to define and apply three fundamental severity distributions:
+
+-    gamma,
+-    Pareto, and
+-    generalized beta distribution of the second kind.
+
+# Methods of Creating New Distributions: Random Variable Transformations
+
+## Creating Severity Distributions Using Transformations
+
+-   In this section, consider distributions that are created by \textcolor{blue}{transforming the random variable} of a distribution: 
+    -    Multiplication by a constant ($Y = cX$) 
+    -   Raising to a power ($Y = X^\tau$) 
+    -   Exponentiation $(Y = e^X)$ 
+-   In next section, consider ways of combining distributions to form a distribution of interest: 
+    -   Mixing 
+    -   Splicing
+
+## Multiplication by a Constant
+
+-   Multiplying a random variable by a positive constant 
+    -  Think of $X$ as this year's losses and assume that we have an 8\% inflation rate. We can model next year's losses as $Y =1.08X$ 
+    -  Can readily go from dollars to thousands of dollars ($c=1/1000$) or from dollars to Euros 
+-   More generally, let $Y=cX$ and use
+\begin{eqnarray*}
+F_Y (y) &=& \Pr( Y \le y) = \Pr \left(X \le \frac{y}{c}\right)= F_X \left(\frac{y}{c}\right)\\
+f_Y (y) &=& \frac{1}{c}~f_X\left(\frac{y}{c}\right)
+\end{eqnarray*}
+
+## Scale Distributions
+
+-   In a \textcolor{blue}{scale distribution}, the transformed variable $Y = c X$ has a distribution from the same family as the random variable $X$ 
+-   Many loss distributions are scale distributions 
+-   Typically, one uses $\theta$ as the \textcolor{blue}{scale parameter} 
+
+If $X$ comes from a distribution with parameter $\theta$, then $Y =c X$ has the same distribution with scale parameter $\theta^{\ast} = c \theta$ 
+
+-   Gamma distribution is an example of a scale distribution
+
+## Raising to a Power
+
+\scalefont{0.9}
+
+-   Consider $Y = X^{\tau}$. We examine three cases:  
+
+\vspace{-8mm}
+\begin{eqnarray*}
+&\tau>0&  \textbf{transformed}\\
+&\tau=-1 &  \textbf{inverse}\\
+&\tau<0 & \textbf{inverse transformed}
+\end{eqnarray*}
+
+-   *Special Case: Exponential Distribution*. Suppose that $X$ has an exponential distribution with parameter $\theta^{\ast}$ and consider $Y=1/X$ 
+-   Cdf of $Y$ is
+$$
+F_Y(y) = \Pr(Y \le y) = \Pr(\frac{1}{X} \le y) = \Pr(X \ge \frac{1}{y}) = \exp\left(-\frac{1}{y \theta^\ast}\right) .
+$$
+-   Define a new parameter $\theta = \frac{1}{\theta^{\ast}}$. With this notation,
+$$
+F_Y(y) = \Pr(Y \le y) = \exp\left(-\frac{\theta}{y}\right).
+$$
+-   This is an \textcolor{blue}{inverse exponential distribution} with parameter $\theta$
+
+\scalefont{1.1111} 
+
+## Exponential to get a Weibull 
+
+*Example: Transforming an Exponential to get a Weibull*.
+
+-   Start with $X \sim$ exponential distribution with parameter 1. Define transformed random
+variable with positive parameters $\tau$ and $\theta$:
+$$
+Y = \theta X^{1/\tau}
+$$ 
+
+-   This has distribution
+\begin{eqnarray*}
+F_Y(y) &=& \Pr(Y \le y)\\
+&=& \Pr(X^{1/\tau} \le \frac{y}{\theta}) = \Pr(X \le \left(\frac{y}{\theta}\right)^{\tau})\\
+&=& 1 - \exp\left(-\left(\frac{y}{\theta}\right)^\tau\right) ,
+\end{eqnarray*}
+known as a \textcolor{blue}{Weibull distribution} 
+
+## Exponentiation
+
+-   Another type of transformation involves exponentiating a random variable so that $Y=e^X$ 
+
+-   Develop the distribution of the new random variable through the cdf
+$$
+F_Y (y) = \Pr(Y \le y) = \Pr ( e^X \le y) = \Pr( X \le \ln y) 
+= F_X (\ln y)
+$$ 
+
+and the pdf
+$$
+f_Y (y) = \frac{1}{y} f_X (\ln y) .
+$$ 
+
+-   If $X \sim$ normal, then $Y=e^{X} \sim$ a \textcolor{blue}{lognormal distribution} 
+
+
+#  Methods of Creating New Distributions: Combining Distributions
+
+## Discrete Mixture Severity Distributions
+
+-   \emph{Definition.} Let $X_1, \ldots, X_k$ be random variables and define
+\begin{eqnarray*}
+Y =\left\{
+\begin{array}{cc}
+X_1 & with~probability~\alpha_1 \\
+\vdots & \vdots \\
+X_k & with~probability~\alpha_k \\
+\end{array}
+\right.
+\end{eqnarray*} 
+
+Here, $\alpha_{j}>0$ and $\alpha_1+ \cdots + \alpha_k = 1.$ Then,
+$Y$ is a \textcolor{blue}{$k$-point mixture} random variable
+
+
+Cdf is
+$$
+F_Y(y) = \alpha_1 F_{X_1}(y)+ \cdots +\alpha_k F_{X_k}(y)
+$$
+with mean
+$$
+E(Y) = \alpha_1 E(X_1) + \cdots + \alpha_k E(X_k).
+$$
+
+
+
+
+## Discrete Mixture Severity Distributions
+
+-   *Example from Exam M Spring 05 \#34* 
+
+The distribution of a loss, $X$, is a two-point mixture:
+
+
+
+-   With probability 0.8, $X$ has a two-parameter Pareto
+distribution with $\alpha$ = 2 and $\theta$ = 100. 
+
+-   With probability 0.2, $X$ has a two-parameter Pareto distribution
+with $\alpha$ = 4 and $\theta$ = 3000. 
+
+
+-   Calculate $Pr( X \le 200)$. 
+
+-   Calculate $E(X)$.
+
+## Continuous Mixtures for Severity
+
+-   \textcolor{blue}{Infinite number of subgroups} within a population 
+
+Each subgroup has $\mathrm{F}(\cdot|\theta)$ (e.g., exponential) but with a parameter $\theta$ that accounts for population differences
+
+
+-   Assume the random variable $\Theta$ has pdf $f_\Theta(\theta)$ 
+
+-   Cdf:
+\begin{eqnarray*}
+\mathrm{F}_X(x) = \Pr(X \le x) &=& E_{\Theta}[ \Pr(X \le x|\Theta)]\\
+&=& \int \Pr(X \le x|\theta)f_{\Theta}(\theta) d\theta \\
+&=& \int \mathrm{F}_{X|\Theta}(x|\theta)f_{\Theta}(\theta) d\theta
+\end{eqnarray*} 
+
+-   Pdf:
+$$
+f_X (x) = \int f_{X | \Theta}(x|\theta) f_{\Theta}(\theta) d\theta
+$$
+
+## Special Case: Gamma Mixtures of Exponentials
+
+-   Suppose $X|\Theta \sim \text{exponential}(\frac{1}{\Theta})$:
+$$
+f_{X|\Theta}(x|\theta) = \theta e^{-\theta x}
+$$ 
+
+-   Suppose $\Theta \sim \text{gamma}(\alpha, \beta)$ 
+
+$$
+f_{\Theta}(\theta) =
+\frac{1}{\Gamma(\alpha)\beta^{\alpha}}\theta^{\alpha-1}e^{-\theta/\beta}
+$$
+
+-   Pdf of $X$ is
+\begin{eqnarray*}
+f_X (x) &=&\int f_{X | \Theta}(x|\theta) f_{\Theta}(\theta) d\theta \\
+&=& \frac{1}{\Gamma(\alpha)\beta^{\alpha}}\int_0 ^{\infty}
+\theta^{\alpha} e^{{-\theta}(x+1/\beta)}d\theta = \frac{\alpha
+\beta}{(1+x\beta)^{\alpha+1}}
+\end{eqnarray*} 
+
+-   This is a Pareto distribution with parameters $\alpha$ and $\theta=1/\beta$
+
+
+## Mixture Expectations
+
+-  \textcolor{blue}{Law of iterated expectation}:
+$$
+E(X) = E_{\Theta}[\mathrm{E}(X|\Theta)]
+$$ 
+
+-   This is easily extended to $k$th moment:
+$$
+E(X^k) = E_{\Theta}[E(X^k|\Theta)]
+$$ 
+
+\textcolor{blue}{Law of total variance}:
+$$
+Var(X) = E_{\Theta}[Var(X|\Theta)] + Var_{\Theta}[E(X|\Theta)]
+$$ 
+
+
+## Splicing
+
+-   Join (\textcolor{blue}{splice}) together different probability density functions to form a pdf over support of a random
+variable 
+$$
+f_X (x)=\left\{
+\begin{array}{cc}
+\alpha_1 f_1 (x) & c_0  < x < c_1  \\
+\alpha_2 f_2 (x) & c_1  < x < c_2  \\
+\vdots & \vdots \\
+\alpha_{k}f_{k}(x) & c_{k-1} < x < c_{k}  \\
+\end{array}
+\right.
+$$
+
+$\alpha_1  + \alpha_2  \cdots + \alpha_{k} = 1$ 
+
+Each $f_j$ is a pdf, so that $\int_{c_{j-1}}^{c_{j}}f_{j}(x)dx =1$
+
+$c_{j}$'s are typically known 
+
+## REVIEW
+
+In this section, you learned how to:
+
+-    Understand connections among the distributions
+-    Give insights into when a distribution is preferred when compared to alternatives
+-    Provide foundations for creating new distributions
+
+
+# Coverage Modifications: Deductibles and Limits
+
+## Risk Retention Framework
+
+-  Now consider the following framework: 
+   -   Policyholder or insured suffers a \textcolor{blue}{loss} of amount $X$ 
+   -   Under an insurance contract, the insurer is obligated to cover a portion of $X$, denoted as $Y$ 
+   -   $Y$ represents the insurer's \textcolor{blue}{claim payment} 
+-  We introduce standard mechanisms that insurers use to reduce, or mitigate, their risk, including deductibles and policy limits 
+-  Further, we examine how the distribution of the insurer's obligations depends on these mechanisms
+
+## Risk Retention Function
+
+
+-   Known \textcolor{blue}{risk retention function} $g(\cdot)$ maps the amount insured to the amount retained by the insurer, that is, $Y=g(X)$ 
+-   **Special Case 1. Deductible (d)** 
+
+$$
+g(x) = (x-d)_+ =
+\begin{cases}
+0 & x \le d\\
+x - d & x > d .
+\end{cases}
+$$
+Notation "$(\cdot)_+$" means "Take the positive part of"
+
+
+-   **Special Case 2. Limit (u)** 
+
+$$
+g(x) = x \wedge u =
+\begin{cases}
+x & x \le u\\
+u & x > u .
+\end{cases}
+$$
+Notation "$\wedge$" means "take the minimum of" 
+
+-   **Special Case 3. Coinsurance**. Define $Y = g(X) = c X$. Typically, $0<c<1$, and so represents the proportion of claims retained by the insurer
+
+## Information Set for Deductibles
+
+-  Specify what type of information is available to the insurer 
+
+-  **Special Case 4. Policyholder Deductible**. Define: 
+$$
+g_P(x) =
+\begin{cases}
+\text{undefined/not observed} & x \le d\\
+x - d & x > d
+\end{cases}
+$$ 
+
+-  Insurance only pays amounts in excess of the deductible $d$. If a loss is less than the deductible, the insurer does not observe the loss. 
+   -  Random variable $Y^P = g_P(X)$ is the claim that an insurer observes 
+   -  "$P$" subscript indicates that the retained loss is on a \textcolor{blue}{per payment} basis 
+   -  For case where a claim of zero is observed for losses $X \le d$, terminology \textcolor{blue}{per loss} is used.  
+   -  Notation is $Y^L = (X-d)_+$
+
+## Distributions of Retained Risks - Deductible
+
+-   Consider two types of \textcolor{blue}{ordinary deductible}: 
+-   Cost (amount of payment) per loss event
+$$
+Y^L=(X-d)_+ =
+\left \{
+\begin{array}{cc}
+0 & X \le d\\
+X-d & X > d\\
+\end{array}
+\right.
+$$
+
+-   Cost (amount of payment) per payment event
+$$
+Y^P =
+\left \{
+\begin{array}{cc}
+undefined & X \le d\\
+X-d & X > d\\
+\end{array}
+\right.
+$$
+
+*Example. Exponential Distribution.* Suppose that the loss $X$ has cumulative distribution function $F(x) = 1-\exp{(-x/1000)}$. Compute the cdf and pdf for $Y^L$ and $Y^P$ with $d=250$
+
+
+# Coverage Modifications: Expectations of Retained Risks
+
+## Limited Expected Value
+
+-   Use a generic "$u$" for the upper limit. Expected value of \textcolor{blue}{limited loss variable} $(X \wedge u)$ is
+$$
+E(X \wedge u) = \int_0^u \left(1-F(x)\right) dx = \int_0^u S(x)dx .
+$$
+
+*Pareto Policy Limit*. Recall
+$$
+1-F(x)=  S(x) = \Pr(X > x) = \left(\frac{\theta}{x + \theta}\right)^{\alpha}
+$$
+with mean $\mathrm{E~}(X) = \frac{\theta}{\alpha - 1}$. Thus, the \textcolor{blue}{limited expected value} is
+\begin{eqnarray*}
+E(X \wedge u)  &=& \theta^{\alpha}\int_0^u (x + \theta)^{-\alpha} dx =\theta^{\alpha} \left.\frac{(x + \theta)^{-\alpha+1}}{-\alpha + 1}\right|_0^u\\
+&=& \theta^{\alpha}\left(\frac{\theta^{-\alpha+1} - (u+\theta)^{-\alpha+1}}{\alpha - 1}\right)\\
+&=& \frac{\theta}{\alpha-1}\left\{1 - \left(\frac{\theta}{u + \theta}\right)^{\alpha-1} \right\}.
+\end{eqnarray*}
+
+## Pareto Deductible
+
+-   Claim amount on a per loss basis is $Y^L = (X-d)_+$ for a deductible $d$ 
+-   To calculate $E(X-d)_+$, use $X \wedge d + (X - d)_{+} = X$ 
+-   For the Pareto distribution, recall $E(X) = \frac{\theta}{\alpha - 1}$ and
+$$
+E(X \wedge d)  = \frac{\theta}{\alpha-1}\left\{1 -
+\left(\frac{\theta}{d + \theta}\right)^{\alpha-1} \right\}.
+$$
+
+Thus,
+\begin{eqnarray*}
+E(X-d)_+ &=& E(X) -
+E(X \wedge d)  =  \frac{\theta}{\alpha-1} -\frac{\theta}{\alpha-1}\left\{1 - \left(\frac{\theta}{d + \theta}\right)^{\alpha-1} \right\} \\
+&=& \frac{\theta}{\alpha-1} \left\{\left(\frac{\theta}{d +
+\theta}\right)^{\alpha-1} \right\} .
+\end{eqnarray*}
+
+## Mean Excess Loss
+
+-   For the per payment random variable associated with the policyholder deductible case,
+$$
+g_P(x) =
+\begin{cases}
+\text{undefined/not observed} & x \le d\\
+x - d & x > d
+\end{cases}
+$$
+we can calculate the expectation as
+$$
+e_X(d) = e(d) = \mathrm{E~}(X - d|X > d)
+$$ 
+
+-   $e_X(d)$ is the \textcolor{blue}{mean excess loss} that We can write this as
+$$
+\begin{array}{lll}
+e(d) &=&  E(X - d|X > d)\\
+&=& \frac{\int_d^{\infty} (x-d) f(x)dx}{S(d)} \\
+&=& \frac{E(X - d)_+}{S(d)} \\
+&=& \frac{\int_d^{\infty} S(x)dx}{S(d)}
+\end{array} 
+$$
+
+
+## Example. Exam M Fall 2005, Exercise 26
+
+For an insurance:
+
+-   Losses have the density function
+\begin{eqnarray*}
+f_X(x)&=& \left \{
+\begin{array}{cc}
+0.02x & 0<x<10\\
+0 & \text{elsewhere}\\
+\end{array}
+\right.
+\end{eqnarray*} 
+
+-   Insurance has an ordinary deductible of $4$ per loss 
+
+-   $Y^P$ is the \textcolor{blue}{claim payment per payment} random variable 
+
+Calculate $E[Y^P]$
+
+## Summary of Limited Loss Variables
+
+\scalefont{0.9}
+
+$$
+{\small
+\begin{array}{ll}
+\hline
+\textbf{Random Variable} & \textbf{Expectation} \\ \hline
+\text{Excess loss random variable} & e_{X}(d)=E(Y)=\mathrm{E} (X-d|X>d) \\ 
+Y=X-d \text{ if } X>d & \text{mean excess loss function} \\ 
+\text{left truncated} & \text{mean residual life function} \\ 
+& \text{complete expectation of life} \\ 
+& e_{X}^{k}(d)=E\left[ \left( X-d\right) ^{k}|X>d\right]  \\
+\hline
+\left( X-d\right) _{+}=\left\{
+\begin{array}{ll}
+0 & X \le d \\
+X-d & X > d
+\end{array}
+\right.  & E\left( X-d\right) _{+}=e(d)S(d) \\
+\text{left-censored and shifted variable} & E\left( X-d\right)
+_{+}^{k}=e^{k}(d)S(d) \\ 
+\hline min(X,d)=X\wedge d=\left\{
+\begin{array}{ll}
+X & X \le d \\
+d & X > d
+\end{array}
+\right.  \  & E\left( X\wedge d\right) - \text{limited expected value}
+\\ \text{limited loss variable} & \text{right censored} 
+\\ \hline
+\end{array}
+}
+$$
+
+\scalefont{1.111}\scalefont{0.8}
+
+Note that $\left( X-d\right) _{+}+\left( X\wedge d\right) =X.$ Thus, $E\left( X-d\right) _{+}+E\left( X\wedge d\right) =E(X)$
+
+For nonnegative, continuous random variables,
+$$
+E\left( X \wedge d\right) =\int_{0}^{d} S\left( x\right) dx \ \ \ \text{and} \ \ \ E( X-d) _{+} = \int_{d}^{\infty }S\left( x \right) dx
+$$
+
+\scalefont{1.25}
+
+# LER and More Risk Retention
+
+## Loss Elimination Ratio (LER)
+
+-   Consider an ordinary deductible, cost (amount of payment) per loss event 
+
+-   \textcolor{blue}{Loss elimination ratio} at deductible $d$ is
+\begin{eqnarray*}
+LER&=&\frac{\mathrm{E~}(X\wedge d)}{E(X)}\\
+&=&\frac{\text{limited exp value}}{\text{exp value}}
+\end{eqnarray*}
+What fraction of the losses have been eliminated by introducing the deductible?
+
+
+*Example.* Losses have a lognormal distribution with $\mu=6$ and $\sigma=2$. There is a deductible of 2,000 
+
+Determine the loss elimination ratio
+
+
+
+## Risk Retention Function II
+
+-   Combining three special cases of coverage modifications (deductible, limit, coinsurance) results in
+$$
+g(x) =
+\begin{cases}
+0      & x \le d\\
+c(x-d) & d < x \le u \\
+c(u-d) & x > u .
+\end{cases}
+$$ 
+
+-   Think about these as parameters in a contract between a policyholder and an insurer and so represent modifications of the underlying contract 
+
+-   Note: $g(X)$ = $c\left((X \wedge u) - (X \wedge d)\right)$
+
+# Estimating Severity Distributions
+
+## Maximum Likelihood Estimation
+
+-   Let $\mathrm{f}(\cdot;\boldsymbol\theta)$ be pmf if $X$ is discrete or pdf if continuous 
+
+-   Define the \textcolor{blue}{likelihood function},
+$$
+L(\boldsymbol \theta) = L(\mathbf{x};\boldsymbol \theta ) =
+\prod_{i=1}^n \mathrm{f}(x_i;\boldsymbol \theta),
+$$
+ 
+
+-   Define the \textcolor{blue}{log-likelihood function},
+$$
+l(\boldsymbol \theta) = l(\mathbf{x};\boldsymbol \theta ) = \ln
+L(\boldsymbol \theta) = \sum_{i=1}^n \ln \mathrm{f}(x_i;\boldsymbol
+\theta),
+$$
+
+
+-   Value of $\boldsymbol \theta$, say $\mathbf{\hat{\theta}_{MLE}}$, that maximizes $L(\boldsymbol \theta)$,
+or equivalently $l(\boldsymbol \theta)$, is the \textcolor{blue}{maximum likelihood estimate (mle)} of $\theta$ 
+
+## Example: Single-Parameter Pareto
+
+-   Suppose $X_1, \ldots, X_n$ represent a random sample from a \textcolor{blue}{single-parameter Pareto} distribution with cdf:
+$$
+\mathrm{F}(x) = 1- \left(\frac{500}{x}\right)^{\alpha}, ~~~~ x>500
+$$
+
+-   There is a single parameter of $\boldsymbol{\theta} = \alpha$ 
+
+-   Corresponding pdf is $\mathrm{f}(x) = 500^{\alpha} \alpha x^{-\alpha-1}$ 
+
+-   Log-likelihood function is
+$$
+l(\boldsymbol \alpha) = \sum_{i=1}^n \ln \mathrm{f}(x_i;\alpha) = n
+\alpha \ln 500 +n \ln \alpha -(\alpha+1)  \sum_{i=1}^n \ln x_i .
+$$
+
+## Asymptotic Normality of MLE
+
+-   Consider a distribution ($X$) with pmf or pdf $f(\cdot;\boldsymbol{\theta})$ 
+
+-   There is only \textcolor{blue}{one} estimable parameter: $\boldsymbol{\theta}$ = $\theta$ 
+
+-   \textcolor{red}{Theorem}: Under mild regularity conditions, as the sample size $n$ approaches infinity, the distribution of the
+maximum likelihood estimator of $\theta$, $\hat{\theta}$, converges to a \textcolor{blue}{normal distribution} with
+\textcolor{blue}{mean} $\theta$ and \textcolor{blue}{variance equal to the inverse of the Fisher Information}, $I(\theta)$, where:
+
+
+$$
+I(\theta) =
+~ -{\rm E}_X\left[\frac{\partial^2}{\partial\theta^2}l(\theta)\right]
+$$ 
+
+If all observations ($X$) are identically distributed: 
+
+$$
+I(\theta) =
+-n ~ {\rm E}_X\left[\frac{\partial^2}{\partial\theta^2}\ln(f(X ;\theta))\right]
+$$
+
+
+
+## Delta Method
+
+-   Consider a distribution ($X$) with pmf or pdf $f(\cdot;\boldsymbol{\theta})$ 
+-   There is only \textcolor{blue}{one} estimable parameter: $\boldsymbol{\theta} = \theta$ 
+-   From the previous slide, as $n \to \infty$: 
+
+$$
+\hat{\theta} \sim N\left(\mu = \theta, \sigma^2 =[I(\theta)]^{-1}\right)
+$$ 
+
+-   \textcolor{red}{Delta Method}: Consider a function of $\theta$, $g(\theta)$ 
+
+$g(\hat{\theta})$ is the maximum likelihood estimator of $g(\theta)$
+
+
+As $n \to \infty$: 
+
+$$
+g(\hat{\theta}) \sim N\left(\mu = g(\theta), \sigma^2 =
+\left(\frac{\partial g}{\partial\theta}\right)^2[I(\theta)]^{-1}\right)
+$$
+
+## REVIEW
+
+In this section, you learned how to:
+
+-    Define a likelihood for a sample of observations from a continuous distribution
+-    Define the maximum likelihood estimator for a random sample of observations from a continuous distribution
+-    Estimate parametric distributions based on grouped, censored, and truncated data
+
+

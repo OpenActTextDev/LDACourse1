@@ -1,0 +1,271 @@
+---
+title: "Modeling Loss Severity II"
+author: "A short course authored by the Actuarial Community"
+date: "18 Jan 2021"
+output: 
+  beamer_presentation:
+    includes:
+      in_header: preamble.tex
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Risk Retention -- Deductibles and Limits
+
+## Risk Retention Framework
+
+-  Now consider the following framework: 
+   -   Policyholder or insured suffers a \textcolor{blue}{loss} of amount $X$ 
+   -   Under an insurance contract, the insurer is obligated to cover a portion of $X$, denoted as $Y$ 
+   -   $Y$ represents the insurer's \textcolor{blue}{claim payment} 
+-  We introduce standard mechanisms that insurers use to reduce, or mitigate, their risk, including deductibles and policy limits 
+-  Further, we examine how the distribution of the insurer's obligations depends on these mechanisms
+
+## Risk Retention Function
+
+
+-   Known \textcolor{blue}{risk retention function} $g(\cdot)$ maps the amount insured to the amount retained by the insurer, that is, $Y=g(X)$ 
+-   **Special Case 1. Deductible (d)** 
+
+$$
+g(x) = (x-d)_+ =
+\begin{cases}
+0 & x \le d\\
+x - d & x > d .
+\end{cases}
+$$
+Notation "$(\cdot)_+$" means "Take the positive part of"
+
+
+-   **Special Case 2. Limit (u)** 
+
+$$
+g(x) = x \wedge u =
+\begin{cases}
+x & x \le u\\
+u & x > u .
+\end{cases}
+$$
+Notation "$\wedge$" means "take the minimum of" 
+
+-   **Special Case 3. Coinsurance**. Define $Y = g(X) = c X$. Typically, $0<c<1$, and so represents the proportion of claims retained by the insurer
+
+## Information Set for Deductibles
+
+-  Specify what type of information is available to the insurer 
+
+-  **Special Case 4. Policyholder Deductible**. Define: 
+$$
+g_P(x) =
+\begin{cases}
+\text{undefined/not observed} & x \le d\\
+x - d & x > d
+\end{cases}
+$$ 
+
+-  Insurance only pays amounts in excess of the deductible $d$. If a loss is less than the deductible, the insurer does not observe the loss. 
+   -  Random variable $Y^P = g_P(X)$ is the claim that an insurer observes 
+   -  "$P$" subscript indicates that the retained loss is on a \textcolor{blue}{per payment} basis 
+   -  For case where a claim of zero is observed for losses $X \le d$, terminology \textcolor{blue}{per loss} is used.  
+   -  Notation is $Y^L = (X-d)_+$
+
+## Distributions of Retained Risks - Deductible
+
+-   Consider two types of \textcolor{blue}{ordinary deductible}: 
+-   Cost (amount of payment) per loss event
+$$
+Y^L=(X-d)_+ =
+\left \{
+\begin{array}{cc}
+0 & X \le d\\
+X-d & X > d\\
+\end{array}
+\right.
+$$
+
+-   Cost (amount of payment) per payment event
+$$
+Y^P =
+\left \{
+\begin{array}{cc}
+undefined & X \le d\\
+X-d & X > d\\
+\end{array}
+\right.
+$$
+
+*Example. Exponential Distribution.* Suppose that the loss $X$ has cumulative distribution function $F(x) = 1-\exp{(-x/1000)}$. Compute the cdf and pdf for $Y^L$ and $Y^P$ with $d=250$
+
+
+# Expectations of Retained Risks
+
+## Limited Expected Value
+
+-   Use a generic "$u$" for the upper limit. Expected value of \textcolor{blue}{limited loss variable} $(X \wedge u)$ is
+$$
+E(X \wedge u) = \int_0^u \left(1-F(x)\right) dx = \int_0^u S(x)dx .
+$$
+
+*Pareto Policy Limit*. Recall
+$$
+1-F(x)=  S(x) = \Pr(X > x) = \left(\frac{\theta}{x + \theta}\right)^{\alpha}
+$$
+with mean $\mathrm{E~}(X) = \frac{\theta}{\alpha - 1}$. Thus, the \textcolor{blue}{limited expected value} is
+\begin{eqnarray*}
+E(X \wedge u)  &=& \theta^{\alpha}\int_0^u (x + \theta)^{-\alpha} dx =\theta^{\alpha} \left.\frac{(x + \theta)^{-\alpha+1}}{-\alpha + 1}\right|_0^u\\
+&=& \theta^{\alpha}\left(\frac{\theta^{-\alpha+1} - (u+\theta)^{-\alpha+1}}{\alpha - 1}\right)\\
+&=& \frac{\theta}{\alpha-1}\left\{1 - \left(\frac{\theta}{u + \theta}\right)^{\alpha-1} \right\}.
+\end{eqnarray*}
+
+## Pareto Deductible
+
+-   Claim amount on a per loss basis is $Y^L = (X-d)_+$ for a deductible $d$ 
+-   To calculate $E(X-d)_+$, use $X \wedge d + (X - d)_{+} = X$ 
+-   For the Pareto distribution, recall $E(X) = \frac{\theta}{\alpha - 1}$ and
+$$
+E(X \wedge d)  = \frac{\theta}{\alpha-1}\left\{1 -
+\left(\frac{\theta}{d + \theta}\right)^{\alpha-1} \right\}.
+$$
+
+Thus,
+\begin{eqnarray*}
+E(X-d)_+ &=& E(X) -
+E(X \wedge d)  =  \frac{\theta}{\alpha-1} -\frac{\theta}{\alpha-1}\left\{1 - \left(\frac{\theta}{d + \theta}\right)^{\alpha-1} \right\} \\
+&=& \frac{\theta}{\alpha-1} \left\{\left(\frac{\theta}{d +
+\theta}\right)^{\alpha-1} \right\} .
+\end{eqnarray*}
+
+## Mean Excess Loss
+
+-   For the per payment random variable associated with the policyholder deductible case,
+$$
+g_P(x) =
+\begin{cases}
+\text{undefined/not observed} & x \le d\\
+x - d & x > d
+\end{cases}
+$$
+we can calculate the expectation as
+$$
+e_X(d) = e(d) = \mathrm{E~}(X - d|X > d)
+$$ 
+
+-   $e_X(d)$ is the \textcolor{blue}{mean excess loss} that We can write this as
+$$
+\begin{array}{lll}
+e(d) &=&  E(X - d|X > d)\\
+&=& \frac{\int_d^{\infty} (x-d) f(x)dx}{S(d)} \\
+&=& \frac{E(X - d)_+}{S(d)} \\
+&=& \frac{\int_d^{\infty} S(x)dx}{S(d)}
+\end{array} 
+$$
+
+
+## Example. Exam M Fall 2005, Exercise 26
+
+For an insurance:
+
+-   Losses have the density function
+\begin{eqnarray*}
+f_X(x)&=& \left \{
+\begin{array}{cc}
+0.02x & 0<x<10\\
+0 & \text{elsewhere}\\
+\end{array}
+\right.
+\end{eqnarray*} 
+
+-   Insurance has an ordinary deductible of $4$ per loss 
+
+-   $Y^P$ is the \textcolor{blue}{claim payment per payment} random variable 
+
+Calculate $E[Y^P]$
+
+## Summary of Limited Loss Variables
+
+\scalefont{0.9}
+
+$$
+{\small
+\begin{array}{ll}
+\hline
+\textbf{Random Variable} & \textbf{Expectation} \\ \hline
+\text{Excess loss random variable} & e_{X}(d)=E(Y)=\mathrm{E} (X-d|X>d) \\ 
+Y=X-d \text{ if } X>d & \text{mean excess loss function} \\ 
+\text{left truncated} & \text{mean residual life function} \\ 
+& \text{complete expectation of life} \\ 
+& e_{X}^{k}(d)=E\left[ \left( X-d\right) ^{k}|X>d\right]  \\
+\hline
+\left( X-d\right) _{+}=\left\{
+\begin{array}{ll}
+0 & X \le d \\
+X-d & X > d
+\end{array}
+\right.  & E\left( X-d\right) _{+}=e(d)S(d) \\
+\text{left-censored and shifted variable} & E\left( X-d\right)
+_{+}^{k}=e^{k}(d)S(d) \\ 
+\hline min(X,d)=X\wedge d=\left\{
+\begin{array}{ll}
+X & X \le d \\
+d & X > d
+\end{array}
+\right.  \  & E\left( X\wedge d\right) - \text{limited expected value}
+\\ \text{limited loss variable} & \text{right censored} 
+\\ \hline
+\end{array}
+}
+$$
+
+\scalefont{1.111}\scalefont{0.8}
+
+Note that $\left( X-d\right) _{+}+\left( X\wedge d\right) =X.$ Thus, $E\left( X-d\right) _{+}+E\left( X\wedge d\right) =E(X)$
+
+For nonnegative, continuous random variables,
+$$
+E\left( X \wedge d\right) =\int_{0}^{d} S\left( x\right) dx \ \ \ \text{and} \ \ \ E( X-d) _{+} = \int_{d}^{\infty }S\left( x \right) dx
+$$
+
+\scalefont{1.25}
+
+# LER and More Risk Retention
+
+## Loss Elimination Ratio (LER)
+
+-   Consider an ordinary deductible, cost (amount of payment) per loss event 
+
+-   \textcolor{blue}{Loss elimination ratio} at deductible $d$ is
+\begin{eqnarray*}
+LER&=&\frac{\mathrm{E~}(X\wedge d)}{E(X)}\\
+&=&\frac{\text{limited exp value}}{\text{exp value}}
+\end{eqnarray*}
+What fraction of the losses have been eliminated by introducing the deductible?
+
+
+*Example.* Losses have a lognormal distribution with $\mu=6$ and $\sigma=2$. There is a deductible of 2,000 
+
+Determine the loss elimination ratio
+
+
+
+## Risk Retention Function II
+
+-   Combining three special cases of coverage modifications (deductible, limit, coinsurance) results in
+$$
+g(x) =
+\begin{cases}
+0      & x \le d\\
+c(x-d) & d < x \le u \\
+c(u-d) & x > u .
+\end{cases}
+$$ 
+
+-   Think about these as parameters in a contract between a policyholder and an insurer and so represent modifications of the underlying contract 
+
+-   Note: $g(X)$ = $c\left((X \wedge u) - (X \wedge d)\right)$
+
+
+
