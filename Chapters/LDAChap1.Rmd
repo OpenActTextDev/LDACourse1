@@ -31,11 +31,11 @@ In this section, you learn how to:
 #### Overheads: Insurance Relevance (Click Tab to View) {-}
 
 <div class="tab">
-  <button class="tablinks" onclick="openTab(event, 'InsuranceRelevanceB')">A. Relevance of Insurance</button>
-  <button class="tablinks" onclick="openTab(event, 'InsuranceRelevanceC')">B. Analytics and Loss Data Insurance</button>
-  <button class="tablinks" onclick="openTab(event, 'InsuranceRelevanceD')">C. What is Analytics?</button>
-  <button class="tablinks" onclick="openTab(event, 'InsuranceRelevanceE')">D. Insurance Processes</button>     <button class="tablinks" onclick="openTab(event, 'InsuranceRelevanceA')">E. Relevance of Analytics</button>
-  </div>
+<button class="tablinks" onclick="openTab(event, 'InsuranceRelevanceA')">A. Relevance of Insurance</button>
+<button class="tablinks" onclick="openTab(event, 'InsuranceRelevanceB')">B. Analytics and Loss Data</button>
+<button class="tablinks" onclick="openTab(event, 'InsuranceRelevanceC')">C. What is Analytics?</button>
+<button class="tablinks" onclick="openTab(event, 'InsuranceRelevanceD')">D. Insurance Processes</button>  <button class="tablinks" onclick="openTab(event, 'InsuranceRelevanceE')">E. Relevance of Analytics</button>
+</div>
 
 
 <div id="InsuranceRelevanceA" class="tabcontent">
