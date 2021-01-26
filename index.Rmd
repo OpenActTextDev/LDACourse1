@@ -96,7 +96,10 @@ The project goal is to have the actuarial community author our textbooks in a co
 
 <br>
 
--  **Miyuki Ebisaki**, Sompo Research Institute
+<img src = "ContributorPics\MiukiEbisaki.jpg" width = "150" height = "180" style = "float:right; margin-left: 10px; margin-top: 7px" />
+
+
+-  **Miyuki Ebisaki** is a Senior Research Officer of SOMPO Research Institute Inc. in Japan. Her research work is in the area of insurance, health care, social economy and new technologies. She has been working in domestic and foreign insurers in Japan and in the UK. She has various experiences both in non-life and life insurance; including product development, chief actuary, M&A and risk management. In May 2020, she was elected as a member of the ASTIN board. 
 
 <br>
 

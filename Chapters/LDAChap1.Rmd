@@ -20,7 +20,7 @@ In this section, you learn how to:
 
 ***
 
-####  Video: Insurance Relevance 
+####  Video: Insurance and Analytics {-}
 
 </center>
 
@@ -28,7 +28,7 @@ In this section, you learn how to:
 
 </center>
 
-#### Overheads: Insurance Relevance (Click Tab to View) {-}
+#### Overheads: Insurance and Analytics (Click Tab to View) {-}
 
 <div class="tab">
 <button class="tablinks" onclick="openTab(event, 'InsuranceRelevanceA')">A. Relevance of Insurance</button>
