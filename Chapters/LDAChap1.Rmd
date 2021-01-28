@@ -239,7 +239,56 @@ success_msg("Getting started is always the hardest thing to do. Excellent start!
 
 ## Property Fund Claim Severity 
 
-####  (Placeholder) Video Claim Severity for the Wisconsin Property Fund - Yvonne {-}
+####  Video: Claim Severity for the Wisconsin Property Fund  {-}
+
+<center>
+
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25717641/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_taqshju0&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_x5a2ll0z" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *"  frameborder="0" title="Kaltura Player"></iframe>
+
+</center>
+
+#### Overheads: Claim Severity for the Wisconsin Property Fund (Click Tab to View) {-}
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'PropertyFundSeverityA')">A. Severity Distribution (2010)</button>
+  <button class="tablinks" onclick="openTab(event, 'PropertyFundSeverityB')">B. Claims Severity - R Code</button>
+  <button class="tablinks" onclick="openTab(event, 'PropertyFundSeverityC')">C. Claim Outcomes and Coverage by Year</button>
+  <button class="tablinks" onclick="openTab(event, 'PropertyFundSeverityD')">D. Analysis by Year - R Code</button>
+  <button class="tablinks" onclick="openTab(event, 'PropertyFundSeverityE')">E. Claim Frequency and Severity, Deductibles, and Coverage</button>
+  <button class="tablinks" onclick="openTab(event, 'PropertyFundSeverityF')">F. Claim Frequency and Severity, Deductibles, and Coverage -
+R Code</button>
+  <button class="tablinks" onclick="openTab(event, 'PropertyFundSeverityF')">G. Cost of Insurance</button>
+      </div>
+
+<div id="PropertyFundSeverityA" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap1.pdf#page=23" width="100%" height="400"> </iframe>
+  </div>
+<div id="PropertyFundSeverityB" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap1.pdf#page=24" width="100%" height="400"> </iframe>
+  </div>
+<div id="PropertyFundSeverityC" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap1.pdf#page=25" width="100%" height="400"> </iframe>
+  </div>
+<div id="PropertyFundSeverityD" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap1.pdf#page=26" width="100%" height="400"> </iframe>
+  </div>
+<div id="PropertyFundSeverityE" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap1.pdf#page=27" width="100%" height="400"> </iframe>
+  </div>
+<div id="PropertyFundSeverityF" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap1.pdf#page=28" width="100%" height="400"> </iframe>
+  </div>
+<div id="PropertyFundSeverityG" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap1.pdf#page=29" width="100%" height="400"> </iframe>
+  </div>
+
 
 
 ### Exercise. Exploring Claim Severities
@@ -455,19 +504,19 @@ R Code</button>
 
 <div id="RatingVariablesA" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
-  <iframe src="./Overheads/LDA1.Chap1.pdf#page=30" width="100%" height="400"> </iframe>
+  <iframe src="./Overheads/LDA1.Chap1.pdf#page=31" width="100%" height="400"> </iframe>
   </div>
 <div id="RatingVariablesB" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
-  <iframe src="./Overheads/LDA1.Chap1.pdf#page=31" width="100%" height="400"> </iframe>
+  <iframe src="./Overheads/LDA1.Chap1.pdf#page=32" width="100%" height="400"> </iframe>
   </div>
 <div id="RatingVariablesC" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
-  <iframe src="./Overheads/LDA1.Chap1.pdf#page=32" width="100%" height="400"> </iframe>
+  <iframe src="./Overheads/LDA1.Chap1.pdf#page=33" width="100%" height="400"> </iframe>
   </div>
 <div id="RatingVariablesD" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
-  <iframe src="./Overheads/LDA1.Chap1.pdf#page=33" width="100%" height="400"> </iframe>
+  <iframe src="./Overheads/LDA1.Chap1.pdf#page=34" width="100%" height="400"> </iframe>
   </div>
 <div id="RatingVariablesE" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
