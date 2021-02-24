@@ -33,35 +33,35 @@ In this section, we learned how to:
 **Here is an example of coding the overheads**
 
 <div class="tab">
-  <button class="tablinks" onclick="openTab(event, 'ChapTemplateA')">A. Basic Terminology</button>
-  <button class="tablinks" onclick="openTab(event, 'ChapTemplateB')">B. Motivation</button>
-  <button class="tablinks" onclick="openTab(event, 'ChapTemplateC')">C. Models</button>
-  <button class="tablinks" onclick="openTab(event, 'ChapTemplateD')">D. Individual Risk Model</button>
-  <button class="tablinks" onclick="openTab(event, 'ChapTemplateE')">E. Moments and Generating Functions</button>
-  <button class="tablinks" onclick="openTab(event, 'ChapTemplateF')">F. Applications</button>
+  <button class="tablinks" onclick="openTab(event, 'Chap5IntroA')">A. Basic Terminology</button>
+  <button class="tablinks" onclick="openTab(event, 'Chap5IntroB')">B. Motivation</button>
+  <button class="tablinks" onclick="openTab(event, 'Chap5IntroC')">C. Models</button>
+  <button class="tablinks" onclick="openTab(event, 'Chap5IntroD')">D. Individual Risk Model</button>
+  <button class="tablinks" onclick="openTab(event, 'Chap5IntroE')">E. Moments and Generating Functions</button>
+  <button class="tablinks" onclick="openTab(event, 'Chap5IntroF')">F. Applications</button>
       </div>
 
-<div id="ChapTemplateA" class="tabcontent">
+<div id="Chap5IntroA" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap5.pdf#page=3" width="100%" height="400"> </iframe>
   </div>
-<div id="ChapTemplateB" class="tabcontent">
+<div id="Chap5IntroB" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap5.pdf#page=4" width="100%" height="400"> </iframe>
   </div>
-<div id="ChapTemplateC" class="tabcontent">
+<div id="Chap5IntroC" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap5.pdf#page=5" width="100%" height="400"> </iframe>
   </div>
-<div id="ChapTemplateD" class="tabcontent">
+<div id="Chap5IntroD" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap5.pdf#page=7" width="100%" height="400"> </iframe>
   </div>
-<div id="ChapTemplateE" class="tabcontent">
+<div id="Chap5IntroE" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap5.pdf#page=8" width="100%" height="400"> </iframe>
   </div>
-<div id="ChapTemplateF" class="tabcontent">
+<div id="Chap5IntroF" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap5.pdf#page=9" width="100%" height="400"> </iframe>
   </div>
