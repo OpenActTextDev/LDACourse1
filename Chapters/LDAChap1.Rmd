@@ -5,7 +5,7 @@
 
 This course introduces readers to methods of analyzing insurance data. Section \@ref(Sec:Intro) begins with a discussion of why the use of data is important in the insurance industry. Section \@ref(Sec:PredModApps) gives a general overview of the purposes of analyzing insurance data which is reinforced in the Section \@ref(Sec:LGPIF) case study. Naturally, there is a huge gap between the broad goals summarized in the overview and a case study application; this gap is covered through the methods and techniques of data analysis covered in the rest of the text.
 
-Although not needed to go through the tutorials, some users may wish to download the overheads used in the videos. <button download><a href="https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/Overheads/LDA1.Chap1.pdf">Download Chapter One overheads as a .pdf file.</a></button>
+Although not needed to go through the tutorials, some users may wish to download the overheads used in the videos. <button download><a href="https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/LDA1.Overheads/LDA1.Chap1.pdf">Download Chapter One overheads as a .pdf file.</a></button>
 
 
 ## Relevance of Analytics to Insurance Activities  {#Sec:Intro}
