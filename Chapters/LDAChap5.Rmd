@@ -1,0 +1,173 @@
+
+# Aggregate Loss Models 
+
+**Chapter description**
+
+This chapter introduces probability models for describing the aggregate (total) claims that arise from a portfolio of insurance contracts. We present two standard modeling approaches, the individual risk model and the collective risk model. Further, we discuss strategies for computing the distribution of the aggregate claims, including exact methods for special cases, recursion, and simulation. Finally, we examine the effects of individual policy modifications such as deductibles, coinsurance, and inflation, on the frequency and severity distributions, and thus on the aggregate loss distribution.
+
+Although not needed to go through the tutorials, some users may wish to download the overheads used in the videos. <button download><a href="https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/LDA1.Overheads/LDA1.Chap5.pdf">Download Chapter Five overheads as a .pdf file.</a></button>
+
+## Introduction 
+
+***
+
+**Start with section learning objectives, often taken directly from the book**
+
+In this section, we learned how to:
+
+- Record aggregated losses from an insurance system
+- Identify actuarial applications of aggregate loss models
+
+***
+
+####  Video: Introduction to Aggregate Loss Models {-}
+
+<center>
+
+<iframe id="kaltura_player"  src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25717641/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_bock2cl4&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_1bqvxhby" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *"  frameborder="0" title="Kaltura Player"></iframe>
+
+</center>
+
+#### Overheads: Template - Insert Title Here (Click Tab to View) {-}
+
+**Here is an example of coding the overheads**
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'ChapTemplateA')">A. Basic Terminology</button>
+  <button class="tablinks" onclick="openTab(event, 'ChapTemplateB')">B. Motivation</button>
+  <button class="tablinks" onclick="openTab(event, 'ChapTemplateC')">C. Models</button>
+  <button class="tablinks" onclick="openTab(event, 'ChapTemplateD')">D. Individual Risk Model</button>
+  <button class="tablinks" onclick="openTab(event, 'ChapTemplateE')">E. Moments and Generating Functions</button>
+  <button class="tablinks" onclick="openTab(event, 'ChapTemplateF')">F. Applications</button>
+      </div>
+
+<div id="ChapTemplateA" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap5.pdf#page=3" width="100%" height="400"> </iframe>
+  </div>
+<div id="ChapTemplateB" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap5.pdf#page=4" width="100%" height="400"> </iframe>
+  </div>
+<div id="ChapTemplateC" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap5.pdf#page=5" width="100%" height="400"> </iframe>
+  </div>
+<div id="ChapTemplateD" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap5.pdf#page=7" width="100%" height="400"> </iframe>
+  </div>
+<div id="ChapTemplateE" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap5.pdf#page=8" width="100%" height="400"> </iframe>
+  </div>
+<div id="ChapTemplateF" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap5.pdf#page=9" width="100%" height="400"> </iframe>
+  </div>
+
+
+### Exercise. Claim Frequency
+
+**Next include one or two exercises per section. Here is an example.**
+
+**Assignment Text**
+
+The Wisconsin Property Fund data has already been read into a data frame called `Insample`. These data consist of claim experience for fund members over the years 2006-2010, inclusive. It includes the frequency of claims `Freq` as well as the claim year `Year`. The video explored the distribution of the claims frequency for year 2010; in this assignment, we replicate this analysis and conduct a similar investigation for year 2009.
+
+
+:::: {.blackbox data-latex=""}
+**Instructions**. For each year:
+
+
+-  Use the function [subset()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/subset) to create a smaller data set based on a single year.
+-  Define the frequency as a global variable.
+-  Use the function [length()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/length) to determine the number of observations in a vector.
+-  Use the function [mean()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/mean/) to calculate the average.
+-  Use the function [table()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/table) to tabulate the frequency distribution.
+::::
+
+
+```{r ex="LDA1.1.3.1", type="hint", tut=TRUE}
+Take some time to explore the online `R` documentation.
+
+Note the double equal signs `==` needed for the the `subset()` function.
+```
+
+
+```{r ex="LDA1.1.3.1", type="pre-exercise-code", tut=TRUE}
+Insample <- read.csv("https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/Data/Insample.csv", header=T,
+                      na.strings=c("."), stringsAsFactors=FALSE)
+```
+
+
+```{r ex="LDA1.1.3.1", type="sample-code", tut=TRUE}
+#  Analysis for Year 2010
+Insample2010 <- subset(Insample, Year==2010)
+Freq2010 <- Insample2010$Freq
+length(Freq2010)
+mean(Freq2010)
+table(Freq2010)
+
+#  Analysis for Year 2009
+Insample2009 <- ___
+Freq2009 <- ___
+length(___)
+mean(___)
+table(___)
+```
+
+
+```{r ex="LDA1.1.3.1", type="solution", tut=TRUE}
+#  Analysis for Year 2010
+Insample2010 <- subset(Insample, Year==2010)
+Freq2010 <- Insample2010$Freq
+length(Freq2010)
+mean(Freq2010)
+table(Freq2010)
+
+#  Analysis for Year 2009
+Insample2009 <- subset(Insample, Year==2009)
+Freq2009 <- Insample2009$Freq
+length(Freq2009)
+mean(Freq2009)
+table(Freq2009)
+```
+
+```{r ex="LDA1.1.3.1", type="sct", tut=TRUE}
+success_msg("Getting started is always the hardest thing to do. Excellent start!")
+```
+
+**Finish the section with quizzes from the book. We can modify them, if needed.**
+
+```{r child = './Quizzes/Quiz51.html', eval = QUIZ}
+```
+
+## Tweedie Distribution 
+
+
+**Start with section learning objectives, often taken directly from the book**
+
+In this section, we use **zzz**. You learn how to:
+
+- zz
+- zz
+- zz.
+
+***
+
+
+
+####  Video: Tweedie Distributions {-}
+
+<center>
+
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25717641/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_lxnu6a93&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_jjd6r5f9" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *"  frameborder="0" title="Kaltura Player"></iframe>
+
+</center>
+
+
+
+```{r child = './Quizzes/Quiz53.html', eval = QUIZ}
+```
+

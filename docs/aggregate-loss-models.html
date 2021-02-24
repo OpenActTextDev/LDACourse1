@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Chapter Template - Insert Title Here | Loss Data Analytics: Short Course</title>
+  <title>Chapter 2 Aggregate Loss Models | Loss Data Analytics: Short Course</title>
   <meta name="description" content="This is an interactive, online, freely available short course. It will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 Chapter Template - Insert Title Here | Loss Data Analytics: Short Course" />
+  <meta property="og:title" content="Chapter 2 Aggregate Loss Models | Loss Data Analytics: Short Course" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="https://github.com/OpenActTextDev/LDAShortCourse1" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Chapter Template - Insert Title Here | Loss Data Analytics: Short Course" />
+  <meta name="twitter:title" content="Chapter 2 Aggregate Loss Models | Loss Data Analytics: Short Course" />
   
   <meta name="twitter:description" content="This is an interactive, online, freely available short course. It will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="aggregate-loss-models.html"/>
-
+<link rel="prev" href="introduction-to-loss-data-analytics.html"/>
+<link rel="next" href="chapter-template-insert-title-here.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -496,71 +496,66 @@ var submitAnswer = function() {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="chapter-template---insert-title-here" class="section level1">
-<h1><span class="header-section-number">Chapter 3</span> Chapter Template - Insert Title Here</h1>
+<div id="aggregate-loss-models" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Aggregate Loss Models</h1>
 <p><strong>Chapter description</strong></p>
-<p><strong>Start with a chapter intro, often taken directly from the book</strong></p>
-<hr />
-<p><strong>Also nice to include a downloadable link to chapter overheads.</strong></p>
-<p>Although not needed to go through the tutorials, some users may wish to download the overheads used in the videos. <button download><a href="https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/LDA1.Overheads/LDA1.Chap2.pdf">Download Chapter Two overheads as a .pdf file.</a></button></p>
-<hr />
-<div id="section-template---insert-title-here" class="section level2">
-<h2><span class="header-section-number">3.1</span> Section Template - Insert Title Here</h2>
+<p>This chapter introduces probability models for describing the aggregate (total) claims that arise from a portfolio of insurance contracts. We present two standard modeling approaches, the individual risk model and the collective risk model. Further, we discuss strategies for computing the distribution of the aggregate claims, including exact methods for special cases, recursion, and simulation. Finally, we examine the effects of individual policy modifications such as deductibles, coinsurance, and inflation, on the frequency and severity distributions, and thus on the aggregate loss distribution.</p>
+<p>Although not needed to go through the tutorials, some users may wish to download the overheads used in the videos. <button download><a href="https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/LDA1.Overheads/LDA1.Chap5.pdf">Download Chapter Five overheads as a .pdf file.</a></button></p>
+<div id="introduction" class="section level2">
+<h2><span class="header-section-number">2.1</span> Introduction</h2>
 <hr />
 <p><strong>Start with section learning objectives, often taken directly from the book</strong></p>
-<p>In this section, we use <strong>zzz</strong>. You learn how to:</p>
+<p>In this section, we learned how to:</p>
 <ul>
-<li>zz</li>
-<li>zz</li>
-<li>zz.</li>
+<li>Record aggregated losses from an insurance system</li>
+<li>Identify actuarial applications of aggregate loss models</li>
 </ul>
 <hr />
-<div id="video-template---insert-title-here" class="section level4 unnumbered">
-<h4>Video: Template - Insert Title Here</h4>
-<p><strong>Insert video location here. Right now hosted by UW-Madison</strong></p>
+<div id="video-introduction-to-aggregate-loss-models" class="section level4 unnumbered">
+<h4>Video: Introduction to Aggregate Loss Models</h4>
 <center>
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25717641/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_hoil8k0e&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_j4brj49g" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25717641/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_bock2cl4&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_1bqvxhby" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
 </iframe>
 </center>
 </div>
-<div id="overheads-template---insert-title-here-click-tab-to-view-1" class="section level4 unnumbered">
+<div id="overheads-template---insert-title-here-click-tab-to-view" class="section level4 unnumbered">
 <h4>Overheads: Template - Insert Title Here (Click Tab to View)</h4>
 <p><strong>Here is an example of coding the overheads</strong></p>
 <div class="tab">
-<button class="tablinks" onclick="openTab(event, 'ChapTemplateA')">A. Wisconsin Property Fund</button>
-<button class="tablinks" onclick="openTab(event, 'ChapTemplateB')">B. LGPIF Policyholder A</button>
-<button class="tablinks" onclick="openTab(event, 'ChapTemplateC')">C. LGPIF Policyholder B</button>
-<button class="tablinks" onclick="openTab(event, 'ChapTemplateD')">D. Property Fund</button>
-<button class="tablinks" onclick="openTab(event, 'ChapTemplateE')">E. Claims Frequency - R Code</button>
-<button class="tablinks" onclick="openTab(event, 'ChapTemplateF')">F. Claims Frequency (2010)</button>
+<button class="tablinks" onclick="openTab(event, 'ChapTemplateA')">A. Basic Terminology</button>
+<button class="tablinks" onclick="openTab(event, 'ChapTemplateB')">B. Motivation</button>
+<button class="tablinks" onclick="openTab(event, 'ChapTemplateC')">C. Models</button>
+<button class="tablinks" onclick="openTab(event, 'ChapTemplateD')">D. Individual Risk Model</button>
+<button class="tablinks" onclick="openTab(event, 'ChapTemplateE')">E. Moments and Generating Functions</button>
+<button class="tablinks" onclick="openTab(event, 'ChapTemplateF')">F. Applications</button>
 </div>
 <div id="ChapTemplateA" class="tabcontent">
 <span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
-<iframe src="./Overheads/LDA1.Chap1.pdf#page=16" width="100%" height="400"> </iframe>
+<iframe src="./Overheads/LDA1.Chap5.pdf#page=3" width="100%" height="400"> </iframe>
 </div>
 <div id="ChapTemplateB" class="tabcontent">
 <span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
-<iframe src="./Overheads/LDA1.Chap1.pdf#page=17" width="100%" height="400"> </iframe>
+<iframe src="./Overheads/LDA1.Chap5.pdf#page=4" width="100%" height="400"> </iframe>
 </div>
 <div id="ChapTemplateC" class="tabcontent">
 <span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
-<iframe src="./Overheads/LDA1.Chap1.pdf#page=18" width="100%" height="400"> </iframe>
+<iframe src="./Overheads/LDA1.Chap5.pdf#page=5" width="100%" height="400"> </iframe>
 </div>
 <div id="ChapTemplateD" class="tabcontent">
 <span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
-<iframe src="./Overheads/LDA1.Chap1.pdf#page=19" width="100%" height="400"> </iframe>
+<iframe src="./Overheads/LDA1.Chap5.pdf#page=7" width="100%" height="400"> </iframe>
 </div>
 <div id="ChapTemplateE" class="tabcontent">
 <span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
-<iframe src="./Overheads/LDA1.Chap1.pdf#page=20" width="100%" height="400"> </iframe>
+<iframe src="./Overheads/LDA1.Chap5.pdf#page=8" width="100%" height="400"> </iframe>
 </div>
 <div id="ChapTemplateF" class="tabcontent">
 <span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
-<iframe src="./Overheads/LDA1.Chap1.pdf#page=21" width="100%" height="400"> </iframe>
+<iframe src="./Overheads/LDA1.Chap5.pdf#page=9" width="100%" height="400"> </iframe>
 </div>
 </div>
-<div id="exercise.-claim-frequency-2" class="section level3">
-<h3><span class="header-section-number">3.1.1</span> Exercise. Claim Frequency</h3>
+<div id="exercise.-claim-frequency-1" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> Exercise. Claim Frequency</h3>
 <p><strong>Next include one or two exercises per section. Here is an example.</strong></p>
 <p><strong>Assignment Text</strong></p>
 <p>The Wisconsin Property Fund data has already been read into a data frame called <code>Insample</code>. These data consist of claim experience for fund members over the years 2006-2010, inclusive. It includes the frequency of claims <code>Freq</code> as well as the claim year <code>Year</code>. The video explored the distribution of the claims frequency for year 2010; in this assignment, we replicate this analysis and conduct a similar investigation for year 2009.</p>
@@ -576,22 +571,58 @@ var submitAnswer = function() {
 </div>
 <p><strong>Finish the section with quizzes from the book. We can modify them, if needed.</strong></p>
 <script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
-<div id="surveyElement13">
+<div id="surveyElement51">
 
 </div>
-<div id="surveyResult13">
+<div id="surveyResult51">
 
 </div>
 <h5 style="text-align: center;">
-<a id="display.Quiz13.1" href="javascript:toggleQuiz
-('display.Quiz13.2','display.Quiz13.1');"><i><strong>Show Quiz Solution</strong></i></a>
+<a id="display.Quiz51.1" href="javascript:toggleQuiz
+('display.Quiz51.2','display.Quiz51.1');"><i><strong>Show Quiz Solution</strong></i></a>
 </h5>
-<div id="display.Quiz13.2" style="display: none">
-<p id="Quiz13Soln">
+<div id="display.Quiz51.2" style="display: none">
+<p id="Quiz51Soln">
 </p>
 <hr />
 </div>
-<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz13.js">
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz51.js">
+</script>
+</div>
+</div>
+<div id="tweedie-distribution" class="section level2">
+<h2><span class="header-section-number">2.2</span> Tweedie Distribution</h2>
+<p><strong>Start with section learning objectives, often taken directly from the book</strong></p>
+<p>In this section, we use <strong>zzz</strong>. You learn how to:</p>
+<ul>
+<li>zz</li>
+<li>zz</li>
+<li>zz.</li>
+</ul>
+<hr />
+<div id="video-tweedie-distributions" class="section level4 unnumbered">
+<h4>Video: Tweedie Distributions</h4>
+<center>
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25717641/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_lxnu6a93&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_jjd6r5f9" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
+</iframe>
+</center>
+<script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
+<div id="surveyElement53">
+
+</div>
+<div id="surveyResult53">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz53.1" href="javascript:toggleQuiz
+('display.Quiz53.2','display.Quiz53.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz53.2" style="display: none">
+<p id="Quiz53Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz53.js">
 </script>
 
 </div>
@@ -602,8 +633,8 @@ var submitAnswer = function() {
           </div>
         </div>
       </div>
-<a href="aggregate-loss-models.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="introduction-to-loss-data-analytics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chapter-template-insert-title-here.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
