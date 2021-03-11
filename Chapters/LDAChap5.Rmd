@@ -67,74 +67,83 @@ In this section, we learned how to:
   </div>
 
 
-### Exercise. Claim Frequency
+### Exercise. Individual Risk Model
 
-**Next include one or two exercises per section. Here is an example.**
-
-**Assignment Text**
-
-The Wisconsin Property Fund data has already been read into a data frame called `Insample`. These data consist of claim experience for fund members over the years 2006-2010, inclusive. It includes the frequency of claims `Freq` as well as the claim year `Year`. The video explored the distribution of the claims frequency for year 2010; in this assignment, we replicate this analysis and conduct a similar investigation for year 2009.
-
+  **Assignment Text**
+  
+In this assignment, we will revisit Example 5.2.1 in the textbook and reproduce the theoretical results using simulation in `R`.
 
 :::: {.blackbox data-latex=""}
-**Instructions**. For each year:
-
-
--  Use the function [subset()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/subset) to create a smaller data set based on a single year.
--  Define the frequency as a global variable.
--  Use the function [length()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/length) to determine the number of observations in a vector.
--  Use the function [mean()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/mean/) to calculate the average.
--  Use the function [table()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/table) to tabulate the frequency distribution.
+**Instructions**
+-  Use the function [rbinom()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Binomial) to simulate the number of claims.
+-  Use the function [runif()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/Uniform) to claim amounts.
+-  You may also check the variations of the simulation results when you use larger or smaller sample sizes for the simulations.
 ::::
-
-
-```{r ex="LDA1.1.3.1", type="hint", tut=TRUE}
-Take some time to explore the online `R` documentation.
-
-Note the double equal signs `==` needed for the the `subset()` function.
+  
+  
+```{r ex="LDA5.5.3.1", type="hint", tut=TRUE}
+Note that we need to simulate claim amounts that corresponds to the number of claims so that the parameters used in `runif()` function may depend on the number of simulated claims.
 ```
 
 
-```{r ex="LDA1.1.3.1", type="pre-exercise-code", tut=TRUE}
-Insample <- read.csv("https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/Data/Insample.csv", header=T,
-                      na.strings=c("."), stringsAsFactors=FALSE)
+#```{r ex="LDA5.5.3.1", type="pre-exercise-code", tut=TRUE}
+#Insample <- read.csv("https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/Data/Insample.csv", header=T,
+#                     na.strings=c("."), stringsAsFactors=FALSE)
+#```
+
+
+```{r ex="LDA5.5.3.1", type="sample-code", tut=TRUE}
+set.seed(1000)     # For reproducibility of results
+r  <- 10000        # Number of observations to simulate for each policy
+q1 <- 0.05         # Probability of claim from policy 1
+m1 <- 0; M1 <- ___ # Parameters for severity distribution X_1
+q2 <- ____         # Probability of claim from policy 2
+m2 <- _; M2 <- 300 # Parameters for severity distribution X_2
+n1 <- ____         # Number of type 1 policies
+n2 <- 200          # Number of type 2 policies
+
+S <- rep(NA, r) # Initialize an empty vector to store S observations
+
+n1 <- rbinom(r, size=n1, prob=q1) # Generate r=10000 observations of N1 from Binomial
+n2 <- rbinom(r, size=__, prob=__) # Generate r=10000 observations of N2 from Binomial
+
+for(j in 1:r){ 
+  x1_j <- runif(n1[j], min=m1, max=M1)
+  x2_j <- runif(_____, min=__, max=__)
+  s_j  <- sum(x1_j)+sum(___) # Calculate the aggregate loss s_j
+  S[j] <- s_j # Store s_j in the vector of observations
+}
+mean(S) # Compare to theoretical value of 2,800
+var(S)  # Compare to theoretical value of 600,467
 ```
 
 
-```{r ex="LDA1.1.3.1", type="sample-code", tut=TRUE}
-#  Analysis for Year 2010
-Insample2010 <- subset(Insample, Year==2010)
-Freq2010 <- Insample2010$Freq
-length(Freq2010)
-mean(Freq2010)
-table(Freq2010)
+```{r ex="LDA5.5.3.1", type="solution", tut=TRUE}
+set.seed(1000)     # For reproducibility of results
+r  <- 10000        # Number of observations to simulate for each policy
+q1 <- 0.05         # Probability of claim from policy 1
+m1 <- 0; M1 <- 400 # Parameters for severity distribution X_1
+q2 <- 0.06         # Probability of claim from policy 2
+m2 <- 0; M2 <- 300 # Parameters for severity distribution X_2
+n1 <- 100          # Number of type 1 policies
+n2 <- 200          # Number of type 2 policies
 
-#  Analysis for Year 2009
-Insample2009 <- ___
-Freq2009 <- ___
-length(___)
-mean(___)
-table(___)
+S <- rep(NA, r) # Initialize an empty vector to store S observations
+
+n1 <- rbinom(r, size=n1, prob=q1) # Generate r=10000 observations of N1 from Binomial
+n2 <- rbinom(r, size=n2, prob=q2) # Generate r=10000 observations of N2 from Binomial
+
+for(j in 1:r){ 
+  x1_j <- runif(n1[j], min=m1, max=M1)
+  x2_j <- runif(n2[j], min=m2, max=M2)
+  s_j  <- sum(x1_j)+sum(x2_j) # Calculate the aggregate loss s_j
+  S[j] <- s_j # Store s_j in the vector of observations
+}
+mean(S) # Compare to theoretical value of 2,800
+var(S)  # Compare to theoretical value of 600,467
 ```
 
-
-```{r ex="LDA1.1.3.1", type="solution", tut=TRUE}
-#  Analysis for Year 2010
-Insample2010 <- subset(Insample, Year==2010)
-Freq2010 <- Insample2010$Freq
-length(Freq2010)
-mean(Freq2010)
-table(Freq2010)
-
-#  Analysis for Year 2009
-Insample2009 <- subset(Insample, Year==2009)
-Freq2009 <- Insample2009$Freq
-length(Freq2009)
-mean(Freq2009)
-table(Freq2009)
-```
-
-```{r ex="LDA1.1.3.1", type="sct", tut=TRUE}
+```{r ex="LDA5.5.3.1", type="sct", tut=TRUE}
 success_msg("Getting started is always the hardest thing to do. Excellent start!")
 ```
 
