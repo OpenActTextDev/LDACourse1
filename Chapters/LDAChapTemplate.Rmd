@@ -1,5 +1,10 @@
 
+
+
 # Chapter Template - Insert Title Here 
+
+This template illustrates how the pieces of a short course chapter fit together in `R` markdown. It is not stand-alone; it requires .css and javascript files to support it. You can run this within the `R bookdown` course that we have developed; simply call it from the `bookdown.yml` file.
+
 
 **Chapter description**
 
@@ -97,20 +102,20 @@ The Wisconsin Property Fund data has already been read into a data frame called 
 ::::
 
 
-```{r ex="LDA1.1.3.1", type="hint", tut=TRUE}
+```{r ex="LDA1.Template", type="hint", tut=TRUE}
 Take some time to explore the online `R` documentation.
 
 Note the double equal signs `==` needed for the the `subset()` function.
 ```
 
 
-```{r ex="LDA1.1.3.1", type="pre-exercise-code", tut=TRUE}
+```{r ex="LDA1.Template", type="pre-exercise-code", tut=TRUE}
 Insample <- read.csv("https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/Data/Insample.csv", header=T,
                       na.strings=c("."), stringsAsFactors=FALSE)
 ```
 
 
-```{r ex="LDA1.1.3.1", type="sample-code", tut=TRUE}
+```{r ex="LDA1.Template", type="sample-code", tut=TRUE}
 #  Analysis for Year 2010
 Insample2010 <- subset(Insample, Year==2010)
 Freq2010 <- Insample2010$Freq
@@ -127,7 +132,7 @@ table(___)
 ```
 
 
-```{r ex="LDA1.1.3.1", type="solution", tut=TRUE}
+```{r ex="LDA1.Template", type="solution", tut=TRUE}
 #  Analysis for Year 2010
 Insample2010 <- subset(Insample, Year==2010)
 Freq2010 <- Insample2010$Freq
@@ -143,7 +148,7 @@ mean(Freq2009)
 table(Freq2009)
 ```
 
-```{r ex="LDA1.1.3.1", type="sct", tut=TRUE}
+```{r ex="LDA1.Template", type="sct", tut=TRUE}
 success_msg("Getting started is always the hardest thing to do. Excellent start!")
 ```
 

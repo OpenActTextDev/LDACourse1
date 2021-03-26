@@ -1,11 +1,13 @@
 ---
 title: "Aggregate Loss Models"
 author: "A short course authored by the Actuarial Community"
-date: "19 Jan 2021"
-output: 
+date: "21 Jan 2021"
+output:
   beamer_presentation:
     includes:
       in_header: preamble.tex
+  ioslides_presentation: default
+  slidy_presentation: default
 ---
 
 
@@ -19,60 +21,84 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Basic Terminology
 
--   \textcolor{blue}{Claim} - indemnification upon the occurrence of an insured event 
--   \textcolor{blue}{Loss} - some authors use claim and loss interchangeably, others think of loss as the amount suffered by the insured whereas claim is the amount paid by the insurer 
+-   \textcolor{blue}{Loss} - amount of financial losses suffered by the insured
+-   \textcolor{blue}{Claim} - indemnification upon the occurrence of an insured event. Some authors use claim and loss interchangeably 
 -   \textcolor{blue}{Frequency} - how often an insured event occurs (claim count) in one period (typically six months or one year) 
--   \textcolor{blue}{Severity} - Amount, or size, of each payment for an insured event 
+-   \textcolor{blue}{Severity} - Amount, or size, of losses for an insured event 
 -   \textcolor{blue}{Aggregate Loss} - Total amount paid for a defined set of insureds in one period (typically six months or one year)
  
-## Motivation
  
--  Goal: Build a model for the total payments by an insurance system
-   -   Aggregate loss for a single policy, a group insurance contract, a business line, an entire company, etc
-   -   Frequency and severity models are building blocks
--  Applications
+## Goal
+ 
+-  Build a model for the total payments by an insurance system in a fixed time period
+-  The insurance system could be a single policy or a portfolio of policies
+-  Frequency and severity models are building blocks
+
+
+## Models
+ 
+-  Two ways to build a model for aggregate losses on a defined set of insurance contracts
+-  Individual Risk Model: record losses for each contract and then add them up
+-  Collective Risk Model (a.k.a. compound model): record losses as claims are made and then add them up
+
+
+## Example
+ 
+-  An insurance portfolio of three policies:
+\begin{center}
+\begin{tabular}{cccc}\hline
+    Policy ID & Claim ID & Loss Amount \\ \hline
+      1 & - & - \\
+      2 & 1 & 10 \\
+      3 & 1 & 10 \\
+      3 & 2 & 10 \\  
+      4 & 1 & 10 \\
+      4 & 2 & 10 \\  
+      4 & 3 & 10 \\  \hline
+  \end{tabular}
+\end{center}
+
+\bigskip
+ 
+-  Aggregate losses:  
+   -  Individual Risk Model: $0 + 10 + 20 +30 = 60$
+   -  Collective Risk Model: $10 + 10 + 10 + 10 + 10 + 10= 60$
+
+
+## Applications
+ 
+-  Actuarial applications of aggregate loss models
    -   Ratemaking
    -   Capital management
    -   Risk financing
-  
-## Models
+
+
+## Summary
  
--  Two ways to build a model for aggregate losses
-   -   in a fixed time period, and
-   -   on a defined set of insurance contracts
-  
--   Collective Risk Model (a.k.a. compound model): record losses as claims are made and then add them up
--   Individual Risk Model: record losses for each contract and then add them up
+In this section, we learned how to:
+
+- Record aggregate losses from an insurance system
+- Identify actuarial applications of aggregate loss models 
+
+   
+   
 
 # Individual Risk Model
 
 ## Individual Risk Model
  
--    The **individual risk model** represents the aggregate loss as a sum of a fixed number of insurance contracts
+The **individual risk model** represents the aggregate loss as a sum of a fixed number of insurance contracts
 $$
 S =X_1 + \ldots + X_n,
 $$
 where
   
 -    $S$ denotes the aggregate loss for $n$ (a fixed number) contracts
--    $X_i$ denotes the loss cost for the $i$th contract for $i=1,\ldots,n$
+-    $X_i$ denotes the loss for the $i$th contract for $i=1,\ldots,n$
 -    $X_i$ are assumed to independent but are not necessarily identically distributed, due to different coverage or exposure
 -    $X_i$ usually has a probability mass at zero
   
-## Moments and Generating Functions
- 
--   The **individual risk model** represents the aggregate loss as a sum of a fixed number of insurance contracts
-$$
-S = X_1 + \ldots + X_n,
-$$
- -  It is straightforward to show
-
-$$ 
-\begin{array}{ll}
-{\rm E}(S) &= \sum_{i=1}^{n} {\rm E}(X_i), \ \ \ \   {\rm Var}(S) = \sum_{i=1}^{n} {\rm Var}(X_i)\\
-    P_S(z) &= \prod_{i=1}^{n}P_{X_i}(z), \ \ \ \    M_S(z) = \prod_{i=1}^{n}M_{X_i}(z) \\
- \end{array}
-$$
+  
 
 ## Applications
  
@@ -91,11 +117,8 @@ f_{X_i}(x) = \left\{\begin{array}{ll}
 \end{array}
 $$
 
--   Calculate ${\rm E}(S)$, ${\rm Var}(S)$, $P_S(z)$, and $M_S(z)$
 
--   In P\&C, we often use the Tweedie distribution, which has a probability mass at zero, to model the loss cost $X_i$.
- 
-## A General Approach
+## Applications
  
 -   Two-part framework
 $$
@@ -110,71 +133,90 @@ $$
 -   $B_i$, a r.v. with nonnegative support, represents the amount of losses of policy $i$, given that a claim is made. It can follow a degenerate distribution such as the life insurance example.
 
 
-## A General Approach
+
+
+## Example
  
-Denote $\mu_i={\rm E}(B_i)$ and $\sigma_i^2={\rm Var}(B_i)$, we show
+Consider the example of Wisconsin Property Fund. 
 
-$$
-\begin{array}{ll}
-    {\rm E}(X_i) &=  {\rm E}[{\rm E}(X_i|I_i)] = {\rm E}[{\rm E}(I_i\times B_i|I_i)]={\rm E}[I_i\times {\rm E}(B_i|I_i)]\\
-    &={\rm E}[I_i\times {\rm E}(B_i)]= {\rm E}(I_i)\times {\rm E}(B_i)=q_i\mu_i\\
-    {\rm Var}(X_i) & = {\rm E}(X_i^2) - {\rm E}(X_i)^2=q_i(1-q_i)\mu_i^2 + q_i\sigma_i^2\\
-    P_{X_i}(z)&={\rm E}(z^{X_i}) ={\rm E}(z^{I_i\times B_i}) ={\rm E}[ {\rm E}(z^{I_i\times B_i}|I_i)]\\
-    &= {\rm E}(z^{I_i\times B_i}|I_i=0)\times {\rm Pr}(I_i=0) \\
-    & \ \ \ \ \ + {\rm E}(z^{I_i\times B_i}|I_i=1)\times {\rm Pr}(I_i=1)\\
-    &=1-q_i+q_i P_{B_i}(z)\\
-    M_{X_i}(z)&=1-q_i+q_i M_{B_i}(z)
-\end{array}
-$$
+```{r}
+Insample <- read.csv("Insample.csv", header = T)
+Insample2010 <- subset(Insample, Year==2010)
 
-## Computing the Aggregate Loss Distribution
- 
--   Parametric approximations: use moment matching to estimate parameters
--   Analytic results: some special cases
--   Exact calculation: involves numerous convolutions (not covered)
- 
+I <- 1*(Insample2010$Freq>0)
+B <- Insample2010[which(Insample2010$Freq>0),]$y 
+```
 
-## Computing Aggregate Loss Distribution
+```{r}
+length(I)
+length(B)
+```
 
--   Parametric Approximations
--   When $n$ is large, use normal distribution
 
-$$
-   F_S(s)={\rm Pr}(S\leq s) = \Phi \left(\frac{s-\mu_S}{\sigma_S}\right)
-$$
-
-where $\mu_S={\rm E}(S)$ and $\sigma_S=\sqrt{{\rm Var}(S)}$.
--   When $n$ is small, use skewed distribution, e.g. lognormal
-$$
-   {\rm Pr}(S\leq s) = {\rm Pr}(\ln S\leq \ln s) = \Phi \left(\frac{\ln s-\mu_S}{\sigma_S}\right)
-$$
-
-where $\mu_S$ and $\sigma_S$ are found from
-
-$$
- \left\{
-   \begin{array}{ll}
-    \exp\{\mu_S+\sigma_S^2/2\}= {\rm E}(S) \\
-    \exp\{2\mu_S+2\sigma_S^2\}= {\rm E}(S^2) = {\rm E}(S)^2+{\rm Var}(S) \\
-    \end{array} \right.
-$$
- 
-## Computing Aggregate Loss Distribution
-
-Analytic Results Summary
-
--   Severity Distributions  
-    -   If $X_i\sim N(\mu_i,\sigma_i^2)$, then $S\sim N(\sum_{i=1}^{n}\mu_i,\sum_{i=1}^{n}\sigma_i^2)$
-    -   If $X_i\sim Exponential(\theta)$, then $S\sim Gamma(n,\theta)$
-    -   If $X_i\sim Gamma(\alpha_i,\theta)$, then $S\sim Gamma(\sum_{i=1}^n\alpha_i,\theta)$ \vspace{5mm}
--   Frequency Distributions
-    -   If $X_i\sim Poisson(\lambda_i)$, then $S\sim Poisson(\sum_{i=1}^{n}\lambda_i)$
-    -   If $X_i\sim Bin(m_i,q)$, then $S\sim Bin(\sum_{i=1}^n m_i,q)$
-    -   If $X_i\sim Geometric(\beta)$, then $S\sim NegBin(n,\beta)$
-    -   If $X_i\sim NegBin(r_i,\beta)$, then $S\sim NegBin(\sum_{i=1}^n r_i,\beta)$
+## Example
  
 
-# Collective Risk Model
+```{r}
+table(I)
+
+summary(B)
+```
+
+
+
+## Aggregate Loss Distribution
+ 
+The distribution of aggregate loss $S$ is defined as:
+$$F_S(s) = {\rm Pr}(X_1 + X_2 + \cdots +X_n \le s)$$
+
+-   In general, it is  difficult to evaluate
+-   When $X_i$, $i=1,\ldots,n$, are i.i.d., it is known as $n$-fold convolution of cdf of $X$ 
+ 
+
+## R Example #1
+
+
+```{r,warning = FALSE,message = FALSE,out.width = '0.6\\maxwidth',fig.align='center'} 
+library(distr)
+X <- Exp(rate=1); Y <- Lnorm(meanlog=1,sdlog=1)
+conv <- convpow(X+Y,1)             
+f.Z  <- d(conv)
+z <- seq(0,30,0.01)
+plot(z,f.Z(z), col="blue",type="l")
+``` 
+
+
+## R Example #2
+
+
+```{r,warning = FALSE,message = FALSE,out.width = '0.6\\maxwidth',fig.align='center'} 
+library(distr)
+X <- Exp(rate=1)
+conv <- convpow(X,10)             
+f.Z  <- d(conv)
+z <- seq(0,30,0.01)
+plot(z,f.Z(z), col="blue",type="l")
+``` 
+
+
+
+
+
+## Summary
+
+In this section, we learned how to:
+
+- Build an individual risk model for a portfolio of insurance contracts
+- Apply individual risk model to life and nonlife insurance 
+- Compute the distribution of aggregate losses from an individual risk model
+
+
+ 
+
+
+
+
+# Collective Risk Model - Part I
 
 ## Collective Risk Model
  
@@ -182,21 +224,27 @@ Analytic Results Summary
 $$
 S = X_1 + \ldots + X_N,
 $$
-with $S$ the aggregate loss of $N$ (a random number) individual claims $(X_1,\ldots,X_N)$
+with $S$ being the aggregate loss of $N$ (a random number) individual claims $(X_1,\ldots,X_N)$.
 
-Two building blocks: frequency $N$ and severity $X$
 
 -  Key assumptions
    -    Conditional on $N=n$, $X_1,\ldots,X_n$ are i.i.d. random variables
-   -    Frequency $N$ and severity $X$ are independent
+   -    The distribution of $N$ and the common distribution of $X$ are independent of each other.
+- Two building blocks: frequency $N$ and severity $X$
+
  
-## Model
+## Compound Distribution
  
-The assumptions suggest that we can build an aggregate loss model, the compound model, in three steps: 
-  
-1.    Develop a model for the frequency distribution of $N$, the primary distribution, based on data 
-2.    Develop a model for the severity distribution of $X$, the secondary distribution, based on data 
-3.    Using these two models, carry out the necessary calculations to obtain the distribution of $S$
+The cumulative distribution function (cdf) is $F_S(s)$. The probability density function (pdf) or probability mass function (pmf) is $f_S(s)$. Specifically,
+   
+$$
+\begin{array}{ll}
+   F_S(s) &= {\rm Pr}(S\leq s)\\
+   &= \sum_{n=0}^{\infty}{\rm Pr}(N=n)\cdot {\rm Pr}(S\leq s|N=n)\\
+   &=\sum_{n=0}^{\infty}{\rm Pr}(N=n)\cdot F_X^{*n}(s)\\ \\
+   f_S(s)&=\sum_{n=0}^{\infty}{\rm Pr}(N=n)\cdot f_X^{*n}(s)
+   \end{array}
+$$
  
 ## Moments
  
@@ -208,301 +256,279 @@ Using the law of iterated expectations to calculate the mean
 $$
   {\rm E}(S) = {\rm E}[{\rm E}(S|N)] = {\rm E}[N{\rm E}(X)] = {\rm E}(N){\rm E}(X)
 $$
+
 Using the law of total variation to calculate the variance
-$$  \begin{array}{ll}
+$$  
+\begin{array}{ll}
   {\rm Var}(S) &= {\rm E}[{\rm Var}(S|N)]+ {\rm Var}[{\rm E}(S|N)] \\
   &= {\rm E}[N{\rm Var}(X)] + {\rm Var}[N{\rm E}(X)]\\
   &={\rm E}(N){\rm Var}(X) + {\rm Var}(N){\rm E}(X)^2
-  \end{array}$$
-
-## Generating Functions
- 
-   The moment generating function (mgf) of $S$ is
+  \end{array}
 $$
+
+---
+## Moments - Example
+
+Consider model $S = X_1 + \ldots + X_N$ where
+
+- $N \sim Poisson(\lambda)$
+- $X \sim Gamma(shape = 1/\phi, scale=\phi\mu)$
+
+Using facts ${\rm E}(N) = {\rm Var}(N) = \lambda$, ${\rm E}(X)=\mu$, and ${\rm Var}(X)=\phi\mu^2$, one has
+$$
+  {\rm E}(S) = {\rm E}(N){\rm E}(X) = \lambda\mu
+$$
+and
+$$  
 \begin{array}{ll}
-M_S(z) &= E\left[e^{zS}\right] ={\rm E}\left[{\rm E}\left(e^{zS}|N\right)\right]\\
-&= {\rm E}\left[e^0\right]{\rm Pr}(N=0) \\
-& \ \ \ \ \ \ +\sum_{n=1}^{\infty} {\rm E}\left[e^{z(X_1+\ldots + zX_n)}|N=n\right] {\rm Pr}(N=n) \\
-&= {\rm Pr}(N=0)+\sum_{n=1}^{\infty} \prod_{i=1}^n {\rm E}\left[e^{zX_i}\right] {\rm Pr}(N=n) \\
-&= \sum_{n=0}^{\infty} {\rm Pr}(N=n)[M_X(z)]^n \\
-&= {\rm
- E}\left[M_X(z)^N\right] = P_N[M_X(z)]
-\end{array}
+  {\rm Var}(S) &={\rm E}(N){\rm Var}(X) + {\rm Var}(N){\rm E}(X)^2 = \lambda\mu^2(1+\phi)
+  \end{array}
 $$
- Similarly, the probability generating function (pgf) of $S$ is 
+---
+
  
- $$
- P_S(z) =P_N[P_X(z)]
- $$
-
-## Compound Distribution
+## Model Fitting
  
-The cumulative distribution function (cdf) is $F_S(s)$. The probability density function (pdf) of $S$ or probability mass function (pmf) is $f_S(s)$. Specifically,
-   
-$$
-\begin{array}{ll}
-   F_S(s) &= {\rm Pr}(S\leq s)\\
-   &= \sum_{n=0}^{\infty}{\rm Pr}(N=n)\cdot {\rm Pr}(S\leq s|N=n)\\
-   &=\sum_{n=0}^{\infty}{\rm Pr}(N=n)\cdot F_X^{*n}(s)\\ \\
-   f_S(s)&=\sum_{n=0}^{\infty}{\rm Pr}(N=n)\cdot f_X^{*n}(s)
-   \end{array}
-$$
-
-## Examples
+The assumptions suggest that we can build an aggregate loss model, the compound model, in three steps: 
+  
+1.    Develop a model for the frequency distribution of $N$, the primary distribution, based on data 
+2.    Develop a model for the severity distribution of $X$, the secondary distribution, based on data 
+3.    Using these two models, carry out the necessary calculations to obtain the distribution of $S$
  
-The frequency and severity distributions are summarized by:
+
+## Model Fitting
+
+Consider the example of Wisconsin Property Fund. 
 
 
-$$
-{\scriptsize
-\begin{array}{lcccccccccc}
-     \hline\hline
-     N & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & \\
-     f_N(n) & 0.05 & 0.10 & 0.15 & 0.20 & 0.25 & 0.15 & 0.06 & 0.03 & 0.01 & \\
-     \hline
-     X & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
-     f_X(x) & 0.150 & 0.200 & 0.250 & 0.125 & 0.075 & 0.050 & 0.050 & 0.050 & 0.025 & 0.025 \\
-     \hline\hline
-   \end{array}
-}
-$$
+```{r}
+Insample <- read.csv("Insample.csv", header = T)
+Insample2010 <- subset(Insample, Year==2010)
+```
+
+Number of policyholders: 
+```{r}
+nrow(Insample2010)
+```
 
 
-`R` demo
-
-## Stop-Loss Insurance
- 
-**Definition** Insurance on the aggregate losses, subject to a deductible, is called \textit{stop-loss insurance}. 
-
--   The expected cost of this insurance is  called the \textit{net stop-loss premium}.
--   It can be computed as ${\rm E}[(S-d)_{+}]$, where $S$ is the aggregate loss and $d$ is the deductible.
--   For any aggregate distribution:
-
-$$
-\begin{array}{ll}
-E[(S-d)_{+}]
-& =E(S)-E(S\wedge d) \\
-&=\int_0^{\infty}[1-F_S(s)]ds-\int_0^{d}[1-F_S(s)]ds \\
-&=\int_d^{\infty}[1-F_S(s)]ds
-\end{array}
-$$
 
 
-## Stop-loss Insurance
- 
-For a continuous distribution, the net stop-loss premium is
-$$
- {\rm E}[(S-d)_{+}]=\int_d^{\infty}(s-d)f_S(s)ds
-$$
-   For a discrete distribution, the net stop-loss premium is
- $$
- {\rm E}[(S-d)_{+}]=\sum_{s>d}(s-d)f_S(s)ds
- $$
+
+## Model Fitting
+
+The frequency model: $N$
+
+
+```{r,R.options = list(width = 50)}
+N <- Insample2010$Freq
+```
+
+
+```{r,R.options = list(width = 50)}
+table(N)
+```
+
+
+  
+## Model Fitting
+
+
+
+The severity model: $\bar{X}=(X_1+\ldots+X_n)$ for $N=n>0$
+
+```{r,R.options = list(width = 50)}
+Xbar <- Insample2010$yAvg[which(Insample2010$Freq>0)]
+```
+
+
+```{r,R.options = list(width = 50)}
+summary(Xbar)
+```
+
+  
+  
+  
+## Summary
+
+In this section, we learned how to:
+
+- Build a collective risk model for a portfolio of insurance contracts
+- Calculate mean and variance of the aggregate loss 
+- Fit frequency and severity components in a collective risk model
+
+
+
+
+
+# Collective Risk Model - Part II
+
+
 
 ## Computing the Aggregate Loss Distribution
  
-The computation of the compound distribution function of the aggregate loss $S$ is not an easy task
-$$
-F_S(s)=\sum_{n=0}^{\infty}{\rm Pr}(N=n)\cdot F_X^{*n}(s)
-$$
-   Several strategies:
+- Consider a collective risk model $$S=X_1+\cdots+X_N$$
+
+- Several numerical strategies:
   
   -   **direct calculation**: difficult part is the evaluation of $n$-fold convolutions
-  -   **approximating the distribution**: to avoid direct calculation
-  -   **recursive method**: considerable savings in computer time
-  -   **analytic results**: available only for select combinations
-  of frequency and severity
-  -   **Monte Carlo simulation**
-  
-## Computing the Aggregate Loss Distribution
- 
-Use parametric distributions to approximate the compound distribution
-  
--   When ${\rm E}(N)$ is large, the normal distribution provides a good approximation.
-    -  This is supported by central limit theorem as parameter $\lambda$ (Poisson), or $m$ (Bin), or $r$ (NegBin) goes to infinity 
-    
--   When ${\rm E}(N)$ is small, the distribution of $S$ is likely to be skewed.
-    -  This suggests using the lognormal or other skewed distributions, though no theoretical support
-
-## Computing the Aggregate Loss Distribution
- 
-   Use the recursive method, assuming
-  
--  severity distribution, $f_X(x)$, is defined on $0,1,2,\ldots,m$, representing a multiple of some convenient monetary unit
--  frequency distribution, $f_N(n)$, is a member of the $(a,b,1)$ class 
-
-$$
-f_S(s)=\cfrac{[p_1-(a+b)p_0]f_X(s)+\sum\limits_{y=1}^{\min(s,m)}(a+by/s)f_X(y)f_S(s-y)}{1-af_X(0)}
-$$
-
-## Analytic Results
- 
-For most choices of distributions of $N$ and $X$, the compound distributional values can only be obtained numerically
-
-   For certain combinations of choices, simple analytic results are available
-   
--   compound geometric-exponential
--   sum of independent compound Poisson
-
-## Analytic Results: Geometric-Exponential
- 
-**Example 1.** Determine the distribution of $S$ when the frequency distribution is geometric with parameter $\beta$ and the severity distribution is exponential with parameter $\theta$.
-   The mgf of $S$ is
-$$
-\begin{array}{ll}
-   M_S(z) & = P_N[M_X(z)] = P_N[(1-\theta z)^{-1}] \\
-   &= \left(1-\beta[(1-\theta z)^{-1}-1]\right)^{-1}\\
-   &=1+\cfrac{\beta}{1+\beta}\left(\textcolor{blue}{[1-\theta(1+\beta)z]^{-1}}-1\right)
-   \end{array}
-$$   
-
-## Analytic Results: Geometric-Exponential
- 
-   Note that
-$$   
-   \begin{array}{ll}
-   M_{X^{*}}(z) & = [1-\color{blue}{\theta(1+\beta)}z]^{-1} \\
-   P_{N^{*}}(z) & = 1+ \color{blue}{\cfrac{\beta}{1+\beta}}(z-1)
-   \end{array}
-$$
-Therefore, the mgf of $S$ can also be represented as
- 
-$$
- M_S(z)  = P_N[M_X(z)] = P_{N^{*}}[M_{X^{*}}(z)]
-$$
-  i.e., $S = X_1^{*} + \cdots + X^{*}_{N^{*}}$  where
-  
--   $N^{*}\sim Bin(1, \beta/(1+\beta))$ and 
--   $X^{*}\sim Exponential(\theta(1+\beta))$
-
-## Analytic Results: Geometric-Exponential
- 
-   It is a two-component mixture distribution:
-$$
- \begin{array}{ll}
-   S = \left\{\begin{array}{cc}
-         0 & {\rm with ~probability~} {\Pr}(N^{*}=0) \\
-         X^{*} & {\rm with ~probability~} {\Pr}(N^{*}=1)
-       \end{array}\right.
-   \end{array}
-$$
- 
-$$
- F_S(s)
-  = \cfrac{1}{1+\beta}F_0(s) +
-  \cfrac{\beta}{1+\beta}F_{X^{*}}(s)
-$$
+  -   **recursive method**: considerable savings in computation time
+  -   **Monte Carlo simulation**: approximation using the empirical distribution
   
 
-  = $\cfrac{1}{1+\beta}(1) +
-  \cfrac{\beta}{1+\beta}[1 - \exp[-s/(\theta(1 + \beta))]$ \vspace{1mm}
+- `R` implementation: package `actuar`
 
-  = $1 - \cfrac{\beta}{1+\beta}\exp[-s/(\theta(1 + \beta))]$
 
-## Analytic Results: Compound Poisson
+
+## Direct Calculation
  
-**Example 2.** Suppose that $S_i$ has compound Poisson distribution with 
+- The distribution of $S$ can be calculated using:
+\begin{align*}
+F_S(s) & ={\Pr(S\le s)} \\
+& =\sum_{n=0}^{\infty}{\rm Pr}(N=n)\cdot {\rm Pr}(S \le s|N=n)\\
+& =\sum_{n=0}^{\infty}{\rm Pr}(N=n)\cdot F_X^{*n}(s)
+\end{align*}
 
--   frequency parameter $\lambda_i$ and 
--   severity distribution $F_{X_i}$ for $i=1,\cdots,m$. 
 
-Given $S_1,\cdots,S_m$ are independent, then $S=\sum_{i=1}^{m}S_i$ has a compound Poisson distribution with 
+- To compute the distribution in `R`, one has to discretize the severity distribution so that it has support $\left\{0,1,\ldots,m\right\}$ 
 
--   frequency parameter $\lambda=\sum_{i=1}^{m}\lambda_i$ and 
--   severity distribution
 
-$$
-F_X(x)=\sum_{i=1}^{m}\cfrac{\lambda_i}{\lambda}F_{X_i}(x) .
-$$
 
-   The model can be useful for analyzing aggregate claims from
-   
-  -   group insurance contracts
-  -   multiple lines of business
-
-## Analytic Results: Compound Poisson
+## Direct Calculation
  
-**Proof**. The mgf of $S_i$ is
-
+The frequency and severity distributions are summarized by:
 $$
-M_{S_i}(z)=P_{N_i}(M_{X_i}(z))=\exp\left\{\lambda_i[M_{X_i}(z)-1]\right\},
-$$
-  and, by independence, the mgf of $S$ is
-
-$$
-\begin{array}{ll}
-  M_S(z) &= \prod_{i=1}^{m} M_{S_i}(z) = \prod_{i=1}^{m}\exp\left\{\lambda_i[M_{X_i}(z)-1]\right\}\\
-  &=\exp\left\{\sum_{i=1}^{m}\lambda_iM_{X_i}(z)-\lambda\right\}\\
-  &=\exp\left\{\lambda\left[\color{blue}{\sum_{i=1}^{m}\cfrac{\lambda_i}{\lambda}M_{X_i}(z)}-1\right]\right\}\\
-\end{array}
-$$  
-
-## Analytic Results: Compound Poisson
- 
-**Proof.**  Let $M_X(z)=\sum_{i=1}^{m}\cfrac{\lambda_i}{\lambda}M_{X_i}(z)$, then
-$$
-\begin{array}{ll}
-    M_S(z)=\exp\left\{\lambda[M_{X}(z)-1]\right\} = P_{N}(M_{X}(z))
-  \end{array}
-$$  
-  where
-   
--   $N$ is Poisson with parameter $\lambda$
--   $X$ has cdf $F_X(x)=\sum_{i=1}^{m}\cfrac{\lambda_i}{\lambda}F_{X_i}(x)$.
-
-
-# Compound Frequency Distributions
-
-## Compound Frequency Distributions
- 
--    We consider a special case of the compound distribution
-$$
-S = M_1+\cdots+M_N
-$$ 
-  where
-   
--    Both $N$ and $M$ are count random variables (r.v.)
--    General relations apply: 
-
-$$
-\begin{array}{lll}
-P_S(z)=P_N[P_M(z)] & &M_S(z)=P_N[M_M(z)], \\
-E(S)=E(N)E(M) & &Var(S) = E(N)Var(M) + E(M)^2Var(N)
+\begin{array}{lccccc}
+     \hline\hline
+     N & 0 & 1 & 2 & 3 & 4  \\
+     f_N(n) & 0.2 & 0.2& 0.2& 0.2 & 0.2 \\
+     \hline
+     X & 50 & 100 & 150 & 250  & \\
+     f_X(x) & 0.2 & 0.3 & 0.4 & 0.1 & \\
+     \hline\hline
 \end{array}
 $$
- 
-## Compound Poisson (Frequency) Distribution
- 
--    Consider the primary distribution with Poisson parameter $\lambda$ and the secondary distribution as the following mixture
+The discretized severity distribution is 
 $$
-   M = \left\{
-         \begin{array}{cc}
-           0 & {\rm with~ probability}~ 1-q \\
-           M^{*} & {\rm with ~probability}~ q \\
-         \end{array}
-       \right.
+\begin{array}{lcccccc}
+     \hline\hline
+     X & 0 & 1  & 2 & 3  &  4 & 5\\
+     f_X(x) & 0 & 0.2 & 0.3 & 0.4 & 0& 0.1 \\
+     \hline\hline
+\end{array}
 $$
 
--    The resulting compound distribution is equivalent to a compound Poisson model with Poisson parameter $\lambda q$ and the secondary distribution $M^{*}$
+
+## Direct Calculation
  
+```{r, message=FALSE, warning=FALSE}
+library(actuar)
+pn <- rep(0.2,5)
+fx <- c(0,0.2,0.3,0.4,0,0.1)
+Fs <- aggregateDist(method="convolution", 
+                    model.freq = pn,
+                    model.sev = fx, x.scale = 50)
+summary(Fs)
+```
 
-## Compound Poisson (Frequency) Distribution
+## Direct Calculation
  
--    Thinning of Poisson: Let $N$ have a Poisson distribution with mean $\lambda$.
+```{r, message=FALSE, warning=FALSE, out.width= '0.9\\maxwidth',fig.align='center'}
+plot(Fs)
+```
 
-  Assume that each outcome can be categorized in to a specific type.
 
-  The probability of an event being of type $i$ is $p_i$.
+## Recursive Method
 
-  Then the number of type $i$ events, denoted by $N_i$, follows a Poisson distribution with mean $p_i\lambda$.
- 
-## Compound Poisson (Frequency) Distribution
- 
--    Suppose that $S_i$ has compound Poisson distribution with primary parameter $\lambda_i$ and secondary distribution probability mass function (pmf) $f_{M_i}$ for $i=1,\cdots,m$.
+- Recursive method assumes:
+  - Frequency $N$ satisfies $p_n = (a+b/n)p_{n-1}$ for $n=\textcolor{blue}{1},2,3,\ldots$
+  - Severity $X$ has a distribution distribution $f_X$ on support $\left\{0,1,\ldots,m\right\}$
 
-  Given $S_1,\cdots,S_m$ are independent, then $S=\sum_{i=1}^{m}S_i$ has a compound Poisson distribution with primary distribution parameter $\lambda=\sum_{i=1}^{m}\lambda_i$
-  and secondary distribution
-      $$f_M(x)=\sum_{i=1}^{m}\cfrac{\lambda_i}{\lambda}f_{M_i}(x)$$
+\bigskip
+
+- The probability function of $S$ can be calculated using:
+\begin{align*}
+ f_S(s) &= {\rm Pr}(S=s)\\ 
+&= \frac{1}{1-af_X(0)}\sum_{x=1}^{s\wedge m}\left(a+\frac{bx}{s}\right)f_X(x)f_S(s-x)
+\end{align*}
+
+- The method extends to the more general case where frequency $N$ satisfies $p_n = (a+b/n)p_{n-1}$ for $n=2,3,\ldots$
+
+---
+\scalefont{0.8}
+\begin{align*}
+ f_S(s) &= {\rm Pr}(S=s)\\ 
+&= \frac{1}{1-af_X(0)}\left\{(p_1-(a+b)p_0)f_X(s) + \sum_{x=1}^{s\wedge m}\left(a+\frac{bx}{s}\right)f_X(x)f_S(s-x)\right\}
+\end{align*}
+---
+
+
+
+## Recursive Method
+
+Consider the example: 
+
+- Frequency $N$ is Poisson with mean 5. 
+
+- Severity
+$$
+\begin{array}{lcccc}
+     \hline\hline
+     X & 50 & 100 & 150 & 250  \\
+     f_X(x) & 0.2 & 0.3 & 0.4 & 0.1  \\
+     \hline\hline
+\end{array}
+$$
+
+
+## Recursive Method
+
+```{r, message=FALSE, warning=FALSE,out.width= '0.7\\maxwidth',fig.align='center'}
+library(actuar)
+fx <- c(0,0.2,0.3,0.4,0,0.1)
+Fs <- aggregateDist(method="recursive", 
+                    model.freq = "poisson", lambda = 5,
+                    model.sev = fx, x.scale = 50)
+plot(Fs)
+```
+
+
+
+## Monte Carlo Simulation
+
+- For $j=1,\ldots, m$, do
+  - Generate the number of claims $n_j$ from the frequency distribution $N$
+  - Generate $n_j$ claim amount from severity distribution $X$, denoted by $x_{j,1},\ldots,x_{j,n_j}$
+  - Calculate aggregate loss $s_j = x_{j,1}+\cdots+x_{j,n_j}$
+
+\bigskip
+- The empirical distribution can be calculated as
+$$\hat{F}_s(s) = \frac{1}{m} \sum_{i=1}^m I(s_i \le s)$$
+
+
+## Monte Carlo Simulation
+
+```{r, message=FALSE, warning=FALSE,out.width= '0.7\\maxwidth',fig.align='center'}
+library(actuar)
+freq <- expression(data = rpois(lambda=3))
+sev <- expression(data = rgamma(shape=100, scale=5))
+Fs <- aggregateDist("simulation", nb.simul = 2500,
+                    model.freq = freq, model.sev = sev)
+plot(Fs)
+```
+
+
+
+## Summary
+
+In this section, we learned how to:
+
+- Compute aggregate loss distribution
+- Implement numerical strategies in `R`
+
+
+
+
  
 # Tweedie Distribution
 
@@ -511,13 +537,29 @@ $$
 The Tweedie distribution is defined as a Poisson sum of gamma random variables
 
 $$
-    S = (X_1+\cdots+X_N)/\omega
+    S = (X_1+\cdots+X_N)
 $$
-  where
--   $\omega$ is exposure
--   $N\sim Poisson(\omega\lambda)$ and $X\sim Gamma(\alpha,\theta)$
+
+where $N\sim Poisson(\omega\lambda)$ and $X\sim Gamma(\alpha,\theta)$.
  
-## Tweedie Distribution
+ 
+ 
+## Tweedie Distribution with Exposure
+ 
+With exposure, the Tweedie variable is the aggregate losses per unit of expoure:
+
+$$
+    S = (X_1+\cdots+X_N)/\textcolor{blue}{\omega}
+$$
+where 
+
+  - $\omega$ is the exposure
+  - $N\sim Poisson(\textcolor{blue}{\omega}\lambda)$ 
+  - $X\sim Gamma(\alpha,\theta)$
+ 
+ 
+  
+## Distribution Function for Tweedie Distribution
  
 The cdf of $S$ is
 
@@ -532,41 +574,8 @@ $$
 Note that
 
 $$
-S|(N=n)=X_1+\cdots+X_n\sim Gamma(n\alpha,\theta/\omega)
+S|(N=n)=(X_1+\cdots+X_n)/\omega\sim Gamma(n\alpha,\theta/\omega)
 $$
- 
-## Tweedie Distribution
- 
--   The Tweedie variable has a mass probability at zero
-
-$$
-f_S(0)={\Pr}(S=0)={\Pr}(N=0)=e^{-\omega\lambda}
-$$
-
--   The density of Tweedie at $s>0$ is
-
-$$
-\begin{array}{ll}
-    f_S(s) = \sum_{n=1}^{\infty} e^{-\omega\lambda}\frac{(\omega\lambda)^n}{n!}\frac{1}{\Gamma(n\alpha)}\frac{s^{n\alpha-1}}{(\theta/\omega)^{n\alpha}}e^{-\frac{s}{\theta/\omega}}
-  \end{array}
-$$
-
-
-## Tweedie Distribution
- 
-**Definition** The distribution of \textit{linear exponential family} is
-   
-$$
-f_Y(y;\theta,\phi/\omega)=\exp\left\{\frac{y\theta-b(\theta)}{\phi/\omega}+c(y;\phi/\omega)\right\}
-$$
-   
--    $\theta$ is the parameter of interest
--    $\phi$ is scale parameter and $\omega$ (known) is exposure
--    $b(\theta)$ depends only on $\theta$ not $y$
--    $c(y;\phi/\omega)$ does not depend on $\theta$
--    ${\rm E}(y)=b'(\theta)$ and ${\rm Var}(y)=\frac{\phi}{\omega}b"(\theta)$
- 
-Members include binomial, normal, Poisson, gamma, and inverse-Gaussian distributions
  
 ## Tweedie Distribution
  
@@ -589,86 +598,181 @@ and
 $$
 {\rm E}(S)=\mu,~~{\rm Var}(S)=\frac{\phi}{\omega}\mu^p
 $$
- 
-## Tweedie Distribution
- 
--    Two limiting distributions
-   -    $p\rightarrow 1$ $\Longrightarrow$ Over-dispersed Poisson
-   -    $p\rightarrow 2$ $\Longrightarrow$ Gamma 
--    Examples in `R`
- 
+
+## Example
+
+The histogram of annual medical expenses from a randomly selected 5,000 individuals:
+
+```{r,echo=F}
+# data generating
+lambda = 1
+alpha = 4
+theta = 500
+
+set.seed(123)
+size = 5000
+S <- rep(NA,size)
+N <- rpois(size,lambda)
+for (i in 1:size){
+  Y <- rgamma(N[i],shape = alpha, scale = theta)
+  S[i] <- sum(Y)
+}
+dat <- data.frame(ID=1:size,expense=S)
+#write.csv(dat, file="MedicalExp.csv",row.names = F)
+#xi <- (alpha+2)/(alpha+1)
+expense <- dat$expense
+hist(expense, main="", prob=T, breaks=50,xlab="Medical Expenses")
+```
+
+
+## Example
+
+```{r,message=FALSE, warning=FALSE}
+library(statmod)
+p <- 1.2
+fit <- glm(expense~1,family=tweedie(var.power=p,
+                                    link.power=0))
+```
+
+```{r}
+mu <- exp(summary(fit)$coefficient[1])
+phi <- summary(fit)$dispersion
+```
+
+
+The estimates of $\mu$ is `r round(mu,2)`:
+
+The estimates of $\phi$ is `r round(phi,2)`:
+
+## Example
+
+```{r, eval=FALSE}
+library(tweedie)
+pct <- seq(0.01,0.99,0.01)
+plot(qtweedie(pct,p,mu,phi),quantile(expense,probs=pct),
+        xlab="Theoretical Quantile",
+        ylab="Empirical Quantile")
+abline(0,1)
+```
+
+
+## Example
+
+```{r,echo=F, fig.align="center"}
+library(tweedie)
+pct <- seq(0.01,0.99,0.01)
+plot(qtweedie(pct,p,mu,phi),quantile(expense,probs=pct),
+     xlab="Theoretical Quantile",
+     ylab="Empirical Quantile",
+)
+abline(0,1)
+```
 
  
+## Summary
+
+In this section, we learned how to:
+
+- Construct the Tweedie distribution from a collective risk model
+- Establish the Tweedie distribution as a member of the exponential family of distributions
+- Fit Tweedie distribution as a generalized linear model
+
+ 
+
 # Effects of Coverage Modifications
 
-## Effects of Coverage Modifications
- 
--   Effect of exposure on frequency
--   Impact of deductibles on claim frequency
--   Impact of individual policy modifications on aggregate claims
- 
 
-## Exposure and Frequency
- 
--   Consider the number of claims from a portfolio of $n$ policies
+## Aggregate Deductible
 
-$$
-N = Y_1+\cdots+Y_n
-$$
 
-where we assume $Y_i$ are i.i.d.
-  
--   Use a policy as the \textcolor{blue}{exposure base}, the exposure is $n$
--   The pgf of $N$ is $P_N(z)=\left[P_Y(z)\right]^{n}$
--   Exposure changes from $n$ to $n^{*}$, the pgf of $N^{*}$ is $P_N(z)=\left[P_Y(z)\right]^{n^{*}}=\left[P_N(z)\right]^{n^{*}/n}$
-  
-## Exposure and Frequency
  
--   To account for exposure $n$ in frequency models
-    -   if $Y\sim Poisson(\lambda)$, $N\sim Poisson(n\lambda)$
-    -    if $Y\sim NegBin(r, \beta)$, $N\sim NegBin(nr, \beta)$
-    -    in this case, exposure is a large positive number
--    Further, the units of exposure may be fractions
-    -    Using policy year as the exposure base, exposure represents the fraction of the year that a policyholder had insurance coverage
--    Effect of exposure on MLE
--    Exposure change
- 
-## Deductibles and Frequency Distribution
- 
--    Consider an insurance contract with deductible $d$
--    Denote $N^{L}$ the number of losses or accidents, and given $N^L=n^L$, $Y_i$ is the ground-up loss for $i=1,\cdots,n^{L}$
--    We are interested in $N^{P}$, the number of payments or claims
--    Assume
-     -    Given $N^L=n^L$, $Y_i$ are i.i.d. with common distribution $Y$
-     -    Changing the deductible does not change policyholder behavior
-   
-## Deductibles and Frequency Distribution
- 
--   Represent $N^{P}$ as a compound frequency distribution
+**Definition** Insurance on the aggregate losses, subject to a deductible, is called \textit{stop-loss insurance}. 
+
+-   Assume aggregate loss $S$ and deductible $d$ 
+-   The cost of the insurer is 
 
 $$
-N^{P}= I_1+\cdots+I_{N^{L}}$$
-   where
-   $$I_i = \left\{
+\begin{array}{ll}
+(S-d)_{+} =  \left\{\begin{array}{ll}
+                               0, & S \le d \\
+                               S-d, & S>d
+                             \end{array}
+             \right.
+\end{array}
+$$
+
+ 
+## Aggregate Deductible
+
+
+The expected cost of this insurance is called the \textit{net stop-loss premium}.
+
+It can be computed as:
+
+
+$$
+E[(S-d)_{+}] =E(S)-E(S\wedge d) 
+$$
+where 
+ 
+$$
+ {\rm E}(S\wedge d)=\int_0^d [1-F_S(s)] ds 
+$$
+
+
+## Per-occurrence Deductible
+ 
+- Consider aggregate loss $$S=X_1+\cdots + X_N$$
+
+- For a per-occurrence deductible $d$, we examine its effect on 
+   -  Claim frequency $N$
+   -  Claim Severity $X$
+
+
+
+
+
+## Per-occurrence Deductible and Frequency
+
+- Let $N$ be the number of losses and $N^{P}$ be the number of payments
+- Represent $N^{P}$ as a compound frequency distribution
+
+$$N^{P}= I_1+\cdots+I_{N}$$
+where, for $i=1,\ldots,N$,
+$$
+I_i = \left\{
       \begin{array}{cc}
-        1 & {\rm ~with ~probability~} {\rm Pr}(Y_i>d)\\
-        0 & {\rm ~with ~probability~} {\rm Pr}(Y_i \le d)
+        1 & {\rm ~with ~probability~} {\rm Pr}(X_i>d)\\
+        0 & {\rm ~with ~probability~} {\rm Pr}(X_i \le d)
       \end{array}
     \right.
 $$ 
    
--   Let $v={\rm Pr}(Y>d)$, the pgf of $N^{P}$ is
+
+
+
+
+
+## Per-occurrence Deductible and Frequency
+ 
+- The distribution of $N^P$ can be derived using the probability generating function
+
+
+- Let $v={\rm Pr}(X>d)$, the pgf of $N^{P}$ is
 
 $$
 \begin{array}{ll}
-    P_{N^{P}}(z)&=P_{N^{L}}[P_{I}(z)]\\
-    &=P_{N^{L}}[1+v(z-1)]
+    P_{N^{P}}(z)&=P_{N}[P_{I}(z)]\\
+    &=P_{N}[1+v(z-1)]
     \end{array}
 $$ 
 
-## Deductibles and Frequency Distribution
+
+
+
+## Per-occurrence Deductible and Frequency
  
--  **Example:** $N^{L}\sim Poisson(\lambda)$
+-  **Example:** $N\sim Poisson(\lambda)$
   
 -  The pgf of $N^{P}$ is
 
@@ -679,92 +783,43 @@ $$
    \end{array}
 $$
 
--  $N^{L}$ and $N^{P}$ are from the same family and $N^{P}\sim Poisson(\lambda^{*}=v\lambda)$
+-  $N^{P}$ is from the same family, and $N^{P}\sim Poisson(\lambda^{*}=v\lambda)$
  
--  Similar results for binomial and negative binomial distributions in the $(a,b,0)$ class
+-  Similar results for other frequency distributions
  
-## Deductibles and Frequency Distribution
  
--  Now we consider changing the deductible from $d_1$ to $d_2$. Let $\theta$ be the parameter in the distribution of group-up loss. Recall that $\theta^{*}=v\theta$ where $v={\Pr}(Y>d)$
--   Define $v_1={\Pr}(Y>d_1)$ and $v_2={\Pr}(Y>d_2)$, then
+ 
+ 
+## Per-occurrence Deductible and Severity
+ 
+
+- Let $X^{P}$ be the amount of payments
+
+- It is defined as
 
 $$
-\begin{array}{ll}
-   \theta^{*}_1  = v_1\cdot\theta {~\rm and~}
-   \theta^{*}_2  = v_2\cdot\theta = \left(\frac{v_2}{v_1}\right)\theta_1^{*}
-   \end{array}
-$$
+X^P = X - d | X>d
+$$ 
 
--  Two special cases:
-   -   $d_1=0, ~d_2=d \rightarrow \cfrac{v_2}{v_1}=v$
-   -   $d_1=d, ~d_2=0 \rightarrow \cfrac{v_2}{v_1}=v^{-1}$
-   
-## Impact on Aggregate Claims
+- Its distribution is:
+
+$$F_{X^P}(x) = \frac{F_X(x+d)-F_X(x)}{1-F_X(x)}$$
+
+## Per-occurrence Deductible
  
-Recall the following notation:
+- Ground up loss $$S=X_1+\cdots + X_N$$
+
+- With deductible $d$, the aggregate loss to the insurer is 
+$$S=X^P_1+\cdots + X^P_{N^P}$$
+  - $N^P$ is the number of payments
+  - $X^P$ is the amount of payments
   
--   Frequency  
-    -   $N^L$ $\equiv$ number of losses
-    -   $N^P$ $\equiv$ number of payments
--   Severity
-    -   $Y$ $\equiv$ ground-up loss
-    -   $Y^L$ $\equiv$ amount of payment on per-loss basis
-    -   $Y^P$ $\equiv$ amount of payment on per-payment basis
--   Coverage Modifications    
-    -   $d$ $\equiv$ amount of deductible (ordinary or franchise)
-    -   $r$ $\equiv$ uniform rate of inflation
-    -   $u$ $\equiv$ policy limit
-    -   $\alpha$ $\equiv$ coinsurance percentage
- 
-## Impact on Aggregate Claims
- 
-Recall:
+  
+## Summary
 
-$$
-\begin{array}{ll}
-    Y^{L}&=\left\{
-      \begin{array}{cc}
-        0 & Y<\cfrac{d}{1+r} \\
-        \alpha[(1+r)Y-d] & \cfrac{d}{1+r}\leq Y<\cfrac{u}{1+r} \\
-        \alpha(u-d) &  Y \ge \cfrac{u}{1+r}\\
-      \end{array}
-    \right.\vspace{5mm}\\
-    & = \alpha(1+r) \left(\left[Y\wedge\left(\frac{u}{1+r}\right)\right]-\left[Y\wedge\left(\frac{d}{1+r}\right)\right] \right)
-  \end{array}
-$$
+In this section, we learned how to:
 
-## Impact on Aggregate Claims
- 
-Recall:
+- Examine the impact of aggregate deductible on the aggregate loss
+- Examine the effect of per-occurrence deductible on frequency and severity components in the aggregate loss
 
--   Frequency
-
-$$
-\begin{array}{ll}
-    N^P &= I_1+\cdots+I_{N^L}\\
-    P_{N^P} &= P_{N^L}[1-v+vz]
-  \end{array}
-$$
-
--   Severity
-
-$$
-\begin{array}{ll}
-    Y^P &= Y^L|(Y^L>0) \\
-    F_{Y^L}(y)&=1-v+vF_{Y^P}(y)\\
-    M_{Y^L}(z)&=1-v+vM_{Y^P}(z)
-  \end{array}
-$$
-
-
-## Impact on Aggregate Claims
- 
--   The aggregate claim can be represented on either a per-loss or per-payment basis
-    -    per-loss basis: $S = Y^L_1+\cdots+Y^L_{N^L}$
-    -    per-payment basis: $S = Y^P_1+\cdots+Y^P_{N^P}$
--   The two representations are equivalent:
-
-$$
-M_S(z)=P_{N^L}\left[M_{Y^L}(z)\right]=P_{N^P}\left[M_{Y^P}(z)\right]
-$$
  

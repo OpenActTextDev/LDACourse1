@@ -115,9 +115,15 @@ The project goal is to have the actuarial community author our textbooks in a co
 
 -  **Tim Higgins**, Australian National University
 
--  **Fei Huang**, University of New South Wales
+<img src = "ContributorPics\FeiHuang.jpg" width = "150" height = "200" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
--  **Himchan Jeong**, Simon Fraser University
+-  **Fei Huang** is a Senior Lecturer in the School of Risk and Actuarial Studies, University of New South Wales (UNSW) Sydney. Before joining UNSW, she worked at the Australian National University (ANU) as Senior Lecturer (2019-2020) and Lecturer (2015-2018). Fei's main research interest lies in predictive modelling and data analytics for insurance applications. She is an active researcher and publishes papers frequently in top-tier actuarial journals. Fei is also a dedicated educator.  Her educational excellence has been recognized by winning the ANU Vice Chancellor’s Award for Teaching Excellence in the Early Career Category (2018) and ANU College of Business and Economics Award for Teaching Excellence in the Early Career Category (2017).  
+
+
+<img src = "ContributorPics\HimchanJeong.jpg" width = "150" height = "160" style = "float:right; margin-left: 10px; margin-top: 7px" />
+
+-  **Himchan Jeong** is currently an Assistant Professor at Simon Fraser University. He is a Fellow of the Society of Actuaries (SOA) and holds a Ph.D. from the University of Connecticut. He has been actively involved in teaching and conducting research in actuarial science for several years. In recognition for his academic achievements and excellence, he has been awarded the James C. Hickman Scholarship from SOA recently in 2018-2020. His current research interest is predictive modeling for ratemaking and reserving of property and casualty insurance.
+
 
 <img src = "ContributorPics\PJ.jpg" width = "150" height = "170" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
