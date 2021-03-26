@@ -135,6 +135,12 @@ The project goal is to have the actuarial community author our textbooks in a co
 - **Joseph H.T. Kim**, Ph.D., FSA, CERA, is Associate Professor of Applied Statistics at Yonsei University, Seoul, Korea. He holds a Ph.D. degree in Actuarial Science from the University of Waterloo, at which he taught as Assistant Professor. He also worked in the life insurance industry. He has published papers in *Insurance Mathematics and Economics*, *Journal of Risk and Insurance*, *Journal of Banking and Finance*, *ASTIN Bulletin*, and *North American Actuarial Journal*, among others. 
 
 
+<img src = "ContributorPics\Okine_A.jpg" width = "150" height = "170" style = "float:right; margin-left: 10px; margin-top: 7px" />
+
+-  **Nii-Armah Okine** is an assistant professor at the Mathematical Sciences Department at Appalachian State University. He holds a Ph.D. in Business (Actuarial Science) from the University of Wisconsin - Madison and obtained his master’s degree in Actuarial science from Illinois State University. His research interest includes micro-level reserving, joint longitudinal-survival modeling, dependence modeling, micro-insurance, and machine learning.
+
+
+
 -  **Rajesh Sahasrabuddhe**, Oliver Wyman
 
 
