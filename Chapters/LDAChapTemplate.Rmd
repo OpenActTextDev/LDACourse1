@@ -90,7 +90,7 @@ In this section, we use **zzz**. You learn how to:
 The Wisconsin Property Fund data has already been read into a data frame called `Insample`. These data consist of claim experience for fund members over the years 2006-2010, inclusive. It includes the frequency of claims `Freq` as well as the claim year `Year`. The video explored the distribution of the claims frequency for year 2010; in this assignment, we replicate this analysis and conduct a similar investigation for year 2009.
 
 
-:::: {.blackbox data-latex=""}
+:::: {.blackbox }
 **Instructions**. For each year:
 
 

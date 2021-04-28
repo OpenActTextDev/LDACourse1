@@ -174,10 +174,8 @@ In this section, we use the Wisconsin Property Fund as a case study. You learn h
 
 The Wisconsin Property Fund data has already been read into a data frame called `Insample`. These data consist of claim experience for fund members over the years 2006-2010, inclusive. It includes the frequency of claims `Freq` as well as the claim year `Year`. The video explored the distribution of the claims frequency for year 2010; in this assignment, we replicate this analysis and conduct a similar investigation for year 2009.
 
-
-:::: {.blackbox data-latex=""}
+:::: {.blackbox }
 **Instructions**. For each year:
-
 
 -  Use the function [subset()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/subset) to create a smaller data set based on a single year.
 -  Define the frequency as a global variable.
@@ -186,6 +184,7 @@ The Wisconsin Property Fund data has already been read into a data frame called 
 -  Use the function [table()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/table) to tabulate the frequency distribution.
 ::::
 
+<br>
 
 ```{r ex="LDA1.1.3.1", type="hint", tut=TRUE}
 Take some time to explore the online `R` documentation.
@@ -204,16 +203,16 @@ Insample <- read.csv("https://raw.githubusercontent.com/OpenActTextDev/LDACourse
 #  Analysis for Year 2010
 Insample2010 <- subset(Insample, Year==2010)
 Freq2010 <- Insample2010$Freq
-length(Freq2010)
-mean(Freq2010)
-table(Freq2010)
+Leng2010<- length(Freq2010)
+Mean2010<- mean(Freq2010)
+Tab2010<- table(Freq2010)
 
 #  Analysis for Year 2009
-Insample2009 <- ___
-Freq2009 <- ___
-length(___)
-mean(___)
-table(___)
+Insample2009 <- ??
+Freq2009 <- ??
+Leng2009<- length(??)
+Mean2009<-mean(??)
+Tab2009<-table(??)
 ```
 
 
@@ -221,19 +220,45 @@ table(___)
 #  Analysis for Year 2010
 Insample2010 <- subset(Insample, Year==2010)
 Freq2010 <- Insample2010$Freq
-length(Freq2010)
-mean(Freq2010)
-table(Freq2010)
+Leng2010 <- length(Freq2010)
+Mean2010<- mean(Freq2010)
+Tab2010<-table(Freq2010)
 
 #  Analysis for Year 2009
 Insample2009 <- subset(Insample, Year==2009)
 Freq2009 <- Insample2009$Freq
-length(Freq2009)
-mean(Freq2009)
-table(Freq2009)
+Leng2009 <- length(Freq2009)
+Mean2009<- mean(Freq2009)
+Tab2009<-table(Freq2009)
 ```
 
 ```{r ex="LDA1.1.3.1", type="sct", tut=TRUE}
+ex() %>% check_object("Insample2009", undefined_msg="Use `Insample2009` to create an object named `Insample2009`from the year 2009 data.") %>% check_equal(incorrect_msg="Assign the subset of 2009 data by using subset(Insample, Year==2009), Capitalize Y.")
+
+ex() %>% check_object("Freq2009", undefined_msg="Use `Freq2009` to create an object named `Freq2009`from the year 2009 Claim Frequency data.") %>% check_equal(incorrect_msg="Assign the column Frequency of 2009 data by using Insample2009$Freq in which $ refers the column name")
+
+ex() %>% check_function("length", not_called_msg="Use `length` on the Freq2009 to count the number of entries in the Frequency column") %>% check_result() %>% check_equal(incorrect_msg="Use `Freq2009` to locate the correct column which stores the Frequency data")
+
+ex() %>% check_function("mean", not_called_msg="Use `mean` on the Freq2009 to count the average value of entries in the Frequency column") %>% check_result() %>% check_equal(incorrect_msg="Use `Freq2009` to locate the correct column which stores the Frequency data from Year 2009")
+
+ex() %>% check_function("table", not_called_msg="Use `table` on the Freq2009 to tabulate the frequency data in a tabular form") %>% check_result() %>% check_equal(incorrect_msg="Use `Freq2009` to locate the correct column which stores the Frequency data from Year 2009")
+
+ex() %>% check_object("Insample2009", undefined_msg="Use `Insample2009` to create an object named `Insample2009`from the year 2009 data.") %>% check_equal(incorrect_msg="Assign the subset of 2009 data by using subset(Insample, Year==2009), Capitalize Y.")
+
+ex() %>% check_object("Freq2009", undefined_msg="Use `Freq2009` to create an object named `Freq2009`from the year 2009 Claim Frequency data.") %>% check_equal(incorrect_msg="Assign the column Frequency of 2009 data by using Insample2009$Freq in which $ refers the column name")
+
+ex() %>% check_function("length", not_called_msg="Use `length` on the Freq2009 to count the number of entries in the Frequency column") %>% check_result() %>% check_equal(incorrect_msg="Use `Freq2009` to locate the correct column which stores the Frequency data")
+
+ex() %>% check_object("Leng2009", undefined_msg="Use `Leng2009` to create an object named `Leng2009`from the year 2009 Claim Frequency data.") %>% check_equal(incorrect_msg="Assign the Claim Frequency of 2009 data by using Freq2009")
+
+ex() %>% check_function("mean", not_called_msg="Use `mean` on the Freq2009 to count the average value of entries in the Frequency column") %>% check_result() %>% check_equal(incorrect_msg="Use `Freq2009` to locate the correct column which stores the Frequency data from Year 2009")
+
+ex() %>% check_object("Mean2009", undefined_msg="Use `Mean2009` to create an object named `Mean2009`from the year 2009 Claim Frequency data.") %>% check_equal(incorrect_msg="Assign the claim Frequency of 2009 data by using Freq2009")
+
+ex() %>% check_function("table", not_called_msg="Use `table` on the 2009 to tabulate the frequency data in a tabular form") %>% check_result() %>% check_equal(incorrect_msg="Use `Freq2010` to locate the correct column which stores the Frequency data from Year 2009")
+
+ex() %>% check_object("Tab2009", undefined_msg="Use `Tab2009` to create an object named `Tab2009`from the year 2009 Claim Frequency data.") %>% check_equal(incorrect_msg="Assign the Claim Frequency of 2009 data by using Freq2009")
+
 success_msg("Getting started is always the hardest thing to do. Excellent start!")
 ```
 
@@ -297,7 +322,7 @@ R Code</button>
 
 The Wisconsin Property Fund data covering years 2006-2010 has already been read into a data frame called `Insample`. These data includes the average claim severity `yAvg`. The video explored the distribution of the claims severity for year 2010; in this assignment, we conduct a similar investigation for year 2009.
 
-:::: {.blackbox data-latex=""}
+:::: {.blackbox }
 **Instructions** 
 
 -  Use the function [subset()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/subset) twice, once to create a smaller data set based on year 2009 experience and again to restrict consideration to fund members with positive claims.
@@ -307,6 +332,7 @@ The Wisconsin Property Fund data covering years 2006-2010 has already been read 
 -  Use the function [hist()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/hist) to produce histograms that visualize the claim severity distribution. Do this once on the original scale and again on the logarithmic scale. Use the `mfrow` switch in the function [par()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/par) to set the graphical parameters so that the graphs can be viewed side-by-side to promote comparisons.
 ::::
 
+<br>
 
 ```{r ex="LDA1.1.4.1", type="pre-exercise-code", tut=TRUE}
 Insample <- read.csv("https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/Data/Insample.csv", header=T, na.strings=c("."), stringsAsFactors=FALSE)
@@ -320,18 +346,18 @@ The `R` function [log()](https://www.rdocumentation.org/packages/base/versions/3
 
 
 ```{r ex="LDA1.1.4.1", type="sample-code", tut=TRUE}
-Insample2009 <- ___
+Insample2009 <- subset(??)
 InsamplePos2009 <- subset(Insample2009, yAvg>0)
-___ <- InsamplePos2009$yAvg
+AvgClaim<- InsamplePos2009$yAvg
 
 # Table
-summary(___)
-___(AvgClaim)
+summary(??)
+??(AvgClaim)
 
 # Figures
-par(mfrow=c(1, ___))
+par(mfrow=c(1, ??))
 hist(AvgClaim, main="", xlab="Average Claims")
-hist(___, main="", xlab="Logarithmic Average Claims")
+hist(??, main="", xlab="Logarithmic Average Claims")
 ```
 
 ```{r ex="LDA1.1.4.1", type="solution", tut=TRUE}
@@ -351,6 +377,43 @@ hist(log(AvgClaim), main="", xlab="Logarithmic Average Claims")
 ```
 
 ```{r ex="LDA1.1.4.1", type="sct", tut=TRUE}
+#Check data set object
+error1<-"Use `Insample2009` to create an object named `Insample2009`from the year 2009 data."
+error2<-"Assign the subset of 2009 data by using function subset(Insample, Year==2009), Capitalize Y."
+error3<-"Use `InsamplePos2009` to create an object named `InsamplePos2009`from the year 2009 Claim data."
+error4<-"Assign the positive claim amounts of 2009 data by using function subset(Insample2009, yAvg>0) in which 'pos' refers the positive claim amounts"
+error5<-"Use `AvgClaim` to create an object named `AvgClaim`from the year 2009 Claim data 'InsamplePos2009$yAvg'."
+error6<-"Assign the column yAvg of 2009 data by using Insample2009$yAvg in which $ points out the column name"
+error7<-"Use `length` on the AvgClaim to count the number of entries in the AvgClaim column"
+error8<-"Use `AvgClaim` to locate the correct column which stores the Average Claim Amount data"
+error9<-"Use `summary` on the AvgClaim to get the summary statistics of the data in the Frequency column"
+error10<-"Use `AvgClaim` to locate the correct column which stores the Average Claim Amount data from Year 2009"
+error11<-" Did you correctly specify the argument 'AvgClaim'?"
+error12<-"Did you correctly specify the argument 'log(AvgClaim)'?"
+error13<-"Use function `hist` on the AvgClaim to plot the histogram of the average claims"
+error14<-"Use `AvgClaim` to locate the correct data for histogram plotting. Make sure the x-axis label is specified as Average Claims by using xlab = 'Average Claims' "
+error15<-"Use function `hist` on the log(AvgClaim) to plot the histogram of the log of average claims"  
+error16<-"Use `log(AvgClaim)` to log-transform the correct data for histogram plotting. Make sure the x-axis label is specified as Logarithmic Average Claims by using xlab = 'Logarithmic Average Claims' "
+
+ex() %>% check_object("Insample2009", undefined_msg=error1) %>% check_equal(incorrect_msg=error2)
+
+ex() %>% check_object("InsamplePos2009", undefined_msg=error3) %>% check_equal(incorrect_msg=error4)
+
+ex() %>% check_object("AvgClaim", undefined_msg=error5) %>% check_equal(incorrect_msg=error6)
+
+#Check Table
+ex() %>% check_function("length", not_called_msg=error7) %>% check_result() %>% check_equal(incorrect_msg=error8)
+
+ex() %>% check_function("summary", not_called_msg=error9) %>% check_result() %>% check_equal(incorrect_msg=)
+
+#Check Figures
+ex() %>% check_function("hist", index = 1) %>% check_result() %>% check_equal(incorrect_msg=error11)
+ex() %>% check_function("hist", index = 2) %>% check_result() %>% check_equal(incorrect_msg=error12)
+
+ex() %>% check_function("hist", index = 1, not_called_msg=error13) %>% check_result() %>% check_equal(incorrect_msg=error14)
+
+ex() %>% check_function("hist", index = 2, not_called_msg=error15) %>% check_result() %>% check_equal(incorrect_msg=error16)
+
 success_msg("Excellent! This exercise features data manipulation (through subsetting), calculates summary statistics, and portrays data graphically. You have done it all!")
 ```
 
@@ -359,9 +422,9 @@ success_msg("Excellent! This exercise features data manipulation (through subset
 
 **Assignment Text**
 
-Many distributions used in insurance analytics are skewed. In this assignment, we demonstrate how to detect the skewness and show that skewness is a feature of an entire data set, not the result of a handful of outlying observations. Specifically, we consider the average claim for year 2010 of the Wisconsin Property Fund data that has been made available in the variable `AvgClaim`; this variable is only for fund members with positive claims. The video remarked on the skewness of this variable and used a logarithmic transformation to facilitate the analysis. In this assignment, we show how an alternative strategy, omitting unusually large observations, does not address the skewed nature of the distribution.
+Many distributions used in insurance analytics are skewed. In this assignment, we demonstrate how to detect the skewness and show that skewness is a feature of an entire data set, not the result of a handful of outlying observations. Specifically, we consider the average claim for year 2010 of the Wisconsin Property Fund data that has been made available in the (global) variable `AvgClaim`; this variable is only for fund members with positive claims. The video remarked on the skewness of this variable and used a logarithmic transformation to facilitate the analysis. In this assignment, we show how an alternative strategy, omitting unusually large observations, does not address the skewed nature of the distribution.
 
-:::: {.blackbox data-latex=""}
+:::: {.blackbox }
 **Instructions**
 
 -  Use the functions [mean()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/mean) and [median()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/median) to compute both the mean and median of `AvgClaim`. You will see that the mean is much larger than the median, a classic diagnostic approach for establishing the right skewness of a distribution.
@@ -370,16 +433,14 @@ Many distributions used in insurance analytics are skewed. In this assignment, w
 -  Create 6 histograms, graphically presenting them in panels that have 2 rows and 3 columns. In the first histogram, omit the 9 largest observations. In the second, omit the 6 largest. Continuing this pattern, omit 5 in the third histogram, omit 3 in the fourth, omit 1 in the fifth, and do not admit any in the sixth. A careful inspection of this panel of histograms reveals that the distribution remains skewed, despite repeatedly removing large outlying observations.
 ::::
 
-
+<br>
 
 ```{r ex="LDA1.1.4.2", type="pre-exercise-code", tut=TRUE}
-Insample <- read.csv("https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/Data/Insample.csv", header=T,
-                      na.strings=c("."), stringsAsFactors=FALSE)
+Insample <- read.csv("https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/Data/Insample.csv", header=T, na.strings=c("."), stringsAsFactors=FALSE)
 Insample2010<- subset(Insample, Year==2010)
 InsamplePos2010<- subset(Insample2010, yAvg>0)
 AvgClaim <- InsamplePos2010$yAvg
 ```
-
 
 
 ```{r ex="LDA1.1.4.2", type="hint", tut=TRUE}
@@ -388,17 +449,17 @@ The syntax `x[order(x)]` produces an (increasing) ordered version of a vector `x
 
 
 ```{r ex="LDA1.1.4.2", type="sample-code", tut=TRUE}
-mean(___)
-___(AvgClaim)
+mean(??)
+??(AvgClaim)
 
-Order.AvgClaim <- AvgClaim[___(AvgClaim, decreasing = TRUE)]
-head(Order.AvgClaim, n = ___)
+Order.AvgClaim <- AvgClaim[??(AvgClaim, decreasing = TRUE)]
+head(Order.AvgClaim, n = ??)
 
 # Figures
 par(mfrow=c(2,3))
 hist(Order.AvgClaim[-c(1:9)], main="", xlab="Claims - Drop 9")
-hist(Order.AvgClaim[___], main="", xlab="Claims - Drop 6")
-___(Order.AvgClaim[-c(1:5)], main="", xlab="Claims - Drop 5")
+hist(Order.AvgClaim[??], main="", xlab="Claims - Drop 6")
+??(Order.AvgClaim[-c(1:5)], main="", xlab="Claims - Drop 5")
 hist(Order.AvgClaim[-c(1:3)], main="", xlab="Claims - Drop 3")
 hist(Order.AvgClaim[-1], main="", xlab="Claims - Drop 1")
 hist(Order.AvgClaim, main="", xlab="Claims - All")
@@ -423,6 +484,22 @@ hist(Order.AvgClaim, main="", xlab="Claims - All")
 
 
 ```{r ex="LDA1.1.4.2", type="sct", tut=TRUE}
+meanmsg <- "Did you correctly specify the argument `AvgClaim`?"
+medianmsg <- "Did you correctly specify the function `median`?"
+ordermsg <- "Did you correctly specify the function `order`?"
+headmsg <- "Recall that we wish to examine the 10 largest observations."
+Drop2msg <- "Did you correctly specify the second histogram?"
+Drop3msg <- "Did you correctly specify the third histogram?"
+ex() %>% check_function("mean", not_called_msg =meanmsg) %>% check_result(error_msg=meanmsg) %>% check_equal()
+ex() %>% check_function("median", not_called_msg =medianmsg) %>% check_result(error_msg=medianmsg) %>% check_equal()
+ex() %>% check_object("Order.AvgClaim", undefined_msg = "Make sure to not remove `Order.AvgClaim`!") %>% check_equal(incorrect_msg=ordermsg)
+ex() %>% check_function("head") %>% check_result() %>% check_equal(incorrect_msg=headmsg)
+ex() %>% check_function("hist", index = 1) %>% check_result() %>% check_equal()
+ex() %>% check_function("hist", index = 2) %>% check_result() %>% check_equal(incorrect_msg=Drop2msg)
+ex() %>% check_function("hist", index = 3) %>% check_result() %>% check_equal(incorrect_msg=Drop3msg)
+ex() %>% check_function("hist", index = 4) %>% check_result() %>% check_equal()
+ex() %>% check_function("hist", index = 5) %>% check_result() %>% check_equal()
+ex() %>% check_function("hist", index = 6) %>% check_result() %>% check_equal()
 success_msg("Excellent! Removing large unusual observations has its place in statistics. However, in insurance analytics, large observations are not unusual for distributions that are skewed. Removing large observations is not a technique that changes the skewed nature of these distributions.")
 ```
 
@@ -433,15 +510,18 @@ success_msg("Excellent! Removing large unusual observations has its place in sta
 
 **Assignment Text**
 
-Much of insurance analytics is about making predictions of future behavior. To understand distributions in future years, we look at *trends* in distributions from the current and preceding years. Some simple trends that are helpful not only for understanding but also communicating results to others involve looking at mean, or average, behavior. In this assignment, we examine 2006-2010 of the Wisconsin Property Fund that has been previously load into the data frame `Insample`. As in the video, by `Year` we calculate mean values of claims frequency (`Freq`), average claims severity (`yAvg`) and coverage (`BCcov`), as well as the number of fund members.
+Much of insurance analytics is about making predictions of future behavior. To understand distributions in future years, we look at *trends* in distributions from the current and preceding years. Some simple trends that are helpful not only for understanding but also communicating results to others involve looking at the mean, or average, behavior. In this assignment, we examine 2006-2010 of the Wisconsin Property Fund that has been previously loaded into the data frame `Insample`. As in the video, by `Year` we calculate mean values of claims frequency (`Freq`), average claims severity (`yAvg`) and coverage (`BCcov`), as well as the number of fund members.
 
-:::: {.blackbox data-latex=""}
+:::: {.blackbox }
 **Instructions**
 
--  Use the function [ddply()](https://www.rdocumentation.org/packages/plyr/versions/1.8.6/topics/ddply) to produce a data frame with the requisite summary statistics.
--  To document results, provide intuitive names of these summary statistics.
+-  Load the library needed to use the function [ddply()](https://www.rdocumentation.org/packages/plyr/versions/1.8.6/topics/ddply). (The documentation provides that name of the library needed to run this function.)
+-  With this function, produce a data frame with the requisite summary statistics.
+-  To document results, provide intuitive names of these summary statistics using the [names()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/names) function.
+-  Before displaying the data frame, tidy up the results a bit by rounding the mean values of claim frequency to three digits using the [round()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/Round) function. Also, present the mean coverage in thousands (of dollars), rounding to zero digits. After tidying up, display the results.
 ::::
 
+<br>
 
 ```{r ex="LDA1.1.4.3", type="pre-exercise-code", tut=TRUE}
 Insample <- read.csv("https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/Data/Insample.csv", header=T,
@@ -450,34 +530,33 @@ Insample <- read.csv("https://raw.githubusercontent.com/OpenActTextDev/LDACourse
 
 
 ```{r ex="LDA1.1.4.3", type="hint", tut=TRUE}
-The syntax `x[order(x)]` produces an (increasing) ordered version of a vector `x`.
+Use `mean()` to compute means, or averages, and use `length()` to determine the length of the vector of observations.
 ```
 
 
 ```{r ex="LDA1.1.4.3", type="sample-code", tut=TRUE}
-library(___)
-Table1In <- ddply(Insample, c("Year"), summarize,
-               AvgFreq    = mean(Freq), AvgSev = ___(yAvg),
-               AvgCov   = ___(BCcov), NumPol = ___(Freq) )
-names(Table1In) <- c("Year", "Average Frequency",
-                     "Average Severity", "Average Coverage",
-                     "Number of Policyholders")
+library(??)
+Table1In <- ddply(Insample, c("Year"), summarize,  AvgFreq    = mean(Freq), AvgSev = ??(yAvg),  AvgCov   = ??(BCcov), NumPol = ??(Freq) )
+names(Table1In) <- c("Year", ??,  "Average Severity", "Avg Coverage (000s)", ??)
+Table1In[,2] <- round(Table1In[,2], digits = ??)
+Table1In[,4] <- round(Table1In[,4]/??, digits = ??)
 Table1In
 ```
 
 ```{r ex="LDA1.1.4.3", type="solution", tut=TRUE}
 library(plyr)
-Table1In <- ddply(Insample, c("Year"), summarize,
-               AvgFreq    = mean(Freq), AvgSev = mean(yAvg),
-               AvgCov   = mean(BCcov), NumPol = length(Freq) )
-names(Table1In) <- c("Year", "Average Frequency",
-                     "Average Severity", "Average Coverage",
-                     "Number of Policyholders")
+Table1In <- ddply(Insample, c("Year"), summarize, AvgFreq    = mean(Freq), AvgSev = mean(yAvg),  AvgCov   = mean(BCcov), NumPol = length(Freq) )
+names(Table1In) <- c("Year", "Average Frequency", "Average Severity", "Avg Coverage (000s)", "Number of Policyholders")
+Table1In[,2] <- round(Table1In[,2], digits = 3)
+Table1In[,4] <- round(Table1In[,4]/1000, digits = 0)
 Table1In
 ```
 
 ```{r ex="LDA1.1.4.3", type="sct", tut=TRUE}
-success_msg("Excellent!")
+libmsg <- "Did you call the library `plyr`?"
+ex() %>% check_function("library") %>% check_result(.,error_msg =libmsg) %>% check_equal()
+ex() %>% check_object("Table1In", undefined_msg = "Make sure to not remove `Table1In`!") %>% check_equal()
+success_msg("Excellent! Presenting the right summary statistics in a clean way is important for communication of results. It is also very useful as you are trying to make sense of a complex data set.")
 ```
 
 
@@ -531,15 +610,16 @@ R Code</button>
 
 Analytics of insurance data has much in common with analytics in other areas but insurance also has its own peculiarities. One of example of this is how one only examines summary statistics for positive claims. (Mathematically, the claim severity distribution is defined conditional on the occurrence of a claim). As a consequence, we often need to write specialized routines for insurance applications.
 
-Your supervisor finds useful the analysis completed of claims outcomes by entity type, fire class, and no claim code. To make this analysis more impactful, the supervisor wants you to modify the code to include a basic measure of uncertainty, the standard deviation.
+Your supervisor finds useful the analysis of claims outcomes by entity type, fire class, and no claim code (already completed in the video). To make this analysis more impactful, the supervisor wants you to modify the code to include a basic measure of uncertainty, the standard deviation.
 
-:::: {.blackbox data-latex=""}
+:::: {.blackbox }
 **Instructions**
 
--  Modify the function created for this specific analysis, `ByVarSumm`, to include the standard deviation statistic. Note that, like the mean, we only calculate the standard deviation on the sub-sample of positive claims.
--  Include documentation of this standard deviation statistic in the table.
+-  Modify the function created for this specific analysis, `ByVarSumm()`, to include the standard deviation statistic. Note that, like the mean, we only calculate the standard deviation on the sub-sample of positive claims.
+-  Include this standard deviation statistic as part of your table output.
 ::::
 
+<br>
 
 ```{r ex="LDA1.1.5.1", type="pre-exercise-code", tut=TRUE}
 Insample <- read.csv("https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/Data/Insample.csv", header=T,
@@ -558,8 +638,8 @@ ByVarSumm <- function(datasub){
   A2 <- mean(datasub$Freq)
   datasub1 <-  subset(datasub, yAvg>0)
   A3 <- mean(datasub1$yAvg)
-  A4 <- ___ 
-  return( c(A1,A2,A3, ___) )
+  A4 <- ?? 
+  return( c(A1,A2,A3, ??) )
   }
 
 t1 <- ByVarSumm(subset(Insample, TypeVillage == 1))
@@ -576,11 +656,8 @@ t11 <- ByVarSumm(Insample)
 
 Tablea <- rbind(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)
 Table4 <- round(Tablea, digits = 3)
-colnames(Table4) <- c("Number of Policies", "Claim Frequency", 
-                      "Average Severity", ___)
-rownames(Table4) <- c("Village","City","County","Misc","School",
-                      "Town","Fire5--No","Fire5--Yes","NoClaimCredit--No",
-                      "NoClaimCredit--Yes","Total")
+colnames(Table4) <- c("Number of Policies", "Claim Frequency", "Average Severity", ??)
+rownames(Table4) <- c("Village","City","County","Misc","School", "Town","Fire5--No","Fire5--Yes","NoClaimCredit--No", "NoClaimCredit--Yes","Total")
 Table4
 ```
 
@@ -608,16 +685,20 @@ t11 <- ByVarSumm(Insample)
 
 Tablea <- rbind(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)
 Table4 <- round(Tablea, digits = 3)
-colnames(Table4) <- c("Number of Policies", "Claim Frequency", 
-                      "Average Severity", "Std Dev Severity")
-rownames(Table4) <- c("Village","City","County","Misc","School",
-                      "Town","Fire5--No","Fire5--Yes","NoClaimCredit--No",
-                      "NoClaimCredit--Yes","Total")
+colnames(Table4) <- c("Number of Policies", "Claim Frequency", "Average Severity", "Std Dev Severity")
+rownames(Table4) <- c("Village","City","County","Misc","School", "Town","Fire5--No","Fire5--Yes","NoClaimCredit--No", "NoClaimCredit--Yes","Total")
 Table4
 ```
 
 
 ```{r ex="LDA1.1.5.1", type="sct", tut=TRUE}
+ex() %>% check_object("Table4", undefined_msg = "Make sure to not remove `Table4`!") %>% check_equal()
+ex() %>% check_fun_def("ByVarSumm") %>% {
+  check_arguments(.)
+  check_body(.) %>%  check_function(., "sd", not_called_msg = "Check your specification of the sd() function.")
+}
+ex() %>% check_function("ByVarSumm") %>% check_result() %>% check_equal()
+
 success_msg("Excellent! Modifying someone else's code can be more difficult than writing your own. It is a necessary skill when working for large organizations. It also makes you appreciate the value of documenting your own code for future users.")
 ```
 

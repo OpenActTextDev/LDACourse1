@@ -94,7 +94,6 @@ The project goal is to have the actuarial community author our textbooks in a co
 
 - **Yvonne Chueh** is a professor at Central Washington University. She received PhD from the University of Connecticut, bachelor degree in pure math from National Taiwan University. She has taught actuarial courses at UCONN and UW-Eau Claire. She is an associate (since 1994) and council member/chair (2013-2017/2017) of the Society of Actuaries (SOA) Education \& Research Section. Her research works were published by the American Academy of Actuaries, the Actuarial Foundation, SOA *North American Actuarial Journal*, *Electrical Engineering Series* of Springer, *International Joint Conference on Neural Networks*, *IEEE Symposium Series on Computational Intelligence (SSCI)*, and *International Journal of Computers, Communications & Control*.
 
-<br>
 
 <img src = "ContributorPics\MiukiEbisaki.jpg" width = "150" height = "180" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
@@ -128,11 +127,6 @@ The project goal is to have the actuarial community author our textbooks in a co
 <img src = "ContributorPics\PJ.jpg" width = "150" height = "170" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
 - **Paul H. Johnson, Jr.** is a lecturer in the Risk and Insurance Department of the Wisconsin School of Business at the University of Wisconsin-Madison.  He has an MS in Actuarial Science and a PhD in Business (Actuarial Science), both from UW-Madison.  Paul teaches undergraduate courses in life contingencies, loss models, regression, and analytics.  Prior to teaching at UW-Madison, Paul received various honors and awards for teaching excellence in the Department of Mathematics at the University of Illinois at Urbana-Champaign; most notably, the N. Tenney Peck Teaching Award in Mathematics. He also has published articles in the *North American Actuarial Journal* and the *Risk Management and Insurance Review*.
-
-
-<img src = "ContributorPics\JosephKimPic.jpg" width = "150" height = "170" style = "float:right; margin-left: 10px; margin-top: 7px" />
-
-- **Joseph H.T. Kim**, Ph.D., FSA, CERA, is Associate Professor of Applied Statistics at Yonsei University, Seoul, Korea. He holds a Ph.D. degree in Actuarial Science from the University of Waterloo, at which he taught as Assistant Professor. He also worked in the life insurance industry. He has published papers in *Insurance Mathematics and Economics*, *Journal of Risk and Insurance*, *Journal of Banking and Finance*, *ASTIN Bulletin*, and *North American Actuarial Journal*, among others. 
 
 
 <img src = "ContributorPics\Okine_A.jpg" width = "150" height = "170" style = "float:right; margin-left: 10px; margin-top: 7px" />
