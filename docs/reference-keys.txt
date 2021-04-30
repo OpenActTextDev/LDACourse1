@@ -10,6 +10,10 @@ exercise.-claim-severity-by-year
 property-fund-rating-variables
 exercise.-claim-by-entity-type-fire-class-and-no-claim-credit
 frequency-modeling
+basic-frequency-distributions
+exercise.-representing-the-number-of-cyber-events-with-a-binomial-distribution
+exercise.-representing-the-number-of-cyber-events-with-a-poisson-distribution
+exercise.-comparing-basic-count-distributions
 modeling-loss-severity
 model-selection-and-estimation
 aggregate-loss-models

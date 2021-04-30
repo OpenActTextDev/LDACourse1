@@ -1,9 +1,5 @@
 
 
-# Frequency Modeling
-
-**Placeholder**
-
 # Modeling Loss Severity
 
 **Placeholder**

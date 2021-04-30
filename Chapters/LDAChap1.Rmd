@@ -233,31 +233,50 @@ Tab2009<-table(Freq2009)
 ```
 
 ```{r ex="LDA1.1.3.1", type="sct", tut=TRUE}
-ex() %>% check_object("Insample2009", undefined_msg="Use `Insample2009` to create an object named `Insample2009`from the year 2009 data.") %>% check_equal(incorrect_msg="Assign the subset of 2009 data by using subset(Insample, Year==2009), Capitalize Y.")
+#Error message list
+Error1<-"Use `Insample2009` to create an object named `Insample2009`from the year 2009 data."
+Error2<-"Assign the subset of 2009 data by using subset(Insample, Year==2009), Capitalize Y."
+Error3<-"Use `Freq2009` to create an object named `Freq2009`from the year 2009 Claim Frequency data."
+Error4<-"Assign the column Frequency of 2009 data by using Insample2009$Freq in which $ refers the column name"
+Error5<-"Use `length` on the Freq2009 to count the number of entries in the Frequency column"
+Error6<-"Use `Freq2009` to locate the correct column which stores the Frequency data"
+Error7<-"Use `mean` on the Freq2009 to count the average value of entries in the Frequency column"
+Error8<-"Use `Freq2009` to locate the correct column which stores the Frequency data from Year 2009"
+Error9<-"Use `table` on the Freq2009 to tabulate the frequency data in a tabular form"
+Error10<-"Use `Freq2009` to locate the correct column which stores the Frequency data from Year 2009"
+Error11<-"Use `Insample2009` to create an object named `Insample2009`from the year 2009 data."
+Error12<-"Assign the subset of 2009 data by using subset(Insample, Year==2009), Capitalize Y."
+Error13<-"Use `Freq2009` to create an object named `Freq2009`from the year 2009 Claim Frequency data."
+Error14<-"Assign the column Frequency of 2009 data by using Insample2009$Freq in which $ refers the column name"
+Error15<-"Use `length` on the Freq2009 to count the number of entries in the Frequency column"
+Error16<-"Use `Freq2009` to locate the correct column which stores the Frequency data"
+Error17<-"Use `Leng2009` to create an object named `Leng2009`from the year 2009 Claim Frequency data."
+Error18<-"Assign the Claim Frequency of 2009 data by using Freq2009"
+Error19<-"Use `mean` on the Freq2009 to count the average value of entries in the Frequency column"
+Error20<-"Use `Freq2009` to locate the correct column which stores the Frequency data from Year 2009"
+Error21<-"Use `Mean2009` to create an object named `Mean2009`from the year 2009 Claim Frequency data."
+Error22<-"Assign the claim Frequency of 2009 data by using Freq2009"
+Error23<-"Use `table` on the 2009 to tabulate the frequency data in a tabular form"
+Error24<-"Use `Freq2010` to locate the correct column which stores the Frequency data from Year 2009"  
+Error25<-"Use `Tab2009` to create an object named `Tab2009`from the year 2009 Claim Frequency data."
+Error26<-"Assign the Claim Frequency of 2009 data by using Freq2009"
 
-ex() %>% check_object("Freq2009", undefined_msg="Use `Freq2009` to create an object named `Freq2009`from the year 2009 Claim Frequency data.") %>% check_equal(incorrect_msg="Assign the column Frequency of 2009 data by using Insample2009$Freq in which $ refers the column name")
+#Check Object does exist
+ex() %>% check_object("Insample2009", undefined_msg = Error1) %>% check_equal(incorrect_msg=Error2)
+ex() %>% check_object("Freq2009", undefined_msg=Error3) %>% check_equal(incorrect_msg=Error4)
 
-ex() %>% check_function("length", not_called_msg="Use `length` on the Freq2009 to count the number of entries in the Frequency column") %>% check_result() %>% check_equal(incorrect_msg="Use `Freq2009` to locate the correct column which stores the Frequency data")
-
-ex() %>% check_function("mean", not_called_msg="Use `mean` on the Freq2009 to count the average value of entries in the Frequency column") %>% check_result() %>% check_equal(incorrect_msg="Use `Freq2009` to locate the correct column which stores the Frequency data from Year 2009")
-
-ex() %>% check_function("table", not_called_msg="Use `table` on the Freq2009 to tabulate the frequency data in a tabular form") %>% check_result() %>% check_equal(incorrect_msg="Use `Freq2009` to locate the correct column which stores the Frequency data from Year 2009")
-
-ex() %>% check_object("Insample2009", undefined_msg="Use `Insample2009` to create an object named `Insample2009`from the year 2009 data.") %>% check_equal(incorrect_msg="Assign the subset of 2009 data by using subset(Insample, Year==2009), Capitalize Y.")
-
-ex() %>% check_object("Freq2009", undefined_msg="Use `Freq2009` to create an object named `Freq2009`from the year 2009 Claim Frequency data.") %>% check_equal(incorrect_msg="Assign the column Frequency of 2009 data by using Insample2009$Freq in which $ refers the column name")
-
-ex() %>% check_function("length", not_called_msg="Use `length` on the Freq2009 to count the number of entries in the Frequency column") %>% check_result() %>% check_equal(incorrect_msg="Use `Freq2009` to locate the correct column which stores the Frequency data")
-
-ex() %>% check_object("Leng2009", undefined_msg="Use `Leng2009` to create an object named `Leng2009`from the year 2009 Claim Frequency data.") %>% check_equal(incorrect_msg="Assign the Claim Frequency of 2009 data by using Freq2009")
-
-ex() %>% check_function("mean", not_called_msg="Use `mean` on the Freq2009 to count the average value of entries in the Frequency column") %>% check_result() %>% check_equal(incorrect_msg="Use `Freq2009` to locate the correct column which stores the Frequency data from Year 2009")
-
-ex() %>% check_object("Mean2009", undefined_msg="Use `Mean2009` to create an object named `Mean2009`from the year 2009 Claim Frequency data.") %>% check_equal(incorrect_msg="Assign the claim Frequency of 2009 data by using Freq2009")
-
-ex() %>% check_function("table", not_called_msg="Use `table` on the 2009 to tabulate the frequency data in a tabular form") %>% check_result() %>% check_equal(incorrect_msg="Use `Freq2010` to locate the correct column which stores the Frequency data from Year 2009")
-
-ex() %>% check_object("Tab2009", undefined_msg="Use `Tab2009` to create an object named `Tab2009`from the year 2009 Claim Frequency data.") %>% check_equal(incorrect_msg="Assign the Claim Frequency of 2009 data by using Freq2009")
+#Check function is called
+ex() %>% check_function("length", not_called_msg=Error5) %>% check_result() %>% check_equal(incorrect_msg=Error6)
+ex() %>% check_function("mean", not_called_msg=Error7) %>% check_result() %>% check_equal(incorrect_msg=Error8)
+ex() %>% check_function("table", not_called_msg=Error9) %>% check_result() %>% check_equal(incorrect_msg=Error10)
+ex() %>% check_object("Insample2009", undefined_msg=Error11) %>% check_equal(incorrect_msg=Error12)
+ex() %>% check_object("Freq2009", undefined_msg=Error13) %>% check_equal(incorrect_msg=Error14)
+ex() %>% check_function("length", not_called_msg=Error15) %>% check_result() %>% check_equal(incorrect_msg=Error16)
+ex() %>% check_object("Leng2009", undefined_msg=Error17) %>% check_equal(incorrect_msg=Error18)
+ex() %>% check_function("mean", not_called_msg=Error19) %>% check_result() %>% check_equal(incorrect_msg=Error20)
+ex() %>% check_object("Mean2009", undefined_msg=Error21) %>% check_equal(incorrect_msg=Error22)
+ex() %>% check_function("table", not_called_msg=Error23) %>% check_result() %>% check_equal(incorrect_msg=Error24)
+ex() %>% check_object("Tab2009", undefined_msg=Error25) %>% check_equal(incorrect_msg=Error26)
 
 success_msg("Getting started is always the hardest thing to do. Excellent start!")
 ```

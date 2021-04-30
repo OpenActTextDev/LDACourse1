@@ -465,7 +465,13 @@ var submitAnswer = function() {
 <li class="chapter" data-level="1.5.1" data-path="introduction-to-loss-data-analytics.html"><a href="introduction-to-loss-data-analytics.html#exercise.-claim-by-entity-type-fire-class-and-no-claim-credit"><i class="fa fa-check"></i><b>1.5.1</b> Exercise. Claim by Entity Type, Fire Class, and No Claim Credit</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="frequency-modeling.html"><a href="frequency-modeling.html"><i class="fa fa-check"></i><b>2</b> Frequency Modeling</a></li>
+<li class="chapter" data-level="2" data-path="frequency-modeling.html"><a href="frequency-modeling.html"><i class="fa fa-check"></i><b>2</b> Frequency Modeling</a><ul>
+<li class="chapter" data-level="2.1" data-path="frequency-modeling.html"><a href="frequency-modeling.html#basic-frequency-distributions"><i class="fa fa-check"></i><b>2.1</b> Basic Frequency Distributions</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="frequency-modeling.html"><a href="frequency-modeling.html#exercise.-representing-the-number-of-cyber-events-with-a-binomial-distribution"><i class="fa fa-check"></i><b>2.1.1</b> Exercise. Representing the Number of Cyber Events with a Binomial Distribution</a></li>
+<li class="chapter" data-level="2.1.2" data-path="frequency-modeling.html"><a href="frequency-modeling.html#exercise.-representing-the-number-of-cyber-events-with-a-poisson-distribution"><i class="fa fa-check"></i><b>2.1.2</b> Exercise. Representing the Number of Cyber Events with a Poisson Distribution</a></li>
+<li class="chapter" data-level="2.1.3" data-path="frequency-modeling.html"><a href="frequency-modeling.html#exercise.-comparing-basic-count-distributions"><i class="fa fa-check"></i><b>2.1.3</b> Exercise. Comparing Basic Count Distributions</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="3" data-path="modeling-loss-severity.html"><a href="modeling-loss-severity.html"><i class="fa fa-check"></i><b>3</b> Modeling Loss Severity</a></li>
 <li class="chapter" data-level="4" data-path="model-selection-and-estimation.html"><a href="model-selection-and-estimation.html"><i class="fa fa-check"></i><b>4</b> Model Selection and Estimation</a></li>
 <li class="chapter" data-level="5" data-path="aggregate-loss-models.html"><a href="aggregate-loss-models.html"><i class="fa fa-check"></i><b>5</b> Aggregate Loss Models</a><ul>
@@ -505,7 +511,121 @@ var submitAnswer = function() {
             <section class="normal" id="section-">
 <div id="frequency-modeling" class="section level1">
 <h1><span class="header-section-number">Chapter 2</span> Frequency Modeling</h1>
-<p><strong>Placeholder</strong></p>
+<p><strong>Chapter description</strong></p>
+<p>A primary focus for insurers is estimating the magnitude of aggregate claims it must bear under its insurance contracts. Aggregate claims are affected by both the frequency and the severity of the insured event. Decomposing aggregate claims into these two components, each of which warrant significant attention, is essential for analysis and pricing. This chapter discusses frequency distributions, summary measures, and parameter estimation techniques.</p>
+<p>Although not needed to go through the tutorials, some users may wish to download the overheads used in the videos. <button download><a href="https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/LDA1.Overheads/LDA1.Chap2.pdf">Download Chapter Two overheads as a .pdf file.</a></button></p>
+<div id="basic-frequency-distributions" class="section level2">
+<h2><span class="header-section-number">2.1</span> Basic Frequency Distributions</h2>
+<hr />
+<p>In this section, you learn how to:</p>
+<ul>
+<li>Determine quantities that summarize a distribution such as the distribution and survival function, as well as moments such as the mean and variance</li>
+<li>Define and compute the moment and probability generating functions</li>
+<li>Describe and understand relationships among three important frequency distributions, the binomial, Poisson, and negative binomial distributions</li>
+</ul>
+<hr />
+<div id="exercise.-representing-the-number-of-cyber-events-with-a-binomial-distribution" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> Exercise. Representing the Number of Cyber Events with a Binomial Distribution</h3>
+<p><strong>Assignment Text</strong></p>
+<p>Cyber risk for a firm is based on its’ liability for a data breach involving sensitive customer information, such as Social Security numbers, credit card numbers, account numbers, driver’s license numbers and health records. A company models its cyber risk using the following assumptions:</p>
+<ol style="list-style-type: lower-roman">
+<li>In any calendar quarter, there can be at most one cyber event.</li>
+<li>In any calendar quarter, the probability of a cyber event is 0.1.</li>
+<li>The numbers of cyber events in different calendar quarters are mutually independent.</li>
+</ol>
+<p>Based on these assumptions, you represent the total number of cyber events as a binomial distribution.</p>
+<div class="blackbox">
+<p><strong>Instructions</strong>.</p>
+<ul>
+<li>Identify the binomial distribution parameters for the number of cyber events in a 12 quarter (3 years) period.</li>
+<li>Calculate the probability that there are <span class="math inline">\(k\)</span> cyber events for <span class="math inline">\(k = 0, 1, \ldots, 12\)</span> using the function <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Binomial">dbinom()</a>.</li>
+<li>Create a data frame to present your results. All values within a specific column should be rounded to the same number of decimal places. Display the data frame.</li>
+<li>Graph the probability mass function of the number of cyber events using the function <a href="https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/barplot">barplot()</a>. Include a descriptive title and axis labels for the graph.</li>
+</ul>
+</div>
+<p><br></p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJzaXplID0gPz9cbkN5YmVyLnByb2IgPSA/P1xuXG5vdXRjb21lcyA8LSAwOnNpemVcbnBtZiA8LSBkYmlub20oeD1vdXRjb21lcywgc2l6ZT1zaXplLCBwcm9iPUN5YmVyLnByb2IpICBcbnBtZlxuXG5wbWYxIDwtIHJvdW5kKHBtZiwgZGlnaXRzID0gNilcbm91dGNvbWVkYXRhZiA8LSByYmluZChvdXRjb21lcywgPz8pXG5vdXRjb21lZGF0YWYgXG5cbmJhcnBsb3QocG1mLCBuYW1lcy5hcmc9Pz8sIGNvbD1cImxpZ2h0Z3JlZW5cIiwgeWxhYiA9ID8/LCB4bGFiID0gPz8pIiwic29sdXRpb24iOiJzaXplID0gMTJcbkN5YmVyLnByb2IgPSAwLjAxXG5cbm91dGNvbWVzIDwtIDA6c2l6ZVxucG1mIDwtIGRiaW5vbSh4PW91dGNvbWVzLCBzaXplPXNpemUsIHByb2I9Q3liZXIucHJvYikgIFxucG1mXG5cbnBtZjEgPC0gcm91bmQocG1mLCBkaWdpdHMgPSA2KVxub3V0Y29tZWRhdGFmIDwtIHJiaW5kKG91dGNvbWVzLCBwbWYxKVxub3V0Y29tZWRhdGFmIFxuXG5iYXJwbG90KHBtZiwgbmFtZXMuYXJnPW91dGNvbWVzLCBjb2w9XCJsaWdodGdyZWVuXCIsIHlsYWIgPSBcIlByb2JhYmlsaXR5XCIsIHhsYWIgPSBcIkN5YmVyIEV2ZW50c1wiKSIsInNjdCI6InN1Y2Nlc3NfbXNnKFwiRXhjZWxsZW50IGpvYiEgTW9zdCBjb25zdW1lcnMgaGF2ZSBzb21lIGZhbWlsaWFyaXR5IHdpdGggdGhlIGJpbm9taWFsIGRpc3RyaWJ1dGlvbnMsIHNvIGl0IGlzIGltcG9ydGFudCBpbiBhY3R1YXJpYWwgYXBwbGljYXRpb25zIHRvIGJlIGFibGUgdG8gY29udmV5IG1lc3NhZ2VzIGFib3V0IGNvdW50cyBpbiB0aGUgY29udGV4dHMgb2YgYmlub21pYWxzLlwiKSIsImhpbnQiOiJSZXZpZXcgdGhlIGltcG9ydGFudCBjb3VudCBkaXN0cmlidXRpb25zIGluIDxhIGhyZWY9XCJodHRwczovL29wZW5hY3R0ZXh0cy5naXRodWIuaW8vTG9zcy1EYXRhLUFuYWx5dGljcy9DLUZyZXF1ZW5jeS1Nb2RlbGluZy5odG1sI1M6aW1wb3J0YW50LWZyZXF1ZW5jeS1kaXN0cmlidXRpb25zXCI+TG9zcyBEYXRhIEFuYWx5dGljcyBGcmVxdWVuY3kgTW9kZWxpbmc8L2E+IGNoYXB0ZXIuIn0=
+</div>
+</div>
+<div id="exercise.-representing-the-number-of-cyber-events-with-a-poisson-distribution" class="section level3">
+<h3><span class="header-section-number">2.1.2</span> Exercise. Representing the Number of Cyber Events with a Poisson Distribution</h3>
+<p><strong>Assignment Text</strong></p>
+<p>Another company is also concerned with cyber risk. Compared to the company in the prior exercise, this company is larger and does not wish to assume at most one cyber event in a quarter. Moreover, it believes that the distribution of cyber events is a function of its technical support staff size that has increased over time. Thus, it wishes to model the number of cyber events as a Poisson distribution with expected number of events as:</p>
+<p><span class="math display">\[
+{\small
+\begin{array}{l|cccccc} \hline
+\text{Quarter} &amp; 1 &amp; 2 &amp; 3&amp; 4&amp; 5&amp; 6 \\\hline
+\text{Expected Number}&amp; 0.1 &amp; 0.1 &amp; 0.1 &amp; 0.1 &amp; 0.2 &amp; 0.2 \\ \hline
+\text{Quarter} &amp; 7 &amp; 8 &amp; 9&amp; 10&amp; 11&amp; 12 \\ \hline 
+\text{Expected Number}&amp; 0.2 &amp; 0.2 &amp; 0.3 &amp; 0.3 &amp; 0.4 &amp; 0.5 \\ \hline
+\end{array}
+}
+\]</span></p>
+<p>Assuming that the numbers of cyber events in different calendar quarters are mutually independent, the total number of cyber events over the three year period (12 quarters) has a Poisson distribution with expected number <span class="math inline">\(\lambda = 2.7\)</span>. (Recall that the sum of independent Poisson random variables has a Poisson distribution.)</p>
+<div class="blackbox">
+<p><strong>Instructions</strong></p>
+<ul>
+<li>Graph the probability mass function (pmf) of the number of cyber events using the function <code>barplot()</code>.</li>
+<li>Calculate the pmf and the cumulative probability distribution function for <span class="math inline">\(k = 0, 1, \ldots, 12\)</span> cyber events
+using the functions <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Poisson">dpois()</a>, <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Poisson">ppois()</a>. Create a data frame to present your results and display the data frame.</li>
+<li>From your data frame, identify the 95th percentile. Confirm your result using the <a href="https://www.rdocumentation.org/packages/stats/versions/3.3/topics/Poisson">qpois()</a> function.</li>
+<li>How are the probabilities changing over time? Plot the probability of zero cyber events versus quarter number <span class="math inline">\(k = 0, 1, \ldots, 12\)</span>.</li>
+</ul>
+</div>
+<p><br></p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsYW1iZGF2ZWMgPC0gYyhyZXAoMC4xLDQpLCByZXAoMC4yLDQpLCAwLjMsIDAuMywgMC40LCAwLjUpXG5DeWJlci5sYW1iZGEgPC0gc3VtKD8/KVxuXG5vdXRjb21lcyA8LSAwOjEyXG5DeWJlci5wbWYgPC0gZHBvaXMoeD0/PywgbGFtYmRhPUN5YmVyLmxhbWJkYSlcbmJhcnBsb3QoQ3liZXIucG1mLCBuYW1lcy5hcmc9b3V0Y29tZXMsIGNvbD1cImxpZ2h0Z3JlZW5cIiwgeWxhYiA9IFwiUHJvYmFiaWxpdHlcIiwgeGxhYiA9IFwiQ3liZXIgRXZlbnRzXCIpXG5cbkN5YmVyLmRmIDwtIHBwb2lzKG91dGNvbWVzLCA/Pylcbm91dGNvbWVkYXRhZiA8LSByYmluZChvdXRjb21lcywgQ3liZXIucG1mLCBDeWJlci5kZilcbm91dGNvbWVkYXRhZiBcblxucXBvaXMoPz8sIGxhbWJkYT1DeWJlci5sYW1iZGEpXG5cblByb2J6ZXJvIDwtIGRwb2lzKHg9MCwgbGFtYmRhPWxhbWJkYXZlYylcbnBsb3QoPz8sUHJvYnplcm8sIHR5cGUgPSBcImxcIiwgeGxhYiA9IFwicXVhcnRlclwiLCB5bGFiID0gXCJQcm9iIG9mIFplcm9cIikiLCJzb2x1dGlvbiI6ImxhbWJkYXZlYyA8LSBjKHJlcCgwLjEsNCksIHJlcCgwLjIsNCksIDAuMywgMC4zLCAwLjQsIDAuNSlcbkN5YmVyLmxhbWJkYSA8LSBzdW0obGFtYmRhdmVjKVxuXG5vdXRjb21lcyA8LSAwOjEyXG5DeWJlci5wbWYgPC0gZHBvaXMoeD1vdXRjb21lcywgbGFtYmRhPUN5YmVyLmxhbWJkYSlcbmJhcnBsb3QoQ3liZXIucG1mLCBuYW1lcy5hcmc9b3V0Y29tZXMsIGNvbD1cImxpZ2h0Z3JlZW5cIiwgeWxhYiA9IFwiUHJvYmFiaWxpdHlcIiwgeGxhYiA9IFwiQ3liZXIgRXZlbnRzXCIpXG5cbkN5YmVyLmRmIDwtIHBwb2lzKG91dGNvbWVzLCBsYW1iZGE9Q3liZXIubGFtYmRhKVxub3V0Y29tZWRhdGFmIDwtIHJiaW5kKG91dGNvbWVzLCBDeWJlci5wbWYsIEN5YmVyLmRmKVxub3V0Y29tZWRhdGFmIFxuXG5xcG9pcygwLjk1LCBsYW1iZGE9Q3liZXIubGFtYmRhKVxuXG5Qcm9iemVybyA8LSBkcG9pcyh4PTAsIGxhbWJkYT1sYW1iZGF2ZWMpXG5wbG90KDE6MTIsUHJvYnplcm8sIHR5cGUgPSBcImxcIiwgeGxhYiA9IFwicXVhcnRlclwiLCB5bGFiID0gXCJQcm9iIG9mIFplcm9cIikiLCJzY3QiOiJzdWNjZXNzX21zZyhcIkV4Y2VsbGVudCBqb2IhIFRoZSBQb2lzc29uIGlzIHRoZSBiYXNpYyBjb3VudCBkaXN0cmlidXRpb24gaW4gYWN0dWFyaWFsIGFwcGxpY2F0aW9ucy4gQ29uc3VtZXJzIG9mdGVuIGhhdmUgZmFtaWxpYXJpdHkgd2l0aCB0aGUgZXhwZWN0ZWQgbnVtYmVyIG9mIGV2ZW50cyBhcyB3ZWxsIGFzIHRoZSBwcm9iYWJpbGlsdHkgb2YgemVybyBldmVudHMuIEluIHRoZSBsYXN0IHBhcnQsIHlvdSBsZWFybmVkIGhvdyB0byBwb3J0cmF5IGluY3JlYXNpbmcgbWVhbnMgaW4gdGVybXMgb2YgZGVjcmVhc2luZyBmcmVxdWVuY3kgb2YgemVybyBldmVudHMsIGNvbm5lY3RpbmcgdGhlc2UgaW1wb3J0YW50IHN1bW1hcnkgbWVhc3VyZXMuXCIpIiwiaGludCI6IllvdSB3aWxsIGZpbmQgbW9yZSBkaXNjdXNzaW9uIG9mIHBlcmNlbnRpbGVzIGluIFNlY3Rpb24gNC4xIG9mIDxhIGhyZWY9XCJodHRwczovL29wZW5hY3R0ZXh0cy5naXRodWIuaW8vTG9zcy1EYXRhLUFuYWx5dGljcy9DLU1vZGVsU2VsZWN0aW9uLmh0bWwjUzpNUzpOb25QYXJJbmZcIj5Mb3NzIERhdGEgQW5hbHl0aWNzPC9hPi4ifQ==
+</div>
+</div>
+<div id="exercise.-comparing-basic-count-distributions" class="section level3">
+<h3><span class="header-section-number">2.1.3</span> Exercise. Comparing Basic Count Distributions</h3>
+<p><strong>Assignment Text</strong></p>
+<p>Your supervisor would like to have a better understanding of relationships among three important count distributions, the binomial, Poisson, and negative binomial. You could develop a mathematical appendix, demonstrating how:</p>
+<ul>
+<li>A binomial distribution with parameters <span class="math inline">\(m \to \infty\)</span> and <span class="math inline">\(mq \to \lambda\)</span> converges to a Poisson distribution.</li>
+<li>A negative binomial distribution with mean parameter <span class="math inline">\(r \beta = \lambda\)</span> and dispersion parameter <span class="math inline">\(r\)</span> converges to a Poisson distribution as <span class="math inline">\(r \to \infty\)</span>.</li>
+</ul>
+<p>Instead, you decide to demonstrate these relationships graphically.</p>
+<div class="blackbox">
+<p><strong>Instructions</strong></p>
+<ul>
+<li>Plot the probability mass function (pmf) of the binomial distribution with <span class="math inline">\(m=12\)</span> and <span class="math inline">\(q=0.1\)</span> over <span class="math inline">\(k = 0, 1, \ldots, 12\)</span> potential outcomes. Superimpose on this plot a Poisson pmf with the same mean using the <a href="https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/lines">lines()</a> function.</li>
+<li>Repeat this step with the same Poisson distribution but, for the binomial distribution, multiply <span class="math inline">\(m\)</span> by 5 and divide <span class="math inline">\(q\)</span> by 5. (You should see how the binomial becomes a better approximation to the Poisson.)</li>
+<li>Determine the pmf of the negative binomial distribution with mean parameter <span class="math inline">\(r \beta\)</span> and dispersion parameter <span class="math inline">\(r=1\)</span> using the function <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/NegBinomial">dnbinom()</a>. Use the same mean as for the binomial distribution.</li>
+<li>Demonstrate the convergence of the negative binomial to the Poisson by creating side-by-side graphical comparisons. That is, using the <a href="https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/par">par(mfrow = …)</a> syntax, compare:
+<ul>
+<li>A plot of this negative binomial distribution pmf, superimposed with baseline Poisson distribution (with the same mean).</li>
+<li>A plot of the negative binomial distribution pmf with the same mean and dispersion parameter <span class="math inline">\(r=100\)</span>, superimposed with baseline Poisson distribution.</li>
+</ul></li>
+</ul>
+</div>
+<p><br></p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJvdXRjb21lcyA8LSAwOjEyXG5cbkJpbm9tMS5wbWYgIDwtIGRiaW5vbSh4PW91dGNvbWVzLCBzaXplPTEyLCA/PykgIFxuUG9pc3Nvbi5wbWYgPC0gZHBvaXMoeD1vdXRjb21lcywgbGFtYmRhPTEuMilcbnBsb3Qob3V0Y29tZXMsID8/KVxubGluZXMob3V0Y29tZXMsID8/KVxuXG5CaW5vbTIucG1mIDwtIGRiaW5vbSh4PW91dGNvbWVzLCBzaXplPT8/LCBwcm9iPT8/KSBcbnBsb3Qob3V0Y29tZXMsIEJpbm9tMi5wbWYpXG5saW5lcyhvdXRjb21lcywgUG9pc3Nvbi5wbWYpXG5cbiggTmVnQmlub20xLnBtZiA8LSBkbmJpbm9tKG91dGNvbWVzLCBtdT0/PyBzaXplPT8/KSApXG5cbnBhcihtZnJvdyA9IGMoMSwyKSlcbnBsb3Qob3V0Y29tZXMsIE5lZ0Jpbm9tMS5wbWYpXG5saW5lcyhvdXRjb21lcywgUG9pc3Nvbi5wbWYpXG5OZWdCaW5vbTIucG1mIDwtIGRuYmlub20ob3V0Y29tZXMsIG11PT8/LCBzaXplPT8/KSAgIFxucGxvdChvdXRjb21lcywgTmVnQmlub20yLnBtZilcbmxpbmVzKG91dGNvbWVzLCBQb2lzc29uLnBtZikiLCJzb2x1dGlvbiI6Im91dGNvbWVzIDwtIDA6MTJcblxuQmlub20xLnBtZiAgPC0gZGJpbm9tKHg9b3V0Y29tZXMsIHNpemU9MTIsIHByb2I9MC4xKSAgXG5Qb2lzc29uLnBtZiA8LSBkcG9pcyh4PW91dGNvbWVzLCBsYW1iZGE9MS4yKVxucGxvdChvdXRjb21lcywgQmlub20xLnBtZilcbmxpbmVzKG91dGNvbWVzLCBQb2lzc29uLnBtZilcblxuQmlub20yLnBtZiA8LSBkYmlub20oeD1vdXRjb21lcywgc2l6ZT0xMio1LCBwcm9iPTAuMS81KSBcbnBsb3Qob3V0Y29tZXMsIEJpbm9tMi5wbWYpXG5saW5lcyhvdXRjb21lcywgUG9pc3Nvbi5wbWYpXG5cbiggTmVnQmlub20xLnBtZiA8LSBkbmJpbm9tKG91dGNvbWVzLCBtdT0xLjIsIHNpemU9MSkgKVxuXG5wYXIobWZyb3cgPSBjKDEsMikpXG5wbG90KG91dGNvbWVzLCBOZWdCaW5vbTEucG1mKVxubGluZXMob3V0Y29tZXMsIFBvaXNzb24ucG1mKVxuTmVnQmlub20yLnBtZiA8LSBkbmJpbm9tKG91dGNvbWVzLCBtdT0xLjIsIHNpemU9MTAwKSAgIFxucGxvdChvdXRjb21lcywgTmVnQmlub20yLnBtZilcbmxpbmVzKG91dGNvbWVzLCBQb2lzc29uLnBtZikiLCJzY3QiOiJzdWNjZXNzX21zZyhcIkV4Y2VsbGVudCBqb2IhIEFzIHlvdSBzdHVkeSBhY3R1YXJpYWwgZGF0YSBhcHBsaWNhdGlvbnMsIGRvIG5vdCBzaHkgYXdheSBmcm9tIHRoZSBtYXRoZW1hdGljcyEgT2Z0ZW4sIHRoZSBkaXNjaXBsaW5lIHVzZXMgdGhlIHJpZ29yIG9mIG1hdGhlbWF0aWNzIHRvIGNyeXN0YWxsaXplIGltcG9ydGFudCBpZGVhcy4gT25lIG9mIHlvdXIgam9icyBpcyB0byBiZSBhYmxlIHRvIGNvbW11bmljYXRlIHRoZXNlIGlkZWFzIHRvIGEgYnJvYWRlciBwdWJsaWMuIFlvdSB3aWxsIGZpbmQgdGhhdCBncmFwaGljYWwgcHJlc2VudGF0aW9ucyBhcmUgaGVscGZ1bCBpbiB0aGlzIHJlZ2FyZC5cIikiLCJoaW50IjoiVG8gcmV2aWV3IHRoZSBuZWdhdGl2ZSBiaW5vbWlhbCBkaXN0cmlidXRpb24sIHNlZSA8YSBocmVmPVwiaHR0cHM6Ly9ld2ZyZWVzLmdpdGh1Yi5pby9Mb3NzLURhdGEtQW5hbHl0aWNzL0MtU3VtbWFyeURpc3RyaWJ1dGlvbnMuaHRtbCNTOkRpc2NyZXRlRGlzdHJpYnV0aW9uc1wiPkRpc2NyZXRlIERpc3RyaWJ1dGlvbnM8L2E+In0=
+</div>
+<hr />
+<script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
+<div id="surveyElement51">
+
+</div>
+<div id="surveyResult51">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz51.1" href="javascript:toggleQuiz
+('display.Quiz51.2','display.Quiz51.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz51.2" style="display: none">
+<p id="Quiz51Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz51.js">
+</script>
+
+</div>
+</div>
 </div>
             </section>
 

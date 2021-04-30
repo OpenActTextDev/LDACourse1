@@ -1,0 +1,264 @@
+
+
+# Frequency Modeling
+
+
+
+**Chapter description**
+
+A primary focus for insurers is estimating the magnitude of aggregate claims it must bear under its insurance contracts. Aggregate claims are affected by both the frequency and the severity of the insured event. Decomposing aggregate claims into these two components, each of which warrant significant attention, is essential for analysis and pricing. This chapter discusses frequency distributions, summary measures, and parameter estimation techniques.
+
+Although not needed to go through the tutorials, some users may wish to download the overheads used in the videos. <button download><a href="https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/LDA1.Overheads/LDA1.Chap2.pdf">Download Chapter Two overheads as a .pdf file.</a></button>
+
+## Basic Frequency Distributions 
+
+***
+
+In this section, you learn how to:
+
+
+*  Determine quantities that summarize a distribution such as the distribution and survival function, as well as moments such as the mean and variance
+*  Define and compute the moment and probability generating functions
+*  Describe and understand relationships among three important frequency distributions, the binomial, Poisson, and negative binomial distributions
+
+
+***
+
+
+### Exercise. Representing the Number of Cyber Events with a Binomial Distribution
+
+
+**Assignment Text**
+
+Cyber risk for a firm is based on its' liability for a data breach involving sensitive customer information, such as Social Security numbers, credit card numbers, account numbers, driver's license numbers and health records. A company models its cyber risk using the following assumptions:
+
+(i) In any calendar quarter, there can be at most one cyber event.
+(ii) In any calendar quarter, the probability of a cyber event is 0.1.
+(iii) The numbers of cyber events in different calendar quarters are mutually independent.
+
+Based on these assumptions, you represent the total number of cyber events as a binomial distribution.
+
+
+:::: {.blackbox }
+**Instructions**. 
+
+-  Identify the binomial distribution parameters for the number of cyber events in a 12 quarter (3 years) period.
+-  Calculate the probability that there are $k$ cyber events for $k = 0, 1, \ldots, 12$ using the function [dbinom()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Binomial).
+-  Create a data frame to present your results. All values within a specific column should be rounded to the same number of decimal places. Display the data frame.
+-  Graph the probability mass function of the number of cyber events using the function [barplot()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/barplot). Include a descriptive title and axis labels for the graph.
+::::
+
+<br>
+
+```{r ex="LDA2.1.1.4", type="hint", tut=TRUE}
+Review the important count distributions in [Loss Data Analytics Frequency Modeling](https://openacttexts.github.io/Loss-Data-Analytics/C-Frequency-Modeling.html#S:important-frequency-distributions) chapter.
+
+```
+
+
+```{r ex="LDA2.1.1.4", type="sample-code", tut=TRUE}
+size = ??
+Cyber.prob = ??
+
+outcomes <- 0:size
+pmf <- dbinom(x=outcomes, size=size, prob=Cyber.prob)  
+pmf
+
+pmf1 <- round(pmf, digits = 6)
+outcomedataf <- rbind(outcomes, ??)
+outcomedataf 
+
+barplot(pmf, names.arg=??, col="lightgreen", ylab = ??, xlab = ??)
+ 
+```
+
+
+```{r ex="LDA2.1.1.4", type="solution", tut=TRUE}
+
+size = 12
+Cyber.prob = 0.01
+
+outcomes <- 0:size
+pmf <- dbinom(x=outcomes, size=size, prob=Cyber.prob)  
+pmf
+
+pmf1 <- round(pmf, digits = 6)
+outcomedataf <- rbind(outcomes, pmf1)
+outcomedataf 
+
+barplot(pmf, names.arg=outcomes, col="lightgreen", ylab = "Probability", xlab = "Cyber Events")
+```
+
+```{r ex="LDA2.1.1.4", type="sct", tut=TRUE}
+success_msg("Excellent job! Most consumers have some familiarity with the binomial distributions, so it is important in actuarial applications to be able to convey messages about counts in the contexts of binomials.")
+```
+
+### Exercise.  Representing the Number of Cyber Events with a Poisson Distribution
+
+**Assignment Text**
+
+Another company is also concerned with cyber risk. Compared to the company in the prior exercise, this company is larger and does not wish to assume at most one cyber event in a quarter. Moreover, it believes that the distribution of cyber events is a function of its technical support staff size that has increased over time. Thus, it wishes to model the number of cyber events as a Poisson distribution with expected number of events as:
+
+$$
+{\small
+\begin{array}{l|cccccc} \hline
+\text{Quarter} & 1 & 2 & 3& 4& 5& 6 \\\hline
+\text{Expected Number}& 0.1 & 0.1 & 0.1 & 0.1 & 0.2 & 0.2 \\ \hline
+\text{Quarter} & 7 & 8 & 9& 10& 11& 12 \\ \hline 
+\text{Expected Number}& 0.2 & 0.2 & 0.3 & 0.3 & 0.4 & 0.5 \\ \hline
+\end{array}
+}
+$$
+
+Assuming that the numbers of cyber events in different calendar quarters are mutually independent, the total number of cyber events over the three year period (12 quarters) has a Poisson distribution with expected number $\lambda = 2.7$. (Recall that the sum of independent Poisson random variables has a Poisson distribution.)
+
+:::: {.blackbox }
+**Instructions** 
+
+-  Graph the probability mass function (pmf) of the number of cyber events using the function `barplot()`. 
+-  Calculate the pmf and the cumulative probability distribution function for $k = 0, 1, \ldots, 12$ cyber events
+using the functions [dpois()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Poisson), [ppois()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Poisson). Create a data frame to present your results and display the data frame.
+-  From your data frame, identify the 95th percentile. Confirm your result using the [qpois()](https://www.rdocumentation.org/packages/stats/versions/3.3/topics/Poisson) function. 
+-  How are the probabilities changing over time? Plot the probability of zero cyber events versus quarter number $k = 0, 1, \ldots, 12$.
+::::
+
+<br>
+
+
+```{r ex="LDA2.1.1.5", type="hint", tut=TRUE}
+You will find more discussion of percentiles in Section 4.1 of [Loss Data Analytics](https://openacttexts.github.io/Loss-Data-Analytics/C-ModelSelection.html#S:MS:NonParInf).
+
+```
+
+
+```{r ex="LDA2.1.1.5", type="sample-code", tut=TRUE}
+lambdavec <- c(rep(0.1,4), rep(0.2,4), 0.3, 0.3, 0.4, 0.5)
+Cyber.lambda <- sum(??)
+
+outcomes <- 0:12
+Cyber.pmf <- dpois(x=??, lambda=Cyber.lambda)
+barplot(Cyber.pmf, names.arg=outcomes, col="lightgreen", ylab = "Probability", xlab = "Cyber Events")
+
+Cyber.df <- ppois(outcomes, ??)
+outcomedataf <- rbind(outcomes, Cyber.pmf, Cyber.df)
+outcomedataf 
+
+qpois(??, lambda=Cyber.lambda)
+
+Probzero <- dpois(x=0, lambda=lambdavec)
+plot(??,Probzero, type = "l", xlab = "quarter", ylab = "Prob of Zero")
+
+```
+
+
+```{r ex="LDA2.1.1.5", type="solution", tut=TRUE}
+
+lambdavec <- c(rep(0.1,4), rep(0.2,4), 0.3, 0.3, 0.4, 0.5)
+Cyber.lambda <- sum(lambdavec)
+
+outcomes <- 0:12
+Cyber.pmf <- dpois(x=outcomes, lambda=Cyber.lambda)
+barplot(Cyber.pmf, names.arg=outcomes, col="lightgreen", ylab = "Probability", xlab = "Cyber Events")
+
+Cyber.df <- ppois(outcomes, lambda=Cyber.lambda)
+outcomedataf <- rbind(outcomes, Cyber.pmf, Cyber.df)
+outcomedataf 
+
+qpois(0.95, lambda=Cyber.lambda)
+
+Probzero <- dpois(x=0, lambda=lambdavec)
+plot(1:12,Probzero, type = "l", xlab = "quarter", ylab = "Prob of Zero")
+```
+
+```{r ex="LDA2.1.1.5", type="sct", tut=TRUE}
+success_msg("Excellent job! The Poisson is the basic count distribution in actuarial applications. Consumers often have familiarity with the expected number of events as well as the probabililty of zero events. In the last part, you learned how to portray increasing means in terms of decreasing frequency of zero events, connecting these important summary measures.")
+```
+
+### Exercise. Comparing Basic Count Distributions
+
+**Assignment Text**
+
+Your supervisor would like to have a better understanding of relationships among three important count distributions, the binomial, Poisson, and negative binomial. You could develop a mathematical appendix, demonstrating how:
+
+*  A binomial distribution with parameters $m \to \infty$ and $mq \to \lambda$ converges to a Poisson distribution.
+*  A negative binomial distribution with mean parameter $r \beta = \lambda$ and dispersion parameter $r$ converges to a Poisson distribution as $r \to \infty$.
+
+Instead, you decide to demonstrate these relationships graphically.
+
+:::: {.blackbox }
+**Instructions** 
+
+-  Plot the probability mass function (pmf) of the binomial distribution with $m=12$ and $q=0.1$ over $k = 0, 1, \ldots, 12$ potential outcomes. Superimpose on this plot a Poisson pmf with the same mean using the [lines()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/lines) function.
+-  Repeat this step with the same Poisson distribution but, for the binomial distribution, multiply $m$ by 5 and divide $q$ by 5. (You should see how the binomial becomes a better approximation to the Poisson.) 
+-  Determine the pmf of the negative binomial distribution with mean parameter $r \beta$ and dispersion parameter $r=1$ using the function [dnbinom()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/NegBinomial). Use the same mean as for the binomial distribution.
+-  Demonstrate the convergence of the negative binomial to the Poisson by creating side-by-side graphical comparisons. That is, using the [par(mfrow = ...)](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/par) syntax, compare:
+    -  A plot of this negative binomial distribution pmf, superimposed with baseline Poisson distribution (with the same mean). 
+    -  A plot of the negative binomial distribution pmf with the same mean and dispersion parameter $r=100$, superimposed with baseline Poisson distribution.
+::::
+
+<br>
+
+```{r ex="LDA2.1.1.6", type="hint", tut=TRUE}
+To review the negative binomial distribution, see [Discrete Distributions](https://ewfrees.github.io/Loss-Data-Analytics/C-SummaryDistributions.html#S:DiscreteDistributions)
+
+```
+
+
+```{r ex="LDA2.1.1.6", type="sample-code", tut=TRUE}
+outcomes <- 0:12
+
+Binom1.pmf  <- dbinom(x=outcomes, size=12, ??)  
+Poisson.pmf <- dpois(x=outcomes, lambda=1.2)
+plot(outcomes, ??)
+lines(outcomes, ??)
+
+Binom2.pmf <- dbinom(x=outcomes, size=??, prob=??) 
+plot(outcomes, Binom2.pmf)
+lines(outcomes, Poisson.pmf)
+
+( NegBinom1.pmf <- dnbinom(outcomes, mu=?? size=??) )
+
+par(mfrow = c(1,2))
+plot(outcomes, NegBinom1.pmf)
+lines(outcomes, Poisson.pmf)
+NegBinom2.pmf <- dnbinom(outcomes, mu=??, size=??)   
+plot(outcomes, NegBinom2.pmf)
+lines(outcomes, Poisson.pmf)
+```
+
+
+```{r ex="LDA2.1.1.6", type="solution", tut=TRUE}
+outcomes <- 0:12
+
+Binom1.pmf  <- dbinom(x=outcomes, size=12, prob=0.1)  
+Poisson.pmf <- dpois(x=outcomes, lambda=1.2)
+plot(outcomes, Binom1.pmf)
+lines(outcomes, Poisson.pmf)
+
+Binom2.pmf <- dbinom(x=outcomes, size=12*5, prob=0.1/5) 
+plot(outcomes, Binom2.pmf)
+lines(outcomes, Poisson.pmf)
+
+( NegBinom1.pmf <- dnbinom(outcomes, mu=1.2, size=1) )
+
+par(mfrow = c(1,2))
+plot(outcomes, NegBinom1.pmf)
+lines(outcomes, Poisson.pmf)
+NegBinom2.pmf <- dnbinom(outcomes, mu=1.2, size=100)   
+plot(outcomes, NegBinom2.pmf)
+lines(outcomes, Poisson.pmf)
+
+```
+
+```{r ex="LDA2.1.1.6", type="sct", tut=TRUE}
+success_msg("Excellent job! As you study actuarial data applications, do not shy away from the mathematics! Often, the discipline uses the rigor of mathematics to crystallize important ideas. One of your jobs is to be able to communicate these ideas to a broader public. You will find that graphical presentations are helpful in this regard.")
+```
+
+
+***
+
+```{r child = './Quizzes/Quiz51.html', eval = QUIZ}
+```
+
+
+
