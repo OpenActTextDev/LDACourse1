@@ -16,6 +16,13 @@ exercise.-representing-the-number-of-cyber-events-with-a-poisson-distribution
 exercise.-comparing-basic-count-distributions
 modeling-loss-severity
 model-selection-and-estimation
+nonparametric-inference
+exercise.-claim-frequency---template-not-yet-complete
+tools-for-model-selection
+model-selection-likelihood-ratio-tests-and-goodness-of-fit
+estimation-using-modified-data-nonparametric-approach
+estimation-using-modified-data-parametric-approach
+bayesian-inference
 aggregate-loss-models
 introduction
 exercise.-claim-frequency-1

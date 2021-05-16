@@ -473,7 +473,16 @@ var submitAnswer = function() {
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="modeling-loss-severity.html"><a href="modeling-loss-severity.html"><i class="fa fa-check"></i><b>3</b> Modeling Loss Severity</a></li>
-<li class="chapter" data-level="4" data-path="model-selection-and-estimation.html"><a href="model-selection-and-estimation.html"><i class="fa fa-check"></i><b>4</b> Model Selection and Estimation</a></li>
+<li class="chapter" data-level="4" data-path="model-selection-and-estimation.html"><a href="model-selection-and-estimation.html"><i class="fa fa-check"></i><b>4</b> Model Selection and Estimation</a><ul>
+<li class="chapter" data-level="4.1" data-path="model-selection-and-estimation.html"><a href="model-selection-and-estimation.html#nonparametric-inference"><i class="fa fa-check"></i><b>4.1</b> Nonparametric Inference</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="model-selection-and-estimation.html"><a href="model-selection-and-estimation.html#exercise.-claim-frequency---template-not-yet-complete"><i class="fa fa-check"></i><b>4.1.1</b> Exercise. Claim Frequency - Template not yet complete</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="model-selection-and-estimation.html"><a href="model-selection-and-estimation.html#tools-for-model-selection"><i class="fa fa-check"></i><b>4.2</b> Tools for Model Selection</a></li>
+<li class="chapter" data-level="4.3" data-path="model-selection-and-estimation.html"><a href="model-selection-and-estimation.html#model-selection-likelihood-ratio-tests-and-goodness-of-fit"><i class="fa fa-check"></i><b>4.3</b> Model Selection: Likelihood Ratio Tests and Goodness of Fit</a></li>
+<li class="chapter" data-level="4.4" data-path="model-selection-and-estimation.html"><a href="model-selection-and-estimation.html#estimation-using-modified-data-nonparametric-approach"><i class="fa fa-check"></i><b>4.4</b> Estimation using Modified Data: Nonparametric Approach</a></li>
+<li class="chapter" data-level="4.5" data-path="model-selection-and-estimation.html"><a href="model-selection-and-estimation.html#estimation-using-modified-data-parametric-approach"><i class="fa fa-check"></i><b>4.5</b> Estimation using Modified Data: Parametric Approach</a></li>
+<li class="chapter" data-level="4.6" data-path="model-selection-and-estimation.html"><a href="model-selection-and-estimation.html#bayesian-inference"><i class="fa fa-check"></i><b>4.6</b> Bayesian Inference</a></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="aggregate-loss-models.html"><a href="aggregate-loss-models.html"><i class="fa fa-check"></i><b>5</b> Aggregate Loss Models</a><ul>
 <li class="chapter" data-level="5.1" data-path="aggregate-loss-models.html"><a href="aggregate-loss-models.html#introduction"><i class="fa fa-check"></i><b>5.1</b> Introduction</a><ul>
 <li class="chapter" data-level="5.1.1" data-path="aggregate-loss-models.html"><a href="aggregate-loss-models.html#exercise.-claim-frequency-1"><i class="fa fa-check"></i><b>5.1.1</b> Exercise. Claim Frequency</a></li>
@@ -587,9 +596,6 @@ var submitAnswer = function() {
 <li>Use the function <a href="https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/mean/">mean()</a> to calculate the average.</li>
 <li>Use the function <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/table">table()</a> to tabulate the frequency distribution.</li>
 </ul>
-</div>
-<div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6Ikluc2FtcGxlIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL09wZW5BY3RUZXh0RGV2L0xEQUNvdXJzZTEvbWFpbi9EYXRhL0luc2FtcGxlLmNzdlwiLCBoZWFkZXI9VCxcbiAgICAgICAgICAgICAgICAgICAgICBuYS5zdHJpbmdzPWMoXCIuXCIpLCBzdHJpbmdzQXNGYWN0b3JzPUZBTFNFKSIsInNhbXBsZSI6IiMgIEFuYWx5c2lzIGZvciBZZWFyIDIwMTBcbkluc2FtcGxlMjAxMCA8LSBzdWJzZXQoSW5zYW1wbGUsIFllYXI9PTIwMTApXG5GcmVxMjAxMCA8LSBJbnNhbXBsZTIwMTAkRnJlcVxubGVuZ3RoKEZyZXEyMDEwKVxubWVhbihGcmVxMjAxMClcbnRhYmxlKEZyZXEyMDEwKVxuXG4jICBBbmFseXNpcyBmb3IgWWVhciAyMDA5XG5JbnNhbXBsZTIwMDkgPC0gX19fXG5GcmVxMjAwOSA8LSBfX19cbmxlbmd0aChfX18pXG5tZWFuKF9fXylcbnRhYmxlKF9fXykiLCJzb2x1dGlvbiI6IiMgIEFuYWx5c2lzIGZvciBZZWFyIDIwMTBcbkluc2FtcGxlMjAxMCA8LSBzdWJzZXQoSW5zYW1wbGUsIFllYXI9PTIwMTApXG5GcmVxMjAxMCA8LSBJbnNhbXBsZTIwMTAkRnJlcVxubGVuZ3RoKEZyZXEyMDEwKVxubWVhbihGcmVxMjAxMClcbnRhYmxlKEZyZXEyMDEwKVxuXG4jICBBbmFseXNpcyBmb3IgWWVhciAyMDA5XG5JbnNhbXBsZTIwMDkgPC0gc3Vic2V0KEluc2FtcGxlLCBZZWFyPT0yMDA5KVxuRnJlcTIwMDkgPC0gSW5zYW1wbGUyMDA5JEZyZXFcbmxlbmd0aChGcmVxMjAwOSlcbm1lYW4oRnJlcTIwMDkpXG50YWJsZShGcmVxMjAwOSkiLCJzY3QiOiJzdWNjZXNzX21zZyhcIkdldHRpbmcgc3RhcnRlZCBpcyBhbHdheXMgdGhlIGhhcmRlc3QgdGhpbmcgdG8gZG8uIEV4Y2VsbGVudCBzdGFydCFcIikiLCJoaW50IjoiVGFrZSBzb21lIHRpbWUgdG8gZXhwbG9yZSB0aGUgb25saW5lIDxjb2RlPlI8L2NvZGU+IGRvY3VtZW50YXRpb24uPC9wPlxuXG48cD5Ob3RlIHRoZSBkb3VibGUgZXF1YWwgc2lnbnMgPGNvZGU+PT08L2NvZGU+IG5lZWRlZCBmb3IgdGhlIHRoZSA8Y29kZT5zdWJzZXQoKTwvY29kZT4gZnVuY3Rpb24uIn0=
 </div>
 <p><strong>Finish the section with quizzes from the book. We can modify them, if needed.</strong></p>
 <script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>

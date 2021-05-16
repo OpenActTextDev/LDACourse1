@@ -1,14 +1,5 @@
 
 
-# Modeling Loss Severity
-
-**Placeholder**
-
-# Model Selection and Estimation
-
-**Placeholder**
-
-
 # Aggregate Loss Models 
 
 **Chapter description**

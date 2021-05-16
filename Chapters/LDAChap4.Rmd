@@ -1,0 +1,449 @@
+
+
+# Modeling Loss Severity
+
+**Placeholder**
+
+
+# Model Selection and Estimation
+
+**Chapter description.**
+Chapters 2 and 3 have described how to fit parametric models to frequency and severity data, respectively. This chapter begins with the selection of models. To compare alternative parametric models, it is helpful to summarize data without reference to a specific parametric distribution. Section \@ref(S:MS:NonParInf) describes nonparametric estimation, how we can use it for model comparisons and how it can be used to provide starting values for parametric procedures. The process of model selection is then summarized in Section \@ref(S:MS:ModelSelection). Although our focus is on data from continuous distributions, the same process can be used for discrete versions or data that come from a hybrid combination of discrete and continuous distributions. 
+
+Model selection and estimation are fundamental aspects of statistical modeling. To provide a flavor as to how they can be adapted to alternative sampling schemes, Section \@ref(S:MS:ModifiedData1) describes estimation for grouped, censored and truncated data (following the Section \@ref(S:MaxLikeEstimation) introduction). To see how they can be adapted to alternative models, the chapter closes with Section \@ref(S:MS:BayesInference) on Bayesian inference, an alternative procedure where the (typically unknown) parameters are treated as random variables.
+
+Although not needed to go through the tutorials, some users may wish to download the overheads used in the videos. <button download><a href="https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/LDA1.Overheads/LDA1.Chap4.pdf">Download Chapter Four overheads as a .pdf file.</a></button>
+
+
+## Nonparametric Inference 
+
+***
+
+In this section, you learn how to:
+
+- Estimate moments, quantiles, and distributions withoutreference to a parametric distribution
+
+***
+
+####  Video: Nonparametric Estimation Tools  {-}
+
+
+<center>
+
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/34298521/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_su91og1z&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_bfq6m2gp" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *"  frameborder="0" title="Kaltura Player"></iframe>
+
+</center>
+
+#### Overheads: Nonparametric Estimation Tools (Click Tab to View) {-}
+
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Sect41A')">A. Nonparametric Estimation</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect41B')">B. Moment Estimators</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect41C')">C. Empirical Cumulative Distribution Function</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect41D')">D. Empirical Example</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect41E')">E. Empirical Cumulative Distribution Function of a Toy Example</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect41F')">F. Smoothed Empirical Percentiles I</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect41G')">G. Smoothed Empirical Percentiles II</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect41H')">H. Density Estimators</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect41I')">I. Uniform Kernel Density Estimator</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect41J')">J. Kernel Density Estimator</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect41K')">K. Kernel Density Estimator of a Distribution Function</button>  
+  <button class="tablinks" onclick="openTab(event, 'Sect41L')">L. Grouped Data I</button>  
+  <button class="tablinks" onclick="openTab(event, 'Sect41M')">M. Grouped Data II</button>  
+  </div>
+
+<div id="Sect41A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=3" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect41B" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=4" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect41C" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=5" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect41D" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=6" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect41E" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=7" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect41F" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=8" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect41G" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=9" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect41H" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=10" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect41I" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=11" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect41J" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=12" width="100%" height="400"> </iframe>
+  </div>  
+<div id="Sect41K" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=13" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect41L" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=14" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect41M" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=15" width="100%" height="400"> </iframe>
+  </div>  
+  
+
+
+
+### Exercise. Claim Frequency - Template not yet complete
+
+**Next include one or two exercises per section. Here is an example.**
+
+**Assignment Text**
+
+The Wisconsin Property Fund data has already been read into a data frame called `Insample`. These data consist of claim experience for fund members over the years 2006-2010, inclusive. It includes the frequency of claims `Freq` as well as the claim year `Year`. The video explored the distribution of the claims frequency for year 2010; in this assignment, we replicate this analysis and conduct a similar investigation for year 2009.
+
+
+:::: {.blackbox }
+**Instructions**. For each year:
+
+
+-  Use the function [subset()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/subset) to create a smaller data set based on a single year.
+-  Define the frequency as a global variable.
+-  Use the function [length()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/length) to determine the number of observations in a vector.
+-  Use the function [mean()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/mean/) to calculate the average.
+-  Use the function [table()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/table) to tabulate the frequency distribution.
+::::
+
+
+```{r ex="LDA1.Template", type="hint", tut=TRUE}
+Take some time to explore the online `R` documentation.
+
+Note the double equal signs `==` needed for the the `subset()` function.
+```
+
+
+```{r ex="LDA1.Template", type="pre-exercise-code", tut=TRUE}
+Insample <- read.csv("https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/Data/Insample.csv", header=T,
+                      na.strings=c("."), stringsAsFactors=FALSE)
+```
+
+
+```{r ex="LDA1.Template", type="sample-code", tut=TRUE}
+#  Analysis for Year 2010
+Insample2010 <- subset(Insample, Year==2010)
+Freq2010 <- Insample2010$Freq
+length(Freq2010)
+mean(Freq2010)
+table(Freq2010)
+
+#  Analysis for Year 2009
+Insample2009 <- ___
+Freq2009 <- ___
+length(___)
+mean(___)
+table(___)
+```
+
+
+```{r ex="LDA1.Template", type="solution", tut=TRUE}
+#  Analysis for Year 2010
+Insample2010 <- subset(Insample, Year==2010)
+Freq2010 <- Insample2010$Freq
+length(Freq2010)
+mean(Freq2010)
+table(Freq2010)
+
+#  Analysis for Year 2009
+Insample2009 <- subset(Insample, Year==2009)
+Freq2009 <- Insample2009$Freq
+length(Freq2009)
+mean(Freq2009)
+table(Freq2009)
+```
+
+```{r ex="LDA1.Template", type="sct", tut=TRUE}
+success_msg("Getting started is always the hardest thing to do. Excellent start!")
+```
+
+
+
+```{r child = './Quizzes/Quiz41.html', eval = QUIZ}
+```
+
+
+## Tools for Model Selection
+
+***
+
+In this section, you learn how to:
+
+-  Summarize the data graphically without reference to a parametric distribution
+-  Determine measures that summarize deviations of a parametricfrom a nonparametric fit
+-  Use nonparametric estimators to approximate parameters thatcan be used to start a parametric estimation procedure
+
+***
+
+####  Video: Tools  for Model Selection {-}
+
+
+<center>
+
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/34298521/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_tcqdwc0i&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_jrvuguzf" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *"  frameborder="0" title="Kaltura Player"></iframe>
+
+</center>
+
+#### Overheads: Tools  for Model Selection (Click Tab to View) {-}
+
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Sect421A')">A. Comparing Distribution and Density Functions</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect421B')">B. PP Plot</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect421C')">C. QQ Plot</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect421D')">D. Goodness-of-Fit Test</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect421E')">E. Kolmogorov-Smirnov Test</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect421F')">F. Chi-Square (χ2) Test</button>
+  </div>
+
+<div id="Sect421A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=18" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect421B" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=19" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect421C" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=20" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect421D" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=21" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect421E" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=22" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect421F" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=23" width="100%" height="400"> </iframe>
+  </div>
+
+## Model Selection: Likelihood Ratio Tests and Goodness of Fit
+
+
+####  Video: Likelihood Ratio Tests and Goodness of Fit {-}
+
+
+<center>
+
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/34298521/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_sepee6wr&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_ud4hj85k" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *"  frameborder="0" title="Kaltura Player"></iframe>
+
+</center>
+
+#### Overheads: Likelihood Ratio Tests and Goodness of Fit (Click Tab to View) {-}
+
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Sect422A')">A. Likelihood Ratio Test</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect422B')">B. Likelihood Ratio Test Process</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect422C')">C. Information Criteria: Exam STAM Version</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect422D')">D. Information Criteria: Alternative Version</button>
+  </div>
+
+<div id="Sect422A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=26" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect422B" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=27" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect422C" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=28" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect422D" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=29" width="100%" height="400"> </iframe>
+  </div>
+  
+  
+```{r child = './Quizzes/Quiz42.html', eval = QUIZ}
+```
+
+## Estimation using Modified Data: Nonparametric Approach
+
+***
+
+In this section, you learn how to:
+
+-  Describe grouped and censored truncated data
+-  Estimate distributions nonparametrically based on grouped and censored data
+
+***
+
+####  Video: Nonparametric Estimation using Modified Data {-}
+
+<center>
+
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/34298521/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_sfh9ihwy&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_90krq256" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *"  frameborder="0" title="Kaltura Player"></iframe>
+
+</center>
+
+#### Overheads: Nonparametric Estimation using Modified Data (Click Tab to View) {-}
+
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Sect431A')">A. Grouped Data</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect431B')">B. Censored Data</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect431C')">C. Kaplan-Meier Product Limit Estimator</button>
+  </div>
+
+<div id="Sect431A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=31" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect431B" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=32" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect431C" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=33" width="100%" height="400"> </iframe>
+  </div>
+
+## Estimation using Modified Data: Parametric Approach
+
+***
+
+In this section, you learn how to:
+
+-  Describe grouped and censored truncated data
+-  Estimate parametric distributions based on grouped, censored,and truncated data
+
+***
+
+####  Video: Parametric Estimation using Modified Data {-}
+
+<center>
+
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/34298521/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_2pposnie&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_156eapyx" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *"  frameborder="0" title="Kaltura Player"></iframe>
+</center>
+
+#### Overheads: Parametric Estimation using Modified Data (Click Tab to View) {-}
+
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Sect432A')">A. Truncated Data</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect432B')">B. Maximum Likelihood Estimation with Grouped Data</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect432C')">C. Censored Data Likelihood I</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect432D')">D. Censored Data Likelihood II</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect432E')">E. Maximum Likelihood Estimation Using Censored and Truncated Data I</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect432F')">F. Maximum Likelihood Estimation Using Censored and Truncated Data II</button>
+  </div>
+
+<div id="Sect432A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=36" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect432B" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=37" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect432C" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=38" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect432D" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=39" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect432E" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=40" width="100%" height="400"> </iframe>
+  </div>  
+<div id="Sect432F" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=41" width="100%" height="400"> </iframe>
+  </div>  
+
+
+```{r child = './Quizzes/Quiz43.html', eval = QUIZ}
+```
+
+## Bayesian Inference
+
+***
+
+In this section, you learn how to:
+
+-  Describe the Bayesian model as an alternative to the frequentist approach and summarize the five components of this modeling approach.
+-  Summarize posterior distributions of parameters and use these posterior distributions to predict new outcomes.
+-  Use conjugate distributions to determine posterior distributions of parameters
+
+***
+
+####  Video: Bayesian Inference {-}
+
+<center>
+
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/34298521/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_ko3jc8el&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_vo11odg9" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *"  frameborder="0" title="Kaltura Player"></iframe>
+
+</center>
+
+#### Overheads: Bayesian Inference (Click Tab to View) {-}
+
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Sect44A')">A. Bayesian Inference</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect44B')">B. Bayesian Inference Strengths</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect44C')">C. Bayesian Model I</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect44D')">D. Bayesian Model II</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect44E')">E. Posterior Computation</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect44F')">F. Poisson–Gamma Conjugate Family</button>
+  </div>
+
+<div id="Sect44A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=44" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect44B" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=45" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect44C" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=46" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect44D" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=47" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect44E" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=48" width="100%" height="400"> </iframe>
+  </div>  
+<div id="Sect44F" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap4.pdf#page=49" width="100%" height="400"> </iframe>
+  </div>  
+
+
+```{r child = './Quizzes/Quiz44.html', eval = QUIZ}
+```
