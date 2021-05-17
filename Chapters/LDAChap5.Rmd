@@ -2,6 +2,10 @@
 
 # Aggregate Loss Models 
 
+**Draft - Chapter Not Yet Complete**
+
+<br>
+
 **Chapter description**
 
 This chapter introduces probability models for describing the aggregate (total) claims that arise from a portfolio of insurance contracts. We present two standard modeling approaches, the individual risk model and the collective risk model. Further, we discuss strategies for computing the distribution of the aggregate claims, including exact methods for special cases, recursion, and simulation. Finally, we examine the effects of individual policy modifications such as deductibles, coinsurance, and inflation, on the frequency and severity distributions, and thus on the aggregate loss distribution.
