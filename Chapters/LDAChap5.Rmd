@@ -61,7 +61,7 @@ In this section, we learn how to:
 
 ### Exercise. Claim Frequency
 
-**Next include one or two exercises per section. Here is an example.**
+**Next include one or two exercises per section. Here is one example.**
 
 **Assignment Text**
 
