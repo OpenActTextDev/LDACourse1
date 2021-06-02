@@ -462,8 +462,8 @@ success_msg("This seems to be a better fit than Poisson.")
 
 
 
-```{r child = './Quizzes/Quiz41.html', eval = QUIZ}
-```
+<!-- ```{r child = './Quizzes/Quiz41.html', eval = QUIZ} -->
+<!-- ``` -->
 
 
 ## Tools for Model Selection
@@ -849,9 +849,9 @@ success_msg("According to the Kolmogorov-Smirnov test, the two distribution func
 
 
   
-  
-```{r child = './Quizzes/Quiz42.html', eval = QUIZ}
-```
+
+<!-- ```{r child = './Quizzes/Quiz42.html', eval = QUIZ} -->
+<!-- ``` -->
 
 ## Estimation using Modified Data: Nonparametric Approach
 
@@ -1119,8 +1119,8 @@ In this section, you learn how to:
   </div>  
 
 
-```{r child = './Quizzes/Quiz43.html', eval = QUIZ}
-```
+<!-- ```{r child = './Quizzes/Quiz43.html', eval = QUIZ} -->
+<!-- ``` -->
 
 ## Bayesian Inference
 
@@ -1336,5 +1336,5 @@ success_msg("Nice!")
   
 
 
-```{r child = './Quizzes/Quiz44.html', eval = QUIZ}
-```
+<!-- ```{r child = './Quizzes/Quiz44.html', eval = QUIZ} -->
+<!-- ``` -->
