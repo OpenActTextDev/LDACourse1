@@ -1,4 +1,6 @@
 library(lme4)
+Insample <- read.csv("https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/Data/Insample.csv", header=T, na.strings=c("."), stringsAsFactors=FALSE)
+
 
 InsampleTown <- subset(Insample, TypeTown==1)
 
