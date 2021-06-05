@@ -1,3 +1,8 @@
+source("https://gitlab.com/vigou3/actuar/-/raw/master/src/R/aggregateDist.R")
+source("https://gitlab.com/vigou3/actuar/-/raw/master/src/R/simul.R")
+ source("https://gitlab.com/vigou3/actuar/-/raw/master/src/R/simS.R")
+
+
 library(lme4)
 Insample <- read.csv("https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/Data/Insample.csv", header=T, na.strings=c("."), stringsAsFactors=FALSE)
 
