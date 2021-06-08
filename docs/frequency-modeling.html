@@ -471,6 +471,10 @@ var submitAnswer = function() {
 <li class="chapter" data-level="2.1.2" data-path="frequency-modeling.html"><a href="frequency-modeling.html#exercise.-representing-the-number-of-cyber-events-with-a-poisson-distribution"><i class="fa fa-check"></i><b>2.1.2</b> Exercise. Representing the Number of Cyber Events with a Poisson Distribution</a></li>
 <li class="chapter" data-level="2.1.3" data-path="frequency-modeling.html"><a href="frequency-modeling.html#exercise.-comparing-basic-count-distributions"><i class="fa fa-check"></i><b>2.1.3</b> Exercise. Comparing Basic Count Distributions</a></li>
 </ul></li>
+<li class="chapter" data-level="2.2" data-path="frequency-modeling.html"><a href="frequency-modeling.html#the-ab0-class"><i class="fa fa-check"></i><b>2.2</b> The (a,b,0) Class</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="frequency-modeling.html"><a href="frequency-modeling.html#exercise.-determining-probabilities-recursively"><i class="fa fa-check"></i><b>2.2.1</b> Exercise. Determining Probabilities Recursively</a></li>
+<li class="chapter" data-level="2.2.2" data-path="frequency-modeling.html"><a href="frequency-modeling.html#exercise.-reverse-engineering-and-recursive-r-functions"><i class="fa fa-check"></i><b>2.2.2</b> Exercise. Reverse Engineering and Recursive <code>R</code> Functions</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="modeling-loss-severity.html"><a href="modeling-loss-severity.html"><i class="fa fa-check"></i><b>3</b> Modeling Loss Severity</a></li>
 <li class="chapter" data-level="4" data-path="model-selection-and-estimation.html"><a href="model-selection-and-estimation.html"><i class="fa fa-check"></i><b>4</b> Model Selection and Estimation</a><ul>
@@ -511,11 +515,6 @@ var submitAnswer = function() {
 </ul></li>
 <li class="chapter" data-level="5.6" data-path="aggregate-loss-models.html"><a href="aggregate-loss-models.html#effects-of-coverage-modifications"><i class="fa fa-check"></i><b>5.6</b> Effects of Coverage Modifications</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="chapter-template-insert-title-here.html"><a href="chapter-template-insert-title-here.html"><i class="fa fa-check"></i><b>6</b> Chapter Template - Insert Title Here</a><ul>
-<li class="chapter" data-level="6.1" data-path="chapter-template-insert-title-here.html"><a href="chapter-template-insert-title-here.html#section-template---insert-title-here"><i class="fa fa-check"></i><b>6.1</b> Section Template - Insert Title Here</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="chapter-template-insert-title-here.html"><a href="chapter-template-insert-title-here.html#exercise.-claim-frequency-2"><i class="fa fa-check"></i><b>6.1.1</b> Exercise. Claim Frequency</a></li>
-</ul></li>
-</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/OpenActTextDev/LDACourse1/" target="blank">LDA Short Course on GitHub</a></li>
 
@@ -542,7 +541,12 @@ var submitAnswer = function() {
 <p><br></p>
 <p><strong>Chapter description</strong></p>
 <p>A primary focus for insurers is estimating the magnitude of aggregate claims it must bear under its insurance contracts. Aggregate claims are affected by both the frequency and the severity of the insured event. Decomposing aggregate claims into these two components, each of which warrant significant attention, is essential for analysis and pricing. This chapter discusses frequency distributions, summary measures, and parameter estimation techniques.</p>
-<p>Although not needed to go through the tutorials, some users may wish to download the overheads used in the videos. <button download><a href="https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/LDA1.Overheads/LDA1.Chap2.pdf">Download Chapter Two overheads as a .pdf file.</a></button></p>
+<div class="blackbox">
+<ul>
+<li>Although not needed to go through the tutorials, some users may wish to download the overheads used in the videos. <button download><a href="https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/LDA1.Overheads/LDA1.Chap2.pdf">Download Chapter Two overheads as a .pdf file.</a></button></li>
+<li>By watching the videos and working through the tutorial exercises, you will get an appreciation for frequency modeling. For a deeper dive, see the corresponding chapter in the textbook, <a href="https://openacttexts.github.io/Loss-Data-Analytics/C-Frequency-Modeling.html">Chapter Two of <em>Loss Data Analytics</em></a>.</li>
+</ul>
+</div>
 <div id="basic-frequency-distributions" class="section level2">
 <h2><span class="header-section-number">2.1</span> Basic Frequency Distributions</h2>
 <hr />
@@ -633,25 +637,67 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsYW1iZGF2ZWMgPC0gYyhyZXAoMC4xLDQpLCByZXAoMC4y
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJvdXRjb21lcyA8LSAwOjEyXG5cbkJpbm9tMS5wbWYgIDwtIGRiaW5vbSh4PW91dGNvbWVzLCBzaXplPTEyLCA/PykgIFxuUG9pc3Nvbi5wbWYgPC0gZHBvaXMoeD1vdXRjb21lcywgbGFtYmRhPTEuMilcbnBsb3Qob3V0Y29tZXMsID8/KVxubGluZXMob3V0Y29tZXMsID8/KVxuXG5CaW5vbTIucG1mIDwtIGRiaW5vbSh4PW91dGNvbWVzLCBzaXplPT8/LCBwcm9iPT8/KSBcbnBsb3Qob3V0Y29tZXMsIEJpbm9tMi5wbWYpXG5saW5lcyhvdXRjb21lcywgUG9pc3Nvbi5wbWYpXG5cbiggTmVnQmlub20xLnBtZiA8LSBkbmJpbm9tKG91dGNvbWVzLCBtdT0/PyBzaXplPT8/KSApXG5cbnBhcihtZnJvdyA9IGMoMSwyKSlcbnBsb3Qob3V0Y29tZXMsIE5lZ0Jpbm9tMS5wbWYpXG5saW5lcyhvdXRjb21lcywgUG9pc3Nvbi5wbWYpXG5OZWdCaW5vbTIucG1mIDwtIGRuYmlub20ob3V0Y29tZXMsIG11PT8/LCBzaXplPT8/KSAgIFxucGxvdChvdXRjb21lcywgTmVnQmlub20yLnBtZilcbmxpbmVzKG91dGNvbWVzLCBQb2lzc29uLnBtZikiLCJzb2x1dGlvbiI6Im91dGNvbWVzIDwtIDA6MTJcblxuQmlub20xLnBtZiAgPC0gZGJpbm9tKHg9b3V0Y29tZXMsIHNpemU9MTIsIHByb2I9MC4xKSAgXG5Qb2lzc29uLnBtZiA8LSBkcG9pcyh4PW91dGNvbWVzLCBsYW1iZGE9MS4yKVxucGxvdChvdXRjb21lcywgQmlub20xLnBtZilcbmxpbmVzKG91dGNvbWVzLCBQb2lzc29uLnBtZilcblxuQmlub20yLnBtZiA8LSBkYmlub20oeD1vdXRjb21lcywgc2l6ZT0xMio1LCBwcm9iPTAuMS81KSBcbnBsb3Qob3V0Y29tZXMsIEJpbm9tMi5wbWYpXG5saW5lcyhvdXRjb21lcywgUG9pc3Nvbi5wbWYpXG5cbiggTmVnQmlub20xLnBtZiA8LSBkbmJpbm9tKG91dGNvbWVzLCBtdT0xLjIsIHNpemU9MSkgKVxuXG5wYXIobWZyb3cgPSBjKDEsMikpXG5wbG90KG91dGNvbWVzLCBOZWdCaW5vbTEucG1mKVxubGluZXMob3V0Y29tZXMsIFBvaXNzb24ucG1mKVxuTmVnQmlub20yLnBtZiA8LSBkbmJpbm9tKG91dGNvbWVzLCBtdT0xLjIsIHNpemU9MTAwKSAgIFxucGxvdChvdXRjb21lcywgTmVnQmlub20yLnBtZilcbmxpbmVzKG91dGNvbWVzLCBQb2lzc29uLnBtZikiLCJzY3QiOiJzdWNjZXNzX21zZyhcIkV4Y2VsbGVudCBqb2IhIEFzIHlvdSBzdHVkeSBhY3R1YXJpYWwgZGF0YSBhcHBsaWNhdGlvbnMsIGRvIG5vdCBzaHkgYXdheSBmcm9tIHRoZSBtYXRoZW1hdGljcyEgT2Z0ZW4sIHRoZSBkaXNjaXBsaW5lIHVzZXMgdGhlIHJpZ29yIG9mIG1hdGhlbWF0aWNzIHRvIGNyeXN0YWxsaXplIGltcG9ydGFudCBpZGVhcy4gT25lIG9mIHlvdXIgam9icyBpcyB0byBiZSBhYmxlIHRvIGNvbW11bmljYXRlIHRoZXNlIGlkZWFzIHRvIGEgYnJvYWRlciBwdWJsaWMuIFlvdSB3aWxsIGZpbmQgdGhhdCBncmFwaGljYWwgcHJlc2VudGF0aW9ucyBhcmUgaGVscGZ1bCBpbiB0aGlzIHJlZ2FyZC5cIikiLCJoaW50IjoiVG8gcmV2aWV3IHRoZSBuZWdhdGl2ZSBiaW5vbWlhbCBkaXN0cmlidXRpb24sIHNlZSA8YSBocmVmPVwiaHR0cHM6Ly9ld2ZyZWVzLmdpdGh1Yi5pby9Mb3NzLURhdGEtQW5hbHl0aWNzL0MtU3VtbWFyeURpc3RyaWJ1dGlvbnMuaHRtbCNTOkRpc2NyZXRlRGlzdHJpYnV0aW9uc1wiPkRpc2NyZXRlIERpc3RyaWJ1dGlvbnM8L2E+In0=
 </div>
-<hr />
-<script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
-<div id="surveyElement51">
-
 </div>
-<div id="surveyResult51">
-
 </div>
-<h5 style="text-align: center;">
-<a id="display.Quiz51.1" href="javascript:toggleQuiz
-('display.Quiz51.2','display.Quiz51.1');"><i><strong>Show Quiz Solution</strong></i></a>
-</h5>
-<div id="display.Quiz51.2" style="display: none">
-<p id="Quiz51Soln">
-</p>
-<hr />
+<div id="the-ab0-class" class="section level2">
+<h2><span class="header-section-number">2.2</span> The (a,b,0) Class</h2>
+<div id="exercise.-determining-probabilities-recursively" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Exercise. Determining Probabilities Recursively</h3>
+<p><strong>Assignment Text</strong></p>
+<p>The <span class="math inline">\((a,b,0)\)</span> class can be expressed through the recursion</p>
+<p><span class="math display">\[
+\Pr(N=k) = p_k = p_{k-1} \left( a+ \frac{b}{k}\right) , \quad k\ge 1 .
+\]</span></p>
+<p>where <span class="math inline">\(N\)</span> is a count random variable. From Section 2.3 of the text, we know that:</p>
+<ul>
+<li>if <span class="math inline">\(a=0\)</span> and <span class="math inline">\(b=\lambda\)</span>, then the recursion yields a Poisson distribution with parameter <span class="math inline">\(\lambda\)</span></li>
+<li>if <span class="math inline">\(a=-q/(1-q)\)</span> and <span class="math inline">\(b=(m+1)q/(1+q)\)</span>, then the recursion yields a binomial distribution with parameters <span class="math inline">\(m\)</span> and <span class="math inline">\(q\)</span></li>
+<li>if <span class="math inline">\(a=\beta/(1+\beta)\)</span> and <span class="math inline">\(b=(r-1)\beta/(1+\beta)\)</span>, then the recursion yields a negative distribution with parameters <span class="math inline">\(r\)</span> and <span class="math inline">\(\beta\)</span>.</li>
+</ul>
+<p>The <span class="math inline">\((a,b,0)\)</span> class is a foundation for other, more complex, distributions, so let us check that we understand the recursions.</p>
+<div class="blackbox">
+<p><strong>Instructions</strong></p>
+<ul>
+<li>For <span class="math inline">\(k=0, \ldots, 20\)</span>, using <span class="math inline">\(\lambda = 1.24\)</span> obtain <span class="math inline">\(p_k\)</span> values using <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Poisson">dpois()</a>.</li>
+<li>With the starting value <span class="math inline">\(p_0 = \exp(\lambda)\)</span>, use the recursive <span class="math inline">\((a,b,0)\)</span> formula to obtain these probability values.</li>
+<li>Check your code by summing over the absolute value of the differences between the <code>dpois</code> and the <span class="math inline">\((a,b,0)\)</span> generated values.</li>
+<li>For <span class="math inline">\(k=0, \ldots, 20\)</span>, obtain <span class="math inline">\(p_k\)</span> values using the negative binomial distribution using the function <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/NegBinomial">dnbinom()</a>. Use the same mean as for the Poisson distribution but let the variance be 1.1 times the mean. <em>Hint</em>. See the <a href="https://openacttexts.github.io/Loss-Data-Analytics/C-SummaryDistributions.html#discrete-distributions">Loss Data Analytics Summary of Distributions</a> for the parameterization used in this short course. It differs from that used by the <code>R</code> package.</li>
+<li>Use the recursive <span class="math inline">\((a,b,0)\)</span> formula to obtain these probability values.</li>
+<li>Check your code by summing over the absolute value of the differences between the <code>dnbinom</code> and the <span class="math inline">\((a,b,0)\)</span> generated values.</li>
+</ul>
 </div>
-<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz51.js">
-</script>
+<p><br></p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiMgTm9uZSBOZWVkZWQgZm9yIHRoaXMgRXhlcmNpc2UiLCJzYW1wbGUiOiJrdmVjIDwtIGMoMDo/PykgXG5Qb2lzc29uLnBfayA8LSBkcG9pcyh4PWt2ZWMsIGxhbWJkYT0/PykgXG5hID0gPz8gXG5iID0gPz9cbmEuYi4wLnZlYyA8LSAgZXhwKC0xLjI0KSAtPiBwLm5ld1xuZm9yIChrIGluIDI6MjEpe1xuICBwLm5ldyA8LSBwLm5ldyAqKGErYi8oay0xKSlcbiAgYS5iLjAudmVjIDwtIGFwcGVuZChhLmIuMC52ZWMscC5uZXcpXG4gIH1cbnN1bShhYnMoUG9pc3Nvbi5wX2sgLSA/PykpXG5cbk5lZ0Jpbm9tLnBfayA8LSBkbmJpbm9tKGt2ZWMsIHByb2I9MS8xLjEsIHNpemUgPSAxMi40KVxuYSA9ID8/IFxuYiA9ID8/XG5hLmIuMC52ZWMgPC0gIDEuMSoqKC0xMi40KSAtPiBwLm5ld1xuZm9yIChrIGluID8/KXtcbiAgcC5uZXcgPC0gcC5uZXcgKihhK2IvKGstMSkpXG4gIGEuYi4wLnZlYyA8LSBhcHBlbmQoYS5iLjAudmVjLHAubmV3KVxuICB9XG5zdW0oYWJzKE5lZ0Jpbm9tLnBfayAtID8/KSkiLCJzb2x1dGlvbiI6Imt2ZWMgPC0gYygwOjIwKSBcblBvaXNzb24ucF9rIDwtIGRwb2lzKHg9a3ZlYywgbGFtYmRhPTEuMjQpIFxuYSA9IDA7IFxuYiA9IDEuMjRcbmEuYi4wLnZlYyA8LSAgZXhwKC0xLjI0KSAtPiBwLm5ld1xuZm9yIChrIGluIDI6MjEpe1xuICBwLm5ldyA8LSBwLm5ldyAqKGErYi8oay0xKSlcbiAgYS5iLjAudmVjIDwtIGFwcGVuZChhLmIuMC52ZWMscC5uZXcpXG4gIH1cbnN1bShhYnMoUG9pc3Nvbi5wX2sgLSBhLmIuMC52ZWMpKVxuXG5OZWdCaW5vbS5wX2sgPC0gZG5iaW5vbShrdmVjLCBwcm9iPTEvMS4xLCBzaXplID0gMTIuNClcbmEgPSAuMS8xLjE7IFxuYiA9IDExLjQqKDAuMSkvMS4xXG5hLmIuMC52ZWMgPC0gIDEuMSoqKC0xMi40KSAtPiBwLm5ld1xuZm9yIChrIGluIDI6MjEpe1xuICBwLm5ldyA8LSBwLm5ldyAqKGErYi8oay0xKSlcbiAgYS5iLjAudmVjIDwtIGFwcGVuZChhLmIuMC52ZWMscC5uZXcpXG4gIH1cbnN1bShhYnMoTmVnQmlub20ucF9rIC0gYS5iLjAudmVjKSkiLCJzY3QiOiJzdWNjZXNzX21zZyhcIkV4Y2VsbGVudCBqb2IhIEJlaW5nIGFibGUgdG8gZG8gY2FsY3VsYXRpb25zIHJlY3Vyc2l2ZWx5LCBzdWNoIGFzIHVzaW5nIGZvciBsb29wcywgaXMgYW4gaW1wb3J0YW50IGZvciBhY3R1YXJpYWwgbW9kZWxzLlwiKSIsImhpbnQiOiJUaGVyZSBhcmUgc2V2ZXJhbCB3YXlzIHRvIGRvIHJlY3Vyc2lvbnMgaW4gPGNvZGU+UjwvY29kZT4sIHlvdSBtaWdodCBzdGFydCB3aXRoIGEgc2ltcGxlIDxhIGhyZWY9XCJodHRwczovL3d3dy5yZG9jdW1lbnRhdGlvbi5vcmcvcGFja2FnZXMvYmFzZS92ZXJzaW9ucy8zLjYuMi90b3BpY3MvQ29udHJvbFwiPmZvcigpPC9hPiBleHByZXNzaW9uLiJ9
+</div>
+</div>
+<div id="exercise.-reverse-engineering-and-recursive-r-functions" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> Exercise. Reverse Engineering and Recursive <code>R</code> Functions</h3>
+<p><strong>Assignment Text</strong></p>
+<p>You want to generate probabilities from the <span class="math inline">\((a,b,0)\)</span> class so that later on you will be able to modify your code to produce alternative distributions (the subject of Section 2.5), a bit of so-called “reverse engineering.” In the first part of this problem, from a known distribution (e.g., the binomial), you will compute the ratio</p>
+<p><span class="math display">\[
+\frac{k ~p_k}{p_{k-1}} =  a k + b , \quad k\ge 1 ,
+\]</span></p>
+<p>to determine values of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>. The second part of this problem utilizes recursive <code>R</code> functions. This is a function defined in terms of the same function but at a prior iteration. The classic example is the factorial function <span class="math inline">\(f(n) = n!\)</span> so <span class="math inline">\(f(n) = n f(n-1)\)</span>. For example, you can define the function</p>
+<pre><code>recursive.factorial &lt;- function(n) {
+if (n == 0)    return (1)
+else           return (n * recursive.factorial(n-1))
+}</code></pre>
+<p>to determine that <code>recursive.factorial(5) = 120</code>. In this problem, we use a recursive <code>R</code> function to generate <span class="math inline">\((a,b,0)\)</span> probabilities.</p>
+<div class="blackbox">
+<p><strong>Instructions</strong></p>
+<ul>
+<li>For <span class="math inline">\(k=0, \ldots, 4\)</span>, using <span class="math inline">\(\lambda = 1.24\)</span> obtain <span class="math inline">\(p_k\)</span> values from the <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Poisson">dpois()</a> function.</li>
+<li>Compute the ratio to identify values of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>. <em>Hint</em>: In <code>R</code>, use of <em>negative indexing</em> is permitted. For example, <code>pop[-c(3, 7)]</code> removes the third and seventh elements of <code>pop</code>.</li>
+<li>For <span class="math inline">\(k=0, \ldots, 4\)</span>, using <span class="math inline">\(q =0.1\)</span> and <span class="math inline">\(m=10\)</span> obtain <span class="math inline">\(p_k\)</span> values from the <a href="https://www.rdocumentation.org/packages/stats/versions/3.3/topics/Binomial">dbinom()</a> function.</li>
+<li>Compute the ratio to identify values of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>.</li>
+<li>To check your work, develop the recursive <span class="math inline">\((a,b,0)\)</span> function to determine <span class="math inline">\(p_4 = \Pr(N=4)\)</span> based on the binomial distribution in the prior part.</li>
+</ul>
+</div>
+<p><br></p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiMgTm9uZSBOZWVkZWQgZm9yIHRoaXMgRXhlcmNpc2UiLCJzYW1wbGUiOiJrdmVjIDwtIGMoMDo0KSAgXG5Qb2lzc29uLnBfayA8LSBkcG9pcyh4PWt2ZWMsIGxhbWJkYT0xLjI0KSBcbmt2ZWNbPz9dICogUG9pc3Nvbi5wX2tbPz8vUG9pc3Nvbi5wX2tbLWxlbmd0aChrdmVjKV1cblxuQmlub20ucF9rIDwtIGRiaW5vbSh4PWt2ZWMsIHByb2IgPSAwLjEsIHNpemUgPSAxMCkgXG5vdXR2ZWMgPC0ga3ZlY1s/PyAqIEJpbm9tLnBfa1s/P10vQmlub20ucF9rWy1sZW5ndGgoa3ZlYyldXG4oIGEgPSA/PyAtID8/IClcbiggYiA9ID8/IC0gYSApXG5cbiMgUmVjdXJzaXZlIGZ1bmN0aW9uIHRvIGZpbmQgZmFjdG9yaWFsXG5yZWN1cnNpdmUuYS5iLjAgPC0gZnVuY3Rpb24oaykge1xuICBpZiAoayA9PSAwKSAgcmV0dXJuICggQmlub20ucF9rWzFdIClcbiAgZWxzZSAgICAgICAgIHJldHVybiAoIChhK2IvaykgKiByZWN1cnNpdmUuYS5iLjAoay0xKSApXG4gIH1cbnJlY3Vyc2l2ZS5hLmIuMCg/PylcbkJpbm9tLnBfa1s/P10iLCJzb2x1dGlvbiI6Imt2ZWMgPC0gYygwOjQpICBcblBvaXNzb24ucF9rIDwtIGRwb2lzKHg9a3ZlYywgbGFtYmRhPTEuMjQpIFxua3ZlY1stMV0gKiBQb2lzc29uLnBfa1stMV0vUG9pc3Nvbi5wX2tbLWxlbmd0aChrdmVjKV1cblxuQmlub20ucF9rIDwtIGRiaW5vbSh4PWt2ZWMsIHByb2IgPSAwLjEsIHNpemUgPSAxMCkgXG5vdXR2ZWMgPC0ga3ZlY1stMV0gKiBCaW5vbS5wX2tbLTFdL0Jpbm9tLnBfa1stbGVuZ3RoKGt2ZWMpXVxuKCBhID0gb3V0dmVjWzJdIC0gb3V0dmVjWzFdIClcbiggYiA9IG91dHZlY1sxXSAtIGEgKVxuXG4jIFJlY3Vyc2l2ZSBmdW5jdGlvbiB0byBmaW5kIGZhY3RvcmlhbFxucmVjdXJzaXZlLmEuYi4wIDwtIGZ1bmN0aW9uKGspIHtcbiAgaWYgKGsgPT0gMCkgIHJldHVybiAoIEJpbm9tLnBfa1sxXSApXG4gIGVsc2UgICAgICAgICByZXR1cm4gKCAoYStiL2spICogcmVjdXJzaXZlLmEuYi4wKGstMSkgKVxuICB9XG5yZWN1cnNpdmUuYS5iLjAoNClcbkJpbm9tLnBfa1s1XSIsInNjdCI6InN1Y2Nlc3NfbXNnKFwiU3VwZXJiISBXb3JraW5nIGZvcndhcmRzIGFuZCBiYWNrd2FyZHMgaXMgaW1wb3J0YW50IGluIGNvbXBsZXggdGFza3MuIFRoZSBpZGVhIG9mICdyZXZlcnNlIGVuZ2luZWVyaW5nJyBpcyBjb21tb24gaW4gY29tcGxleCBidXNpbmVzcyBzZXR0aW5ncy4gXCIpIiwiaGludCI6IllvdSBtaWdodCB3aXNoIHRvIGxlYXJuIG1vcmUgYWJvdXQgPGEgaHJlZj1cImh0dHBzOi8vd3d3LmRhdGFtZW50b3IuaW8vci1wcm9ncmFtbWluZy9yZWN1cnNpb24vXCI+UiByZWN1cnNpdmUgZnVuY3Rpb25zPC9hPiJ9
+</div>
 
 </div>
 </div>

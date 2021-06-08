@@ -10,7 +10,13 @@
 
 A primary focus for insurers is estimating the magnitude of aggregate claims it must bear under its insurance contracts. Aggregate claims are affected by both the frequency and the severity of the insured event. Decomposing aggregate claims into these two components, each of which warrant significant attention, is essential for analysis and pricing. This chapter discusses frequency distributions, summary measures, and parameter estimation techniques.
 
-Although not needed to go through the tutorials, some users may wish to download the overheads used in the videos. <button download><a href="https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/LDA1.Overheads/LDA1.Chap2.pdf">Download Chapter Two overheads as a .pdf file.</a></button>
+:::: {.blackbox }
+
+-  Although not needed to go through the tutorials, some users may wish to download the overheads used in the videos. <button download><a href="https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/LDA1.Overheads/LDA1.Chap2.pdf">Download Chapter Two overheads as a .pdf file.</a></button>
+-  By watching the videos and working through the tutorial exercises, you will get an appreciation for frequency modeling. For a deeper dive, see the corresponding chapter in the textbook, [Chapter Two of *Loss Data Analytics*](https://openacttexts.github.io/Loss-Data-Analytics/C-Frequency-Modeling.html).
+
+:::: 
+
 
 ## Basic Frequency Distributions 
 
@@ -257,10 +263,203 @@ success_msg("Excellent job! As you study actuarial data applications, do not shy
 ```
 
 
-***
+## The (a,b,0) Class
 
-```{r child = './Quizzes/Quiz51.html', eval = QUIZ}
+### Exercise. Determining Probabilities Recursively
+
+**Assignment Text**
+
+The $(a,b,0)$ class can be expressed through the recursion
+
+$$
+\Pr(N=k) = p_k = p_{k-1} \left( a+ \frac{b}{k}\right) , \quad k\ge 1 .
+$$
+
+where $N$ is a count random variable. From Section 2.3 of the text, we know that:
+
+*  if $a=0$ and $b=\lambda$, then the recursion yields a Poisson distribution with parameter $\lambda$
+*  if $a=-q/(1-q)$ and $b=(m+1)q/(1+q)$, then the recursion yields a binomial distribution with parameters $m$ and $q$
+*  if $a=\beta/(1+\beta)$ and $b=(r-1)\beta/(1+\beta)$, then the recursion yields a negative distribution with parameters $r$ and $\beta$.
+
+The $(a,b,0)$ class is a foundation for other, more complex, distributions, so let us check that we understand the recursions.
+
+
+:::: {.blackbox }
+
+**Instructions**
+
+-  For $k=0, \ldots, 20$, using $\lambda = 1.24$ obtain $p_k$ values using  [dpois()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Poisson).
+-  With the starting value $p_0 = \exp(\lambda)$, use the recursive $(a,b,0)$ formula to obtain these probability values.
+-  Check your code by summing over the absolute value of the differences between the `dpois` and the $(a,b,0)$ generated values.
+-   For $k=0, \ldots, 20$,  obtain $p_k$ values using the negative binomial distribution using the function [dnbinom()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/NegBinomial). Use the same mean as for the Poisson distribution but let the variance be 1.1 times the mean. *Hint*. See the [Loss Data Analytics Summary of Distributions](https://openacttexts.github.io/Loss-Data-Analytics/C-SummaryDistributions.html#discrete-distributions) for the parameterization used in this short course. It differs from that used by the `R` package.
+-  Use the recursive $(a,b,0)$ formula to obtain these probability values. 
+-  Check your code by summing over the absolute value of the differences between the `dnbinom` and the $(a,b,0)$ generated values.
+
+::::
+
+<br>
+
+
+```{r ex="LDA1.2.3.1", type="hint", tut=TRUE}
+ There are several ways to do recursions in `R`, you might start with a simple [for()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/Control) expression.
+
 ```
+
+
+```{r ex="LDA1.2.3.1", type="pre-exercise-code", tut=TRUE}
+# None Needed for this Exercise
+```
+
+
+
+```{r ex="LDA1.2.3.1", type="sample-code", tut=TRUE}
+
+kvec <- c(0:??) 
+Poisson.p_k <- dpois(x=kvec, lambda=??) 
+a = ?? 
+b = ??
+a.b.0.vec <-  exp(-1.24) -> p.new
+for (k in 2:21){
+  p.new <- p.new *(a+b/(k-1))
+  a.b.0.vec <- append(a.b.0.vec,p.new)
+  }
+sum(abs(Poisson.p_k - ??))
+
+NegBinom.p_k <- dnbinom(kvec, prob=1/1.1, size = 12.4)
+a = ?? 
+b = ??
+a.b.0.vec <-  1.1**(-12.4) -> p.new
+for (k in ??){
+  p.new <- p.new *(a+b/(k-1))
+  a.b.0.vec <- append(a.b.0.vec,p.new)
+  }
+sum(abs(NegBinom.p_k - ??))
+
+```
+
+
+
+```{r ex="LDA1.2.3.1", type="solution", tut=TRUE}
+kvec <- c(0:20) 
+Poisson.p_k <- dpois(x=kvec, lambda=1.24) 
+a = 0; 
+b = 1.24
+a.b.0.vec <-  exp(-1.24) -> p.new
+for (k in 2:21){
+  p.new <- p.new *(a+b/(k-1))
+  a.b.0.vec <- append(a.b.0.vec,p.new)
+  }
+sum(abs(Poisson.p_k - a.b.0.vec))
+
+NegBinom.p_k <- dnbinom(kvec, prob=1/1.1, size = 12.4)
+a = .1/1.1; 
+b = 11.4*(0.1)/1.1
+a.b.0.vec <-  1.1**(-12.4) -> p.new
+for (k in 2:21){
+  p.new <- p.new *(a+b/(k-1))
+  a.b.0.vec <- append(a.b.0.vec,p.new)
+  }
+sum(abs(NegBinom.p_k - a.b.0.vec))
+```
+
+```{r ex="LDA1.2.3.1", type="sct", tut=TRUE}
+success_msg("Excellent job! Being able to do calculations recursively, such as using for loops, is an important for actuarial models.")
+```
+
+### Exercise. Reverse Engineering and Recursive `R` Functions
+
+**Assignment Text**
+
+You want to generate probabilities from the $(a,b,0)$ class so that later on you will be able to modify your code to produce alternative distributions (the subject of Section 2.5), a bit of so-called "reverse engineering." In the first part of this problem, from a known distribution (e.g., the binomial), you will compute the ratio
+
+$$
+\frac{k ~p_k}{p_{k-1}} =  a k + b , \quad k\ge 1 ,
+$$
+
+to determine values of $a$ and $b$. The second part of this problem utilizes recursive `R` functions. This is a function defined in terms of the same function but at a prior iteration. The classic example is the factorial function $f(n) = n!$ so $f(n) = n f(n-1)$. For example, you can define the function
+
+```
+recursive.factorial <- function(n) {
+if (n == 0)    return (1)
+else           return (n * recursive.factorial(n-1))
+}
+```
+to determine that `recursive.factorial(5) = 120`. In this problem, we use a recursive `R` function to generate $(a,b,0)$ probabilities.
+
+
+:::: {.blackbox }
+
+**Instructions**
+
+-  For $k=0, \ldots, 4$, using $\lambda = 1.24$ obtain $p_k$ values from the  [dpois()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Poisson) function.
+-  Compute the ratio to identify values of $a$ and $b$. *Hint*: In `R`, use of *negative indexing* is permitted. For example, `pop[-c(3, 7)]` removes the third and seventh elements of `pop`.
+-  For $k=0, \ldots, 4$, using $q =0.1$ and $m=10$ obtain $p_k$ values from the   [dbinom()](https://www.rdocumentation.org/packages/stats/versions/3.3/topics/Binomial) function.
+-  Compute the ratio to identify values of $a$ and $b$.
+-  To check your work, develop the recursive $(a,b,0)$ function to determine $p_4 = \Pr(N=4)$ based on the binomial distribution in the prior part.
+
+::::
+
+<br>
+
+
+```{r ex="LDA1.2.3.2", type="hint", tut=TRUE}
+You might wish to learn more about [R recursive functions](https://www.datamentor.io/r-programming/recursion/)
+
+```
+
+
+```{r ex="LDA1.2.3.2", type="pre-exercise-code", tut=TRUE}
+# None Needed for this Exercise
+```
+
+
+
+```{r ex="LDA1.2.3.2", type="sample-code", tut=TRUE}
+kvec <- c(0:4)  
+Poisson.p_k <- dpois(x=kvec, lambda=1.24) 
+kvec[??] * Poisson.p_k[??/Poisson.p_k[-length(kvec)]
+
+Binom.p_k <- dbinom(x=kvec, prob = 0.1, size = 10) 
+outvec <- kvec[?? * Binom.p_k[??]/Binom.p_k[-length(kvec)]
+( a = ?? - ?? )
+( b = ?? - a )
+
+# Recursive function to find factorial
+recursive.a.b.0 <- function(k) {
+  if (k == 0)  return ( Binom.p_k[1] )
+  else         return ( (a+b/k) * recursive.a.b.0(k-1) )
+  }
+recursive.a.b.0(??)
+Binom.p_k[??]
+
+```
+
+
+
+```{r ex="LDA1.2.3.2", type="solution", tut=TRUE}
+kvec <- c(0:4)  
+Poisson.p_k <- dpois(x=kvec, lambda=1.24) 
+kvec[-1] * Poisson.p_k[-1]/Poisson.p_k[-length(kvec)]
+
+Binom.p_k <- dbinom(x=kvec, prob = 0.1, size = 10) 
+outvec <- kvec[-1] * Binom.p_k[-1]/Binom.p_k[-length(kvec)]
+( a = outvec[2] - outvec[1] )
+( b = outvec[1] - a )
+
+# Recursive function to find factorial
+recursive.a.b.0 <- function(k) {
+  if (k == 0)  return ( Binom.p_k[1] )
+  else         return ( (a+b/k) * recursive.a.b.0(k-1) )
+  }
+recursive.a.b.0(4)
+Binom.p_k[5]
+```
+
+```{r ex="LDA1.2.3.2", type="sct", tut=TRUE}
+success_msg("Superb! Working forwards and backwards is important in complex tasks. The idea of 'reverse engineering' is common in complex business settings. ")
+```
+
+
 
 
 

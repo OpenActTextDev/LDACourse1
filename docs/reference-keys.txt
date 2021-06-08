@@ -14,6 +14,9 @@ basic-frequency-distributions
 exercise.-representing-the-number-of-cyber-events-with-a-binomial-distribution
 exercise.-representing-the-number-of-cyber-events-with-a-poisson-distribution
 exercise.-comparing-basic-count-distributions
+the-ab0-class
+exercise.-determining-probabilities-recursively
+exercise.-reverse-engineering-and-recursive-r-functions
 modeling-loss-severity
 model-selection-and-estimation
 nonparametric-inference
@@ -43,6 +46,3 @@ exercise.-collective-risk-model-ii
 tweedie-distribution
 exercise.-tweedie-distribution
 effects-of-coverage-modifications
-chapter-template---insert-title-here
-section-template---insert-title-here
-exercise.-claim-frequency-2
