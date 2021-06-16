@@ -475,13 +475,23 @@ var submitAnswer = function() {
 <li class="chapter" data-level="2.2.1" data-path="frequency-modeling.html"><a href="frequency-modeling.html#exercise.-determining-probabilities-recursively"><i class="fa fa-check"></i><b>2.2.1</b> Exercise. Determining Probabilities Recursively</a></li>
 <li class="chapter" data-level="2.2.2" data-path="frequency-modeling.html"><a href="frequency-modeling.html#exercise.-reverse-engineering-and-recursive-r-functions"><i class="fa fa-check"></i><b>2.2.2</b> Exercise. Reverse Engineering and Recursive <code>R</code> Functions</a></li>
 </ul></li>
+<li class="chapter" data-level="2.3" data-path="frequency-modeling.html"><a href="frequency-modeling.html#mixture-distributions"><i class="fa fa-check"></i><b>2.3</b> Mixture Distributions</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="frequency-modeling.html"><a href="frequency-modeling.html#exercise.-mixtures-of-workers-compensation-claims"><i class="fa fa-check"></i><b>2.3.1</b> Exercise. Mixtures of Workers’ Compensation Claims</a></li>
+<li class="chapter" data-level="2.3.2" data-path="frequency-modeling.html"><a href="frequency-modeling.html#exercise.-finite-number-of-mixture-distributions"><i class="fa fa-check"></i><b>2.3.2</b> Exercise. Finite Number of Mixture Distributions</a></li>
+<li class="chapter" data-level="2.3.3" data-path="frequency-modeling.html"><a href="frequency-modeling.html#exercise.-gamma-mixture-of-poissons"><i class="fa fa-check"></i><b>2.3.3</b> Exercise. Gamma Mixture of Poissons</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="modeling-loss-severity.html"><a href="modeling-loss-severity.html"><i class="fa fa-check"></i><b>3</b> Modeling Loss Severity</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="modeling-loss-severity.html"><a href="modeling-loss-severity.html"><i class="fa fa-check"></i><b>3</b> Modeling Loss Severity</a><ul>
+<li class="chapter" data-level="3.1" data-path="modeling-loss-severity.html"><a href="modeling-loss-severity.html#methods-of-creating-new-distributions"><i class="fa fa-check"></i><b>3.1</b> Methods of Creating New Distributions</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="modeling-loss-severity.html"><a href="modeling-loss-severity.html#exercise.-claim-frequency-1"><i class="fa fa-check"></i><b>3.1.1</b> Exercise. Claim Frequency</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="modeling-loss-severity.html"><a href="modeling-loss-severity.html#coverage-modifications"><i class="fa fa-check"></i><b>3.2</b> Coverage Modifications</a></li>
+</ul></li>
 <li class="chapter" data-level="4" data-path="model-selection-and-estimation.html"><a href="model-selection-and-estimation.html"><i class="fa fa-check"></i><b>4</b> Model Selection and Estimation</a><ul>
 <li class="chapter" data-level="4.1" data-path="model-selection-and-estimation.html"><a href="model-selection-and-estimation.html#nonparametric-inference"><i class="fa fa-check"></i><b>4.1</b> Nonparametric Inference</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="model-selection-and-estimation.html"><a href="model-selection-and-estimation.html#exercise.-empirical-distribution-function-and-quartiles-percentiles-and-quantiles"><i class="fa fa-check"></i><b>4.1.1</b> Exercise. Empirical Distribution Function and Quartiles, Percentiles and Quantiles</a></li>
 <li class="chapter" data-level="4.1.2" data-path="model-selection-and-estimation.html"><a href="model-selection-and-estimation.html#exercise.-density-estimators"><i class="fa fa-check"></i><b>4.1.2</b> Exercise. Density Estimators</a></li>
-<li class="chapter" data-level="4.1.3" data-path="model-selection-and-estimation.html"><a href="model-selection-and-estimation.html#exercise.-claim-frequency-1"><i class="fa fa-check"></i><b>4.1.3</b> Exercise. Claim Frequency</a></li>
+<li class="chapter" data-level="4.1.3" data-path="model-selection-and-estimation.html"><a href="model-selection-and-estimation.html#exercise.-claim-frequency-2"><i class="fa fa-check"></i><b>4.1.3</b> Exercise. Claim Frequency</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="model-selection-and-estimation.html"><a href="model-selection-and-estimation.html#tools-for-model-selection"><i class="fa fa-check"></i><b>4.2</b> Tools for Model Selection</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="model-selection-and-estimation.html"><a href="model-selection-and-estimation.html#exercise.-probability-probability-pp-plot"><i class="fa fa-check"></i><b>4.2.1</b> Exercise. Probability-Probability (PP) plot</a></li>
@@ -537,7 +547,128 @@ var submitAnswer = function() {
             <section class="normal" id="section-">
 <div id="modeling-loss-severity" class="section level1">
 <h1><span class="header-section-number">Chapter 3</span> Modeling Loss Severity</h1>
-<p><strong>Placeholder</strong></p>
+<p><strong>Draft - Chapter Not Yet Complete</strong></p>
+<p><br></p>
+<p><strong>Chapter description.</strong> The traditional loss distribution approach to modeling aggregate losses starts by separately fitting a frequency distribution to the number of losses and a severity distribution to the size of losses. The estimated aggregate loss distribution combines the loss frequency distribution and the loss severity distribution by convolution. Discrete distributions often referred to as counting or frequency distributions were used in Chapter 2 to describe the number of events such as number of accidents to the driver or number of claims to the insurer. Lifetimes, asset values, losses and claim sizes are usually modeled as continuous random variables and as such are modeled using continuous distributions, often referred to as loss or severity distributions. A mixture distribution is a weighted combination of simpler distributions that is used to model phenomenon investigated in a heterogeneous population, such as modeling more than one type of claims in liability insurance (small frequent claims and large relatively rare claims). In this chapter we explore the use of continuous as well as mixture distributions to model the random size of loss.</p>
+<div class="blackbox">
+<ul>
+<li>Although not needed to go through the tutorials, some users may wish to download the overheads used in the videos. <button download><a href="https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/LDA1.Overheads/LDA1.Chap4.pdf">Download Chapter Four overheads as a .pdf file.</a></button></li>
+<li>By watching the videos and working through the tutorial exercises, you will get an appreciation for distributions used to model the severity of losses. For a deeper dive, see the corresponding chapter in the textbook, <a href="https://openacttexts.github.io/Loss-Data-Analytics/C-Severity.html">Chapter Three of <em>Loss Data Analytics</em></a>.</li>
+</ul>
+</div>
+<div id="methods-of-creating-new-distributions" class="section level2">
+<h2><span class="header-section-number">3.1</span> Methods of Creating New Distributions</h2>
+<hr />
+<p>In this section, you learn how to:</p>
+<ul>
+<li>Understand connections among the distributions</li>
+<li>Give insights into when a distribution is preferred when compared to alternatives</li>
+<li>Provide foundations for creating new distributions</li>
+</ul>
+<hr />
+<div id="video-creating-distributions-i" class="section level4 unnumbered">
+<h4>Video: Creating Distributions I</h4>
+<center>
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25717641/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_3ossuexn&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_x80k8dtk" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
+</iframe>
+</center>
+</div>
+<div id="overheads-creating-distributions-i-click-tab-to-view" class="section level4 unnumbered">
+<h4>Overheads: Creating Distributions I (Click Tab to View)</h4>
+<p><strong>Here is an example of coding the overheads</strong></p>
+<div class="tab">
+<button class="tablinks" onclick="openTab(event, 'ChapTemplateA')">A. Wisconsin Property Fund</button>
+<button class="tablinks" onclick="openTab(event, 'ChapTemplateB')">B. LGPIF Policyholder A</button>
+<button class="tablinks" onclick="openTab(event, 'ChapTemplateC')">C. LGPIF Policyholder B</button>
+<button class="tablinks" onclick="openTab(event, 'ChapTemplateD')">D. Property Fund</button>
+<button class="tablinks" onclick="openTab(event, 'ChapTemplateE')">E. Claims Frequency - R Code</button>
+<button class="tablinks" onclick="openTab(event, 'ChapTemplateF')">F. Claims Frequency (2010)</button>
+</div>
+<div id="ChapTemplateA" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<iframe src="./Overheads/LDA1.Chap1.pdf#page=16" width="100%" height="400"> </iframe>
+</div>
+<div id="ChapTemplateB" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<iframe src="./Overheads/LDA1.Chap1.pdf#page=17" width="100%" height="400"> </iframe>
+</div>
+<div id="ChapTemplateC" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<iframe src="./Overheads/LDA1.Chap1.pdf#page=18" width="100%" height="400"> </iframe>
+</div>
+<div id="ChapTemplateD" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<iframe src="./Overheads/LDA1.Chap1.pdf#page=19" width="100%" height="400"> </iframe>
+</div>
+<div id="ChapTemplateE" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<iframe src="./Overheads/LDA1.Chap1.pdf#page=20" width="100%" height="400"> </iframe>
+</div>
+<div id="ChapTemplateF" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<iframe src="./Overheads/LDA1.Chap1.pdf#page=21" width="100%" height="400"> </iframe>
+</div>
+</div>
+<div id="video-creating-distributions-ii" class="section level4 unnumbered">
+<h4>Video: Creating Distributions II</h4>
+<center>
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25717641/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_5023lgkw&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_m33sbiz0" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
+</iframe>
+</center>
+</div>
+<div id="exercise.-claim-frequency-1" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> Exercise. Claim Frequency</h3>
+<p><strong>Next include one or two exercises per section. Here is an example.</strong></p>
+<p><strong>Assignment Text</strong></p>
+<p>The Wisconsin Property Fund data has already been read into a data frame called <code>Insample</code>. These data consist of claim experience for fund members over the years 2006-2010, inclusive. It includes the frequency of claims <code>Freq</code> as well as the claim year <code>Year</code>. The video explored the distribution of the claims frequency for year 2010; in this assignment, we replicate this analysis and conduct a similar investigation for year 2009.</p>
+<div class="blackbox">
+<p><strong>Instructions</strong>. For each year:</p>
+<ul>
+<li>Use the function <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/subset">subset()</a> to create a smaller data set based on a single year.</li>
+<li>Define the frequency as a global variable.</li>
+<li>Use the function <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/length">length()</a> to determine the number of observations in a vector.</li>
+<li>Use the function <a href="https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/mean/">mean()</a> to calculate the average.</li>
+<li>Use the function <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/table">table()</a> to tabulate the frequency distribution.</li>
+</ul>
+</div>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6Ikluc2FtcGxlIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL09wZW5BY3RUZXh0RGV2L0xEQUNvdXJzZTEvbWFpbi9EYXRhL0luc2FtcGxlLmNzdlwiLCBoZWFkZXI9VCxcbiAgICAgICAgICAgICAgICAgICAgICBuYS5zdHJpbmdzPWMoXCIuXCIpLCBzdHJpbmdzQXNGYWN0b3JzPUZBTFNFKSIsInNhbXBsZSI6IiMgIEFuYWx5c2lzIGZvciBZZWFyIDIwMTBcbkluc2FtcGxlMjAxMCA8LSBzdWJzZXQoSW5zYW1wbGUsIFllYXI9PTIwMTApXG5GcmVxMjAxMCA8LSBJbnNhbXBsZTIwMTAkRnJlcVxubGVuZ3RoKEZyZXEyMDEwKVxubWVhbihGcmVxMjAxMClcbnRhYmxlKEZyZXEyMDEwKVxuXG4jICBBbmFseXNpcyBmb3IgWWVhciAyMDA5XG5JbnNhbXBsZTIwMDkgPC0gX19fXG5GcmVxMjAwOSA8LSBfX19cbmxlbmd0aChfX18pXG5tZWFuKF9fXylcbnRhYmxlKF9fXykiLCJzb2x1dGlvbiI6IiMgIEFuYWx5c2lzIGZvciBZZWFyIDIwMTBcbkluc2FtcGxlMjAxMCA8LSBzdWJzZXQoSW5zYW1wbGUsIFllYXI9PTIwMTApXG5GcmVxMjAxMCA8LSBJbnNhbXBsZTIwMTAkRnJlcVxubGVuZ3RoKEZyZXEyMDEwKVxubWVhbihGcmVxMjAxMClcbnRhYmxlKEZyZXEyMDEwKVxuXG4jICBBbmFseXNpcyBmb3IgWWVhciAyMDA5XG5JbnNhbXBsZTIwMDkgPC0gc3Vic2V0KEluc2FtcGxlLCBZZWFyPT0yMDA5KVxuRnJlcTIwMDkgPC0gSW5zYW1wbGUyMDA5JEZyZXFcbmxlbmd0aChGcmVxMjAwOSlcbm1lYW4oRnJlcTIwMDkpXG50YWJsZShGcmVxMjAwOSkiLCJzY3QiOiJzdWNjZXNzX21zZyhcIkdldHRpbmcgc3RhcnRlZCBpcyBhbHdheXMgdGhlIGhhcmRlc3QgdGhpbmcgdG8gZG8uIEV4Y2VsbGVudCBzdGFydCFcIikiLCJoaW50IjoiVGFrZSBzb21lIHRpbWUgdG8gZXhwbG9yZSB0aGUgb25saW5lIDxjb2RlPlI8L2NvZGU+IGRvY3VtZW50YXRpb24uPC9wPlxuXG48cD5Ob3RlIHRoZSBkb3VibGUgZXF1YWwgc2lnbnMgPGNvZGU+PT08L2NvZGU+IG5lZWRlZCBmb3IgdGhlIHRoZSA8Y29kZT5zdWJzZXQoKTwvY29kZT4gZnVuY3Rpb24uIn0=
+</div>
+</div>
+</div>
+<div id="coverage-modifications" class="section level2">
+<h2><span class="header-section-number">3.2</span> Coverage Modifications</h2>
+<hr />
+<p>In this section we evaluate the impacts of coverage modifications:</p>
+<ul>
+<li>deductibles,</li>
+<li>policy limit,</li>
+<li>coinsurance, and</li>
+<li>reinsurance on insurer’s costs.</li>
+</ul>
+<hr />
+<div id="video-policy-deductibles" class="section level4 unnumbered">
+<h4>Video: Policy Deductibles</h4>
+<center>
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25717641/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_v4oyj7ne&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_mnc9h2ja" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
+</iframe>
+</div>
+<div id="video-policy-limits" class="section level4 unnumbered">
+<h4>Video: Policy Limits</h4>
+<center>
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25717641/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_7u0jx487&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_gol12ato" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
+</iframe>
+</center>
+</div>
+<div id="video-policy-coinsurance-and-reinsurance" class="section level4 unnumbered">
+<h4>Video: Policy Coinsurance and Reinsurance</h4>
+<center>
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25717641/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_4f9j72l3&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_5vv01as5" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
+</iframe>
+</center>
+
+</div>
+</div>
 </div>
             </section>
 

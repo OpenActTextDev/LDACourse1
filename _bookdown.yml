@@ -3,10 +3,11 @@ output_dir: "docs"
 rmd_files: ["index.Rmd", 
             "Chapters/LDAChap1.Rmd",
             "Chapters/LDAChap2.Rmd", 
+            "Chapters/LDAChap3.Rmd",   
             "Chapters/LDAChap4.Rmd",   
             "Chapters/LDAChap5.Rmd"]            
 #            "Chapters/LDAChapTemplate.Rmd" ]
-#           "Chapters/Bibliography.Rmd"]
+
 language:
   ui:
     chapter_name: "Chapter "

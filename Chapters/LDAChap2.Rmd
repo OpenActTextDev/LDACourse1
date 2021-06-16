@@ -460,6 +460,243 @@ success_msg("Superb! Working forwards and backwards is important in complex task
 ```
 
 
+## Mixture Distributions
+
+
+### Exercise. Mixtures of Workers' Compensation Claims
+
+**Assignment Text**
+
+You are analyzing a set of workers' compensation claims (claims that pay in the event of injury at a work-place) and focus on the frequency portion. Suppose that it is known that if claims arise from a low-risk class, such as accountants and actuaries working within "four walls," that the number of claims follows a Poisson distribution with parameter $\lambda=4$. However, if claims arise from a high-risk class, such as roofers and lumberjacks, then the number follows a negative binomial distribution with parameters $r=4$ and $\beta=3$. For a particular firm, you do not know whether it is low or high risk but you do know that probability of being low-risk is $\alpha=0.6$.
+
+In this exercise, we will compare the shape of the mixture distribution to the low and high risk distributions.
+
+***
+
+**Instructions** 
+
+-  Determine the probability mass functions for the low and risk populations for $k=0, \ldots, 20$ possible claim outcoms.
+-  Compute the corresponding probability mass function for the mixture distribution
+-  Plot the mixture distribution with superimposed lines for the low and high risk populations. Use different colors and plotting symbols for the three distributions to help viewers distinguish among them.
+-  Determine distribution functions for the low, high, and mixture distributions.
+-  Plot the mixture distribution function with superimposed lines for the low and high risk populations.
+
+
+```{r ex="LDA1.2.6.0", type="hint", tut=TRUE}
+See the [appendix of the Loss Data Analytics] (https://openacttexts.github.io/Loss-Data-Analytics/C-SummaryDistributions.html#discrete-distributions) 
+   for code on using parameters in R.
+
+```
+
+
+```{r ex="LDA1.2.6.0", type="sample-code", tut=TRUE}
+alpha <- 0.6; lambda <- ??  
+r <- 4;       beta <- ?? 
+kvec <- 0:20
+
+lowrisk <- dpois(kvec, lambda=lambda)
+highrisk <- dnbinom(kvec, prob=?? , size = ?? )
+poprisk <- ?? 
+
+plot(kvec, poprisk, ylim = c(0, .2), xlab = "Number of Claims", ylab = "Probability", type = "b", pch = 19)
+lines(kvec, lowrisk, col = "blue", type = "b")
+lines(kvec, highrisk, col = "red", type = "b", pch = 23)
+
+lowrisk.p <- ppois(kvec, lambda=lambda)
+highrisk.p <- pnbinom(kvec, prob=?? , size = ?? )
+poprisk.p <- ?? 
+
+plot(kvec, poprisk.p, ylim = c(0, 1), xlab = "Number of Claims", ylab = "Distribution Function", type = "b", pch = 19)
+lines(kvec, lowrisk.p, col = "blue", type = "b")
+lines(kvec, highrisk.p, col = "red", type = "b", pch = 23)
+
+```
+
+
+
+```{r ex="LDA1.2.6.0", type="solution", tut=TRUE}
+alpha <- 0.6; lambda <- 4; 
+r <- 4;       beta <- 3
+kvec <- 0:20
+
+lowrisk <- dpois(kvec, lambda=lambda)
+highrisk <- dnbinom(kvec, prob=1/(1+beta), size = r)
+poprisk <- alpha*lowrisk + (1-alpha)*highrisk
+
+plot(kvec, poprisk, ylim = c(0, .2), xlab = "Number of Claims", ylab = "Probability", type = "b", pch = 19)
+lines(kvec, lowrisk, col = "blue", type = "b")
+lines(kvec, highrisk, col = "red", type = "b", pch = 23)
+
+lowrisk.p <- ppois(kvec, lambda=lambda)
+highrisk.p <- pnbinom(kvec, prob=1/(1+beta), size = r)
+poprisk.p <- alpha*lowrisk.p + (1-alpha)*highrisk.p
+
+plot(kvec, poprisk.p, ylim = c(0, 1), xlab = "Number of Claims", ylab = "Distribution Function", type = "b", pch = 19)
+lines(kvec, lowrisk.p, col = "blue", type = "b")
+lines(kvec, highrisk.p, col = "red", type = "b", pch = 23)
+
+```
+
+
+
+```{r ex="LDA1.2.6.0", type="sct", tut=TRUE}
+success_msg("Superb! Determining mixture distributions are usually difficult to do by hand but are straightforward with computational tools such as 'R'. Insurance analysts continually fret about unobserved characteristics (such as low versus high risk) and mixture distributions is a tool often used to help quantify these unobserved pieces of information. ")
+```
+
+
+
+
+### Exercise. Finite Number of Mixture Distributions
+
+**Assignment Text**
+
+The following describes a "classic" actuarial exam problem. We use this problem to motivate an introduction of more complex techniques for calculating mixture distributions; unlike classic exam problems designed for hand calculations, these techniques can readily be extended to a large number of unobserved sub-populations.
+
+In a certain town the number of common colds an individual will get in a year follows a Poisson distribution that depends on the individual's age and smoking status:
+
+$$
+{\small
+\begin{array}{l|cc} \hline
+& \text{Proportion of population} & \text{Mean number of colds} \\ \hline
+  \text{Children} &        0.3 &          3 \\
+\text{Adult Non-Smokers} &        0.6 &          1 \\
+\text{Adult Smokers} &        0.1 &          4 \\\hline
+\end{array}
+}
+$$
+
+In this exercise, we will use `R` to calculate the probabilities that a randomly drawn person has a cold in a year.
+
+***
+
+**Instructions** 
+
+-  Create a vector of proportions $\alpha$ and a vector of Poisson parameters $\lambda$.
+-  Use the function [dpois()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Poisson) to obtain a vector of Poisson probability mass function (pmf) with different means for $k=3$ colds. Then, use the matrix operation [%*%](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/matmult) to obtain the mixture pmf as the inner product of the two vectors containing the Poisson pmfs and population percentages.
+-  In the same way, use the [ppois()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Poisson) function to compute the probability of at most 3 colds within a year.
+-  Now, consider $k=0, \ldots, 8$ colds during a year. For each value of $k$, determine the probability of $k$ colds within a year.
+-  Provide a [barplot()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/barplot) of the distribution of number of colds during a year over the range $k=0, \ldots, 8$.
+
+***
+
+```{r ex="LDA1.2.6.1", type="hint", tut=TRUE}
+Take some time to explore the online `R` documentation.
+
+```
+
+
+```{r ex="LDA1.2.6.1", type="sample-code", tut=TRUE}
+alpha <- c(0.3, 0.6, 0.1)
+lambda.vec<- ??
+
+# Probability of having 3 common colds in a year
+byrisk <- dpois(??, lambda=lambda.vec)
+byrisk  %*% alpha
+
+# Probability of at most 3 common colds in a year
+ppois(q=3, lambda=lambda.vec) %*% ??
+
+kvec = 0:8
+probs = rep(0,length(kvec))
+for (index in kvec) {probs[index+1] = ??(index, lambda=lambda.vec) %*% alpha}
+
+barplot(probs, xlab = "Number of Claims", names.arg = kvec)
+
+```
+
+
+```{r ex="LDA1.2.6.1", type="solution", tut=TRUE}
+alpha <- c(0.3, 0.6, 0.1)
+lambda.vec<- c(3, 1, 4)
+byrisk <- dpois(3, lambda=lambda.vec)
+# Probability of having 3 common colds in a year
+byrisk  %*% alpha
+
+# Probability of at most 3 common colds in a year
+ppois(q=3, lambda=lambda.vec) %*% alpha
+
+kvec = 0:8
+probs = rep(0,length(kvec))
+for (index in kvec) {probs[index+1] =  dpois(index, lambda=lambda.vec) %*% alpha}
+
+barplot(probs, xlab = "Number of Claims", names.arg = kvec)
+
+```
+
+```{r ex="LDA1.2.6.1", type="sct", tut=TRUE}
+success_msg("Superb! This exercise explicitly includes only three sub-popluations but hopefully it is apparent how it could be extended to a large number of sub-popluations. In the next exercise, we consider an infinite number!")
+```
+
+
+***
+
+### Exercise. Gamma Mixture of Poissons
+
+**Assignment Text**
+
+For a population, suppose that each risk has a Poisson number of claims with a parameter $\lambda$ that is specific to that risk (an infinite number of risk classes). We can think of the risk parameter as following a distribution and so is itself random, denoted as a capital $\Lambda$. A mathematically convenient assumption is to assume that the risk parameter follows a gamma distribution. That is, as we have learned from the text, a gamma mixture of Poissons turns out to have a negative binomial distribution. More precisely, if $N|\Lambda \sim$ Poisson$(\Lambda)$ and $\Lambda \sim$ gamma$(\alpha, \theta)$, then $N \sim \text{Negative Binomial}$ $(r = \alpha, \beta = \theta)$. For example, one can determine the probability mass function of $N$ as
+
+$$
+\Pr(N=k) = \int^{\infty}_0 e^{-\lambda} \frac{\lambda^k}{k!} ~ g(\lambda;\alpha, \beta = \theta )~ d \lambda, 
+$$
+
+where $g(\cdot;\alpha, \beta = \theta )$ is a gamma density. The proof of this result is in the text; here, we check it using `R`, in the special case of $k=3$, $\alpha =3$, and $\theta = 4$. 
+
+
+**Instructions** 
+
+-  Establish the parameter values for $\alpha =3$ and $\theta = 4$.
+-  Express the conditional Poisson mass function as a function of the parameter $\lambda$ (not the number of outcomes $k$) (called "lambda.arg" for the lambda argument in the following sample code).
+-  Express the product of the conditional Poisson mass function and the gamma density as a function of $\lambda$.
+-  [integrate()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/integrate) this product over values of $\lambda$. Check the result by using the negative binomial probability mass function.
+-  Repeat this process using distribution functions in lieu of probability mass functions. Specifically, express the product of the conditional Poisson **distribution** function and the gamma **density** as a function of $\lambda$. Integrate this and check the result using the negative binomial **distribution** function.
+
+***
+
+```{r ex="LDA1.2.6.2", type="hint", tut=TRUE}
+For the last part of this problem, it is easy to get confused about which is a df and which is a pmf (or pdf). Remember, we are integrating over different values of lambda and this distribution is determined by the gamma process. So, the gamma stays as a pdf.
+
+```
+
+
+```{r ex="LDA1.2.6.2", type="sample-code", tut=TRUE}
+alpha = ??;     theta = ??
+
+pdfPoisson <- function(lambda.arg){dpois(3, lambda=lambda.arg)}
+pdfgamPoi <- function(lambda.arg){dgamma(lambda.arg, shape = alpha, scale = theta)*pdfPoisson(lambda.arg)}
+integrate(pdfgamPoi, lower = 0, upper = Inf)$value 
+
+dnbinom(3, prob=1/(1+theta), size = alpha)
+
+pdfgamPoi.p <- function(lambda.arg){dgamma(??, shape = alpha, scale = theta)*ppois(3, lambda=??)}
+integrate(pdfgamPoi.p, lower = 0, upper = ??)$value 
+
+pnbinom(??, prob=??, size = ??)
+
+```
+
+
+```{r ex="LDA1.2.6.2", type="solution", tut=TRUE}
+alpha = 3
+theta = 4
+
+pdfPoisson <- function(lambda.arg){dpois(3, lambda=lambda.arg)}
+pdfgamPoi <- function(lambda.arg){dgamma(lambda.arg, shape = alpha, scale = theta)*pdfPoisson(lambda.arg)}
+integrate(pdfgamPoi, lower = 0, upper = Inf)$value 
+
+dnbinom(3, prob=1/(1+theta), size = alpha)
+
+pdfgamPoi.p <- function(lambda.arg){dgamma(lambda.arg, shape = alpha, scale = theta)*ppois(3, lambda=lambda.arg)}
+integrate(pdfgamPoi.p, lower = 0, upper = Inf)$value 
+
+pnbinom(3, prob=1/(1+theta), size = alpha)
+
+```
+
+```{r ex="LDA1.2.6.2", type="sct", tut=TRUE}
+success_msg("Excellent! An important strength of this computational approach (as we will see more in the Bayesian section) is that we no longer are limited to simply gamma mixing distributions. Gammas are terrific for getting closed form negative binomial distributions but, if we only want numerical results, we have many more choices.")
+```
+
 
 
 
