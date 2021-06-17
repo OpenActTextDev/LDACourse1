@@ -482,16 +482,26 @@ var submitAnswer = function() {
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="modeling-loss-severity.html"><a href="modeling-loss-severity.html"><i class="fa fa-check"></i><b>3</b> Modeling Loss Severity</a><ul>
-<li class="chapter" data-level="3.1" data-path="modeling-loss-severity.html"><a href="modeling-loss-severity.html#methods-of-creating-new-distributions"><i class="fa fa-check"></i><b>3.1</b> Methods of Creating New Distributions</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="modeling-loss-severity.html"><a href="modeling-loss-severity.html#exercise.-claim-frequency-1"><i class="fa fa-check"></i><b>3.1.1</b> Exercise. Claim Frequency</a></li>
+<li class="chapter" data-level="3.1" data-path="modeling-loss-severity.html"><a href="modeling-loss-severity.html#basic-distributional-quantites"><i class="fa fa-check"></i><b>3.1</b> Basic Distributional Quantites</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="modeling-loss-severity.html"><a href="modeling-loss-severity.html#exercise.-moments-can-be-misleading"><i class="fa fa-check"></i><b>3.1.1</b> Exercise. Moments Can Be Misleading</a></li>
+<li class="chapter" data-level="3.1.2" data-path="modeling-loss-severity.html"><a href="modeling-loss-severity.html#exercise.-determining-boxplots-and-quantiles"><i class="fa fa-check"></i><b>3.1.2</b> Exercise. Determining Boxplots and Quantiles</a></li>
+<li class="chapter" data-level="3.1.3" data-path="modeling-loss-severity.html"><a href="modeling-loss-severity.html#exercise.-gamma-moment-generating-function"><i class="fa fa-check"></i><b>3.1.3</b> Exercise. Gamma Moment Generating Function</a></li>
+<li class="chapter" data-level="3.1.4" data-path="modeling-loss-severity.html"><a href="modeling-loss-severity.html#exercise.-visualizing-moment-generating-functions"><i class="fa fa-check"></i><b>3.1.4</b> Exercise. Visualizing Moment Generating Functions</a></li>
+<li class="chapter" data-level="3.1.5" data-path="modeling-loss-severity.html"><a href="modeling-loss-severity.html#exercise.-determining-moments-using-moment-generating-functions"><i class="fa fa-check"></i><b>3.1.5</b> Exercise. Determining Moments using Moment Generating Functions</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="modeling-loss-severity.html"><a href="modeling-loss-severity.html#coverage-modifications"><i class="fa fa-check"></i><b>3.2</b> Coverage Modifications</a></li>
+<li class="chapter" data-level="3.2" data-path="modeling-loss-severity.html"><a href="modeling-loss-severity.html#continuous-distributions"><i class="fa fa-check"></i><b>3.2</b> Continuous Distributions</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="modeling-loss-severity.html"><a href="modeling-loss-severity.html#exercise."><i class="fa fa-check"></i><b>3.2.1</b> Exercise.</a></li>
+<li class="chapter" data-level="3.2.2" data-path="modeling-loss-severity.html"><a href="modeling-loss-severity.html#assignment-text"><i class="fa fa-check"></i><b>3.2.2</b> Assignment Text</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="modeling-loss-severity.html"><a href="modeling-loss-severity.html#methods-of-creating-new-distributions"><i class="fa fa-check"></i><b>3.3</b> Methods of Creating New Distributions</a></li>
+<li class="chapter" data-level="3.4" data-path="modeling-loss-severity.html"><a href="modeling-loss-severity.html#coverage-modifications"><i class="fa fa-check"></i><b>3.4</b> Coverage Modifications</a></li>
+<li class="chapter" data-level="3.5" data-path="modeling-loss-severity.html"><a href="modeling-loss-severity.html#maximum-likelihood-estimation"><i class="fa fa-check"></i><b>3.5</b> Maximum Likelihood Estimation</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="model-selection-and-estimation.html"><a href="model-selection-and-estimation.html"><i class="fa fa-check"></i><b>4</b> Model Selection and Estimation</a><ul>
 <li class="chapter" data-level="4.1" data-path="model-selection-and-estimation.html"><a href="model-selection-and-estimation.html#nonparametric-inference"><i class="fa fa-check"></i><b>4.1</b> Nonparametric Inference</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="model-selection-and-estimation.html"><a href="model-selection-and-estimation.html#exercise.-empirical-distribution-function-and-quartiles-percentiles-and-quantiles"><i class="fa fa-check"></i><b>4.1.1</b> Exercise. Empirical Distribution Function and Quartiles, Percentiles and Quantiles</a></li>
 <li class="chapter" data-level="4.1.2" data-path="model-selection-and-estimation.html"><a href="model-selection-and-estimation.html#exercise.-density-estimators"><i class="fa fa-check"></i><b>4.1.2</b> Exercise. Density Estimators</a></li>
-<li class="chapter" data-level="4.1.3" data-path="model-selection-and-estimation.html"><a href="model-selection-and-estimation.html#exercise.-claim-frequency-2"><i class="fa fa-check"></i><b>4.1.3</b> Exercise. Claim Frequency</a></li>
+<li class="chapter" data-level="4.1.3" data-path="model-selection-and-estimation.html"><a href="model-selection-and-estimation.html#exercise.-claim-frequency-1"><i class="fa fa-check"></i><b>4.1.3</b> Exercise. Claim Frequency</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="model-selection-and-estimation.html"><a href="model-selection-and-estimation.html#tools-for-model-selection"><i class="fa fa-check"></i><b>4.2</b> Tools for Model Selection</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="model-selection-and-estimation.html"><a href="model-selection-and-estimation.html#exercise.-probability-probability-pp-plot"><i class="fa fa-check"></i><b>4.2.1</b> Exercise. Probability-Probability (PP) plot</a></li>
@@ -552,12 +562,182 @@ var submitAnswer = function() {
 <p><strong>Chapter description.</strong> The traditional loss distribution approach to modeling aggregate losses starts by separately fitting a frequency distribution to the number of losses and a severity distribution to the size of losses. The estimated aggregate loss distribution combines the loss frequency distribution and the loss severity distribution by convolution. Discrete distributions often referred to as counting or frequency distributions were used in Chapter 2 to describe the number of events such as number of accidents to the driver or number of claims to the insurer. Lifetimes, asset values, losses and claim sizes are usually modeled as continuous random variables and as such are modeled using continuous distributions, often referred to as loss or severity distributions. A mixture distribution is a weighted combination of simpler distributions that is used to model phenomenon investigated in a heterogeneous population, such as modeling more than one type of claims in liability insurance (small frequent claims and large relatively rare claims). In this chapter we explore the use of continuous as well as mixture distributions to model the random size of loss.</p>
 <div class="blackbox">
 <ul>
-<li>Although not needed to go through the tutorials, some users may wish to download the overheads used in the videos. <button download><a href="https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/LDA1.Overheads/LDA1.Chap4.pdf">Download Chapter Four overheads as a .pdf file.</a></button></li>
+<li>Although not needed to go through the tutorials, some users may wish to download the overheads used in the videos. <button download><a href="https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/LDA1.Overheads/LDA1.Chap3.pdf">Download Chapter Three overheads as a .pdf file.</a></button></li>
 <li>By watching the videos and working through the tutorial exercises, you will get an appreciation for distributions used to model the severity of losses. For a deeper dive, see the corresponding chapter in the textbook, <a href="https://openacttexts.github.io/Loss-Data-Analytics/C-Severity.html">Chapter Three of <em>Loss Data Analytics</em></a>.</li>
 </ul>
 </div>
+<div id="basic-distributional-quantites" class="section level2">
+<h2><span class="header-section-number">3.1</span> Basic Distributional Quantites</h2>
+<hr />
+<p>In this section, you learn how to work with some basic distributional quantities:</p>
+<ul>
+<li>moments,</li>
+<li>percentiles, and</li>
+<li>generating functions.</li>
+</ul>
+<hr />
+<div id="exercise.-moments-can-be-misleading" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> Exercise. Moments Can Be Misleading</h3>
+<p><strong>Assignment Text</strong></p>
+<p>Anscombe’s quartet is comprised of four datasets with interesting properties related to their moments. You can access the data via <code>data(anscombe)</code>. The four data sets are in the variables <code>y1</code>, <code>y2</code>, <code>y3</code> and <code>y4</code>. There are also associated <code>x</code> values that create interesting properties for regression models fit to the data. We’ll ignore the <code>x</code> values in this section but will use them to develop the plots below.</p>
+<p><img src="LDAShortCourse_files/figure-html/anscombe%20plot-1.png" width="672" /></p>
+<div class="blackbox">
+<p><strong>Instructions</strong></p>
+<ul>
+<li>Extract the values <code>y1</code>, <code>y2</code>, <code>y3</code> and <code>y4</code> from the <code>anscombe</code> <code>data frame</code>. You will want to extract these as vectors not as single-column data frames.<br />
+</li>
+<li>Use <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/summary"><code>summary</code></a> to understand the basic distributional properties of <code>y1</code>, <code>y2</code>, <code>y3</code> and <code>y4</code>.</li>
+<li>Use <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/mean"><code>mean</code></a> to calculate the first raw moment of <code>y1</code>, <code>y2</code>, <code>y3</code> and <code>y4</code>. Assign the values to <code>y_means</code>.</li>
+<li>Use <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/cor"><code>var</code></a> to calculate the second raw moment of <code>y1</code>, <code>y2</code>, <code>y3</code> and <code>y4</code>. You should note that the the <code>var</code> function uses <span class="math inline">\(n-1\)</span> in the denominator to return an estimate of the population variance from the sample. Do you notice anything interesting about the results?</li>
+<li>Use <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/sd"><code>sd</code></a> to calculate the standard deviation of <code>y1</code>, <code>y2</code>, <code>y3</code> and <code>y4</code>. As with the <code>var</code> function<code>,</code>sd` also uses <span class="math inline">\(n-1\)</span> in the denominator.</li>
+<li>There is no <code>base-R</code> function to calculate the coefficient of skewness. There are several approaches to calculate skewness if you explore the <a href="https://www.rdocumentation.org/packages/e1071/versions/1.7-4/topics/skewness">help</a> for the <code>type</code> argument of the <code>skewness</code> function from the <code>e1071</code> package. We will note use this package, but instead we will we calculate the equivalent of <code>type = 3</code> skewness using <code>var</code> in the denominator.</li>
+</ul>
+</div>
+<p><br></p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImRhdGEoXCJhbnNjb21iZVwiKVxuaW5zdGFsbC5wYWNrYWdlcygnbW9tZW50cycpXG5saWJyYXJ5KG1vbWVudHMpIiwic2FtcGxlIjoiI1N1bW1hcnkgb2YgRGF0YVxuc3VtbWFyeShhbnNjb21iZSR5MSkgI0V4YW1wbGUgZm9yIHRoZSBmaXJzdCBkYXRhIHNldCBpbiAgQW5zY29tYmUncyBxdWFydGV0XG5zdW1tYXJ5KGFuc2NvbWJlJD8/KVxuc3VtbWFyeShhbnNjb21iZSQ/PylcbnN1bW1hcnkoYW5zY29tYmUkPz8pXG5cbiNWZWN0b3Igb2YgbWVhbnNcbmMobWVhbihhbnNjb21iZSR5MSksIG1lYW4oPz8pLCBtZWFuKD8/KSwgbWVhbig/PykpXG5cbiNWZWN0b3Igb2YgdmFyaWFuY2VzXG5jKHZhcihhbnNjb21iZSR5MSksIHZhcig/PyksIHZhcig/PyksIHZhcig/PykpXG5cbiNTa2V3YmVzcyBpZiB5MVxueTFfc2tldyA8LSBtZWFuKCg/PyAtIG1lYW4oPz8pKV4/PykgLyBzZCg/PykgXiA/PyIsInNvbHV0aW9uIjoiI1N1bW1hcnkgb2YgRGF0YVxuc3VtbWFyeShhbnNjb21iZSR5MSkgI0V4YW1wbGUgZm9yIHRoZSBmaXJzdCBkYXRhIHNldCBpbiAgQW5zY29tYmUncyBxdWFydGV0XG5zdW1tYXJ5KGFuc2NvbWJlJHkyKVxuc3VtbWFyeShhbnNjb21iZSR5MylcbnN1bW1hcnkoYW5zY29tYmUkeTQpXG5cbiNWZWN0b3Igb2YgbWVhbnNcbmMobWVhbihhbnNjb21iZSR5MSksIG1lYW4oYW5zY29tYmUkeTIpLCBtZWFuKGFuc2NvbWJlJHkzKSxcbiAgbWVhbihhbnNjb21iZSR5NCkpXG5cbiNWZWN0b3Igb2YgdmFyaWFuY2VzXG5jKHZhcihhbnNjb21iZSR5MSksIHZhcihhbnNjb21iZSR5MiksIHZhcihhbnNjb21iZSR5MyksXG4gIHZhcihhbnNjb21iZSR5NCkpXG55MV9za2V3IDwtIG1lYW4oKGFuc2NvbWJlJHkxIC0gbWVhbihhbnNjb21iZSR5MSkpXjMpIC8gc2QoYW5zY29tYmUkeTEpIF4gMyIsInNjdCI6InN1Y2Nlc3NfbXNnKFwiV2VsbCBkb25lIVwiKSIsImhpbnQiOiJUYWtlIHNvbWUgdGltZSB0byBleHBsb3JlIHRoZSBvbmxpbmUgPGNvZGU+UjwvY29kZT4gZG9jdW1lbnRhdGlvbi4ifQ==
+</div>
+</div>
+<div id="exercise.-determining-boxplots-and-quantiles" class="section level3">
+<h3><span class="header-section-number">3.1.2</span> Exercise. Determining Boxplots and Quantiles</h3>
+<p><strong>Assignment Text</strong></p>
+<p>The <code>boxplot</code> function produces box-and-whisker plots of grouped values. The function returns certain statistic and produces a plot as a side effect. Explore the <a href="https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/boxplot"><code>boxplot</code></a> to understand the values returned. In particular review the the information returned by the <code>stats</code> object.</p>
+<p>The Wisconsin Property Fund data has already been read into a data frame called <code>Insample</code>. These data consist of claim experience for fund members over the years 2006-2010, inclusive. It includes claim values <code>y</code> as well as the claim year <code>Year</code>. For this exercise we will work with the natural logarithm of the claim values which are in the <code>lny</code> variable. We have filtered the data to exclude zero claims and saved the resulting data frame as <code>Insample_nz</code>.</p>
+<div class="blackbox">
+<p><strong>Instructions</strong></p>
+<p>We provide the code to generate the boxplot. Note that the <code>R</code> creates the boxplot as a side effect while returning information about the data. (<code>R</code> does not print the information to the console by deafult. You’ll have to assign the return of the boxplot function to an object to access.)</p>
+<ul>
+<li>What is the class of the of the object returned by the boxplot function.<br />
+</li>
+<li>Access the <code>stats</code> object returned.<br />
+</li>
+<li>Use the <code>quantile</code> function and replicate the “hinge” values for 2008 box. We will ignore the values returned for the whiskers as they are not a function of the quantiles of the distribution.<br />
+</li>
+<li>We selected the 2008 year because it has an odd number of observations. Use the <code>quantile</code> function on a vector with an even number such as <code>1:100</code> and access the 25th percentile. Are you surprised by the result? Review the details for the <code>type</code> argument to the <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/quantile"><code>quantile</code></a> to understand the various approached to determining <code>quantiles</code>.</li>
+</ul>
+</div>
+<p><br></p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6Ikluc2FtcGxlIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL09wZW5BY3RUZXh0RGV2L0xEQUNvdXJzZTEvbWFpbi9EYXRhL0luc2FtcGxlLmNzdlwiLCBoZWFkZXI9VCwgbmEuc3RyaW5ncz1jKFwiLlwiKSwgc3RyaW5nc0FzRmFjdG9ycyA9IEZBTFNFKVxuSW5zYW1wbGVfbnogPC0gSW5zYW1wbGVbSW5zYW1wbGUkeSA+IDAsXSIsInNhbXBsZSI6Im15X2JveHBsb3QgPC0gYm94cGxvdChmb3JtdWxhID0gPz8sIGRhdGEgPSBJbnNhbXBsZV9ueilcbmNsYXNzKD8/KVxubXlfYm94cGxvdCQ/P1xubXlfYm94cGxvdCRzdGF0c1ssX10gIzIwMDhcblxubG55XzIwMDggPC0gSW5zYW1wbGVfbnokbG55W0luc2FtcGxlX256JFllYXIgPT0gMjAwOF1cblxucXVhbnRpbGUobG55XzIwMDgsID8/KSAjIGxvd2VyIGhpbmdlXG4/PyhsbnlfMjAwOCkgIyBtZWRpYW4gdGhyb3VnaCBhIGRlZGljYXRlZCBmdW5jdGlvblxucXVhbnRpbGUobG55XzIwMDgsID8/KSAjIG1lZGlhblxucXVhbnRpbGUobG55XzIwMDgsID8/KSAjIHVwcGVyIGhpbmdlIiwic29sdXRpb24iOiJteV9ib3hwbG90IDwtIGJveHBsb3QoZm9ybXVsYSA9IGxueSB+IFllYXIsIGRhdGEgPSBJbnNhbXBsZV9ueilcbmNsYXNzKG15X2JveHBsb3QpXG5teV9ib3hwbG90JHN0YXRzXG5teV9ib3hwbG90JHN0YXRzWywzXSAjMjAxMFxubG55XzIwMDggPC0gSW5zYW1wbGVfbnokbG55W0luc2FtcGxlX256JFllYXIgPT0gMjAwOF1cblxucXVhbnRpbGUobG55XzIwMDgsIDEvNCkgIyBsb3dlciBoaW5nZVxubWVkaWFuKGxueV8yMDA4KSAjIG1lZGlhblxucXVhbnRpbGUobG55XzIwMDgsIDMvNCkgIyB1cHBlciBoaW5nZSIsInNjdCI6InN1Y2Nlc3NfbXNnKFwiV2VsbCBkb25lIVwiKSIsImhpbnQiOiJUYWtlIHNvbWUgdGltZSB0byBleHBsb3JlIHRoZSBvbmxpbmUgPGNvZGU+UjwvY29kZT4gZG9jdW1lbnRhdGlvbi4ifQ==
+</div>
+</div>
+<div id="exercise.-gamma-moment-generating-function" class="section level3">
+<h3><span class="header-section-number">3.1.3</span> Exercise. Gamma Moment Generating Function</h3>
+<p><strong>Assignment Text</strong></p>
+<p>In Example 3.1.4 of the text, we presented the following moment generating function for a gamma distribution,</p>
+<p><span class="math display">\[
+M_X(t) = (1 - \theta t)^{-\alpha} .
+\]</span></p>
+<p>We will work with this distribution in these exercises. The parameters that we will use in our exercise are <span class="math inline">\(\alpha=2\)</span> (the shape parameter) and <span class="math inline">\(\theta = 10\)</span> (the scale parameter). Keep in mind that the mean for this distribution is <span class="math inline">\(\alpha\theta=20\)</span> and the variance is <span class="math inline">\(\alpha\theta^2 = 200\)</span>. We will revisit these results at the end of the excercise.</p>
+<p>There are several <code>R</code> functions that you will find useful:</p>
+<ul>
+<li>The <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/parse"><code>parse</code></a> function converts a character vector to an <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/expression"><code>expression</code></a>. Then, you can use the <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/eval"><code>eval</code></a> to evaluate the expression.</li>
+<li>You can use the <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/deriv"><code>D</code></a> to compute derivatives.</li>
+</ul>
+<div class="blackbox">
+<p><strong>Instructions</strong></p>
+<ul>
+<li>Use the <code>parse</code> function to create an expression and for the moment generating function. Specify the expression using <code>alpha</code>, <code>theta</code> and <code>t</code>. Name the object <code>mgf</code>.</li>
+<li>Note the <code>class</code> of <code>mgf</code>.</li>
+<li>Evaluate <code>mgf</code> at <code>t = 0</code> when <code>alpha = 2</code> and <code>theta = 10</code>. (Note that you do not need to specify the values of <code>alpha</code> and <code>theta</code> and <code>t</code> in the <code>eval</code> call. That is because we did not specify the <code>envir</code> argument to <code>eval</code> and the default is <code>parent.frame()</code>. Environments are a more advanced <code>R</code> topic that you can learn about <a href="https://adv-r.hadley.nz/environments.html">here</a>.</li>
+</ul>
+</div>
+<p><br></p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJtZ2YgPC0gcGFyc2UodGV4dCA9IFwiPz9cIilcblxuY2xhc3MoeCA9ID8/KVxuXG50IDwtID8/XG5hbHBoYSA8LSA/P1xudGhldGEgPC0gPz9cblxuZXZhbChleHByID0gPz8pIiwic29sdXRpb24iOiJtZ2YgPC0gcGFyc2UodGV4dCA9IFwiKDEtIHRoZXRhICogdCkgXiAtYWxwaGFcIilcblxuY2xhc3MoeCA9IG1nZilcblxuYWxwaGEgPC0gMlxudGhldGEgPC0gMTBcbnQgPC0gMFxuXG5ldmFsKGV4cHIgPSBtZ2YpIiwic2N0Ijoic3VjY2Vzc19tc2coXCJXZWxsIGRvbmUhXCIpIiwiaGludCI6IlRha2Ugc29tZSB0aW1lIHRvIGV4cGxvcmUgdGhlIG9ubGluZSA8Y29kZT5SPC9jb2RlPiBkb2N1bWVudGF0aW9uLiBJbiBwYXJ0aWN1bGFyLCB0YWtlIHRpbWUgdG8gdW5kZXJzdGFuZCB0aGUgcmVxdWlyZWQgY2xhc3Mgb2YgZWFjaCBhcmd1bWVudC4ifQ==
+</div>
+</div>
+<div id="exercise.-visualizing-moment-generating-functions" class="section level3">
+<h3><span class="header-section-number">3.1.4</span> Exercise. Visualizing Moment Generating Functions</h3>
+<p><strong>Assignment Text</strong></p>
+<p>We plot <em>mgf</em> to help visualize the function. The left-hand panel shows the function with the argument <span class="math inline">\(t\)</span> is between -0.2 and 0.2.
+For <span class="math inline">\(\theta = 10\)</span> and <span class="math inline">\(\alpha &gt; 0\)</span>, note that <em>mgf</em> goes to <code>+inf</code> when <span class="math inline">\(t = \frac{1}{\theta} = 0.1\)</span>. The right-hand panel shows the function between -0.01 and 0.01. This provides a better view of the curvature at zero.</p>
+<p><img src="LDAShortCourse_files/figure-html/unnamed-chunk-79-1.png" width="80%" /></p>
+<p><strong>Instruction</strong></p>
+<ul>
+<li>Use the <code>D</code> function to return an expression for the first and second derivatives with respect to <span class="math inline">\(t\)</span>. Assign the results of <code>dMxtdt</code> and <code>d2Mxtdt2</code>, respectively.</li>
+</ul>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJkTXh0ZHQgPC0gRChleHByID0gcGFyc2UodGV4dCA9IFwiPz9cIiksIG5hbWUgPSAnPz8nKVxuXG5kMk14dGR0MiA8LSBEKFxuICBEKGV4cHIgPSBwYXJzZSh0ZXh0ID0gXCI/P1wiKSwgbmFtZSA9ICdfJyksXG4gIFwidFwiKSIsInNvbHV0aW9uIjoiTXh0ZHQgPC0gRChleHByID0gcGFyc2UodGV4dCA9IFwiKDEtIHRoZXRhICogdCkgXiAtYWxwaGFcIiksIG5hbWUgPSAndCcpXG5cbk14dGR0XG5cbk0yeHRkdCA8LSBEKFxuICBEKGV4cHIgPSBwYXJzZSh0ZXh0ID0gXCIoMS0gdGhldGEgKiB0KSBeIC1hbHBoYVwiKSwgbmFtZSA9ICd0JyksXG4gIG5hbWUgPSAndCcpXG5cbk0yeHRkdCIsInNjdCI6InN1Y2Nlc3NfbXNnKFwiV2VsbCBkb25lIVwiKSIsImhpbnQiOiJUYWtlIHNvbWUgdGltZSB0byBleHBsb3JlIHRoZSBvbmxpbmUgPGNvZGU+UjwvY29kZT4gZG9jdW1lbnRhdGlvbi4gSW4gcGFydGljdWxhciwgdGFrZSB0aW1lIHRvIHVuZGVyc3RhbmQgdGhlIHJlcXVpcmVkIGNsYXNzIG9mIGVhY2ggYXJndW1lbnQuIn0=
+</div>
+</div>
+<div id="exercise.-determining-moments-using-moment-generating-functions" class="section level3">
+<h3><span class="header-section-number">3.1.5</span> Exercise. Determining Moments using Moment Generating Functions</h3>
+<p><strong>Assignment Text</strong></p>
+<p>Recall that you can determine the <span class="math inline">\(n^{th}\)</span> moment of of <span class="math inline">\(X\)</span> as the <span class="math inline">\(n^{th}\)</span> derivative of the moment generating function evaluated at <span class="math inline">\(t = 0\)</span>.</p>
+<div class="blackbox">
+<p><strong>Instructions</strong></p>
+<ul>
+<li>Calculate the mean (first moment) of the gamma distribution.</li>
+<li>Calculate the second raw moment of the gamma distribution.</li>
+<li>Calculate the variance (second central moment) of the gamma distribution</li>
+</ul>
+</div>
+<p><br></p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIG1lYW4gXG5FWCA8LSBldmFsKD8/KVxuXG4jIHNlY29uZCByYXcgbW9tZW50XG5FWDIgPC0gZXZhbCg/PylcblxuIyB2YXJpYW5jZVxuXG4/PyAtID8/IF4gMiIsInNvbHV0aW9uIjoiIyBtZWFuIFxuRVggPC0gZXZhbChNeHRkdClcblxuIyBzZWNvbmQgcmF3IG1vbWVudFxuRVgyIDwtIGV2YWwoTTJ4dGR0KVxuXG4jIHZhcmlhbmNlXG5FWDIgLSBFWCBeIDIiLCJzY3QiOiJzdWNjZXNzX21zZyhcIldlbGwgZG9uZSFcIikiLCJoaW50IjoiVGFrZSBzb21lIHRpbWUgdG8gZXhwbG9yZSB0aGUgb25saW5lIDxjb2RlPlI8L2NvZGU+IGRvY3VtZW50YXRpb24uIEluIHBhcnRpY3VsYXIsIHRha2UgdGltZSB0byB1bmRlcnN0YW5kIHRoZSByZXF1aXJlZCBjbGFzcyBvZiBlYWNoIGFyZ3VtZW50LiJ9
+</div>
+</div>
+</div>
+<div id="continuous-distributions" class="section level2">
+<h2><span class="header-section-number">3.2</span> Continuous Distributions</h2>
+<hr />
+<p>In this section, you learn how to define and apply four fundamental severity distributions:</p>
+<ul>
+<li>gamma,</li>
+<li>Pareto,</li>
+<li>Weibull, and</li>
+<li>generalized beta distribution of the second kind.</li>
+</ul>
+<p><code>R</code> provides a “family” of functions associated with statistical distributions. The naming convention is to precede the distribution name with <code>d</code> for the density function, <code>p</code> for the cumulative distribution function, <code>q</code> for quantiles (percentiles), and <code>r</code> for random number generation. (We will set aside the <code>r</code> functions for Chapter 6 on Simulation and focus on <code>d</code>, <code>p</code>, and <code>q</code> functions.)</p>
+<p>The <code>stats</code> packages which is provided with base-<code>R</code> includes the distributions listed <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Distributions">here</a>. Many other distributions are available in other <code>R</code> packages.</p>
+<p>For the exercises in the section, we will focus on the gamma distribution from <a href="https://openacttexts.github.io/Loss-Data-Analytics/C-Severity.html#S:Loss:Gamma">Section 3.2.1</a> to help you develop an intuition as to how the distribution responds to changes in its shape and scale parameter. From Figure 3.1, you should recognize that the support for the gamma distribution is positive real numbers. You’ll also note that the distribution allows for varying levels of “right-skewness.”</p>
+<hr />
+<div id="exercise." class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Exercise.</h3>
+<p><strong>Assignment Text</strong></p>
+<p>We will be working with the Wisconsin Property Fund data. We have read the data and created a vector of the <code>log</code> of non-zero claim values. The name of that vector is <code>wisc_prop.</code></p>
+<p>:::: {.blackbox }</p>
+<p><strong>Instructions</strong></p>
+<ul>
+<li>Use the <code>hist</code> function to plot a histogram of <code>wisc_prop</code>.</li>
+<li>Review the help for <a href="https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/hist"><code>hist</code></a> and note that the histogram is drawn as a “side-effect.” We can access the information generated with the histogram by assigning the result to an object. For this exercise, you should assign that information to <code>hist_data</code>. Note the class of <code>hist_data</code>.</li>
+<li>Use the <code>str</code> function to review the elements of the list returned by the <code>histogram</code> function.</li>
+</ul>
+<p>:::: {.blackbox }</p>
+<p><br></p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6Indpc2NfcHJvcCA8LSByZWFkLmNzdihcImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9PcGVuQWN0VGV4dERldi9MREFDb3Vyc2UxL21haW4vRGF0YS9JbnNhbXBsZS5jc3ZcIiwgaGVhZGVyPVQsIG5hLnN0cmluZ3M9YyhcIi5cIiksIHN0cmluZ3NBc0ZhY3RvcnMgPSBGQUxTRSlcbndpc2NfcHJvcCA8LSBsb2cod2lzY19wcm9wJHlbd2lzY19wcm9wJHkgPiAwXSkiLCJzYW1wbGUiOiJoaXN0X2RhdGEgPC0gaGlzdCh4ID0gXCI/P1wiKVxuXG5jbGFzcyh4ID0gPz8pXG5cbnN0cihvYmplY3QgPSA/PykiLCJzb2x1dGlvbiI6Imhpc3RfZGF0YSA8LSBoaXN0KHdpc2NfcHJvcClcbmNsYXNzKGhpc3RfZGF0YSlcbnN0cihoaXN0X2RhdGEpIiwic2N0Ijoic3VjY2Vzc19tc2coXCJXZWxsIGRvbmUhXCIpIiwiaGludCI6IlRha2Ugc29tZSB0aW1lIHRvIGV4cGxvcmUgdGhlIG9ubGluZSA8Y29kZT5SPC9jb2RlPiBkb2N1bWVudGF0aW9uLiBJbiBwYXJ0aWN1bGFyLCB0YWtlIHRpbWUgdG8gdW5kZXJzdGFuZCB0aGUgcmVxdWlyZWQgY2xhc3Mgb2YgZWFjaCBhcmd1bWVudC4ifQ==
+</div>
+</div>
+<div id="assignment-text" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> Assignment Text</h3>
+<p>From the histogram, we will develop an intuition as to whether a gamma distribution is likely to fit this data reasonably well. Consider whether the data is uni-modal and whether it is right-skewed. It appears to be which would support the modeling of log-claim sizes using the gamma distribution.</p>
+<p>You’ll note that the <span class="math inline">\(y\)</span>-axis of the histogram displays counts. In contrast, the <code>dgamma</code> function returns density values. So we can’t add a gamma distribution to the histogram and compare to the data. Instead we first need to plot the density values of the data. To plot probability densities, we will use set the <code>probability</code> argument to hist to <code>TRUE</code>. You should note the following from the documentation of <code>hist</code>:</p>
+<ul>
+<li>The relationship between the that the <code>probability</code> and <code>freq</code> arguments to <code>hist</code>.</li>
+<li>There is a <code>density</code> argument to <code>hist</code>. As first, you may think this refers to the (probability) density function, but that argument specifies a plotting feature.</li>
+</ul>
+<p>You can use the <a href="https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/curve"><code>curve</code></a> function to plot the gamma distribution over the histogram data. To do this, you need to set the <code>add</code> argument to <code>TRUE</code>.</p>
+<p>In later sections, we’ll review approaches to parameter estimation. In this section, we will vary the <code>shape</code> and <code>scale</code> parameters to understand the flexibility of the gamma distribution. The data will serve as a reference for this exercise. You may recall from the exercises from Section 3.1.3 that the mean of the gamma function is the product of the <code>shape</code> and <code>scale</code> parameters and the variance is the product of the <code>shape</code> and square of the <code>scale</code> parameters. You can use this information to develop parameter estimates using the method of moments.</p>
+<div class="blackbox">
+<p><strong>Instructions</strong></p>
+<ul>
+<li>Again plot the histogram. This time specify the probability argument so as to plot probability densities.</li>
+<li>Calculate <code>shape</code> and <code>scale</code> parameters using the method of moments</li>
+<li>Calculate the density values for <span class="math inline">\(x\)</span> values displayed within the limits of the plot.</li>
+<li>Add <code>3</code> to the <code>shape</code> parameter and note how the distribution changes.</li>
+<li>Subtract <code>0.05</code> from the <code>scale</code> parameter and note how the distribution changes.</li>
+</ul>
+</div>
+<p><br></p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6Indpc2NfcHJvcCA8LSByZWFkLmNzdihcImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9PcGVuQWN0VGV4dERldi9MREFDb3Vyc2UxL21haW4vRGF0YS9JbnNhbXBsZS5jc3ZcIiwgaGVhZGVyPVQsIG5hLnN0cmluZ3M9YyhcIi5cIiksIHN0cmluZ3NBc0ZhY3RvcnMgPSBGQUxTRSlcbndpc2NfcHJvcCA8LSBsb2cod2lzY19wcm9wJHlbd2lzY19wcm9wJHkgPiAwXSkiLCJzYW1wbGUiOiJoaXN0X2RhdGEgPC0gaGlzdCh4ID0gPz8sIHByb2JhYmlsaXR5ID0gPz8pXG5nYW1tYV9zY2FsZSA8LSB2YXIoPz8pIC8gbWVhbig/PylcbmdhbW1hX3NoYXBlIDwtIG1lYW4oPz8pIC8gZ2FtbWFfc2NhbGVcbmN1cnZlKGRnYW1tYSh4LCBzaGFwZSA9ID8/LCBzY2FsZSA9ID8/KSwgYWRkID0gVFJVRSwgY29sID0gJ3JlZCcgKVxuZ2FtbWFfc2NhbGVcbmdhbW1hX3NoYXBlXG5jdXJ2ZShkZ2FtbWEoeCwgc2hhcGUgPSA/PyArID8/LCBzY2FsZSA9ID8/KSwgYWRkID0gVFJVRSwgY29sID0gJ2JsdWUnKVxuY3VydmUoZGdhbW1hKHgsIHNoYXBlID0gPz8sIHNjYWxlID0gPz8gLSAgPz8pLCBhZGQgPSBUUlVFLCBjb2wgPSAnZ3JlZW4nKSIsInNvbHV0aW9uIjoiaGlzdF9kYXRhIDwtIGhpc3QoeCA9IHdpc2NfcHJvcCwgcHJvYmFiaWxpdHkgPSBUUlVFKVxuZ2FtbWFfc2NhbGUgPC0gdmFyKHdpc2NfcHJvcCkgLyBtZWFuKHdpc2NfcHJvcClcbmdhbW1hX3NoYXBlIDwtIG1lYW4od2lzY19wcm9wKSAvIGdhbW1hX3NjYWxlXG5jdXJ2ZShkZ2FtbWEoeCwgc2hhcGUgPSBnYW1tYV9zaGFwZSwgc2NhbGUgPSBnYW1tYV9zY2FsZSksIGFkZCA9IFRSVUUsIGNvbCA9ICdyZWQnIClcbmdhbW1hX3NjYWxlXG5nYW1tYV9zaGFwZVxuY3VydmUoZGdhbW1hKHgsIHNoYXBlID0gZ2FtbWFfc2hhcGUgKyAzLCBzY2FsZSA9IGdhbW1hX3NjYWxlICsgIDApLCBhZGQgPSBUUlVFLCBjb2wgPSAnYmx1ZScpXG5jdXJ2ZShkZ2FtbWEoeCwgc2hhcGUgPSBnYW1tYV9zaGFwZSArIDAsIHNjYWxlID0gZ2FtbWFfc2NhbGUgLSAgMC4wNSksIGFkZCA9IFRSVUUsIGNvbCA9ICdncmVlbicpIiwic2N0Ijoic3VjY2Vzc19tc2coXCJXZWxsIGRvbmUhXCIpIn0=
+</div>
+</div>
+</div>
 <div id="methods-of-creating-new-distributions" class="section level2">
-<h2><span class="header-section-number">3.1</span> Methods of Creating New Distributions</h2>
+<h2><span class="header-section-number">3.3</span> Methods of Creating New Distributions</h2>
 <hr />
 <p>In this section, you learn how to:</p>
 <ul>
@@ -573,42 +753,6 @@ var submitAnswer = function() {
 </iframe>
 </center>
 </div>
-<div id="overheads-creating-distributions-i-click-tab-to-view" class="section level4 unnumbered">
-<h4>Overheads: Creating Distributions I (Click Tab to View)</h4>
-<p><strong>Here is an example of coding the overheads</strong></p>
-<div class="tab">
-<button class="tablinks" onclick="openTab(event, 'ChapTemplateA')">A. Wisconsin Property Fund</button>
-<button class="tablinks" onclick="openTab(event, 'ChapTemplateB')">B. LGPIF Policyholder A</button>
-<button class="tablinks" onclick="openTab(event, 'ChapTemplateC')">C. LGPIF Policyholder B</button>
-<button class="tablinks" onclick="openTab(event, 'ChapTemplateD')">D. Property Fund</button>
-<button class="tablinks" onclick="openTab(event, 'ChapTemplateE')">E. Claims Frequency - R Code</button>
-<button class="tablinks" onclick="openTab(event, 'ChapTemplateF')">F. Claims Frequency (2010)</button>
-</div>
-<div id="ChapTemplateA" class="tabcontent">
-<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
-<iframe src="./Overheads/LDA1.Chap1.pdf#page=16" width="100%" height="400"> </iframe>
-</div>
-<div id="ChapTemplateB" class="tabcontent">
-<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
-<iframe src="./Overheads/LDA1.Chap1.pdf#page=17" width="100%" height="400"> </iframe>
-</div>
-<div id="ChapTemplateC" class="tabcontent">
-<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
-<iframe src="./Overheads/LDA1.Chap1.pdf#page=18" width="100%" height="400"> </iframe>
-</div>
-<div id="ChapTemplateD" class="tabcontent">
-<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
-<iframe src="./Overheads/LDA1.Chap1.pdf#page=19" width="100%" height="400"> </iframe>
-</div>
-<div id="ChapTemplateE" class="tabcontent">
-<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
-<iframe src="./Overheads/LDA1.Chap1.pdf#page=20" width="100%" height="400"> </iframe>
-</div>
-<div id="ChapTemplateF" class="tabcontent">
-<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
-<iframe src="./Overheads/LDA1.Chap1.pdf#page=21" width="100%" height="400"> </iframe>
-</div>
-</div>
 <div id="video-creating-distributions-ii" class="section level4 unnumbered">
 <h4>Video: Creating Distributions II</h4>
 <center>
@@ -616,28 +760,9 @@ var submitAnswer = function() {
 </iframe>
 </center>
 </div>
-<div id="exercise.-claim-frequency-1" class="section level3">
-<h3><span class="header-section-number">3.1.1</span> Exercise. Claim Frequency</h3>
-<p><strong>Next include one or two exercises per section. Here is an example.</strong></p>
-<p><strong>Assignment Text</strong></p>
-<p>The Wisconsin Property Fund data has already been read into a data frame called <code>Insample</code>. These data consist of claim experience for fund members over the years 2006-2010, inclusive. It includes the frequency of claims <code>Freq</code> as well as the claim year <code>Year</code>. The video explored the distribution of the claims frequency for year 2010; in this assignment, we replicate this analysis and conduct a similar investigation for year 2009.</p>
-<div class="blackbox">
-<p><strong>Instructions</strong>. For each year:</p>
-<ul>
-<li>Use the function <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/subset">subset()</a> to create a smaller data set based on a single year.</li>
-<li>Define the frequency as a global variable.</li>
-<li>Use the function <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/length">length()</a> to determine the number of observations in a vector.</li>
-<li>Use the function <a href="https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/mean/">mean()</a> to calculate the average.</li>
-<li>Use the function <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/table">table()</a> to tabulate the frequency distribution.</li>
-</ul>
-</div>
-<div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6Ikluc2FtcGxlIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL09wZW5BY3RUZXh0RGV2L0xEQUNvdXJzZTEvbWFpbi9EYXRhL0luc2FtcGxlLmNzdlwiLCBoZWFkZXI9VCxcbiAgICAgICAgICAgICAgICAgICAgICBuYS5zdHJpbmdzPWMoXCIuXCIpLCBzdHJpbmdzQXNGYWN0b3JzPUZBTFNFKSIsInNhbXBsZSI6IiMgIEFuYWx5c2lzIGZvciBZZWFyIDIwMTBcbkluc2FtcGxlMjAxMCA8LSBzdWJzZXQoSW5zYW1wbGUsIFllYXI9PTIwMTApXG5GcmVxMjAxMCA8LSBJbnNhbXBsZTIwMTAkRnJlcVxubGVuZ3RoKEZyZXEyMDEwKVxubWVhbihGcmVxMjAxMClcbnRhYmxlKEZyZXEyMDEwKVxuXG4jICBBbmFseXNpcyBmb3IgWWVhciAyMDA5XG5JbnNhbXBsZTIwMDkgPC0gX19fXG5GcmVxMjAwOSA8LSBfX19cbmxlbmd0aChfX18pXG5tZWFuKF9fXylcbnRhYmxlKF9fXykiLCJzb2x1dGlvbiI6IiMgIEFuYWx5c2lzIGZvciBZZWFyIDIwMTBcbkluc2FtcGxlMjAxMCA8LSBzdWJzZXQoSW5zYW1wbGUsIFllYXI9PTIwMTApXG5GcmVxMjAxMCA8LSBJbnNhbXBsZTIwMTAkRnJlcVxubGVuZ3RoKEZyZXEyMDEwKVxubWVhbihGcmVxMjAxMClcbnRhYmxlKEZyZXEyMDEwKVxuXG4jICBBbmFseXNpcyBmb3IgWWVhciAyMDA5XG5JbnNhbXBsZTIwMDkgPC0gc3Vic2V0KEluc2FtcGxlLCBZZWFyPT0yMDA5KVxuRnJlcTIwMDkgPC0gSW5zYW1wbGUyMDA5JEZyZXFcbmxlbmd0aChGcmVxMjAwOSlcbm1lYW4oRnJlcTIwMDkpXG50YWJsZShGcmVxMjAwOSkiLCJzY3QiOiJzdWNjZXNzX21zZyhcIkdldHRpbmcgc3RhcnRlZCBpcyBhbHdheXMgdGhlIGhhcmRlc3QgdGhpbmcgdG8gZG8uIEV4Y2VsbGVudCBzdGFydCFcIikiLCJoaW50IjoiVGFrZSBzb21lIHRpbWUgdG8gZXhwbG9yZSB0aGUgb25saW5lIDxjb2RlPlI8L2NvZGU+IGRvY3VtZW50YXRpb24uPC9wPlxuXG48cD5Ob3RlIHRoZSBkb3VibGUgZXF1YWwgc2lnbnMgPGNvZGU+PT08L2NvZGU+IG5lZWRlZCBmb3IgdGhlIHRoZSA8Y29kZT5zdWJzZXQoKTwvY29kZT4gZnVuY3Rpb24uIn0=
-</div>
-</div>
 </div>
 <div id="coverage-modifications" class="section level2">
-<h2><span class="header-section-number">3.2</span> Coverage Modifications</h2>
+<h2><span class="header-section-number">3.4</span> Coverage Modifications</h2>
 <hr />
 <p>In this section we evaluate the impacts of coverage modifications:</p>
 <ul>
@@ -659,6 +784,67 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6Ikluc2FtcGxlIDwtIHJlYWQuY3N2KFwi
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25717641/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_7u0jx487&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_gol12ato" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
 </iframe>
 </center>
+<p><strong>Assignment Text</strong></p>
+<p>The support of the lognormal distribution is positive real numbers and the distribution is right-skewed. Given these properties, claim values for many coverages follow a lognormal distribution.</p>
+<p><code>R</code> provides many several functions related to the <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Lognormal">lognormal</a>.</p>
+<p>Particularly useful for calculations related to the effect of coverage modifications, the <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Lognormal"><code>plnorm</code></a> function returns the distribution function for a lognormal. Specifically, the limited expected value function is useful for calculating limited claim values, that is, claims amounts subject to policy limits.</p>
+<p>The limited expected value of <span class="math inline">\(X\)</span> at limit, <span class="math inline">\(L\)</span>, is calculated as follows:</p>
+<p><span class="math display">\[
+LEV[x;L] = \int_0^L x f_X(x) dx ~+ L * [1 - F_X(L)] .
+\]</span></p>
+<p>The first term on the right-hand side is the contribution to the expected value for claims that are less than <span class="math inline">\(L\)</span> and the second term is the expected value of all claims greater than or equal to <span class="math inline">\(L\)</span>.</p>
+<p>For the exercises in this section, we provide the <code>mlnorm</code> and <code>levlnorm</code> function to calculate unlimited mean and limited expected values, respectively with arguments <code>meanlog</code> and <code>sdlog</code> corresponding to the same arguments in the <code>plnorm</code> function. The <code>levlnorm</code> function requires an additional <code>limit</code> argument.</p>
+<p>We also provide the vector <code>claims</code> which are observed claims values from lognormal distribution with <code>meanlog</code> = 12 and <code>sdlog</code> = 1.5. The values of <code>meanlog</code> and <code>sdlog</code> are saved in the <code>mu</code> and <code>sigma</code> objects.</p>
+<div class="blackbox">
+<p><strong>Instructions</strong></p>
+<ul>
+<li>Calculate the expected value of the lognormal function and compare to the <code>mean</code> of <code>claims</code>.</li>
+<li>Calculate the expected value of the claims retained by the insured using the <code>levlnorm</code> function and the compare to the mean of <code>claims</code>.</li>
+</ul>
+</div>
+<p><br></p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyMzQ1KVxubXUgPC0gMTJcbnNpZ21hIDwtIDEuNVxuY2xhaW1zIDwtIHJsbm9ybShuID0gMTAwMDAwLCBtZWFubG9nID0gbXUsIHNkbG9nID0gc2lnbWEpXG5tbG5vcm0gPC0gZnVuY3Rpb24obWVhbmxvZywgc2Rsb2cpIGV4cChtZWFubG9nICsgc2Rsb2cgXiAyIC8yKVxuXG5sZXZsbm9ybSA8LSBmdW5jdGlvbihsaW1pdCwgbWVhbmxvZywgc2Rsb2cpe1xuICB0MSA8LSBtbG5vcm0obWVhbmxvZyA9IG1lYW5sb2csIHNkbG9nID0gc2Rsb2cpICogXG4gICAgcG5vcm0ocSA9IChsb2cobGltaXQpIC0gbWVhbmxvZyAtIHNkbG9nIF4gMikgLyBzZGxvZylcbiAgdDIgPC0gbGltaXQgKiAoIDEtIHBub3JtKChsb2cobGltaXQpIC0gbWVhbmxvZykgLyBzZGxvZykpXG4gIHJldHVybih0MSArIHQyKVxuICB9Iiwic2FtcGxlIjoiIyBVbmxpbWl0ZWRcbiNleHBlY3RlZCB2YWx1ZSBvZiB0aGUgbG9nbm9ybWFsIGZ1bmN0aW9uXG5tbG5vcm0obWVhbmxvZyA9ID8/LCBzZGxvZyA9ID8/KVxuIyBtZWFuIG9mIGNsYWltc1xubWVhbig/PykiLCJzb2x1dGlvbiI6IiMgVW5saW1pdGVkXG4jZXhwZWN0ZWQgdmFsdWUgb2YgdGhlIGxvZ25vcm1hbCBmdW5jdGlvblxubWxub3JtKG1lYW5sb2cgPSBtdSwgc2Rsb2cgPSBzaWdtYSlcbiMgbWVhbiBvZiBjbGFpbXNcbm1lYW4oY2xhaW1zKSIsInNjdCI6InN1Y2Nlc3NfbXNnKFwiV2VsbCBkb25lIVwiKSIsImhpbnQiOiJOb3RlIHRoYXQgd2UgaGF2ZSBjcmVhdGVkIHRoZSA8Y29kZT5SPC9jb2RlPiBvYmplY3RzIDxjb2RlPm11PC9jb2RlPiBhbmQgPGNvZGU+c2lnbWE8L2NvZGU+LCBjb25zaWRlciBob3cgdG8gdXNlIHRoZW0gaW4geW91ciBhbnN3ZXIuXG5Tb21lIGNvZGVycyBmaW5kIGl0IGVhc2llciB0byBjb2RlIHRob3VzYW5kcyBhbmQgbWlsbGlvbnMgdXNpbmcgc2NpZW50aWZpYyBub3RhdGlvbi4gRm9yIGV4YW1wbGUsIGl0IG1heSBiZSBlYXNpZXIgdG8gdHlwZSA1ZTYgdGhhbiB0byBjb3VudCB0aGUgbnVtYmVyIG9mIHplcm9zIG9uIGluIDUwMDAwMDAgb24geW91ciBzY3JlZW4uIn0=
+</div>
+<p><strong>Assignment Text</strong></p>
+<p>Now, assume that an insurer provides coverage for the first $5 million of claims.</p>
+<div class="blackbox">
+<p><strong>Instructions</strong></p>
+<ul>
+<li>Calculate the expected value of the claims insured with a $5 million policy limit using the <code>levlnorm</code> function and the compare to the amounts insured from <code>claims</code>.</li>
+</ul>
+</div>
+<p><br></p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIyMgQ2xhaW0gYW1vdW50cyBpbnN1cmVkIHVuZGVyIGEgJDUgbWlsbGlvbiBsaW1pdCAgICBcblxuIyBGcm9tIHRoZSBsaW1pdGVkIGV4cGVjdGVkIHZhbHVlIGZ1bmN0aW9uXG5sZXZsbm9ybShsaW1pdCA9ID8/LCBtZWFubG9nID0gPz8sIHNkbG9nID0gPz8pXG5cbiMgRnJvbSB0aGUgY2xhaW1zIGRhdGFcbm1lYW4ocG1pbig/PywgPz8pKSIsInNvbHV0aW9uIjoiIyMjIENsYWltIGFtb3VudHMgaW5zdXJlZCB1bmRlciBhICQ1IG1pbGxpb24gbGltaXQgICAgXG5cbiMgRnJvbSB0aGUgbGltaXRlZCBleHBlY3RlZCB2YWx1ZSBmdW5jdGlvblxubGV2bG5vcm0obGltaXQgPSA1ZTYsIG1lYW5sb2cgPSAxMiwgc2Rsb2cgPSAxLjUpXG5cblxuIyBGcm9tIHRoZSBjbGFpbXMgZGF0YVxubWVhbihwbWluKDVlNiwgY2xhaW1zKSkiLCJzY3QiOiJzdWNjZXNzX21zZyhcIldlbGwgZG9uZSFcIikifQ==
+</div>
+<p><strong>Assignment Text</strong></p>
+<p>When an insurer provides coverage with a deductible, only a portion of claims result in reimbursement. The claims that do produce reimbursement have a greater average value than the average value for all claims.</p>
+<p>For this exercise, assume that an insurer provides coverage for the first $5 million of claims in excess of a $1 million deductible. Note that this coverage is sometimes states as $4 million excess of $1 million (or shorthand notation such as $4mln xs $1 mln).</p>
+<div class="blackbox">
+<p><strong>Instructions</strong></p>
+<ul>
+<li>Determine the number of <code>claims</code> resulting in reimbursement. Compare to the expected value of the number of claims requiring reimbursement calculated using the <code>plnorm</code> function.</li>
+<li>Calculate the amounts insured. Do this in two steps. First, subset <code>claims</code> to only inlcue amounts in excess of $1 million. Second, calculate the average value of those claims.</li>
+<li>Calculate the expected value of the claims insured subject to a $1 million deductible and a $5 million policy limit using the <code>levlnorm</code> and <code>plnorm</code> function and the compare to the amounts you calculated in the prior step. Note that these are the ‘ground-up’ values meaning that they include the amounts within the deductible.</li>
+</ul>
+</div>
+<p><br></p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIyMgQ2xhaW0gY291bnRzIGFtb3VudHMgaW5zdXJlZCB1bmRlciBhICQxIG1pbGxpb24gZGVkdWN0aWJsZSBhcHBsaWVkIHRvIHRoZSBmaXJzdCAkNSBtaWxsaW9uIG9mIGNsYWltc1xuIyBOdW1iZXIgb2YgY2xhaW1zIGluIHRoZSBkYXRhXG5zdW0oY2xhaW1zID4gPz8pIFxuIyBFeHBlY3RlZFxuKDEgLSBwbG5vcm0ocSA9ID8/LCBtZWFubG9nID0gPz8sIHNkbG9nID0gPz8pKSAqIGxlbmd0aCg/PylcblxuIyBBdmVyYWdlIFZhbHVlIGZyb20gY2xhaW1zXG5pbnN1cmVkIDwtIGNsYWltc1tjbGFpbXMgPiA/P11cbm1lYW4ocG1pbig/PywgPz8pKVxuXG4jRXhwZWN0ZWRcbj8/ICsgKGxldmxub3JtKGxpbWl0ID0gPz8sIG1lYW5sb2cgPSA/Pywgc2Rsb2cgPSA/PykgLSBcbiAgbGV2bG5vcm0obGltaXQgPSA/PywgbWVhbmxvZyA9ID8/LCBzZGxvZyA9ID8/KSkgLyBcbiAgKDEgLSBwbG5vcm0ocSA9ID8/LCBtZWFubG9nID0gPz8sIHNkbG9nID0gPz8pKSIsInNvbHV0aW9uIjoiIyMjIENsYWltIGNvdW50cyBhbW91bnRzIGluc3VyZWQgdW5kZXIgYSAkMSBtaWxsaW9uIGRlZHVjdGlibGUgYXBwbGllZCB0byB0aGUgZmlyc3QgJDUgbWlsbGlvbiBvZiBjbGFpbXNcbiMgTnVtYmVyIG9mIGNsYWltcyBpbiB0aGUgZGF0YVxuc3VtKGNsYWltcyA+IDFlNikgXG4jIEV4cGVjdGVkXG4oMSAtIHBsbm9ybShxID0gMWU2LCBtZWFubG9nID0gbXUsIHNkbG9nID0gc2lnbWEpKSAqIGxlbmd0aChjbGFpbXMpXG5cbiMgQXZlcmFnZSBWYWx1ZSBmcm9tIGNsYWltc1xuaW5zdXJlZCA8LSBjbGFpbXNbY2xhaW1zID4gMWU2XVxubWVhbihwbWluKDVlNiwgaW5zdXJlZCkpXG5cbiNFeHBlY3RlZFxuMWU2ICsgKGxldmxub3JtKGxpbWl0ID0gNWU2LCBtZWFubG9nID0gbXUsIHNkbG9nID0gc2lnbWEpIC0gXG4gIGxldmxub3JtKGxpbWl0ID0gMWU2LCBtZWFubG9nID0gbXUsIHNkbG9nID0gc2lnbWEpKSAvIFxuICAoMSAtIHBsbm9ybShxID0gMWU2LCBtZWFubG9nID0gbXUsIHNkbG9nID0gc2lnbWEpKSIsInNjdCI6InN1Y2Nlc3NfbXNnKFwiV2VsbCBkb25lIVwiKSJ9
+</div>
+<p><strong>Assignment Text</strong></p>
+<p>For this exercise, assume that an insurer provides coverage for the first $5 million of claims in excess of a $1 million deductible. Note that this coverage is sometimes states as $4 million excess of $1 million (or shorthand notation such as $4mln xs $1 mln). (This is the same as the prior exercise.) However, now you should assume that there is a 20% coinsurance provision. The number of claims will not differ from the prior exercise, so will focus on the average value.</p>
+<div class="blackbox">
+<p><strong>Instructions</strong></p>
+<ul>
+<li>Calculate the expected insured value of the claims subject to a $1 million deductible and 20% coinsurance and a $5 million policy limit using the <code>levlnorm</code> and <code>plnorm</code> function and the compare to the amounts insured from <code>claims</code>. In contrast to the prior excercise, calculate the insured value of the claim rather than the ground-up value.</li>
+</ul>
+</div>
+<p><br></p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIyMgQ2xhaW0gYW1vdW50cyBpbnN1cmVkIHVuZGVyIGEgJDEgbWlsbGlvbiBkZWR1Y3RpYmxlIHdpdGggYSAkNSBtaWxsaW9uIHBvbGljeSBsaW1pdFxuIyMjIHdpdGggMjAlIGNvaW5zdXJhbmNlXG5cbiNBdmVyYWdlIFZhbHVlXG5pbnN1cmVkIDwtIGNsYWltc1tjbGFpbXMgPiA/P11cbm1lYW4ocG1pbig/PywgPz8pIC0gPz8pICogKDEgLSA/PylcblxuI0F2ZXJhZ2UgVmFsdWVcbihsZXZsbm9ybShsaW1pdCA9ID8/LCBtZWFubG9nID0gPz8sIHNkbG9nID0gPz8pIC0gXG4gIGxldmxub3JtKGxpbWl0ID0gPz8sIG1lYW5sb2cgPSA/Pywgc2Rsb2cgPSA/PykpIC8gXG4gICgxIC0gcGxub3JtKHEgPSA/PywgbWVhbmxvZyA9ID8/LCBzZGxvZyA9ID8/KSkgKiBcbiAgICAoMSAtID8/KSIsInNvbHV0aW9uIjoiIyMjIENsYWltIGFtb3VudHMgaW5zdXJlZCB1bmRlciBhICQxIG1pbGxpb24gZGVkdWN0aWJsZSB3aXRoIGEgJDUgbWlsbGlvbiBwb2xpY3kgbGltaXQgICBcbiMjIyB3aXRoIDIwJSBjb2luc3VyYW5jZVxuXG4jQXZlcmFnZSBWYWx1ZVxuaW5zdXJlZCA8LSBjbGFpbXNbY2xhaW1zID4gMWU2XVxubWVhbihwbWluKDVlNiwgaW5zdXJlZCkgLSAxZTYpICogKDEgLSAwLjIpXG5cbiNBdmVyYWdlIFZhbHVlXG5cbihsZXZsbm9ybShsaW1pdCA9IDVlNiwgbWVhbmxvZyA9IG11LCBzZGxvZyA9IHNpZ21hKSAtIFxuICBsZXZsbm9ybShsaW1pdCA9IDFlNiwgbWVhbmxvZyA9IG11LCBzZGxvZyA9IHNpZ21hKSkgLyBcbiAgKDEgLSBwbG5vcm0ocSA9IDFlNiwgbWVhbmxvZyA9IG11LCBzZGxvZyA9IHNpZ21hKSkgKiAoMSAtIDAuMikiLCJzY3QiOiJzdWNjZXNzX21zZyhcIldlbGwgZG9uZSFcIikifQ==
+</div>
 </div>
 <div id="video-policy-coinsurance-and-reinsurance" class="section level4 unnumbered">
 <h4>Video: Policy Coinsurance and Reinsurance</h4>
@@ -666,8 +852,19 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6Ikluc2FtcGxlIDwtIHJlYWQuY3N2KFwi
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25717641/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_4f9j72l3&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_5vv01as5" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
 </iframe>
 </center>
-
 </div>
+</div>
+<div id="maximum-likelihood-estimation" class="section level2">
+<h2><span class="header-section-number">3.5</span> Maximum Likelihood Estimation</h2>
+<hr />
+<p>In this section, you learn how to:</p>
+<ul>
+<li>Define a likelihood for a sample of observations from a continuous distribution</li>
+<li>Define the maximum likelihood estimator for a random sample of observations from a continuous distribution</li>
+<li>Estimate parametric distributions based on grouped, censored, and truncated data</li>
+</ul>
+<hr />
+
 </div>
 </div>
             </section>
