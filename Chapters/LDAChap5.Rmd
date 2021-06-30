@@ -13,7 +13,7 @@ This chapter introduces probability models for describing the aggregate (total) 
 
 :::: {.blackbox }
 
--  Although not needed to go through the tutorials, some users may wish to download the overheads used in the videos. <button download><a href="https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/LDA1.Overheads/LDA1.Chap5.pdf">Download Chapter Five overheads as a .pdf file.</a></button>
+-  Although not needed to go through the tutorials, some users may wish to download the overheads that the videos are based on. <button download><a href="https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/LDA1.Overheads/LDA1.Chap5.pdf">Download Chapter Five overheads as a .pdf file.</a></button>
 -  By watching the videos and working through the tutorial exercises, you will get an appreciation for aggregate loss models. For a deeper dive, see the corresponding chapter in the textbook, [Chapter Five of *Loss Data Analytics*](https://openacttexts.github.io/Loss-Data-Analytics/C-AggLossModels.html).
 
 :::: 

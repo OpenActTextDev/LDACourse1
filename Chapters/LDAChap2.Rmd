@@ -12,7 +12,7 @@ A primary focus for insurers is estimating the magnitude of aggregate claims it 
 
 :::: {.blackbox }
 
--  Although not needed to go through the tutorials, some users may wish to download the overheads used in the videos. <button download><a href="https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/LDA1.Overheads/LDA1.Chap2.pdf">Download Chapter Two overheads as a .pdf file.</a></button>
+-  Although not needed to go through the tutorials, some users may wish to download the overheads that the videos are based on. <button download><a href="https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/LDA1.Overheads/LDA1.Chap2.pdf">Download Chapter Two overheads as a .pdf file.</a></button>
 -  By watching the videos and working through the tutorial exercises, you will get an appreciation for frequency modeling. For a deeper dive, see the corresponding chapter in the textbook, [Chapter Two of *Loss Data Analytics*](https://openacttexts.github.io/Loss-Data-Analytics/C-Frequency-Modeling.html).
 
 :::: 
