@@ -131,7 +131,7 @@ In this section, we learn how to:
 
 **Assignment Text**
   
-In this assignment, we will revisit [Example 5.2.1](https://openacttexts.github.io/Loss-Data-Analytics/C-AggLossModels.html) in the textbook and generate using *simulation* in `R`. Even though we will `officially' start to work with simulation since Chapter 6, this exercise provides you an opportunity to taste a flavor of simulation with an example.
+In this assignment, we will revisit [Example 5.2.1](https://openacttexts.github.io/Loss-Data-Analytics/C-AggLossModels.html) in the textbook and generate using *simulation* in `R`. Even though we will "officially" start to work with simulation since Chapter 6, this exercise provides you an opportunity to taste a flavor of simulation with an example.
 
 :::: {.blackbox }
 
@@ -150,15 +150,15 @@ Note that number of policies and probability of claim per policy correspond to t
 
 
 ```{r ex="LDA5.5.2.1", type="sample-code", tut=TRUE}
-set.seed(____)     
-r  <- ____         
+set.seed(??)     
+r  <- ??         
 q1 <- 0.05         
-q2 <- ____         
-n1 <- ____         
+q2 <- ??         
+n1 <- ??         
 n2 <- 200          
 
 n1 <- rbinom(r, size=n1, prob=q1) 
-n2 <- rbinom(r, size=__, prob=__) 
+n2 <- rbinom(r, size=??, prob=??) 
 ```
 
 
@@ -222,20 +222,20 @@ Note that we need to simulate claim amounts that corresponds to the number of cl
 ```{r ex="LDA5.5.2.2", type="sample-code", tut=TRUE}
 set.seed(1000)     
 r  <- 10000        
-m1 <- 0; M1 <- ___ 
+m1 <- 0; M1 <- ?? 
 m2 <- _; M2 <- 300 
 
 # n1: Generated 10000 observations of claim frequency from the first  group of policies with Binomial
 # n2: Generated 10000 observations of claim frequency from the second group of policies with Binomial
 
-S <- rep(__, r) 
+S <- rep(??, r) 
 
 for(j in 1:r) { 
-  x1_j <- runif(n1[j], min=m1, max=__)
-  x2_j <- runif(_____, min=__, max=M2)
-  S[j] <- sum(x1_j)+sum(___)
+  x1_j <- runif(n1[j], min=m1, max=??)
+  x2_j <- runif(??_, min=??, max=M2)
+  S[j] <- sum(x1_j)+sum(??)
 }
-____(S) 
+??(S) 
 var(_)  
 ```
 
@@ -323,8 +323,7 @@ In this section, we learn how to:
 
 **Assignment Text**
   
-In this assignment, we will fit a collective risk model for an actual portfolio of insurance
-contracts, **LGPIF** data with `R`. We use *negative binomial* and *Pareto* distributions for the frequency and severity components, respectively.
+In this assignment, we will fit a collective risk model for an actual portfolio of insurance contracts, **LGPIF** data with `R`. We use *negative binomial* and *Pareto* distributions for the frequency and severity components, respectively.
 
 :::: {.blackbox }
 
@@ -359,16 +358,16 @@ N <- InsampleTown$Freq
 freq_lik <- function(parm) {
   r    <- parm[1]
   beta <- parm[2]
-  lik  <- -sum(dnbinom(N, size=_, prob=1/(1+___), log=TRUE))
+  lik  <- -sum(dnbinom(N, size=_, prob=1/(1+??), log=TRUE))
   return(lik)
 }
 init.parm.freq <- c(mean(N)/(var(N)/mean(N)-1), var(N)/mean(N)-1) # initial estimates by method of moments
-freq_mod       <- _____(par=init.parm.freq, fn=___) # Maximum likelihood estimation for the frequency model
+freq_mod       <- ??_(par=init.parm.freq, fn=??) # Maximum likelihood estimation for the frequency model
 
 r.est    <- freq_mod$par[1]
 beta.est <- freq_mod$par[2]
 
-freq_table <- cbind(table(N)[1:4]/length(N), dnbinom(0:3, size=___, prob=1/(1+beta.est)))
+freq_table <- cbind(table(N)[1:4]/length(N), dnbinom(0:3, size=??, prob=1/(1+beta.est)))
 freq_table <- rbind(freq_table, 1-colSums(freq_table))
 rownames(freq_table)[5] <- "4+"
 colnames(freq_table)    <- c("Empirical", "Theoretical")
@@ -380,11 +379,11 @@ Xbar <- InsampleTown$yAvg[which(InsampleTown$Freq>0)]
 sev_lik <- function(parm) {
   alpha <-  parm[1]
   theta <-  parm[2]
-  lik   <- -sum(dlomax(Xbar, shape=___, scale=___, log=TRUE))
+  lik   <- -sum(dlomax(Xbar, shape=??, scale=??, log=TRUE))
   return(lik)
 }
 init.parm.sev <- c( 2/(1-mean(Xbar)^2/var(Xbar))  , mean(Xbar)*(2/(1-mean(Xbar)^2/var(Xbar))-1) ) # initial estimates by method of moments
-sev_mod       <- _____(par=___, fn=sev_lik, method="L-BFGS-B") # Maximum likelihood estimation for the severity model
+sev_mod       <- ??_(par=??, fn=sev_lik, method="L-BFGS-B") # Maximum likelihood estimation for the severity model
 alpha.est     <- sev_mod$par[1]
 theta.est     <- sev_mod$par[2]
 
@@ -1070,10 +1069,10 @@ theta.est     <- sev_mod$par[2]
 # Parameter estimates from the frequency model: alpha.est, theta.est
 # Parameter estimates from the severity  model:     r.est,  beta.est
 
-freq <- expression(data =  ______(size=____, prob=1/(1+_____)))  # random samples from the fitted frequency model
-sev  <- expression(data =  ______(shape=________, scale=_______)) # random samples from the fitted severity model
+freq <- expression(data =  ????(size=??, prob=1/(1+??_)))  # random samples from the fitted frequency model
+sev  <- expression(data =  ????(shape=????, scale=????)) # random samples from the fitted severity model
 Fs   <- aggregateDist("simulation", nb.simul = 1000,
-                      model.freq = ____, model.sev = ____)
+                      model.freq = ??, model.sev = ??)
 plot(Fs)
 lines(ecdf(InsampleTown$y),  col="blue")
 
@@ -1191,7 +1190,7 @@ source("https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/RCode/T
 InsampleTown <- subset(Insample, TypeTown==1)
 
 # The Tweedie compound loss model: S
-S <- _____$y
+S <- ??_$y
 comploss_lik <- function(parm) {
   mu    <- parm[1]
   phi   <- parm[2]
@@ -1200,16 +1199,16 @@ comploss_lik <- function(parm) {
   return(lik)
 }
 init.parm.comploss <- c( mean(S), 300, 1.5)    # initial estimates 
-comploss_mod       <- optim(par=______,
-                            fn=______, method="L-BFGS-B") # Maximum likelihood estimation for the compound loss model
+comploss_mod       <- optim(par=????,
+                            fn=????, method="L-BFGS-B") # Maximum likelihood estimation for the compound loss model
 
 
 mu.est  <- comploss_mod$par[1]
-phi.est <- comploss_mod$___
-p.est   <- comploss_mod$___
+phi.est <- comploss_mod$??
+p.est   <- comploss_mod$??
 
 pct <- seq(0.01,0.99,0.01)
-plot(qtweedie(pct, mu=____, phi=____, power=p.est) ,quantile(InsampleTown$y, probs=pct), xlab="Theoretical Quantile", ylab="Empirical Quantile", xlim=c(0,50000), ylim=c(0,50000))
+plot(qtweedie(pct, mu=??, phi=??, power=p.est) ,quantile(InsampleTown$y, probs=pct), xlab="Theoretical Quantile", ylab="Empirical Quantile", xlim=c(0,50000), ylim=c(0,50000))
 abline(0,1)
 
 ```

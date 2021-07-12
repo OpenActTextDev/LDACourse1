@@ -48,7 +48,7 @@ In this section, you learn how to:
 
 **Assignment Text**
 
-Cyber risk for a firm is based on its' liability for a data breach involving sensitive customer information, such as Social Security numbers, credit card numbers, account numbers, driver's license numbers and health records. A company models its cyber risk using the following assumptions:
+Cyber risk for a firm is based on its liability for a data breach involving sensitive customer information, such as Social Security numbers, credit card numbers, account numbers, driver's license numbers and health records. A company models its cyber risk using the following assumptions:
 
 (i) In any calendar quarter, there can be at most one cyber event.
 (ii) In any calendar quarter, the probability of a cyber event is 0.1.

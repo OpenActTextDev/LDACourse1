@@ -296,7 +296,7 @@ table(claims)
 barplot(??, xlab="# Claims")
 
 mean(claims)
-___(claims)
+??(claims)
 
 ```
 

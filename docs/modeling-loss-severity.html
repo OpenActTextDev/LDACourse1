@@ -719,7 +719,7 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImRhdGEoXCJhbnNjb21iZVwiKVxuaW5z
 <div id="exercise.-determining-boxplots-and-quantiles" class="section level3" number="3.1.2">
 <h3><span class="header-section-number">3.1.2</span> Exercise. Determining Boxplots and Quantiles</h3>
 <p><strong>Assignment Text</strong></p>
-<p>The boxplot() function produces box-and-whisker plots of grouped values. The function returns certain statistic and produces a plot as a side effect. Explore the <a href="https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/boxplot">boxplot()</a> to understand the values returned. In particular review the information returned by the <code>stats</code> attribute of this object.</p>
+<p>The <a href="https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/boxplot">boxplot()</a> function produces box-and-whisker plots of grouped values. The boxplot() function returns certain statistic and produces a plot as a side effect. Explore the to understand the values returned. In particular review the information returned by the <code>stats</code> attribute of this object.</p>
 <p>The Wisconsin Property Fund data has already been read into a data frame called <code>Insample</code>. These data consist of claim experience for fund members over the years 2006-2010, inclusive. It includes claim values <code>y</code> as well as the claim year <code>Year</code>. For this exercise we will work with the natural logarithm of the claim values which are in the <code>lny</code> variable. We have filtered the data to exclude zero claims and saved the resulting data frame as <code>Insample_nz</code>.</p>
 <div class="blackbox">
 <p><strong>Instructions</strong></p>
@@ -768,13 +768,12 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJtZ2YgPC0gcGFyc2UodGV4dCA9IFwiPz9cIilcblxuY2xh
 <div id="exercise.-visualizing-moment-generating-functions" class="section level3" number="3.1.4">
 <h3><span class="header-section-number">3.1.4</span> Exercise. Visualizing Moment Generating Functions</h3>
 <p><strong>Assignment Text</strong></p>
-<p>We plot <em>mgf</em> to help visualize the function. The left-hand panel shows the function with the argument <span class="math inline">\(t\)</span> is between -0.2 and 0.2.
-For <span class="math inline">\(\theta = 10\)</span> and <span class="math inline">\(\alpha &gt; 0\)</span>, note that <em>mgf</em> goes to <code>+inf</code> when <span class="math inline">\(t = \frac{1}{\theta} = 0.1\)</span>. The right-hand panel shows the function between -0.01 and 0.01. This provides a better view of the curvature at zero.</p>
+<p>We plot <em>mgf</em> to help visualize the function. The left-hand panel shows the function with the argument <span class="math inline">\(t\)</span> is between -0.2 and 0.2. For <span class="math inline">\(\theta = 10\)</span> and <span class="math inline">\(\alpha &gt; 0\)</span>, note that <em>mgf</em> goes to <code>+inf</code> when <span class="math inline">\(t = \frac{1}{\theta} = 0.1\)</span>. The right-hand panel shows the function between -0.01 and 0.01. This provides a better view of the curvature at zero.</p>
 <p><img src="LDAShortCourse_files/figure-html/unnamed-chunk-79-1.png" width="80%" /></p>
 <div class="blackbox">
 <p><strong>Instruction</strong></p>
 <ul>
-<li>Use the D() function to return an expression for the first and second derivatives with respect to <span class="math inline">\(t\)</span>. Assign the results of <code>dMxtdt</code> and <code>d2Mxtdt2</code>, respectively.</li>
+<li>Use the <a href="https://www.rdocumentation.org/packages/mosaic/versions/0.14.4/topics/D">D()</a> function to return an expression for the first and second derivatives with respect to <span class="math inline">\(t\)</span>. Assign the results of <code>dMxtdt</code> and <code>d2Mxtdt2</code>, respectively.</li>
 </ul>
 </div>
 <p><br></p>
@@ -796,7 +795,7 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJkTXh0ZHQgPC0gRChleHByID0gcGFyc2UodGV4dCA9IFwi
 </div>
 <p><br></p>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIG1lYW4gXG5FWCA8LSBldmFsKD8/KVxuXG4jIHNlY29uZCByYXcgbW9tZW50XG5FWDIgPC0gZXZhbCg/PylcblxuIyB2YXJpYW5jZVxuXG4/PyAtID8/IF4gMiIsInNvbHV0aW9uIjoiIyBtZWFuIFxuRVggPC0gZXZhbChNeHRkdClcblxuIyBzZWNvbmQgcmF3IG1vbWVudFxuRVgyIDwtIGV2YWwoTTJ4dGR0KVxuXG4jIHZhcmlhbmNlXG5FWDIgLSBFWCBeIDIiLCJzY3QiOiJzdWNjZXNzX21zZyhcIldlbGwgZG9uZSFcIikiLCJoaW50IjoiVGFrZSBzb21lIHRpbWUgdG8gZXhwbG9yZSB0aGUgb25saW5lIDxjb2RlPlI8L2NvZGU+IGRvY3VtZW50YXRpb24uIEluIHBhcnRpY3VsYXIsIHRha2UgdGltZSB0byB1bmRlcnN0YW5kIHRoZSByZXF1aXJlZCBjbGFzcyBvZiBlYWNoIGFyZ3VtZW50LiJ9
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6Ik14dGR0IDwtIEQoZXhwciA9IHBhcnNlKHRleHQgPSBcIigxLSB0aGV0YSAqIHQpIF4gLWFscGhhXCIpLCBuYW1lID0gJ3QnKVxuTTJ4dGR0IDwtIEQoXG4gIEQoZXhwciA9IHBhcnNlKHRleHQgPSBcIigxLSB0aGV0YSAqIHQpIF4gLWFscGhhXCIpLCBuYW1lID0gJ3QnKSxcbiAgbmFtZSA9ICd0JylcbmFscGhhIDwtIDJcbnRoZXRhIDwtIDEwXG50IDwtIDAiLCJzYW1wbGUiOiIjIG1lYW4gXG5FWCA8LSBldmFsKD8/KVxuXG4jIHNlY29uZCByYXcgbW9tZW50XG5FWDIgPC0gZXZhbCg/PylcblxuIyB2YXJpYW5jZVxuXG4/PyAtID8/IF4gMiIsInNvbHV0aW9uIjoiIyBtZWFuIFxuRVggPC0gZXZhbChNeHRkdClcblxuIyBzZWNvbmQgcmF3IG1vbWVudFxuRVgyIDwtIGV2YWwoTTJ4dGR0KVxuXG4jIHZhcmlhbmNlXG5FWDIgLSBFWCBeIDIiLCJzY3QiOiJzdWNjZXNzX21zZyhcIldlbGwgZG9uZSFcIikiLCJoaW50IjoiVGFrZSBzb21lIHRpbWUgdG8gZXhwbG9yZSB0aGUgb25saW5lIDxjb2RlPlI8L2NvZGU+IGRvY3VtZW50YXRpb24uIEluIHBhcnRpY3VsYXIsIHRha2UgdGltZSB0byB1bmRlcnN0YW5kIHRoZSByZXF1aXJlZCBjbGFzcyBvZiBlYWNoIGFyZ3VtZW50LiJ9
 </div>
 </div>
 </div>
@@ -878,9 +877,9 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIG1lYW4gXG5FWCA8LSBldmFsKD8/KVxuXG4jIHNlY29u
 <div class="blackbox">
 <p><strong>Instructions</strong></p>
 <ul>
-<li>Use the hist() function to plot a histogram of <code>wisc_prop</code>.</li>
-<li>Review the help for <a href="https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/hist">hist()</a> and note that the histogram is drawn as a “side-effect.” We can access the information generated with the histogram by assigning the result to an object. For this exercise, you should assign that information to <code>hist_data</code>. Note the class of <code>hist_data</code>.</li>
-<li>Use the str() function to review the structure of elements of the list returned by the histogram function hist().</li>
+<li>Use the <a href="https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/hist">hist()</a> function to plot a histogram of <code>wisc_prop</code>.</li>
+<li>Review the help for hist() and note that the histogram is drawn as a “side-effect.” We can access the information generated with the histogram by assigning the result to an object. For this exercise, you should assign that information to <code>hist_data</code>. Note the class of <code>hist_data</code>.</li>
+<li>Use the <a href="https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/str">str()</a> function to review the structure of elements of the list returned by the histogram function hist().</li>
 </ul>
 </div>
 <p><br></p>

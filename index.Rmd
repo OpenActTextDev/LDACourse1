@@ -34,7 +34,7 @@ The intent is that this type of short course will eventually permeate throughout
 
 ## Resources {-}
 
-- This tutorial is based on the first five chapters of the open and freely available book [Loss Data Analytics](https://openacttexts.github.io/).
+- This tutorial is based on the first five chapters of the **open and freely available book** [Loss Data Analytics](https://openacttexts.github.io/).
     -  [Sample code](https://openacttexts.github.io/LDARcode/) is available for the book, although not needed for this tutorial.
 - As described in how to navigate this tutorial below, you will not need to download any data for this course. However, if you want to have the data to follow up, we generally make it available through buttons such as:
     *  <button download><a href="https://raw.githubusercontent.com/OpenActTextDev/LDAShortCourse1/main/Data/PropertyFundInsample.csv">View the Property Fund Data as a .csv file.</a></button> Then, do a "Save Page as" if you wish to download.
@@ -46,7 +46,7 @@ The intent is that this type of short course will eventually permeate throughout
 
 -  This online tutorial is designed to guide you through the foundations of modeling loss data. 
 -  The anticipated completion time is approximately six hours.
--  The tutorial assumes that you are familiar with the foundations in the statistical software `R`, such as Datacamp's [Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r%20).
+-  The tutorial assumes that you are familiar with the foundations in the statistical software `R`, such as Datacamp's [Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r%20) or Codecademy's [Learn R](https://www.codecademy.com/learn/learn-r).
 
 **Role of Video Introductions.** There are five chapters in this tutorial that summarize the foundations. Each chapter is subdivided into several sections. At the beginning of each section is a short video, typically 6-8 minutes, that summarizes the section key learning outcomes. Following the video, you can see more details about the underlying `R` code for the analysis presented in the video. 
 
@@ -66,8 +66,8 @@ The intent is that this type of short course will eventually permeate throughout
 **A Few More Tips**
 
 -  When completing the tutorial exercises, replace the question marks **??** by the appropriate code (in earlier versions, we used underscores).
--  When you view the .pdf output for the overheads, the default is for the table of contents to appear. The fix for this is click the icon in the upper left-hand corner. 
--  The graphical displays upon completion of the tutorial exercises appear only in the narrow window of the code and do not look good. This is a limitation of the *Datacamp* platform. For a more professional looking graph, you can simply copy the code into your own version of `R` to enhance its appearance.
+-  When you view the .pdf output for the overheads, the default is for the table of contents to appear. The fix for this is to click the icon in the upper left-hand corner. 
+-  The graphical displays upon completion of the tutorial exercises appear only in the narrow window of the code and do not look good. This is a limitation of the *Datacamp* platform. For a more professional looking graph, you can simply copy the code and paste it into your own version of `R` to enhance its appearance.
 -  When a tutorial exercise finishes with a graph, the (green) success message is obscured. To see it, after completing the exercise, hit the “R-Console” button at the top. Then re-size the html page and immediately revert back to the full page mode. This procedure allows you to view the message.
 
 
@@ -97,7 +97,7 @@ In this video, you learn about:
 
 ## Contributors {-}
 
-The project goal is to have the actuarial community author our textbooks in a collaborative fashion. The following contributors have taken a leadership role in developing this short course for $Loss$ $Data$ $Analytics$.
+The project goal is to have the actuarial community author our learning resources in a collaborative fashion. The following contributors have taken a leadership role in developing this short course for $Loss$ $Data$ $Analytics$.
 
 <img src = "ContributorPics\YvoneChueh.jpg" width = "150" height = "160" style = "float:right; margin-left: 10px; margin-top: 7px; margin-bottom: 15px" />
 
@@ -107,7 +107,7 @@ The project goal is to have the actuarial community author our textbooks in a co
 <img src = "ContributorPics\MiukiEbisaki.jpg" width = "150" height = "180" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
 
--  **Miyuki Ebisaki** is a Senior Research Officer of SOMPO Research Institute Inc. in Japan. Her research work is in the area of insurance, health care, social economy and new technologies. She has been working in domestic and foreign insurers in Japan and in the UK. She has various experiences both in non-life and life insurance; including product development, chief actuary, M&A and risk management. In May 2020, she was elected as a member of the ASTIN board. 
+-  **Miyuki Ebisaki** is a Manager at Deloitte Touche Tohmatsu LLC in Japan. Her research work is in the area of insurance, health care, social economy and new technologies. She has been working in domestic and foreign insurers in Japan and in the UK. She has various experiences both in non-life and life insurance; including product development, chief actuary, M&A and risk management. In May 2020, she was elected as a member of the ASTIN board. 
 
 <br>
 
@@ -125,7 +125,8 @@ The project goal is to have the actuarial community author our textbooks in a co
 
 -  **Brian Hartman** is an associate professor of statistics and actuarial program coordinator at Brigham Young University. His current research interests include Bayesian methods and their applications in actuarial science and risk. He has worked in various capacities with companies in property-casualty, health, and long-term care insurance. He holds a Bachelor's degree in Actuarial Science from Brigham Young University and a PhD in Statistics from Texas A&M University. He is also an associate of the Society of Actuaries. Before BYU, he was a post-doctoral fellow at the University of Waterloo (2010-11) and an assistant professor at the University of Connecticut (2011-15).
 
--  **Tim Higgins**, Australian National University
+-  **Tim Higgins** is an associate professor of actuarial studies and deputy director of the school of finance, actuarial studies and statistics at the Australian National University (ANU). Prior to academia he had positions in the Australian Commonwealth Treasury and the Australian Prudential Regulation Authority. He is a Fellow of the Institute of Actuaries of Australia. His main research interest is in income contingent loan theory, modelling and applications, and his other research interests include microsimulation modelling, financial literacy and behaviour, and superannuation and retirement policy. He has taught actuarial and statistics students at ANU since 2002, and received the ANU Vice Chancellor’s Award for Teaching Excellence in 2005.  
+
 
 <img src = "ContributorPics\FeiHuang.jpg" width = "150" height = "200" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
