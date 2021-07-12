@@ -133,7 +133,7 @@ par(op)
 *  Use [mean()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/mean) to calculate the first raw moment of `y1`, `y2`, `y3` and `y4`. Assign the values to `y_means`.
 *  Use [var()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/cor) to calculate the second raw moment of `y1`, `y2`, `y3` and `y4`. You should note that the var() function uses $n-1$ in the denominator to return an estimate of the population variance from the sample. Do you notice anything interesting about the results?
 *  Use [sd()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/sd) to calculate the standard deviation of `y1`, `y2`, `y3` and `y4`. As with the var() function, sd() also uses $n-1$ in the denominator.
-*  There is no `base-R` function to calculate the coefficient of skewness. There are several approaches to calculate skewness if you explore the [help()](https://www.rdocumentation.org/packages/e1071/versions/1.7-4/topics/skewness) for the `type` argument of the `skewness` function from the `e1071` package.  We will not use this package, but instead we will we calculate the equivalent of `type = 3` skewness using `var` in the denominator.
+*  There is no `base-R` function to calculate the coefficient of skewness. There are several approaches to calculate skewness if you explore the [help()](https://www.rdocumentation.org/packages/e1071/versions/1.7-4/topics/skewness) for the `type` argument of the `skewness` function from the [e1071](https://www.rdocumentation.org/packages/e1071/versions/1.7-7) package.  We will not use this package, but instead we will we calculate the equivalent of `type = 3` skewness using `var` in the denominator.
 
 :::: 
 

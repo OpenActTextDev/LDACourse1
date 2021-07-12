@@ -295,7 +295,6 @@ The $(a,b,0)$ class is a foundation for other, more complex, distributions, so l
 
 
 :::: {.blackbox }
-
 **Instructions**
 
 -  For $k=0, \ldots, 20$, using $\lambda = 1.24$ obtain $p_k$ values using  [dpois()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Poisson).
@@ -304,7 +303,6 @@ The $(a,b,0)$ class is a foundation for other, more complex, distributions, so l
 -   For $k=0, \ldots, 20$,  obtain $p_k$ values using the negative binomial distribution using the function [dnbinom()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/NegBinomial). Use the same mean as for the Poisson distribution but let the variance be 1.1 times the mean. *Hint*. See the [Loss Data Analytics Summary of Distributions](https://openacttexts.github.io/Loss-Data-Analytics/C-SummaryDistributions.html#discrete-distributions) for the parameterization used in this short course. It differs from that used by the `R` package.
 -  Use the recursive $(a,b,0)$ formula to obtain these probability values. 
 -  Check your code by summing over the absolute value of the differences between the `dnbinom` and the $(a,b,0)$ generated values.
-
 ::::
 
 <br>
@@ -398,7 +396,6 @@ to determine that `recursive.factorial(5) = 120`. In this problem, we use a recu
 
 
 :::: {.blackbox }
-
 **Instructions**
 
 -  For $k=0, \ldots, 4$, using $\lambda = 1.24$ obtain $p_k$ values from the  [dpois()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Poisson) function.
@@ -406,7 +403,6 @@ to determine that `recursive.factorial(5) = 120`. In this problem, we use a recu
 -  For $k=0, \ldots, 4$, using $q =0.1$ and $m=10$ obtain $p_k$ values from the   [dbinom()](https://www.rdocumentation.org/packages/stats/versions/3.3/topics/Binomial) function.
 -  Compute the ratio to identify values of $a$ and $b$.
 -  To check your work, develop the recursive $(a,b,0)$ function to determine $p_4 = \Pr(N=4)$ based on the binomial distribution in the prior part.
-
 ::::
 
 <br>
@@ -472,7 +468,6 @@ success_msg("Superb! Working forwards and backwards is important in complex task
 
 ## Mixture Distributions
 
-
 ### Exercise. Mixtures of Workers' Compensation Claims
 
 **Assignment Text**
@@ -483,6 +478,7 @@ In this exercise, we will compare the shape of the mixture distribution to the l
 
 ***
 
+:::: {.blackbox }
 **Instructions** 
 
 -  Determine the probability mass functions for the low and risk populations for $k=0, \ldots, 20$ possible claim outcoms.
@@ -490,7 +486,9 @@ In this exercise, we will compare the shape of the mixture distribution to the l
 -  Plot the mixture distribution with superimposed lines for the low and high risk populations. Use different colors and plotting symbols for the three distributions to help viewers distinguish among them.
 -  Determine distribution functions for the low, high, and mixture distributions.
 -  Plot the mixture distribution function with superimposed lines for the low and high risk populations.
+::::
 
+<br>
 
 ```{r ex="LDA1.2.6.0", type="hint", tut=TRUE}
 See the [appendix of the Loss Data Analytics] (https://openacttexts.github.io/Loss-Data-Analytics/C-SummaryDistributions.html#discrete-distributions) 
@@ -577,8 +575,7 @@ $$
 
 In this exercise, we will use `R` to calculate the probabilities that a randomly drawn person has a cold in a year.
 
-***
-
+:::: {.blackbox }
 **Instructions** 
 
 -  Create a vector of proportions $\alpha$ and a vector of Poisson parameters $\lambda$.
@@ -586,8 +583,9 @@ In this exercise, we will use `R` to calculate the probabilities that a randomly
 -  In the same way, use the [ppois()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Poisson) function to compute the probability of at most 3 colds within a year.
 -  Now, consider $k=0, \ldots, 8$ colds during a year. For each value of $k$, determine the probability of $k$ colds within a year.
 -  Provide a [barplot()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/barplot) of the distribution of number of colds during a year over the range $k=0, \ldots, 8$.
+::::
 
-***
+<br>
 
 ```{r ex="LDA1.2.6.1", type="hint", tut=TRUE}
 Take some time to explore the online `R` documentation.
@@ -652,7 +650,7 @@ $$
 
 where $g(\cdot;\alpha, \beta = \theta )$ is a gamma density. The proof of this result is in the text; here, we check it using `R`, in the special case of $k=3$, $\alpha =3$, and $\theta = 4$. 
 
-
+:::: {.blackbox }
 **Instructions** 
 
 -  Establish the parameter values for $\alpha =3$ and $\theta = 4$.
@@ -660,8 +658,9 @@ where $g(\cdot;\alpha, \beta = \theta )$ is a gamma density. The proof of this r
 -  Express the product of the conditional Poisson mass function and the gamma density as a function of $\lambda$.
 -  [integrate()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/integrate) this product over values of $\lambda$. Check the result by using the negative binomial probability mass function.
 -  Repeat this process using distribution functions in lieu of probability mass functions. Specifically, express the product of the conditional Poisson **distribution** function and the gamma **density** as a function of $\lambda$. Integrate this and check the result using the negative binomial **distribution** function.
+::::
 
-***
+<br>
 
 ```{r ex="LDA1.2.6.2", type="hint", tut=TRUE}
 For the last part of this problem, it is easy to get confused about which is a df and which is a pmf (or pdf). Remember, we are integrating over different values of lambda and this distribution is determined by the gamma process. So, the gamma stays as a pdf.

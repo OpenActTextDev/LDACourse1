@@ -232,7 +232,7 @@ S <- rep(??, r)
 
 for(j in 1:r) { 
   x1_j <- runif(n1[j], min=m1, max=??)
-  x2_j <- runif(??_, min=??, max=M2)
+  x2_j <- runif(??, min=??, max=M2)
   S[j] <- sum(x1_j)+sum(??)
 }
 ??(S) 
@@ -362,7 +362,7 @@ freq_lik <- function(parm) {
   return(lik)
 }
 init.parm.freq <- c(mean(N)/(var(N)/mean(N)-1), var(N)/mean(N)-1) # initial estimates by method of moments
-freq_mod       <- ??_(par=init.parm.freq, fn=??) # Maximum likelihood estimation for the frequency model
+freq_mod       <- ??(par=init.parm.freq, fn=??) # Maximum likelihood estimation for the frequency model
 
 r.est    <- freq_mod$par[1]
 beta.est <- freq_mod$par[2]
@@ -383,7 +383,7 @@ sev_lik <- function(parm) {
   return(lik)
 }
 init.parm.sev <- c( 2/(1-mean(Xbar)^2/var(Xbar))  , mean(Xbar)*(2/(1-mean(Xbar)^2/var(Xbar))-1) ) # initial estimates by method of moments
-sev_mod       <- ??_(par=??, fn=sev_lik, method="L-BFGS-B") # Maximum likelihood estimation for the severity model
+sev_mod       <- ??(par=??, fn=sev_lik, method="L-BFGS-B") # Maximum likelihood estimation for the severity model
 alpha.est     <- sev_mod$par[1]
 theta.est     <- sev_mod$par[2]
 
@@ -1069,8 +1069,8 @@ theta.est     <- sev_mod$par[2]
 # Parameter estimates from the frequency model: alpha.est, theta.est
 # Parameter estimates from the severity  model:     r.est,  beta.est
 
-freq <- expression(data =  ????(size=??, prob=1/(1+??_)))  # random samples from the fitted frequency model
-sev  <- expression(data =  ????(shape=????, scale=????)) # random samples from the fitted severity model
+freq <- expression(data =  ??(size=??, prob=1/(1+??)))  # random samples from the fitted frequency model
+sev  <- expression(data =  ??(shape=??, scale=??)) # random samples from the fitted severity model
 Fs   <- aggregateDist("simulation", nb.simul = 1000,
                       model.freq = ??, model.sev = ??)
 plot(Fs)
@@ -1190,7 +1190,7 @@ source("https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/RCode/T
 InsampleTown <- subset(Insample, TypeTown==1)
 
 # The Tweedie compound loss model: S
-S <- ??_$y
+S <- ??$y
 comploss_lik <- function(parm) {
   mu    <- parm[1]
   phi   <- parm[2]
@@ -1199,8 +1199,8 @@ comploss_lik <- function(parm) {
   return(lik)
 }
 init.parm.comploss <- c( mean(S), 300, 1.5)    # initial estimates 
-comploss_mod       <- optim(par=????,
-                            fn=????, method="L-BFGS-B") # Maximum likelihood estimation for the compound loss model
+comploss_mod       <- optim(par=??,
+                            fn=??, method="L-BFGS-B") # Maximum likelihood estimation for the compound loss model
 
 
 mu.est  <- comploss_mod$par[1]

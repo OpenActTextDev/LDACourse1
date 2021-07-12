@@ -71,7 +71,7 @@ The intent is that this type of short course will eventually permeate throughout
 -  When a tutorial exercise finishes with a graph, the (green) success message is obscured. To see it, after completing the exercise, hit the “R-Console” button at the top. Then re-size the html page and immediately revert back to the full page mode. This procedure allows you to view the message.
 
 
-## A word from our Sponsor: <br> Astin + Education = Astin Academy {-}
+## A Word from our Sponsor: <br> Astin + Education = Astin Academy {-}
 
 ***
 

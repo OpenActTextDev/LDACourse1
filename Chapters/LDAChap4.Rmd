@@ -260,7 +260,7 @@ success_msg("Excellent! This is a very beautiful graphic with colors! We observe
 
 **Assignment Text**
 
-In this tutorial, you will model claims count data and decide whether a Poisson$(\lambda)$ or a Negative Binomial$(r=3,p)$ better fits the data.  The raw data are the number of claims filed by $n=100$ policyholders.  Recall that claims data are discrete, and take values $0, 1, 2, ...$ and so we consider two discrete probability models.  You will apply tools learned in Section 4.1 to make a decision on which model fits these data better.
+In this tutorial, you will model claims count data and decide whether a Poisson$(\lambda)$ or a Negative Binomial$(r=3,p)$ better fits the data.  The raw data are the number of claims filed by $n=100$ policyholders.  Recall that claims data are discrete, and take values $0, 1, 2, \dots$ and so we consider two discrete probability models.  You will apply tools learned in Section 4.1 to make a decision on which model fits these data better.
 
 We also start with exploratory data analysis, making graphical and numeric summaries of data before fitting a model.
 
@@ -271,7 +271,7 @@ We also start with exploratory data analysis, making graphical and numeric summa
 
 - Make a [table](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/table) of the claims counts
 - Make a [barplot](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/barplot) to graphically display the claims counts
-- Compute the [mean](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/mean) and [variance](http://www.r-tutor.com/elementary-statistics/numerical-measures/variance) of the claims count distribution.  Based on these, do you think a Poisson or a Negative Binomial model might be better?
+- Compute the [mean](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/mean) and [variance](http://www.r-tutor.com/elementary-statistics/numerical-measures/variance) of the claims count distribution.  Based on these, do you think a Poisson or a negative binomial model might be better?
 
 :::: 
 
@@ -386,18 +386,18 @@ abline(0,1)
 success_msg("Nice!  But it's not a *great* fit, is it?")
 ```
 
-Do you notice how the empirical quantiles don't match the model for some of the larger values in the right tail?  This plot says the empirical quantiles are too large, that's why they are above the diagonal line $y=x$.  Our claims data are too right-skewed, and that's why the $qq$ plot seems off for larger quantiles.  Might the Negative Binomial might be more promising?
+Do you notice how the empirical quantiles do not match the model for some of the larger values in the right tail?  This plot says the empirical quantiles are too large, that's why they are above the diagonal line $y=x$.  Our claims data are too right-skewed, and that's why the $qq$ plot seems off for larger quantiles.  Might the negative binomial might be more promising?
 
 :::: {.blackbox }
 
 **Instructions**. 
 
-- Fit the Negative Binomial by using the method of moments estimator to estimate $p$.
+- Fit the negative binomial by using the method of moments estimator to estimate $p$.
 - Make a $qq$ plot comparing the observed data to the fitted Negative Binomial.
 
 ::::
 
-To fit the Negative Binomial ($r=3, \beta$), we need to estimate the parameter $\beta$ using the method of moments.  Recall that the probability mass function for a Negative Binomial (Sec 2.2.3.3) is
+To fit the Negative Binomial($r=3, \beta$), we need to estimate the parameter $\beta$ using the method of moments.  Recall that the probability mass function for a negative binomial (Sec 2.2.3.3) is
 \[
 P(X = k) = \frac{(k+r-1)!}{k!(r-1)!}\left(\frac{1}{1+\beta}\right)^r \left(\frac{\beta}{1+\beta} \right)^k, \hspace{5mm} k=0, 1, ...
 \]
@@ -411,7 +411,7 @@ E(X) = r\beta = 3\beta = \bar{x} = 3
 $$
 Solving the above for $\beta$, we see $\hat{\beta} = 1$.  Therefore the Negative Binomial($r=3, \beta=1$) is the fitted model.  
 
-Next, we use R to fit this and make a qq plot.  It is important to understand that distributions are not uniquely parameterized, and there can be different conventions across fields, textbooks, and software.  Indeed, in R the function \texttt{qnbinom} defines the Negative Binomial as
+Next, we use `R` to fit this and make a qq plot.  It is important to understand that distributions are not uniquely parameterized, and there can be different conventions across fields, textbooks, and software.  Indeed, in `R` the function \texttt{qnbinom} defines the negative binomial as
 \[
 P(X = x) = \frac{(x+n-1)!}{(n-1)!x!}p^n(1-p)^x, \hspace{5mm} x=0, 1, ...
 \]
@@ -947,8 +947,8 @@ positive_loss_limit <- positive_loss %>% rowwise() %>% mutate(AmountPaid=??)
 # Add UnCensored column: traditional method
 positive_loss_limit$UnCensored <- ??
 
-# Print dataset
-head()
+# Print the beginning of the dataset
+head(??)
 
 ```
 
@@ -966,7 +966,7 @@ positive_loss_limit <- positive_loss %>% rowwise() %>% mutate(AmountPaid=min(y, 
 # Add UnCensored column: traditional method
 positive_loss_limit$UnCensored <- 1*(positive_loss_limit$AmountPaid < positive_loss_limit$PolicyLimit)
 
-# Print dataset
+# Print the beginning of the dataset
 head(positive_loss_limit)
 ```
 
