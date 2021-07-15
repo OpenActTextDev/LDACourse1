@@ -1559,50 +1559,50 @@ In this section, you learn how to:
 #### Overheads: Maximum Likelihood Estimation (Click Tab to View) {-}
 
 <div class="tab">
-  <button class="tablinks" onclick="openTab(event, 'Sect51A')">A. Overview</button>
-  <button class="tablinks" onclick="openTab(event, 'Sect51B')">B. Maximum Likelihood Estimators (MLEs) for Complete Data</button>
-  <button class="tablinks" onclick="openTab(event, 'Sect51C')">C. MLEs using Modified Data</button>
-  <button class="tablinks" onclick="openTab(event, 'Sect51D')">D. MLEs for Grouped Data</button>
-  <button class="tablinks" onclick="openTab(event, 'Sect51E')">E. MLEs for Censored Data</button>
-  <button class="tablinks" onclick="openTab(event, 'Sect51F')">F. MLEs for Truncated Data</button>
-  <button class="tablinks" onclick="openTab(event, 'Sect51G')">G. Exercise 3.5.1</button>
-  <button class="tablinks" onclick="openTab(event, 'Sect51H')">H. Exercise 3.5.2</button>
-  <button class="tablinks" onclick="openTab(event, 'Sect51I')">I. Review</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect351A')">A. Overview</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect351B')">B. Maximum Likelihood Estimators (MLEs) for Complete Data</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect351C')">C. MLEs using Modified Data</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect351D')">D. MLEs for Grouped Data</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect351E')">E. MLEs for Censored Data</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect351F')">F. MLEs for Truncated Data</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect351G')">G. Exercise 3.5.1</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect351H')">H. Exercise 3.5.2</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect351I')">I. Review</button>
   </div>
 
-<div id="Sect51A" class="tabcontent">
+<div id="Sect351A" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap3.pdf#page=82" width="100%" height="400"> </iframe>
   </div>
-<div id="Sect51B" class="tabcontent">
+<div id="Sect351B" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap3.pdf#page=83" width="100%" height="400"> </iframe>
   </div>
-<div id="Sect51C" class="tabcontent">
+<div id="Sect351C" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap3.pdf#page=84" width="100%" height="400"> </iframe>
   </div>
-<div id="Sect51D" class="tabcontent">
+<div id="Sect351D" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap3.pdf#page=85" width="100%" height="400"> </iframe>
   </div>
-<div id="Sect51E" class="tabcontent">
+<div id="Sect351E" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap3.pdf#page=86" width="100%" height="400"> </iframe>
   </div>
-<div id="Sect51F" class="tabcontent">
+<div id="Sect351F" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap3.pdf#page=87" width="100%" height="400"> </iframe>
   </div>
-<div id="Sect51G" class="tabcontent">
+<div id="Sect351G" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap3.pdf#page=88" width="100%" height="400"> </iframe>
   </div>
-<div id="Sect51H" class="tabcontent">
+<div id="Sect351H" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap3.pdf#page=89" width="100%" height="400"> </iframe>
   </div>
-<div id="Sect51I" class="tabcontent">
+<div id="Sect351I" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap3.pdf#page=90" width="100%" height="400"> </iframe>
   </div>

@@ -40,7 +40,52 @@ In this section, you learn how to:
 
 </center>
 
+#### Overheads: Basic Frequency Distributions (Click Tab to View) {-}
 
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Sect21A')">A. Frequency Distributions</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect21B')">B. Foundations</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect21C')">C. Probability Generating Function</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect21D')">D. Important Frequency Distributions</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect21E')">E. Poisson Distribution</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect21F')">F. Binomial Distribution</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect21G')">G. Negative Binomial Distribution</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect21H')">H. Review</button>
+  </div>
+
+<div id="Sect21A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap2.pdf#page=10" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect21B" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap2.pdf#page=11" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect21C" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap2.pdf#page=12" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect21D" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap2.pdf#page=13" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect21E" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap2.pdf#page=14" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect21F" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap2.pdf#page=15" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect21G" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap2.pdf#page=16" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect21H" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap2.pdf#page=17" width="100%" height="400"> </iframe>
+  </div>
 
 
 ### Exercise. Representing the Number of Cyber Events with a Binomial Distribution
@@ -274,6 +319,38 @@ success_msg("Excellent job! As you study actuarial data applications, do not shy
 
 
 ## The (a,b,0) Class
+
+####  Video: The (a,b,0) Class {-}
+
+<center>
+
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25717641/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_wmfy8z1y&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_qhfqhk7r" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *"  frameborder="0" title="Kaltura Player"></iframe>
+
+</center>
+
+#### Overheads: The (a,b,0) Class (Click Tab to View) {-}
+
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Sect22A')">A. (a, b, 0) Class</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect22B')">B. (a, b, 0) Class - Special Cases</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect22C')">C. Review</button>
+  </div>
+
+<div id="Sect22A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap2.pdf#page=19" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect22B" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap2.pdf#page=20" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect22C" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap2.pdf#page=21" width="100%" height="400"> </iframe>
+  </div>
+
+
 
 ### Exercise. Determining Probabilities Recursively
 
