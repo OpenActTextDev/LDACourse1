@@ -545,6 +545,58 @@ success_msg("Superb! Working forwards and backwards is important in complex task
 
 ## Mixture Distributions
 
+####  Video: Mixture Distributions {-}
+
+<center>
+
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25717641/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_8a24c5ar&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_a5yef0t6" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *"  frameborder="0" title="Kaltura Player"></iframe>
+
+</center>
+
+#### Overheads: Mixture Distributions (Click Tab to View) {-}
+
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Sect23A')">A. Discrete/Finite Mixtures</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect23B')">B. Discrete Mixture Probability Mass Function</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect23C')">C. Discrete Mixture Example</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect23D')">D. Mixture Moments</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect23E')">E. Continuous Mixtures</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect23F')">F. Continuous Mixtures II</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect23G')">G. Review</button>
+  </div>
+
+<div id="Sect23A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap2.pdf#page=35" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect23B" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap2.pdf#page=36" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect23C" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap2.pdf#page=37" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect23D" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap2.pdf#page=38" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect23E" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap2.pdf#page=39" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect23F" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap2.pdf#page=40" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect23G" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/LDA1.Chap2.pdf#page=41" width="100%" height="400"> </iframe>
+  </div>
+
+
+
 ### Exercise. Mixtures of Workers' Compensation Claims
 
 **Assignment Text**
