@@ -1,6 +1,7 @@
 book_filename: "LDAShortCourse"
 output_dir: "docs"
 rmd_files: ["index.Rmd", 
+            "Glossary.Rmd",
             "Chapters/LDAChap1.Rmd",
             "Chapters/LDAChap2.Rmd", 
             "Chapters/LDAChap3.Rmd",  
