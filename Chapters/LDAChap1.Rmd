@@ -9,7 +9,6 @@ This course introduces readers to methods of analyzing insurance data. Section \
 
 -  Although not needed to go through the tutorials, some users may wish to download the overheads that the videos are based on. <button download><a href="https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/LDA1.Overheads/LDA1.Chap1.pdf">Download Chapter One overheads as a .pdf file.</a></button>
 -  By watching the videos and working through the tutorial exercises, you will get an appreciation for the foundations of loss data analytics. For a deeper dive, see the corresponding chapter in the textbook, [Chapter One of *Loss Data Analytics*](https://openacttexts.github.io/Loss-Data-Analytics/C-Intro.html).
-
 :::: 
 
 ## Relevance of Analytics to Insurance Activities  {#Sec:Intro}
@@ -728,3 +727,10 @@ success_msg("Excellent! Modifying someone else's code can be more difficult than
 
 ```{r child = './Quizzes/Quiz13.html', eval = QUIZ}
 ```
+
+
+## Contributors {-}
+
+-  **Authors**. **Yvonne Chueh**, Central Washington University, **Paul Johnson**, University of Wisconsin-Madison, and **Edward (Jed) Frees**, University of Wisconsin-Madison and Australian National University, are the principal authors of the initial version of this chapter.
+-  **Chapter Maintainers**. Please contact ??? and/or Jed <jfrees@bus.wisc.edu> for chapter comments and suggested improvments.
+

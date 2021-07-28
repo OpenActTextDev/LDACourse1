@@ -2,9 +2,6 @@
 
 # Aggregate Loss Models 
 
-**Draft - Chapter Not Yet Complete**
-
-<br>
 
 **Chapter description**
 
@@ -15,7 +12,6 @@ This chapter introduces probability models for describing the aggregate (total) 
 
 -  Although not needed to go through the tutorials, some users may wish to download the overheads that the videos are based on. <button download><a href="https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/LDA1.Overheads/LDA1.Chap5.pdf">Download Chapter Five overheads as a .pdf file.</a></button>
 -  By watching the videos and working through the tutorial exercises, you will get an appreciation for aggregate loss models. For a deeper dive, see the corresponding chapter in the textbook, [Chapter Five of *Loss Data Analytics*](https://openacttexts.github.io/Loss-Data-Analytics/C-AggLossModels.html).
-
 :::: 
 
 
@@ -134,12 +130,10 @@ In this section, we learn how to:
 In this assignment, we will revisit [Example 5.2.1](https://openacttexts.github.io/Loss-Data-Analytics/C-AggLossModels.html) in the textbook and generate using *simulation* in `R`. Even though we will "officially" start to work with simulation since Chapter 6, this exercise provides you an opportunity to taste a flavor of simulation with an example.
 
 :::: {.blackbox }
-
 **Instructions**
 
 -  Use the function [rbinom()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Binomial) to simulate the number of claims that follow *binomial* distribution. For reproducibility of results, fix the random seed as '1000' and generate 10,000 observations of claim frequencies for each group of policies.
 - Specify the size and probability when you simulate the number of claims with binomial distribution in each group of policies.
-
 ::::
 
 <br>
@@ -189,14 +183,12 @@ success_msg("Good job! This exercise is basically a recapitulation of Chapter 2 
 In this assignment, we will revisit [Example 5.2.1](https://openacttexts.github.io/Loss-Data-Analytics/C-AggLossModels.html) in the textbook and reproduce the theoretical results for moments calculation in individual risk models using *simulation* in `R`. We use the simulated frequencies for each group of policies in Exercise 5.5.2.1 and continue to simulate compound losses in an individual risk model as elaborated in [Section 5.4.2](https://openacttexts.github.io/Loss-Data-Analytics/C-AggLossModels.html#computing-the-aggregate-claims-distribution).
 
 :::: {.blackbox }
-
 **Instructions**
 
 -  Use the function [runif()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Uniform) to claim amounts that follow *uniform* distribution for each group of policies. 
 - Specify the parameters of uniform random variables, minimum and maximum values of claim amounts from each type of policies.
 - Initialize an empty vector of length $r$ to store $r$ observations of simulated $S$. In each simulation,  calculate $j$th simulated aggregate loss and store it in $j$th component of $S$ for $j=1, \ldots, R$.
 -  Compute mean and variance of $S$ by simulation using [mean()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/mean) and [var()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/cor), and compare these values to their corresponding theoretical values, 2,800 and 600,467, respectively.
-
 ::::
 
 <br>
@@ -326,7 +318,6 @@ In this section, we learn how to:
 In this assignment, we will fit a collective risk model for an actual portfolio of insurance contracts, **LGPIF** data with `R`. We use *negative binomial* and *Pareto* distributions for the frequency and severity components, respectively.
 
 :::: {.blackbox }
-
 **Instructions**
 
 -  Use the function [optim()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/optim) to find the maximum likelihood estimates of the frequency and severity distributions.
@@ -510,7 +501,6 @@ In this assignment, we will analyze aggregate loss distribution by combining fit
 
 
 :::: {.blackbox }
-
 **Instructions**
 
 
@@ -1162,7 +1152,6 @@ In this section, we learn how to:
 In this assignment, we will fit a Tweedie model for a collective risk model using observed compound losses in LGPIF data with `R`. Unlike the previous tutorials that required seperate model fitting for the frequency and severity components, use of Tweedie distribution enables us to fit a collective risk model in one step.
 
 :::: {.blackbox }
-
 **Instructions**
 
 - For the likelihood of the compound loss, We use [dtweedie()](https://www.rdocumentation.org/packages/tweedie/versions/2.3.3/topics/Tweedie), which is one of the built-in functions of `R` library [tweedie](https://cran.r-project.org/web/packages/tweedie/tweedie.pdf) .
@@ -1294,4 +1283,13 @@ In this section, we learn how to:
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap5.pdf#page=58" width="100%" height="400"> </iframe>
   </div>
+  
+
+## Contributors {-}
+
+-  **Authors**. **Himchan Jeong**, Simon Fraser University, and **Peng Shi**, University of Wisconsin-Madison, are the principal authors of the initial version of this chapter.
+-  **Chapter Maintainers**. Please contact ??? and/or Jed <jfrees@bus.wisc.edu> for chapter comments and suggested improvments.
+
+
+  
 

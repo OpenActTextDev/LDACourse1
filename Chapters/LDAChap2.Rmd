@@ -98,7 +98,7 @@ Based on these assumptions, you represent the total number of cyber events as a 
 
 
 :::: {.blackbox }
-**Instructions**. 
+**Instructions** 
 
 -  Identify the binomial distribution parameters for the number of cyber events in a 12 quarter (3 year) period.
 -  Calculate the probability that there are $k$ cyber events for $k = 0, 1, \ldots, 12$ using the function [dbinom()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Binomial).
@@ -700,7 +700,7 @@ In Exercise \@ref(Ex:CountDataCompression), the count data range was narrow - co
 
 
 :::: {.blackbox }
-**Instructions**. 
+**Instructions** 
 
 -  Using the dataframe `Insample`, create a smaller data set based on year 2007 experience
 -  From the 2007 experience, create a frequency table

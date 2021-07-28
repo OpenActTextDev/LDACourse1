@@ -1,12 +1,6 @@
 
-
-
-
 # Model Selection and Estimation
 
-**Draft - Chapter Not Yet Complete**
-
-<br>
 
 **Chapter description.**
 Chapters 2 and 3 have described how to fit parametric models to frequency and severity data, respectively. This chapter begins with the selection of models. To compare alternative parametric models, it is helpful to summarize data without reference to a specific parametric distribution. Section 4.1 describes nonparametric estimation, how we can use it for model comparisons and how it can be used to provide starting values for parametric procedures. The process of model selection is then summarized in Sections 4.2 and 4.3. Although our focus is on data from continuous distributions, the same process can be used for discrete versions or data that come from a hybrid combination of discrete and continuous distributions. 
@@ -18,7 +12,6 @@ Model selection and estimation are fundamental aspects of statistical modeling. 
 
 -  Although not needed to go through the tutorials, some users may wish to download the overheads that the videos are based on. <button download><a href="https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/LDA1.Overheads/LDA1.Chap4.pdf">Download Chapter Four overheads as a .pdf file.</a></button>
 -  By watching the videos and working through the tutorial exercises, you will get an appreciation for model selection and estimation. For a deeper dive, see the corresponding chapter in the textbook, [Chapter Four of *Loss Data Analytics*](https://openacttexts.github.io/Loss-Data-Analytics/C-ModelSelection.html).
-
 :::: 
 
 
@@ -126,7 +119,6 @@ In this tutorial, you will find empirical distribution and quantiles for the los
 
 
 :::: {.blackbox }
-
 **Instructions**
 
 -  Use the function [ecdf()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/ecdf) to create the empirical distribution for loss amount `y` and plot it.
@@ -196,8 +188,7 @@ success_msg("Excellent start! Year 2007 has the largest 90th percentiles.")
 Nonparametric density estimators, such as the kernel estimator, are regularly used in practice. In this tutorial, We will use the Wisconsin Property Fund data, which already has been read into a data frame called `Insample`, to plot a histogram and overlay density curves with various density estimators. 
 
 :::: {.blackbox }
-
-**Instructions**.
+**Instructions**
 
 -  Please plot a histogram of logarithmic loss amount `y`.
 -  Use the function [density()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/density) to compute kernel density estimates.
@@ -205,7 +196,6 @@ Nonparametric density estimators, such as the kernel estimator, are regularly us
     - using (blue) thick curve to represent a Gaussian kernel density where the bandwidth was selected automatically using an ad hoc rule based on the sample size and volatility of these data, 
     - using (green) thick curve to represent a Gaussian kernel density with a bandwidth equal to 1,
     - using (red) thick curve to represent a Triangular kernel density with a bandwidth of 0.1.
-
 :::: 
 
 <br>
@@ -265,14 +255,11 @@ In this tutorial, you will model claims count data and decide whether a Poisson$
 We also start with exploratory data analysis, making graphical and numeric summaries of data before fitting a model.
 
 :::: {.blackbox }
-
-**Instructions**. 
-
+**Instructions** 
 
 - Make a [table](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/table) of the claims counts
 - Make a [barplot](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/barplot) to graphically display the claims counts
 - Compute the [mean](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/mean) and [variance](http://www.r-tutor.com/elementary-statistics/numerical-measures/variance) of the claims count distribution.  Based on these, do you think a Poisson or a negative binomial model might be better?
-
 :::: 
 
 <br>
@@ -323,14 +310,12 @@ $$
 We would expect the sample mean and sample variance to be roughly equal if the claims data came from the Poisson... our first clue this distribution may not be best!
 
 :::: {.blackbox }
-
-**Instructions**. 
+**Instructions** 
 
 - Fit the Poisson distribution by estimating $\lambda$ using maximum likelihood estimation.
 - Make a $qq$ plot comparing the observed data to the fitted Poisson.  
 
 Fitting the distribution involves estimating the parameter $\lambda$.  Do you recall the maximum likelihood estimator for a Poisson?  If not, this is shown in the companion video for this tutorial.
-
 :::: 
 
 <br>
@@ -389,12 +374,10 @@ success_msg("Nice!  But it's not a *great* fit, is it?")
 Do you notice how the empirical quantiles do not match the model for some of the larger values in the right tail?  This plot says the empirical quantiles are too large, that's why they are above the diagonal line $y=x$.  Our claims data are too right-skewed, and that's why the $qq$ plot seems off for larger quantiles.  Might the negative binomial might be more promising?
 
 :::: {.blackbox }
-
-**Instructions**. 
+**Instructions** 
 
 - Fit the negative binomial by using the method of moments estimator to estimate $p$.
 - Make a $qq$ plot comparing the observed data to the fitted Negative Binomial.
-
 ::::
 
 To fit the Negative Binomial($r=3, \beta$), we need to estimate the parameter $\beta$ using the method of moments.  Recall that the probability mass function for a negative binomial (Sec 2.2.3.3) is
@@ -534,8 +517,7 @@ In this section, you learn how to:
 Probability-Probability (PP) plots can be used to corroborate the selection of parametric models. The Wisconsin Property Fund data has already been read into a data frame called `Insample` and we created subset data which contains the positive loss data called `positive_loss`. In this tutorial, you will generate PP plots with Gaussian and Gamma distribution.
 
 :::: {.blackbox }
-
-**Instructions**.
+**Instructions**
 
 -  Please generate PP plots for the positive loss amount `y` using Gaussian and Gamma. Based on PP plots, which parametric fitted model is closer to the empirical distribution?
 -  Use the function [glm(response~1,data=,family=Gamma(link=log))](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/glm) to fit generalized linear model (GLM) with gamma family.
@@ -545,7 +527,6 @@ Probability-Probability (PP) plots can be used to corroborate the selection of p
 -  Use the function [ecdf()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/ecdf) to create the empirical distribution for positive loss.
 -  Use the function [pgamma()](https://www.rdocumentation.org/packages/Rlab/versions/2.15.1/topics/Gamma) to create distribution function for the Gamma distribution.
 -  Use the function [pnorm()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Normal) to create distribution function for the Gaussian distribution.
-
 :::: 
 
 <br>
@@ -632,14 +613,12 @@ success_msg("Good job! PP plot is able to compare cumulative probabilities under
 PP plot shows cumulative distribution functions, which can sometimes be difficult to detect where a fitted parametric distribution is deficient. As an alternative, it is common to use a quantile-quantile (QQ) plot. The Wisconsin Property Fund data has already been read into a data frame called `Insample` and we also created a subset data which included only positive loss data called `positive_loss`. In this tutorial, you will generate QQ plots with Gaussian and Gamma distribution.
 
 :::: {.blackbox }
-
-**Instructions**.
+**Instructions**
 
 -  Please generate QQ plots for the positive loss amount `y` using Gaussian and Gamma. Based on the QQ plot, which parametric fitted model is closer to the empirical distribution?
 -  Find sample size, mean, variance, and standard deviation for the positive loss. `p_value` is a list of probabilities, given here.  
 -  Use the function [qnorm()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Normal) to create quantile function for the Gaussian distribution.
 -  Use the function [qgamma()](https://www.rdocumentation.org/packages/Rlab/versions/2.15.1/topics/Gamma) to create quantile function for the Gamma distribution.
-
 ::::
 
 <br>
@@ -737,12 +716,10 @@ For reporting results, it can be effective to supplement the graphical displays 
 
 
 :::: {.blackbox }
-
-**Instructions**.
+**Instructions**
 
 -  Compare the empirical positive loss amount `y` distribution to gamma distribution by performing the Kolmogorov-Smirnov test.
 -  Use the function [ks.test](https://www.rdocumentation.org/packages/dgof/versions/1.2/topics/ks.test) to perform Kolmogorov-Smirnov test.
-
 :::: 
 
 <br>
@@ -904,13 +881,11 @@ In this section, you learn how to:
 Placing insurance deductibles generate truncated data (from the left), while policy limits produce censored data (from the right). The Wisconsin Property Fund data has already been read into a data frame called `Insample`. These data consist of claim experience for fund members over the years 2006-2010, inclusive. In addition, we created a subset data which included only positive loss data called `positive_loss`. Under hypothetical policy limit, 100000 USD, and deductible information, `Deduct`, in dataset, please find Kaplan-Meier Product Limit Estimator and the Nelson-Äalen estimator of the positive loss distribution function. Please plot the survival function accordingly.
 
 :::: {.blackbox }
-
-**Instructions**.
+**Instructions**
 
 -  Create the hypothetical policy limit, 100000 USD, and attach it to `positive_loss` data.
 -  Add actual payment column using `dplyr` data wrangling package. 
 -  Add UnCensored column using the traditional method.
-
 ::::
 
 <br>
@@ -978,13 +953,11 @@ success_msg("Getting started is always the hardest thing to do. Excellent start!
 ### Exercise. Nonparametric Estimation using Modified Data II
 
 :::: {.blackbox }
-
-**Instructions**.
+**Instructions**
 
 -  Under hypothetical policy limit, 100000 USD, use the Kaplan-Meier product limit [survfit()](https://www.rdocumentation.org/packages/survival/versions/2.11-4/topics/survfit) to estimate the survival function for the right-censored empirical distribution for the positive loss amount `y`.
 -  Under hypothetical policy limit, use the Nelson-Aalen estimate of the cumulative hazard function to obtain an estimate of the survival function for the right-censored empirical distribution for the positive loss amount `y`. 
 -  Under hypothetical policy limit and deductible information, use the Nelson-Aalen estimate of the cumulative hazard function to obtain an estimate of the survival function for the left-truncated and right-censored empirical distribution function for the positive loss amount `y`.
-
 :::: 
 
 <br>
@@ -1204,13 +1177,11 @@ two observations from a Bernoulli(q) were $X_1 = 1, X_2 = 0$, and the posterior 
 \]
 
 :::: {.blackbox }
-
-**Instructions**. 
+**Instructions** 
 
 - Make a [plot](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/plot) of the prior distribution
 - Think about how you expect the observed data to reshape it to the posterior.
 - Add the posterior and a legend to your plot, to confirm the influence of the observed data.  This requires advanced commands such as [lines](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/lines) and [legend](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/legend)
-
 ::::
 
 <br>
@@ -1276,12 +1247,12 @@ Indeed, the posterior has shifted the mass towards lower values, balancing what 
 Let's continue with the prior example, but now imagine we next observe the third year, and there was again no claim, $X_3 = 0$.  We will compute the new posterior distribution, and compare it to the posterior in the previous problem.
 
 :::: {.blackbox }
-
-**Instructions**. 
+**Instructions** 
 
 - Make a plot showing the original prior, posterior from example 4.1.1, and posterior for the new case.
-
 ::::
+
+<br>
 
 The posterior distribution after observing three data points is:
 
@@ -1338,6 +1309,8 @@ success_msg("Nice!")
 ```
   
 
+## Contributors {-}
 
-<!-- ```{r child = './Quizzes/Quiz44.html', eval = QUIZ} -->
-<!-- ``` -->
+-  **Authors**. **Rob Erhardt**, Wake Forest University, **Brian Hartman**, Brigham Young University, and **Zhiyu (Frank) Quan**, University of Illinois at Urbana-Champaign, are the principal authors of the initial version of this chapter.
+-  **Chapter Maintainers**. Please contact ??? and/or Jed <jfrees@bus.wisc.edu> for chapter comments and suggested improvments.
+

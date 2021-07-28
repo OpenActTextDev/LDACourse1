@@ -41,7 +41,7 @@ exercise.-determining-moments-using-moment-generating-functions
 continuous-distributions
 exercise.
 exercise.-visualizing-the-gamma-distribution
-exercise.-creating-a-pareto-density-function
+Ex:CreateParetoDensityFct
 methods-of-creating-new-distributions
 exercise.-using-the-logarithmic-transformation-to-create-a-new-distribution
 exercise.-creating-a-mixture-distribution
@@ -51,7 +51,7 @@ exercise.-calculate-limited-expected-value-of-the-lognormal-distribution
 exercise.-expected-claims-subject-to-a-deductible
 exercise.-expected-claims-subject-to-a-deductible-and-coinsurance
 maximum-likelihood-estimation
-exercise.-maximum-likelihood-estimation-for-a-pareto-distribution
+Ex:MLEPareto
 exercise.-finding-standard-errors-for-maximum-likelihood-estimates
 model-selection-and-estimation
 nonparametric-inference
