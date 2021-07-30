@@ -67,7 +67,7 @@ The intent is that this type of short course will eventually permeate throughout
 **A Few More Tips**
 
 -  When completing the tutorial exercises, replace the question marks **??** by the appropriate code (in earlier versions, we used underscores).
--  When you view the .pdf output for the overheads, the default is for the table of contents to appear. The fix for this is to click the icon in the upper left-hand corner. 
+-  When you view the .pdf output for the overheads with the browser FireFox, the default is for the table of contents to appear. The fix for this is to click the icon in the upper left-hand corner. For other browsers we tested (Edge and Chrome), on the .pdf appears. You will have to scroll down to the appropriate page to see the desired output.
 -  The graphical displays upon completion of the tutorial exercises appear only in the narrow window of the code and do not look good. This is a limitation of the *Datacamp* platform. For a more professional looking graph, you can simply copy the code and paste it into your own version of `R` to enhance its appearance.
 -  When a tutorial exercise finishes with a graph, the (green) success message is obscured. To see it, after completing the exercise, hit the “R-Console” button at the top. Then re-size the html page and immediately revert back to the full page mode. This procedure allows you to view the message.
 
