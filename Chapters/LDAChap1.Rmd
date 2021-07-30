@@ -25,7 +25,7 @@ In this section, you learn how to:
 
 ####  Video: Insurance and Analytics {-}
 
-</center>
+<center>
 
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25717641/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_y5vvlr9x&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_dy562ouk" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *"  frameborder="0" title="Kaltura Player"></iframe>
 
@@ -61,6 +61,7 @@ In this section, you learn how to:
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap1.pdf#page=7" width="100%" height="400"> </iframe>
   </div>
+
 
 
 ```{r child = './Quizzes/Quiz11.html', eval = QUIZ}
@@ -125,6 +126,10 @@ In this section, we use the Wisconsin Property Fund as a case study. You learn h
 - Describe how these summary statistics can be used to develop the cost of insurance.
 
 ***
+
+:::: {.blackbox }
+Sections \@ref(Sec:LGPIF), \@ref(Sec:PropertyFundSeverity), and \@ref(Sec:LGPIFRatingVariaables) analyze aspects of the Wisconsin Property Fund. Although not needed for these tutorials, you may wish to get further background on these data  that is summarized in [Section 1.3 of *Loss Data Analytics*](https://openacttextdev.github.io/LDACourse1/introduction-to-loss-data-analytics.html#Sec:LGPIF). Further, as noted in the Preface, although not needed for the tutorials, you can go to <button download><a href="https://raw.githubusercontent.com/OpenActTextDev/LDAShortCourse1/main/Data/PropertyFundInsample.csv">View the Property Fund Data as a .csv file.</a></button> Then, do a "Save Page as" if you wish to download. Alternatively, go directly to the [Github page](https://github.com/OpenActTextDev/LDAShortCourse1/tree/main/Data) to access the data.
+:::: 
 
 ####  Video: Introducing the Wisconsin Property Fund {-}
 
@@ -284,7 +289,7 @@ ex() %>% check_object("Tab2009", undefined_msg=Error25) %>% check_equal(incorrec
 success_msg("Getting started is always the hardest thing to do. Excellent start!")
 ```
 
-## Property Fund Claim Severity 
+## Property Fund Claim Severity {#Sec:PropertyFundSeverity}
 
 ####  Video: Claim Severity for the Wisconsin Property Fund  {-}
 
@@ -545,6 +550,8 @@ Much of insurance analytics is about making predictions of future behavior. To u
 
 <br>
 
+xx
+
 ```{r ex="LDA1.1.4.3", type="pre-exercise-code", tut=TRUE}
 Insample <- read.csv("https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/Data/Insample.csv", header=T,
                       na.strings=c("."), stringsAsFactors=FALSE)
@@ -582,7 +589,7 @@ success_msg("Excellent! Presenting the right summary statistics in a clean way i
 ```
 
 
-## Property Fund Rating Variables 
+## Property Fund Rating Variables {#Sec:LGPIFRatingVariaables} 
 
 #### Video: Rating Variables for the Wisconsin Property Fund {-}
 
@@ -649,7 +656,7 @@ Insample <- read.csv("https://raw.githubusercontent.com/OpenActTextDev/LDACourse
 ```
 
 
-```{r ex="LDA1.1.4.3", type="hint", tut=TRUE}
+```{r ex="LDA1.1.5.1", type="hint", tut=TRUE}
 To compute standard deviations, you can use the function [sd()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/sd).
 ```
 

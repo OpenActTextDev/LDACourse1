@@ -3,11 +3,11 @@ Sec:Intro
 Sec:PredModApps
 Sec:LGPIF
 exercise.-claim-frequency
-property-fund-claim-severity
+Sec:PropertyFundSeverity
 exercise.-exploring-claim-severities
 exercise.-skewness-of-the-claim-severity-distribution
 exercise.-claim-severity-by-year
-property-fund-rating-variables
+Sec:LGPIFRatingVariaables
 exercise.-claim-by-entity-type-fire-class-and-no-claim-credit
 frequency-modeling
 basic-frequency-distributions

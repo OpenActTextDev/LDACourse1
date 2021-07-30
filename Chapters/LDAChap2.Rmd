@@ -1458,6 +1458,44 @@ In this section, you learn how to:
 
 ***
 
+####  Video: Goodness of Fit {-}
+
+<center>
+
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25717641/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_svaw2bgx&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_1bvm4vxr" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *"  frameborder="0" title="Kaltura Player"></iframe>
+
+</center>
+
+#### Overheads: Goodness of Fit (Click Tab to View) {-}
+
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Sect26A')">A. The Goodness of Fit Problem</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect26B')">B. Example: Singapore Automobile Data</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect26C')">C. Fitting a Poisson</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect26D')">D. Adequacy of the Poisson Model</button>
+  </div>
+
+<div id="Sect26A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/Chapter2.7-Shyamal.pdf#page=2" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect26B" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/Chapter2.7-Shyamal.pdf#page=3" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect26C" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/Chapter2.7-Shyamal.pdf#page=4" width="100%" height="400"> </iframe>
+  </div>
+<div id="Sect26D" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <iframe src="./Overheads/Chapter2.7-Shyamal.pdf#page=5" width="100%" height="400"> </iframe>
+  </div>
+
+
+
+
 ### Exercise. Goodness of Fit: Zero-Modified Poisson
 
 **Assignment Text**

@@ -17,8 +17,9 @@ description: "This is an interactive, online, freely available short course. It 
 
 ```{r include = FALSE}
 knitr::opts_chunk$set(results = "hold")
+#library(tutorial)
 tutorial::go_interactive(greedy = FALSE)
-QUIZ <- TRUE
+QUIZ <- FALSE
 ```
 
 
