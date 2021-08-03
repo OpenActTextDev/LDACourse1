@@ -46,7 +46,7 @@ The intent is that this type of short course will eventually permeate throughout
 ## How to Navigate this Tutorial {-}
 
 -  This online tutorial is designed to guide you through the foundations of modeling loss data. 
--  The anticipated completion time is approximately six hours.
+-  The anticipated completion time is approximately eight hours.
 -  The tutorial assumes that you are familiar with the foundations in the statistical software `R`, such as Datacamp's [Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r%20) or Codecademy's [Learn R](https://www.codecademy.com/learn/learn-r).
 
 **Role of Video Introductions.** There are five chapters in this tutorial that summarize the foundations. Each chapter is subdivided into several sections. At the beginning of each section is a short video, typically 6-8 minutes, that summarizes the section key learning outcomes. Following the video, you can see more details about the underlying `R` code for the analysis presented in the video. 
