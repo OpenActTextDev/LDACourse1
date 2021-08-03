@@ -330,7 +330,7 @@ var submitAnswer = function() {
 </ul></li>
 <li class="chapter" data-level="4" data-path="model-selection-and-estimation.html"><a href="model-selection-and-estimation.html"><i class="fa fa-check"></i><b>4</b> Model Selection and Estimation</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="model-selection-and-estimation.html"><a href="model-selection-and-estimation.html#nonparametric-inference"><i class="fa fa-check"></i><b>4.1</b> Nonparametric Inference</a>
+<li class="chapter" data-level="4.1" data-path="model-selection-and-estimation.html"><a href="model-selection-and-estimation.html#Sec:NonInf"><i class="fa fa-check"></i><b>4.1</b> Nonparametric Inference</a>
 <ul>
 <li class="chapter" data-level="4.1.1" data-path="model-selection-and-estimation.html"><a href="model-selection-and-estimation.html#exercise.-empirical-distribution-function-and-quartiles-percentiles-and-quantiles"><i class="fa fa-check"></i><b>4.1.1</b> Exercise. Empirical Distribution Function and Quartiles, Percentiles and Quantiles</a></li>
 <li class="chapter" data-level="4.1.2" data-path="model-selection-and-estimation.html"><a href="model-selection-and-estimation.html#exercise.-density-estimators"><i class="fa fa-check"></i><b>4.1.2</b> Exercise. Density Estimators</a></li>
@@ -360,7 +360,7 @@ var submitAnswer = function() {
 <li class="chapter" data-level="5.1" data-path="aggregate-loss-models.html"><a href="aggregate-loss-models.html#introduction"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
 <li class="chapter" data-level="5.2" data-path="aggregate-loss-models.html"><a href="aggregate-loss-models.html#individual-risk-model"><i class="fa fa-check"></i><b>5.2</b> Individual Risk Model</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="aggregate-loss-models.html"><a href="aggregate-loss-models.html#exercise.-individual-risk-model-i"><i class="fa fa-check"></i><b>5.2.1</b> Exercise. Individual Risk Model I</a></li>
+<li class="chapter" data-level="5.2.1" data-path="aggregate-loss-models.html"><a href="aggregate-loss-models.html#Ex:IRM1"><i class="fa fa-check"></i><b>5.2.1</b> Exercise. Individual Risk Model I</a></li>
 <li class="chapter" data-level="5.2.2" data-path="aggregate-loss-models.html"><a href="aggregate-loss-models.html#exercise.-individual-risk-model-ii"><i class="fa fa-check"></i><b>5.2.2</b> Exercise. Individual Risk Model II</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="aggregate-loss-models.html"><a href="aggregate-loss-models.html#collective-risk-model---part-i"><i class="fa fa-check"></i><b>5.3</b> Collective Risk Model - Part I</a>
@@ -400,7 +400,8 @@ var submitAnswer = function() {
             <section class="normal" id="section-">
 <div id="modeling-loss-severity" class="section level1" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Modeling Loss Severity</h1>
-<p><strong>Chapter description.</strong> The traditional loss distribution approach to modeling aggregate losses starts by separately fitting a frequency distribution to the number of losses and a severity distribution to the size of losses. The estimated aggregate loss distribution combines the loss frequency distribution and the loss severity distribution by convolution. Discrete distributions often referred to as counting or frequency distributions were used in Chapter 2 to describe the number of events such as number of accidents to the driver or number of claims to the insurer. Lifetimes, asset values, losses and claim sizes are usually modeled as continuous random variables and as such are modeled using continuous distributions, often referred to as loss or severity distributions. A mixture distribution is a weighted combination of simpler distributions that is used to model phenomenon investigated in a heterogeneous population, such as modeling more than one type of claims in liability insurance (small frequent claims and large relatively rare claims). In this chapter we explore the use of continuous as well as mixture distributions to model the random size of loss.</p>
+<p><strong>Chapter Description</strong></p>
+<p>The traditional loss distribution approach to modeling aggregate losses starts by separately fitting a frequency distribution to the number of losses and a severity distribution to the size of losses. The estimated aggregate loss distribution combines the loss frequency distribution and the loss severity distribution by convolution. Discrete distributions often referred to as counting or frequency distributions were used in Chapter 2 to describe the number of events such as number of accidents to the driver or number of claims to the insurer. Lifetimes, asset values, losses and claim sizes are usually modeled as continuous random variables and as such are modeled using continuous distributions, often referred to as loss or severity distributions. A mixture distribution is a weighted combination of simpler distributions that is used to model phenomenon investigated in a heterogeneous population, such as modeling more than one type of claims in liability insurance (small frequent claims and large relatively rare claims). In this chapter we explore the use of continuous as well as mixture distributions to model the random size of loss.</p>
 <div class="blackbox">
 <ul>
 <li>Although not needed to go through the tutorials, some users may wish to download the overheads that the videos are based on. <button download><a href="https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/LDA1.Overheads/LDA1.Chap3.pdf">Download Chapter Three overheads as a .pdf file.</a></button></li>
@@ -519,7 +520,7 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImRhdGEoXCJhbnNjb21iZVwiKVxuaW5z
 <div id="exercise.-determining-boxplots-and-quantiles" class="section level3" number="3.1.2">
 <h3><span class="header-section-number">3.1.2</span> Exercise. Determining Boxplots and Quantiles</h3>
 <p><strong>Assignment Text</strong></p>
-<p>The <a href="https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/boxplot">boxplot()</a> function produces box-and-whisker plots of grouped values. The boxplot() function returns certain statistic and produces a plot as a side effect. Explore the to understand the values returned. In particular review the information returned by the <code>stats</code> attribute of this object.</p>
+<p>The <a href="https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/boxplot">boxplot()</a> function produces box-and-whisker plots of grouped values. The boxplot() function returns certain statistics and produces a plot as a side effect. Explore the documentation to understand the values returned. In particular review the information returned by the <code>stats</code> attribute of this object.</p>
 <p>The Wisconsin Property Fund data has already been read into a data frame called <code>Insample</code>. These data consist of claim experience for fund members over the years 2006-2010, inclusive. It includes claim values <code>y</code> as well as the claim year <code>Year</code>. For this exercise we will work with the natural logarithm of the claim values which are in the <code>lny</code> variable. We have filtered the data to exclude zero claims and saved the resulting data frame as <code>Insample_nz</code>.</p>
 <div class="blackbox">
 <p><strong>Instructions</strong></p>
@@ -591,7 +592,7 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJkTXh0ZHQgPC0gRChleHByID0gcGFyc2UodGV4dCA9IFwi
 <ul>
 <li>Calculate the mean (first moment) of the gamma distribution.</li>
 <li>Calculate the second raw moment of the gamma distribution.</li>
-<li>Calculate the variance (second central moment) of the gamma distribution</li>
+<li>Calculate the variance (second central moment) of the gamma distribution.</li>
 </ul>
 </div>
 <p><br></p>
@@ -610,7 +611,7 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6Ik14dGR0IDwtIEQoZXhwciA9IHBhcnNl
 <li>Weibull, and</li>
 <li>generalized beta distribution of the second kind.</li>
 </ul>
-<p><code>R</code> provides a “family” of functions associated with statistical distributions. The naming convention is to precede the distribution name with <code>d</code> for the density function, <code>p</code> for the cumulative distribution function, <code>q</code> for quantiles (percentiles), and <code>r</code> for random number generation. (We will set aside the <code>r</code> functions for Chapter 6 on Simulation and focus on <code>d</code>, <code>p</code>, and <code>q</code> functions.)</p>
+<p><code>R</code> provides a “family” of functions associated with statistical distributions. The naming convention is to precede the distribution name with <code>d</code> for the density function, <code>p</code> for the cumulative distribution function, <code>q</code> for quantiles (percentiles), and <code>r</code> for random number generation. (We will set aside the <code>r</code> functions for <a href="https://openacttexts.github.io/Loss-Data-Analytics/C-Simulation.html">Chapter 6 in <em>Loss Data Analytics</em></a> and focus on <code>d</code>, <code>p</code>, and <code>q</code> functions.)</p>
 <p>The <code>stats</code> packages which is provided with base-<code>R</code> includes the distributions listed <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Distributions">here</a>. Many other distributions are available in other <code>R</code> packages.</p>
 <p>For the exercises in the section, we will focus on the gamma distribution from <a href="https://openacttexts.github.io/Loss-Data-Analytics/C-Severity.html#S:Loss:Gamma">Section 3.2.1 of <em>Loss Data Analytics</em></a> to help you develop an intuition as to how the distribution responds to changes in its shape and scale parameter. From Figure 3.1, you should recognize that the support for the gamma distribution is positive real numbers. You’ll also note that the distribution allows for varying levels of “right-skewness.”</p>
 <hr />
@@ -723,7 +724,7 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6Indpc2NfcHJvcCA8LSByZWFkLmNzdihc
 <p><strong>Instructions</strong></p>
 <ul>
 <li>Write a function to find the density of a Pareto distribution.</li>
-<li>For this exercise you should refer to the Pareto distribution from <a href="https://openacttexts.github.io/Loss-Data-Analytics/C-Severity.html#S:Loss:Pareto">Section 3.2.2 of <em>Loss Data Analytics</em></a></li>
+<li>For this exercise you should refer to the Pareto distribution from <a href="https://openacttexts.github.io/Loss-Data-Analytics/C-Severity.html#S:Loss:Pareto">Section 3.2.2 of <em>Loss Data Analytics</em></a>.</li>
 </ul>
 </div>
 <p><br></p>
@@ -737,9 +738,9 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFdyaXRlIGEgZnVuY3Rpb24gdG8gZmluZCB0aGUgZGVu
 <hr />
 <p>In this section, you learn how to:</p>
 <ul>
-<li>Understand connections among the distributions</li>
-<li>Give insights into when a distribution is preferred when compared to alternatives</li>
-<li>Provide foundations for creating new distributions</li>
+<li>Understand connections among the distributions.</li>
+<li>Give insights into when a distribution is preferred when compared to alternatives.</li>
+<li>Provide foundations for creating new distributions.</li>
 </ul>
 <hr />
 <div id="video-creating-distributions-i" class="section level4 unnumbered">
@@ -859,7 +860,7 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFdyaXRlIGEgZnVuY3Rpb24gdG8gZmluZCB0aGUgZGVu
 <div id="exercise.-using-the-logarithmic-transformation-to-create-a-new-distribution" class="section level3" number="3.3.1">
 <h3><span class="header-section-number">3.3.1</span> Exercise. Using the Logarithmic Transformation to Create a New Distribution</h3>
 <p><strong>Assignment Text</strong></p>
-<p>For this exercise we will be modelling claim severity data with a gamma distribution, and we will then apply a log transformation to the distribution.</p>
+<p>For this exercise we will be modeling claim severity data with a gamma distribution, and we will then apply a log transformation to the distribution. (Recall that we use the natural logarithmic transform throughout, unless specified otherwise.)</p>
 <p>In this exercise we generate the probability density function (<em>pdf</em>) of the gamma distribution that corresponds with these parameters, and we then plot the <em>pdf</em> of the <em>log</em> of the claim severities, by transforming the gamma pdf. We will assume that the claim severities follow a gamma distribution with a known shape parameter <span class="math inline">\(\alpha=0.63\)</span> and scale parameter <span class="math inline">\(\theta=16897\)</span>.</p>
 <div class="blackbox">
 <p><strong>Instructions</strong></p>
@@ -1074,7 +1075,7 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyMzQ1KVxubXUgPC0g
 <div class="blackbox">
 <p><strong>Instruction</strong></p>
 <ul>
-<li>Calculate the expected value of the claims insured with a $ 5 million policy limit using the levlnorm() function and the compare to the amounts insured from <code>claims</code>.</li>
+<li>Calculate the expected value of the claims insured with a $ 5 million policy limit using the levlnorm() function and then compare to the amounts insured from <code>claims</code>.</li>
 </ul>
 </div>
 <p><br></p>
@@ -1168,9 +1169,9 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyMzQ1KVxubXUgPC0g
 <hr />
 <p>In this section, you learn how to:</p>
 <ul>
-<li>Define a likelihood for a sample of observations from a continuous distribution</li>
-<li>Define the maximum likelihood estimator for a random sample of observations from a continuous distribution</li>
-<li>Estimate parametric distributions based on grouped, censored, and truncated data</li>
+<li>Define a likelihood for a sample of observations from a continuous distribution.</li>
+<li>Define the maximum likelihood estimator for a random sample of observations from a continuous distribution.</li>
+<li>Estimate parametric distributions based on grouped, censored, and truncated data.</li>
 </ul>
 <hr />
 <div id="video-maximum-likelihood-estimation" class="section level4 unnumbered">
@@ -1234,13 +1235,13 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyMzQ1KVxubXUgPC0g
 <h3><span class="header-section-number">3.5.1</span> Exercise. Maximum Likelihood Estimation for a Pareto Distribution</h3>
 <p><strong>Assignment Text</strong></p>
 <p>For this exercise we will undertake maximum likelihood estimation to fit a Pareto distribution to claim severity data.</p>
-<p>Because we have two parameters in a Pareto distribution, undertaking maximum likelihood involves finding the estimates that maximise the likelihood surface. Visualising the likelihood surface may help to gain an appreciation of how maximum likelihood works. After finding the parameter estimates, we plot out a contour plot of the likelihood and mark the maximum likelihood estimates on the plot.</p>
+<p>Because we have two parameters in a Pareto distribution, undertaking maximum likelihood involves finding the estimates that maximize the likelihood surface. Visualizing the likelihood surface may help to gain an appreciation of how maximum likelihood works. After finding the parameter estimates, we plot out a contour plot of the likelihood and mark the maximum likelihood estimates on the plot.</p>
 <div class="blackbox">
 <p><strong>Instructions</strong></p>
 <ul>
 <li>Extract claim severity data from the Property Fund data.</li>
 <li>Write a function to calculate the negative log-likelihood for the claim severity data, assuming that claim severity is Pareto distributed. The <em>pdf</em> function for a Pareto distribution [dpareto()], which was created in Exercise <a href="modeling-loss-severity.html#Ex:CreateParetoDensityFct">3.2.3</a>, can be used when finding the negative log-likelihood.</li>
-<li>Find the maximum likelihood estimates by using <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/optim">optim()</a> to minimise the negative log-likelihood.</li>
+<li>Find the maximum likelihood estimates by using <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/optim">optim()</a> to minimize the negative log-likelihood.</li>
 <li>Plot a contour plot of the likelihood using <a href="https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/contour">contour()</a>, and use <a href="https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/points">points()</a> to mark the maximum likelihood estimates on the plot.</li>
 </ul>
 </div>
@@ -1252,9 +1253,9 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6Ikluc2FtcGxlIDwtIHJlYWQuY3N2KFwi
 <div id="exercise.-finding-standard-errors-for-maximum-likelihood-estimates" class="section level3" number="3.5.2">
 <h3><span class="header-section-number">3.5.2</span> Exercise. Finding Standard Errors for Maximum Likelihood Estimates</h3>
 <p><strong>Assignment Text</strong></p>
-<p>For this exercise we calculate 95% confidence intervals for the parameter estimates that we found in Exercise <a href="modeling-loss-severity.html#Ex:MLEPareto">3.5.1</a>.</p>
+<p>For this exercise we calculate 95% confidence intervals for the parameters based on estimates that we found in Exercise <a href="modeling-loss-severity.html#Ex:MLEPareto">3.5.1</a>.</p>
 <p>The parameters that we have estimated depend on the data, and since the data can be considered as a random sample from a larger unknown population, maximum likelihood estimators are random variables. A property of maximum likelihood is that the estimators converge in distribution to a normal distribution, as <span class="math inline">\(n\)</span> gets larger.</p>
-<p>If we minimise the negative log-likelihood, we can use the Hessian matrix (which is a matrix of the second-order partial derivatives) to find the variance of the estimators. Specifically, the standard errors of the estimators are equal to the square root of the diagonal elements of the inverse of the Hessian matrix.</p>
+<p>If we minimize the negative log-likelihood, we can use the Hessian matrix (which is a matrix of the second-order partial derivatives) to find the variance of the estimators. Specifically, the standard errors of the estimators are equal to the square root of the diagonal elements of the inverse of the Hessian matrix.</p>
 <p>Some useful <code>R</code> functions for this exercise are:</p>
 <ul>
 <li>The <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/solve">solve()</a> function can be used to find the inverse of a square matrix.</li>
@@ -1280,7 +1281,7 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6Ikluc2FtcGxlIDwtIHJlYWQuY3N2KFwi
 <h2>Contributors</h2>
 <ul>
 <li><strong>Authors</strong>. <strong>Tim Higgins</strong> , Australian National University, <strong>Fei Huang</strong>, University of New South Wales (UNSW) Sydney, <strong>Nii-Armah Okine</strong>, Appalachian State University, and <strong>Rajesh (Raj) Sahasrabuddhe</strong>, Oliver Wyman Actuarial Consulting, are the principal authors of the initial version of this chapter.</li>
-<li><strong>Chapter Maintainers</strong>. Please contact ??? and/or Jed <a href="mailto:jfrees@bus.wisc.edu" class="email">jfrees@bus.wisc.edu</a> for chapter comments and suggested improvments.</li>
+<li><strong>Chapter Maintainers</strong>. Please contact ??? and/or Jed at <a href="mailto:jfrees@bus.wisc.edu" class="email">jfrees@bus.wisc.edu</a> for chapter comments and suggested improvements.</li>
 </ul>
 
 </div>

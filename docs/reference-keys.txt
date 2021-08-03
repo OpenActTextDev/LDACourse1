@@ -54,7 +54,7 @@ maximum-likelihood-estimation
 Ex:MLEPareto
 exercise.-finding-standard-errors-for-maximum-likelihood-estimates
 model-selection-and-estimation
-nonparametric-inference
+Sec:NonInf
 exercise.-empirical-distribution-function-and-quartiles-percentiles-and-quantiles
 exercise.-density-estimators
 exercise.-claim-frequency-1
@@ -72,7 +72,7 @@ visualizing-bayesian-methods
 aggregate-loss-models
 introduction
 individual-risk-model
-exercise.-individual-risk-model-i
+Ex:IRM1
 exercise.-individual-risk-model-ii
 collective-risk-model---part-i
 exercise.-collective-risk-model-i

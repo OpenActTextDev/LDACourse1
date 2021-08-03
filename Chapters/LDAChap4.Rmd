@@ -1,8 +1,9 @@
 
 # Model Selection and Estimation
 
+**Chapter Description**
 
-**Chapter description.**
+
 Chapters 2 and 3 have described how to fit parametric models to frequency and severity data, respectively. This chapter begins with the selection of models. To compare alternative parametric models, it is helpful to summarize data without reference to a specific parametric distribution. Section 4.1 describes nonparametric estimation, how we can use it for model comparisons and how it can be used to provide starting values for parametric procedures. The process of model selection is then summarized in Sections 4.2 and 4.3. Although our focus is on data from continuous distributions, the same process can be used for discrete versions or data that come from a hybrid combination of discrete and continuous distributions. 
 
 Model selection and estimation are fundamental aspects of statistical modeling. To provide a flavor as to how they can be adapted to alternative sampling schemes, Sections 4.4 and 4.5 describes estimation for grouped, censored and truncated data. To see how they can be adapted to alternative models, the chapter closes with Section 4.6 on Bayesian inference, an alternative procedure where the (typically unknown) parameters are treated as random variables.
@@ -15,13 +16,13 @@ Model selection and estimation are fundamental aspects of statistical modeling. 
 :::: 
 
 
-## Nonparametric Inference 
+## Nonparametric Inference {#Sec:NonInf}
 
 ***
 
 In this section, you learn how to:
 
-- Estimate moments, quantiles, and distributions without reference to a parametric distribution
+- Estimate moments, quantiles, and distributions without reference to a parametric distribution.
 
 ***
 
@@ -114,15 +115,15 @@ In this section, you learn how to:
 
 **Assignment Text**
 
-In this tutorial, you will find empirical distribution and quantiles for the loss. The Wisconsin Property Fund data has already been read into a data frame called `Insample`. These data consist of claim experience for fund members over the years 2006-2010, inclusive. It includes the claim year `Year` and claim loss `y`.
+In this tutorial, you will find empirical (cumulative) distribution and quantiles for the loss. The Wisconsin Property Fund data has already been read into a data frame called `Insample`. These data consist of claim experience for fund members over the years 2006-2010, inclusive. It includes the claim year `Year` and claim loss `y`.
 
 
 
 :::: {.blackbox }
 **Instructions**
 
--  Use the function [ecdf()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/ecdf) to create the empirical distribution for loss amount `y` and plot it.
--  Use the function [quantile()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/quantile) to produce sample quantiles corresponding to the given percentiles for each year. Which year has the largest 90th percentiles? 
+-  Use the function [ecdf()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/ecdf) to create the empirical (cumulative) distribution for loss amount `y` and plot it.
+-  Use the function [quantile()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/quantile) to produce sample quantiles corresponding to the given percentiles for each year. Which year has the largest 90th percentile? 
 ::::
 
 <br>
@@ -190,12 +191,12 @@ Nonparametric density estimators, such as the kernel estimator, are regularly us
 :::: {.blackbox }
 **Instructions**
 
--  Please plot a histogram of logarithmic loss amount `y`.
+-  Plot a histogram of logarithmic loss amount `y`.
 -  Use the function [density()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/density) to compute kernel density estimates.
 -  Overlay density curves on top of the histogram: 
-    - using (blue) thick curve to represent a Gaussian kernel density where the bandwidth was selected automatically using an ad hoc rule based on the sample size and volatility of these data, 
-    - using (green) thick curve to represent a Gaussian kernel density with a bandwidth equal to 1,
-    - using (red) thick curve to represent a Triangular kernel density with a bandwidth of 0.1.
+    - using a blue thick curve to represent a Gaussian kernel density where the bandwidth was selected automatically using an ad hoc rule based on the sample size and volatility of these data, 
+    - using a green thick curve to represent a Gaussian kernel density with a bandwidth equal to 1,
+    - using a red thick curve to represent a triangular kernel density with a bandwidth of 0.1.
 :::: 
 
 <br>
@@ -250,15 +251,16 @@ success_msg("Excellent! This is a very beautiful graphic with colors! We observe
 
 **Assignment Text**
 
-In this tutorial, you will model claims count data and decide whether a Poisson$(\lambda)$ or a Negative Binomial$(r=3,p)$ better fits the data.  The raw data are the number of claims filed by $n=100$ policyholders.  Recall that claims data are discrete, and take values $0, 1, 2, \dots$ and so we consider two discrete probability models.  You will apply tools learned in Section 4.1 to make a decision on which model fits these data better.
+In this tutorial, you will model claim count data and decide whether a Poisson$(\lambda)$ or a negative binomial$(r=3,p)$ better fits the data.  The raw data are the number of claims filed by $n=100$ policyholders.  Recall that claim count data are discrete and take values $0, 1, 2, \dots$. So, we consider two discrete probability models. You will apply tools learned in Section \@ref(Sec:NonInf) to make a decision on which model fits these data better.
+
 
 We also start with exploratory data analysis, making graphical and numeric summaries of data before fitting a model.
 
 :::: {.blackbox }
 **Instructions** 
 
-- Make a [table](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/table) of the claims counts
-- Make a [barplot](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/barplot) to graphically display the claims counts
+- Make a [table](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/table) of the claims counts.
+- Make a [barplot](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/barplot) to graphically display the claims counts.
 - Compute the [mean](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/mean) and [variance](http://www.r-tutor.com/elementary-statistics/numerical-measures/variance) of the claims count distribution.  Based on these, do you think a Poisson or a negative binomial model might be better?
 :::: 
 
@@ -305,7 +307,7 @@ success_msg("And you're off!  PS - did you label your axes?")
 
 Observe that the distribution is heavily right-skewed, and the sample variance is much larger than the sample mean.  You may recall that if $X \sim$ Poisson$(\lambda)$,
 $$
-E(X) = Var(X) = \lambda.
+\mathrm{E}(X) = \mathrm{Var}(X) = \lambda.
 $$
 We would expect the sample mean and sample variance to be roughly equal if the claims data came from the Poisson... our first clue this distribution may not be best!
 
@@ -377,29 +379,29 @@ Do you notice how the empirical quantiles do not match the model for some of the
 **Instructions** 
 
 - Fit the negative binomial by using the method of moments estimator to estimate $p$.
-- Make a $qq$ plot comparing the observed data to the fitted Negative Binomial.
+- Make a $qq$ plot comparing the observed data to the fitted negative binomial.
 ::::
 
-To fit the Negative Binomial($r=3, \beta$), we need to estimate the parameter $\beta$ using the method of moments.  Recall that the probability mass function for a negative binomial (Sec 2.2.3.3) is
+To fit the Negative Binomial($r=3, \beta$), we need to estimate the parameter $\beta$ using the method of moments.  Recall that the probability mass function for a negative binomial ([Sec 2.2.3.3 of *Loss Data Analytics*](https://openacttexts.github.io/Loss-Data-Analytics/C-Frequency-Modeling.html#S:important-frequency-distributions)) is
 \[
-P(X = k) = \frac{(k+r-1)!}{k!(r-1)!}\left(\frac{1}{1+\beta}\right)^r \left(\frac{\beta}{1+\beta} \right)^k, \hspace{5mm} k=0, 1, ...
+\Pr(X = k) = \frac{(k+r-1)!}{k!(r-1)!}\left(\frac{1}{1+\beta}\right)^r \left(\frac{\beta}{1+\beta} \right)^k, \hspace{5mm} k=0, 1, ...
 \]
 with parameters $r$ and $\beta$.  Also recall that in the method of moments we equate the $t^{th}$ sample moment and $t^{th}$ model moment, 
 $$ 
-E(X^t) = \frac{1}{n}\sum_{i=1}^{n}x_{i}^t,
+\mathrm{E}(X^t) = \frac{1}{n}\sum_{i=1}^{n}x_{i}^t,
 $$
 where $t=1, 2, ...$.  If we use $t=1$ to equate the first moments, we get the expression
 $$  
-E(X) = r\beta = 3\beta = \bar{x} = 3
+\mathrm{E}(X) = r\beta = 3\beta = \overline{x} = 3
 $$
 Solving the above for $\beta$, we see $\hat{\beta} = 1$.  Therefore the Negative Binomial($r=3, \beta=1$) is the fitted model.  
 
-Next, we use `R` to fit this and make a qq plot.  It is important to understand that distributions are not uniquely parameterized, and there can be different conventions across fields, textbooks, and software.  Indeed, in `R` the function \texttt{qnbinom} defines the negative binomial as
+Next, we use `R` to fit this and make a $qq$ plot.  It is important to understand that distributions are not uniquely parameterized, and there can be different conventions across fields, textbooks, and software.  Indeed, in `R` the function \texttt{qnbinom} defines the negative binomial as
 \[
-P(X = x) = \frac{(x+n-1)!}{(n-1)!x!}p^n(1-p)^x, \hspace{5mm} x=0, 1, ...
+\Pr(X = x) = \frac{(x+n-1)!}{(n-1)!x!}p^n(1-p)^x, \hspace{5mm} x=0, 1, ...
 \]
 
-This matches the definition in the textbook by equating $x=k$, prob $p = \frac{1}{1+\beta}$, and size $r=n$.  It is very important to carefully consider the parameterization of any distribution you use in R.
+This matches the definition in the textbook by equating $x=k$, probability $p = \frac{1}{1+\beta}$, and size $r=n$.  It is very important to carefully consider the parameterization of any distribution you use in `R`.
 
 
 ```{r ex="LDA4.2.1.3", type="pre-exercise-code", tut=TRUE}
@@ -458,9 +460,9 @@ success_msg("This seems to be a better fit than Poisson.")
 
 In this section, you learn how to:
 
--  Summarize the data graphically without reference to a parametric distribution
--  Determine measures that summarize deviations of a parametric from a nonparametric fit
--  Use nonparametric estimators to approximate parameters that can be used to start a parametric estimation procedure
+-  Summarize the data graphically without reference to a parametric distribution.
+-  Determine measures that summarize deviations of a parametric from a nonparametric fit.
+-  Use nonparametric estimators to approximate parameters that can be used to start a parametric estimation procedure.
 
 ***
 
@@ -514,18 +516,18 @@ In this section, you learn how to:
 
 **Assignment Text**
 
-Probability-Probability (PP) plots can be used to corroborate the selection of parametric models. The Wisconsin Property Fund data has already been read into a data frame called `Insample` and we created subset data which contains the positive loss data called `positive_loss`. In this tutorial, you will generate PP plots with Gaussian and Gamma distribution.
+Probability-Probability (PP) plots can be used to corroborate the selection of parametric models. The Wisconsin Property Fund data has already been read into a data frame called `Insample` and we created subset data which contains the positive loss data called `positive_loss`. In this tutorial, you will generate PP plots with Gaussian and gamma distribution.
 
 :::: {.blackbox }
 **Instructions**
 
--  Please generate PP plots for the positive loss amount `y` using Gaussian and Gamma. Based on PP plots, which parametric fitted model is closer to the empirical distribution?
--  Use the function [glm(response~1,data=,family=Gamma(link=log))](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/glm) to fit generalized linear model (GLM) with gamma family.
--  Find shape and rate parameters from fitted gamma GLM. (No action required on your part)
--  Use the function [glm(response~1,data=,family=gaussian(link=log))](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/glm) to fit generalized linear model (GLM) with Gaussian distribution.
--  Find mean and standard deviation from fitted Gaussian GLM. (No action required on your part)
+-  Generate PP plots for the positive loss amount `y` using Gaussian and gamma. Based on PP plots, which parametric fitted model is closer to the empirical distribution?
+-  Use the function [glm(response~1,data=,family=Gamma(link=log))](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/glm) to fit generalized linear model (*glm*) with gamma family.
+-  Find the shape and rate parameters from the fitted gamma *glm*. (No action required on your part.)
+-  Use the function [glm(response~1,data=,family=gaussian(link=log))](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/glm) to fit generalized linear model (*glm*) with Gaussian distribution.
+-  Find the mean and standard deviation from the fitted Gaussian *glm*. (No action required on your part.)
 -  Use the function [ecdf()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/ecdf) to create the empirical distribution for positive loss.
--  Use the function [pgamma()](https://www.rdocumentation.org/packages/Rlab/versions/2.15.1/topics/Gamma) to create distribution function for the Gamma distribution.
+-  Use the function [pgamma()](https://www.rdocumentation.org/packages/Rlab/versions/2.15.1/topics/Gamma) to create distribution function for the gamma distribution.
 -  Use the function [pnorm()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Normal) to create distribution function for the Gaussian distribution.
 :::: 
 
@@ -533,7 +535,7 @@ Probability-Probability (PP) plots can be used to corroborate the selection of p
 
 ```{r ex="LDA1.4.1.2_1", type="hint", tut=TRUE}
 
-We show the code that uses GLM to find parameters. Stay tuned for more detailed information about GLM in later chapters.
+We show the code that uses *glm* to find parameters. Stay tuned for more detailed information about *glm* in later chapters.
 
 ```
 
@@ -610,15 +612,15 @@ success_msg("Good job! PP plot is able to compare cumulative probabilities under
   
 **Assignment Text**
 
-PP plot shows cumulative distribution functions, which can sometimes be difficult to detect where a fitted parametric distribution is deficient. As an alternative, it is common to use a quantile-quantile (QQ) plot. The Wisconsin Property Fund data has already been read into a data frame called `Insample` and we also created a subset data which included only positive loss data called `positive_loss`. In this tutorial, you will generate QQ plots with Gaussian and Gamma distribution.
+PP plot shows cumulative distribution functions, which can sometimes be difficult to detect where a fitted parametric distribution is deficient. As an alternative, it is common to use a quantile-quantile (QQ) plot. The Wisconsin Property Fund data has already been read into a data frame called `Insample` and we also created a subset data which includes only positive loss data called `positive_loss`. In this tutorial, you will generate QQ plots with Gaussian and gamma distribution.
 
 :::: {.blackbox }
 **Instructions**
 
--  Please generate QQ plots for the positive loss amount `y` using Gaussian and Gamma. Based on the QQ plot, which parametric fitted model is closer to the empirical distribution?
--  Find sample size, mean, variance, and standard deviation for the positive loss. `p_value` is a list of probabilities, given here.  
+-  Generate QQ plots for the positive loss amount `y` using Gaussian and gamma. Based on the QQ plot, which parametric fitted model is closer to the empirical distribution?
+-  Find sample size, mean, variance, and standard deviation for the positive loss. `p_value` is a list of probabilities that is given here.  
 -  Use the function [qnorm()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Normal) to create quantile function for the Gaussian distribution.
--  Use the function [qgamma()](https://www.rdocumentation.org/packages/Rlab/versions/2.15.1/topics/Gamma) to create quantile function for the Gamma distribution.
+-  Use the function [qgamma()](https://www.rdocumentation.org/packages/Rlab/versions/2.15.1/topics/Gamma) to create quantile function for the gamma distribution.
 ::::
 
 <br>
@@ -702,7 +704,7 @@ abline(0,1)
 
 
 ```{r ex="LDA1.4.1.2_2", type="sct", tut=TRUE}
-success_msg("Good job! QQ plot compares two fitted models through their quantiles. Again, Gamma is better fit.")
+success_msg("Good job! QQ plot compares two fitted models through their quantiles. Again, the gamma is better fit.")
 ```
 
 ***
@@ -712,7 +714,7 @@ success_msg("Good job! QQ plot compares two fitted models through their quantile
 
 **Assignment Text**
 
-For reporting results, it can be effective to supplement the graphical displays with selected statistics that summarize model goodness of fit. The Wisconsin Property Fund data has already been read into a data frame called `Insample`. Previously, we also created a subset, `positive_loss`, which included only positive loss. Please perform Kolmogorov-Smirnov tests.
+For reporting results, it can be effective to supplement the graphical displays with selected statistics that summarize model goodness of fit. The Wisconsin Property Fund data has already been read into a data frame called `Insample`. Previously, we also created a subset, `positive_loss`, which included only positive losses. Perform Kolmogorov-Smirnov tests.
 
 
 :::: {.blackbox }
@@ -839,8 +841,8 @@ success_msg("According to the Kolmogorov-Smirnov test, the two distribution func
 
 In this section, you learn how to:
 
--  Describe grouped and censored truncated data
--  Estimate distributions nonparametrically based on grouped and censored data
+-  Describe grouped and censored truncated data.
+-  Estimate distributions nonparametrically based on grouped and censored data.
 
 ***
 
@@ -878,7 +880,7 @@ In this section, you learn how to:
 
 **Assignment Text**
 
-Placing insurance deductibles generate truncated data (from the left), while policy limits produce censored data (from the right). The Wisconsin Property Fund data has already been read into a data frame called `Insample`. These data consist of claim experience for fund members over the years 2006-2010, inclusive. In addition, we created a subset data which included only positive loss data called `positive_loss`. Under hypothetical policy limit, 100000 USD, and deductible information, `Deduct`, in dataset, please find Kaplan-Meier Product Limit Estimator and the Nelson-Äalen estimator of the positive loss distribution function. Please plot the survival function accordingly.
+Placing insurance deductibles generate truncated data (from the left), while policy limits produce censored data (from the right). The Wisconsin Property Fund data has already been read into a data frame called `Insample`. These data consist of claim experience for fund members over the years 2006-2010, inclusive. In addition, we created a subset data which included only positive loss data called `positive_loss`. Under hypothetical policy limit, 100000 USD, and deductible information, `Deduct`, in dataset, please find Kaplan-Meier Product Limit Estimator and the Nelson-Äalen estimator of the positive loss distribution function. Plot the survival function accordingly.
 
 :::: {.blackbox }
 **Instructions**
@@ -1044,8 +1046,8 @@ success_msg("Excellent!  Now we can see how the policy limit and deductible info
 
 In this section, you learn how to:
 
--  Describe grouped and censored truncated data
--  Estimate parametric distributions based on grouped, censored,and truncated data
+-  Describe grouped and censored truncated data.
+-  Estimate parametric distributions based on grouped, censored,and truncated data.
 
 ***
 
@@ -1106,7 +1108,7 @@ In this section, you learn how to:
 
 -  Describe the Bayesian model as an alternative to the frequentist approach and summarize the five components of this modeling approach.
 -  Summarize posterior distributions of parameters and use these posterior distributions to predict new outcomes.
--  Use conjugate distributions to determine posterior distributions of parameters
+-  Use conjugate distributions to determine posterior distributions of parameters.
 
 ***
 
@@ -1179,9 +1181,9 @@ two observations from a Bernoulli(q) were $X_1 = 1, X_2 = 0$, and the posterior 
 :::: {.blackbox }
 **Instructions** 
 
-- Make a [plot](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/plot) of the prior distribution
+- Make a [plot](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/plot) of the prior distribution.
 - Think about how you expect the observed data to reshape it to the posterior.
-- Add the posterior and a legend to your plot, to confirm the influence of the observed data.  This requires advanced commands such as [lines](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/lines) and [legend](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/legend)
+- Add the posterior and a legend to your plot, to confirm the influence of the observed data.  This requires advanced commands such as [lines](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/lines) and [legend](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/legend).
 ::::
 
 <br>
@@ -1208,7 +1210,7 @@ success_msg("Excellent!")
 
 Notice that the prior distribution sets the support for $q$, which is bounded between 0.6 and 0.8.  The posterior will necessarily have this same support.  Notice also that the prior distribution places more mass for larger values of $q$.  This is saying that prior to observing data, we think larger parameters values near 0.8 are more likely than smaller values near 0.6
 
-The observed data has a claim in year 1 ($X_1 = 1$) and no claim in year 2 ($X_2 = 0$).  So, we have two independent samples drawn from a Bernoulli(q), and $\bar{X} = 0.5$.  If we were only using the likelihood and a method such as maximum likelihood estimation, we would estimate $\widehat{q} = \bar{X} = 0.5$.  So the data are telling us that values near $q=0.5$ are consistent.  But, Bayesian methods blend information from the data with information from the prior to produce a posterior.  So, expect that our posterior distribution will place more mass towards smaller values of $q$, and less towards larger values.  Let's see if that is true.
+The observed data has a claim in year 1 ($X_1 = 1$) and no claim in year 2 ($X_2 = 0$).  So, we have two independent samples drawn from a Bernoulli(q), and $\overline{X} = 0.5$.  If we were only using the likelihood and a method such as maximum likelihood estimation, we would estimate $\widehat{q} = \overline{X} = 0.5$.  So these data are telling us that values near $q=0.5$ are consistent.  But, Bayesian methods blend information from the data with information from the prior to produce a posterior.  So, expect that our posterior distribution will place more mass towards smaller values of $q$, and less towards larger values.  Let's see if that is true.
 
 
 ```{r ex="LDA4.4.1.2", type="hint", tut=TRUE}
@@ -1301,7 +1303,7 @@ lines(q, posterior_old, col="blue", type="l", lty=2)
 lines(q, posterior_new, col="green", type="l", lty=3)
 legend("topleft",legend=c("Prior","Old Posterior","New Posterior"), col=c("red","blue","green"), lty=c(1,2,3))
 ```
-As expected, the new posterior has shifted even more mass towards lower parameter values in the posterior, since $\bar{X} = \frac{1}{3}$ and the data are more consistent with low parameter values for $q$.
+As expected, the new posterior has shifted even more mass towards lower parameter values in the posterior, since $\overline{X} = \frac{1}{3}$ and the data are more consistent with low parameter values for $q$.
 
 
 ```{r ex="LDA4.4.1.3", type="sct", tut=TRUE}
@@ -1312,5 +1314,5 @@ success_msg("Nice!")
 ## Contributors {-}
 
 -  **Authors**. **Rob Erhardt**, Wake Forest University, **Brian Hartman**, Brigham Young University, and **Zhiyu (Frank) Quan**, University of Illinois at Urbana-Champaign, are the principal authors of the initial version of this chapter.
--  **Chapter Maintainers**. Please contact ??? and/or Jed <jfrees@bus.wisc.edu> for chapter comments and suggested improvments.
+-  **Chapter Maintainers**. Please contact ??? and/or Jed at <jfrees@bus.wisc.edu> for chapter comments and suggested improvements.
 

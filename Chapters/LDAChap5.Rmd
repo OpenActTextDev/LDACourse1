@@ -1,9 +1,7 @@
 
-
 # Aggregate Loss Models 
 
-
-**Chapter description**
+**Chapter Description**
 
 This chapter introduces probability models for describing the aggregate (total) claims that arise from a portfolio of insurance contracts. We present two standard modeling approaches, the individual risk model and the collective risk model. Further, we discuss strategies for computing the distribution of the aggregate claims, including exact methods for special cases, recursion, and simulation. Finally, we examine the effects of individual policy modifications such as deductibles, coinsurance, and inflation, on the frequency and severity distributions, and thus on the aggregate loss distribution.
 
@@ -21,8 +19,8 @@ This chapter introduces probability models for describing the aggregate (total) 
 
 In this section, we learn how to:
 
-- Record aggregated losses from an insurance system
-- Identify actuarial applications of aggregate loss models
+- Record aggregate losses from an insurance system.
+- Identify actuarial applications of aggregate loss models.
 
 ***
 
@@ -73,9 +71,9 @@ In this section, we learn how to:
 
 In this section, we learn how to:
 
-- Build an individual risk model for a portfolio of insurance contracts
-- Apply individual risk model to life and nonlife insurance
-- Compute the distribution of aggregate losses from an individual risk model
+- Build an individual risk model for a portfolio of insurance contracts.
+- Apply the individual risk model to life and nonlife insurance.
+- Compute the distribution of aggregate losses from an individual risk model.
 
 ***
 
@@ -123,16 +121,16 @@ In this section, we learn how to:
   <iframe src="./Overheads/LDA1.Chap5.pdf#page=17" width="100%" height="400"> </iframe>
   </div>
 
-### Exercise. Individual Risk Model I
+### Exercise. Individual Risk Model I {#Ex:IRM1}
 
 **Assignment Text**
   
-In this assignment, we will revisit [Example 5.2.1](https://openacttexts.github.io/Loss-Data-Analytics/C-AggLossModels.html) in the textbook and generate using *simulation* in `R`. Even though we will "officially" start to work with simulation since Chapter 6, this exercise provides you an opportunity to taste a flavor of simulation with an example.
+In this assignment, we revisit [Example 5.2.1 of *Loss Data Analytics*](https://openacttexts.github.io/Loss-Data-Analytics/C-AggLossModels.html) using *simulation* in `R`. Even though we "officially" start to work with simulation beginning in  [Chapter 6 in *Loss Data Analytics*](https://openacttexts.github.io/Loss-Data-Analytics/C-Simulation.html), this exercise provides you with an opportunity to taste a flavor of simulation.
 
 :::: {.blackbox }
 **Instructions**
 
--  Use the function [rbinom()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Binomial) to simulate the number of claims that follow *binomial* distribution. For reproducibility of results, fix the random seed as '1000' and generate 10,000 observations of claim frequencies for each group of policies.
+-  Use the function [rbinom()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Binomial) to simulate the number of claims that follow binomial distribution. For reproducibility of results set the initial 'seed' as `1000` and then generate 10,000 observations of claim frequencies for each group of policies.
 - Specify the size and probability when you simulate the number of claims with binomial distribution in each group of policies.
 ::::
 
@@ -180,15 +178,15 @@ success_msg("Good job! This exercise is basically a recapitulation of Chapter 2 
 
 **Assignment Text**
   
-In this assignment, we will revisit [Example 5.2.1](https://openacttexts.github.io/Loss-Data-Analytics/C-AggLossModels.html) in the textbook and reproduce the theoretical results for moments calculation in individual risk models using *simulation* in `R`. We use the simulated frequencies for each group of policies in Exercise 5.5.2.1 and continue to simulate compound losses in an individual risk model as elaborated in [Section 5.4.2](https://openacttexts.github.io/Loss-Data-Analytics/C-AggLossModels.html#computing-the-aggregate-claims-distribution).
+Continuing our work in Exercise \@ref(Ex:IRM1), we now reproduce the theoretical results for  calculation of moments in individual risk models using simulation. We use the simulated frequencies for each group of policies from Exercise \@ref(Ex:IRM1) and continue to simulate compound losses in an individual risk model as elaborated in [Section 5.4.2 on *Loss Data Analytics*](https://openacttexts.github.io/Loss-Data-Analytics/C-AggLossModels.html#computing-the-aggregate-claims-distribution).
 
 :::: {.blackbox }
 **Instructions**
 
 -  Use the function [runif()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Uniform) to claim amounts that follow *uniform* distribution for each group of policies. 
 - Specify the parameters of uniform random variables, minimum and maximum values of claim amounts from each type of policies.
-- Initialize an empty vector of length $r$ to store $r$ observations of simulated $S$. In each simulation,  calculate $j$th simulated aggregate loss and store it in $j$th component of $S$ for $j=1, \ldots, R$.
--  Compute mean and variance of $S$ by simulation using [mean()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/mean) and [var()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/cor), and compare these values to their corresponding theoretical values, 2,800 and 600,467, respectively.
+- Initialize an empty vector of length $R$ to store $R$ observations of simulated $S$. In each simulation,  calculate the $j$th simulated aggregate loss and store it in $j$th component of $S$ for $j=1, \ldots, R$.
+-  Compute the mean and variance of $S$ by simulation using [mean()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/mean) and [var()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/cor). Then, compare these values to their corresponding theoretical values, 2,800 and 600,467, respectively.
 ::::
 
 <br>
@@ -265,9 +263,9 @@ success_msg("Good job! Note that simulation is one of the most powerful techniqu
 
 In this section, we learn how to:
 
-- Build a collective risk model for a portfolio of insurance contracts
-- Calculate mean and variance of the aggregate loss
-- Fit frequency and severity components in a collective risk model
+- Build a collective risk model for a portfolio of insurance contracts.
+- Calculate the mean and variance of the aggregate loss.
+- Fit frequency and severity components in a collective risk model.
 
 ***
 
@@ -443,8 +441,8 @@ success_msg("Cheers! Note that we usually add covariates in the frequency and se
 
 In this section, we learn how to:
 
--  Compute the aggregate loss distribution
--  Implement numerical strategies in `R`
+-  Compute the aggregate loss distribution.
+-  Implement numerical strategies in `R`.
 
 ***
 
@@ -497,7 +495,7 @@ In this section, we learn how to:
 
 **Assignment Text**
   
-In this assignment, we will analyze aggregate loss distribution by combining fitted frequency and severity components. Since it is usually very hard to obtain a closed form of distribution function of the compound loss in a collective risk model, we rely on simulations to compute the aggregate loss distribution. 
+In this assignment, we will analyze the aggregate loss distribution by combining fitted frequency and severity components. Since it is usually very hard to obtain a closed form expression for the distribution function of the compound loss in a collective risk model, we rely on simulations to compute the aggregate loss distribution. 
 
 
 :::: {.blackbox }
@@ -630,7 +628,7 @@ aggregateDist <-
     {
         ## An error message is issued if the number of moments listed
         ## is not appropriate for the method. However it is the user's
-        ## responsability to list the moments in the correct order
+        ## responsibility to list the moments in the correct order
         ## since the vector is not required to be named.
         if (missing(moments) || length(moments) < 2)
             stop("'moments' must supply the mean and variance of the distribution")
@@ -688,7 +686,7 @@ aggregateDist <-
             comment(FUN) <- "Recursive method approximation"
         }
 
-        ## Convolution method requires a vector of probabilites in
+        ## Convolution method requires a vector of probabilities in
         ## argument 'model.freq'.
         else if (method == "convolution")
         {
@@ -982,7 +980,7 @@ simul <- function(nodes, model.freq = NULL, model.sev = NULL, weights = NULL)
     ## identifiers for an entity in the portfolio, e.g. if the data
     ## is denoted X_{ijkt}, one line of the matrix will contain
     ## subscripts i, j and k. As we move from right to left in the
-    ## columns of 'm', the subcripts are increasingly repeated.
+    ## columns of 'm', the subscripts are increasingly repeated.
     ncol <- nlevels - 1L
     m <- matrix(1, nrow, ncol,
                 dimnames = list(NULL, head(level.names, ncol)))
@@ -1096,9 +1094,9 @@ success_msg("Good job! This is the second time that we used the simulation techn
 
 In this section, we learn how to:
 
-*  Construct the Tweedie distribution from a collective risk model
-*  Establish the Tweedie distribution as a member of the exponential family of distributions
-*  Fit Tweedie distribution as a generalized linear model
+*  Construct the Tweedie distribution from a collective risk model.
+*  Establish the Tweedie distribution as a member of the exponential family of distributions.
+*  Fit Tweedie distribution as a generalized linear model.
 
 ***
 
@@ -1149,14 +1147,14 @@ In this section, we learn how to:
 
 **Assignment Text**
   
-In this assignment, we will fit a Tweedie model for a collective risk model using observed compound losses in LGPIF data with `R`. Unlike the previous tutorials that required seperate model fitting for the frequency and severity components, use of Tweedie distribution enables us to fit a collective risk model in one step.
+In this assignment, we will fit a Tweedie model for a collective risk model using observed compound losses in LGPIF data with `R`. Unlike the previous tutorials that required separate model fitting for the frequency and severity components, use of Tweedie distribution enables us to fit a collective risk model in one step.
 
 :::: {.blackbox }
 **Instructions**
 
 - For the likelihood of the compound loss, We use [dtweedie()](https://www.rdocumentation.org/packages/tweedie/versions/2.3.3/topics/Tweedie), which is one of the built-in functions of `R` library [tweedie](https://cran.r-project.org/web/packages/tweedie/tweedie.pdf) .
 - From the fitted Tweedie model via [optim()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/optim), extract the estimated mu, phi, and p.
-- After estimating the parameters of the Tweedie model, plot the empiricial quantiles against the quantiles from the fitted model. Note that we generate the theoretical quantiles via [qtweedie()](https://www.rdocumentation.org/packages/tweedie/versions/2.3.3/topics/Tweedie) and the estimated Tweedie parameters.
+- After estimating the parameters of the Tweedie model, plot the empirical quantiles against the quantiles from the fitted model. Note that we generate the theoretical quantiles via [qtweedie()](https://www.rdocumentation.org/packages/tweedie/versions/2.3.3/topics/Tweedie) and the estimated Tweedie parameters.
 ::::
 
 <br>
@@ -1240,8 +1238,8 @@ success_msg("While Tweedie distribution enables us to fit a compound loss distri
 
 In this section, we learn how to:
 
-- Examine the impact of aggregate deductible on the aggregate loss
-- Examine the effect of per-occurrence deductible on frequency and severity components in the aggregate loss
+- Examine the impact of aggregate deductible on the aggregate loss.
+- Examine the effect of per-occurrence deductible on frequency and severity components in the aggregate loss.
 
 ***
 
@@ -1288,7 +1286,7 @@ In this section, we learn how to:
 ## Contributors {-}
 
 -  **Authors**. **Himchan Jeong**, Simon Fraser University, and **Peng Shi**, University of Wisconsin-Madison, are the principal authors of the initial version of this chapter.
--  **Chapter Maintainers**. Please contact ??? and/or Jed <jfrees@bus.wisc.edu> for chapter comments and suggested improvments.
+-  **Chapter Maintainers**. Please contact ??? and/or Jed at <jfrees@bus.wisc.edu> for chapter comments and suggested improvements.
 
 
   

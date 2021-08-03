@@ -1,8 +1,8 @@
 # Modeling Loss Severity
 
+**Chapter Description** 
 
-
-**Chapter description.** The traditional loss distribution approach to modeling aggregate losses starts by separately fitting a frequency distribution to the number of losses and a severity distribution to the size of losses. The estimated aggregate loss distribution combines the loss frequency distribution and the loss severity distribution by convolution. Discrete distributions often referred to as counting or frequency distributions were used in Chapter 2 to describe the number of events such as number of accidents to the driver or number of claims to the insurer. Lifetimes, asset values, losses and claim sizes are usually modeled as continuous random variables and as such are modeled using continuous distributions, often referred to as loss or severity distributions. A mixture distribution is a weighted combination of simpler distributions that is used to model phenomenon investigated in a heterogeneous population, such as modeling more than one type of claims in liability insurance (small frequent claims and large relatively rare claims). In this chapter we explore the use of continuous as well as mixture distributions to model the random size of loss. 
+The traditional loss distribution approach to modeling aggregate losses starts by separately fitting a frequency distribution to the number of losses and a severity distribution to the size of losses. The estimated aggregate loss distribution combines the loss frequency distribution and the loss severity distribution by convolution. Discrete distributions often referred to as counting or frequency distributions were used in Chapter 2 to describe the number of events such as number of accidents to the driver or number of claims to the insurer. Lifetimes, asset values, losses and claim sizes are usually modeled as continuous random variables and as such are modeled using continuous distributions, often referred to as loss or severity distributions. A mixture distribution is a weighted combination of simpler distributions that is used to model phenomenon investigated in a heterogeneous population, such as modeling more than one type of claims in liability insurance (small frequent claims and large relatively rare claims). In this chapter we explore the use of continuous as well as mixture distributions to model the random size of loss. 
 
 
 :::: {.blackbox }
@@ -192,7 +192,7 @@ success_msg("Well done!")
 
 **Assignment Text**
 
-The [boxplot()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/boxplot) function produces box-and-whisker plots of grouped values. The boxplot() function returns certain statistic and produces a plot as a side effect. Explore the   to understand the values returned. In particular review the information returned by the `stats` attribute of this object.
+The [boxplot()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/boxplot) function produces box-and-whisker plots of grouped values. The boxplot() function returns certain statistics and produces a plot as a side effect. Explore the documentation  to understand the values returned. In particular review the information returned by the `stats` attribute of this object.
 
 The Wisconsin Property Fund data has already been read into a data frame called `Insample`. These data consist of claim experience for fund members over the years 2006-2010, inclusive. It includes claim values `y` as well as the claim year `Year`. For this exercise we will work with the natural logarithm of the claim values which are in the `lny` variable. We have filtered the data to exclude zero claims and saved the resulting data frame as `Insample_nz`.
 
@@ -396,7 +396,7 @@ Recall that you can determine the $n^{th}$ moment of of $X$ as the $n^{th}$ deri
 
 -   Calculate the mean (first moment) of the gamma distribution.
 -   Calculate the second raw moment of the gamma distribution.
--   Calculate the variance (second central moment) of the gamma distribution
+-   Calculate the variance (second central moment) of the gamma distribution.
 ::::
 
 <br>
@@ -461,7 +461,7 @@ In this section, you learn how to define and apply four fundamental severity dis
 -   Weibull, and
 -   generalized beta distribution of the second kind.
 
-`R` provides a "family" of functions associated with statistical distributions. The naming convention is to precede the distribution name with `d` for the density function, `p` for the cumulative distribution function, `q` for quantiles (percentiles), and `r` for random number generation. (We will set aside the `r` functions for Chapter 6 on Simulation and focus on `d`, `p`, and `q` functions.)
+`R` provides a "family" of functions associated with statistical distributions. The naming convention is to precede the distribution name with `d` for the density function, `p` for the cumulative distribution function, `q` for quantiles (percentiles), and `r` for random number generation. (We will set aside the `r` functions for [Chapter 6 in *Loss Data Analytics*](https://openacttexts.github.io/Loss-Data-Analytics/C-Simulation.html) and focus on `d`, `p`, and `q` functions.)
 
 The `stats` packages which is provided with base-`R` includes the distributions listed [here](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Distributions). Many other distributions are available in other `R` packages.
 
@@ -649,7 +649,7 @@ For this exercise we will write a `R` function to find the density (the pdf) of 
 **Instructions** 
   
   -  Write a function to find the density of a Pareto distribution. 
-  -  For this exercise you should refer to the Pareto distribution from [Section 3.2.2 of  *Loss Data Analytics*](https://openacttexts.github.io/Loss-Data-Analytics/C-Severity.html#S:Loss:Pareto) 
+  -  For this exercise you should refer to the Pareto distribution from [Section 3.2.2 of  *Loss Data Analytics*](https://openacttexts.github.io/Loss-Data-Analytics/C-Severity.html#S:Loss:Pareto). 
 :::: 
 
 <br>
@@ -690,9 +690,9 @@ success_msg("Well done!")
 
 In this section, you learn how to:
 
--  Understand connections among the distributions
--  Give insights into when a distribution is preferred when compared to alternatives
--  Provide foundations for creating new distributions
+-  Understand connections among the distributions.
+-  Give insights into when a distribution is preferred when compared to alternatives.
+-  Provide foundations for creating new distributions.
 
 ***
 
@@ -824,7 +824,7 @@ In this section, you learn how to:
 
 **Assignment Text**
 
-For this exercise we will be modelling claim severity data with a gamma distribution, and we will then apply a log transformation to the distribution. 
+For this exercise we will be modeling claim severity data with a gamma distribution, and we will then apply a log transformation to the distribution. (Recall that we use the natural logarithmic transform throughout, unless specified otherwise.)
 
 In this exercise we generate the probability density function (*pdf*) of the gamma distribution that corresponds with these parameters, and we then plot the *pdf* of the *log* of the claim severities, by transforming the gamma pdf. We will assume that the claim severities follow a gamma distribution with a known shape parameter $\alpha=0.63$ and scale parameter $\theta=16897$. 
 
@@ -1246,7 +1246,7 @@ Now, assume that an insurer provides coverage for the first $ 5 million of claim
 :::: {.blackbox }
 **Instruction**
 
-* Calculate the expected value of the claims insured with a $ 5 million policy limit using the levlnorm() function and the compare to the amounts insured from `claims`.
+* Calculate the expected value of the claims insured with a $ 5 million policy limit using the levlnorm() function and then compare to the amounts insured from `claims`.
 :::: 
 
 <br>
@@ -1511,9 +1511,9 @@ success_msg("Well done!")
 
 In this section, you learn how to:
 
-*    Define a likelihood for a sample of observations from a continuous distribution
-*    Define the maximum likelihood estimator for a random sample of observations from a continuous distribution
-*    Estimate parametric distributions based on grouped, censored, and truncated data
+*    Define a likelihood for a sample of observations from a continuous distribution.
+*    Define the maximum likelihood estimator for a random sample of observations from a continuous distribution.
+*    Estimate parametric distributions based on grouped, censored, and truncated data.
 
 ***
 
@@ -1583,14 +1583,14 @@ In this section, you learn how to:
 
 For this exercise we will undertake maximum likelihood estimation to fit a Pareto distribution to claim severity data.
 
-Because we have two parameters in a Pareto distribution, undertaking maximum likelihood involves finding the estimates that maximise the likelihood surface. Visualising the likelihood surface may help to gain an appreciation of how maximum likelihood works. After finding the parameter estimates, we plot out a contour plot of the likelihood and mark the maximum likelihood estimates on the plot. 
+Because we have two parameters in a Pareto distribution, undertaking maximum likelihood involves finding the estimates that maximize the likelihood surface. Visualizing the likelihood surface may help to gain an appreciation of how maximum likelihood works. After finding the parameter estimates, we plot out a contour plot of the likelihood and mark the maximum likelihood estimates on the plot. 
 
 :::: {.blackbox }
 **Instructions** 
   
   -  Extract claim severity data from the Property Fund data. 
   -  Write a function to calculate the negative log-likelihood for the claim severity data, assuming that claim severity is Pareto distributed. The *pdf* function for a Pareto distribution [dpareto()], which was created in Exercise \@ref(Ex:CreateParetoDensityFct), can be used when finding the negative log-likelihood.
-  -  Find the maximum likelihood estimates by using [optim()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/optim) to minimise the negative log-likelihood.
+  -  Find the maximum likelihood estimates by using [optim()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/optim) to minimize the negative log-likelihood.
   -  Plot a contour plot of the likelihood using [contour()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/contour), and use [points()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/points) to mark the maximum likelihood estimates on the plot. 
 :::: 
 
@@ -1678,11 +1678,11 @@ success_msg("Well done!")
 
 **Assignment Text**
 
-For this exercise we calculate 95% confidence intervals for the parameter estimates that we found in Exercise \@ref(Ex:MLEPareto). 
+For this exercise we calculate 95% confidence intervals for the parameters based on estimates that we found in Exercise \@ref(Ex:MLEPareto). 
 
 The parameters that we have estimated depend on the data, and since the data can be considered as a random sample from a larger unknown population, maximum likelihood estimators are random variables. A property of maximum likelihood is that the estimators converge in distribution to a normal distribution, as $n$ gets larger. 
 
-If we minimise the negative log-likelihood, we can use the Hessian matrix (which is a matrix of the second-order partial derivatives) to find the variance of the estimators. Specifically, the standard errors of the estimators are equal to the square root of the diagonal elements of the inverse of the Hessian matrix.
+If we minimize the negative log-likelihood, we can use the Hessian matrix (which is a matrix of the second-order partial derivatives) to find the variance of the estimators. Specifically, the standard errors of the estimators are equal to the square root of the diagonal elements of the inverse of the Hessian matrix.
 
 Some useful `R` functions for this exercise are:
 
@@ -1762,6 +1762,6 @@ success_msg("Well done!")
 ## Contributors {-}
 
 -  **Authors**. **Tim Higgins** , Australian National University, **Fei Huang**, University of New South Wales (UNSW) Sydney, **Nii-Armah Okine**, Appalachian State University, and **Rajesh (Raj) Sahasrabuddhe**, Oliver Wyman Actuarial Consulting, are the principal authors of the initial version of this chapter.
--  **Chapter Maintainers**. Please contact ??? and/or Jed <jfrees@bus.wisc.edu> for chapter comments and suggested improvments.
+-  **Chapter Maintainers**. Please contact ??? and/or Jed at <jfrees@bus.wisc.edu> for chapter comments and suggested improvements.
 
 

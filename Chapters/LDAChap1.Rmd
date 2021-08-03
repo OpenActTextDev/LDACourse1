@@ -1,7 +1,7 @@
 
 # Introduction to Loss Data Analytics 
 
-**Chapter description**
+**Chapter Description**
 
 This course introduces readers to methods of analyzing insurance data. Section \@ref(Sec:Intro) begins with a discussion of why the use of data is important in the insurance industry. Section \@ref(Sec:PredModApps) gives a general overview of the purposes of analyzing insurance data which is reinforced in the Section \@ref(Sec:LGPIF) case study. Naturally, there is a huge gap between the broad goals summarized in the overview and a case study application; this gap is covered through the methods and techniques of data analysis covered in the rest of the text.
 
@@ -17,9 +17,9 @@ This course introduces readers to methods of analyzing insurance data. Section \
 
 In this section, you learn how to:
 
-- Summarize the importance of insurance to consumers and the economy
-- Describe analytics
-- Identify data generating events associated with the timeline of a typical insurance contract
+- Summarize the importance of insurance to consumers and the economy.
+- Describe analytics.
+- Identify data generating events associated with the timeline of a typical insurance contract.
 
 ***
 
@@ -34,30 +34,31 @@ In this section, you learn how to:
 #### Overheads: Insurance and Analytics (Click Tab to View) {-}
 
 <div class="tab">
-<button class="tablinks" onclick="openTab(event, 'InsuranceRelevanceA')">A. Relevance of Insurance</button>
-<button class="tablinks" onclick="openTab(event, 'InsuranceRelevanceB')">B. Analytics and Loss Data</button>
-<button class="tablinks" onclick="openTab(event, 'InsuranceRelevanceC')">C. What is Analytics?</button>
-<button class="tablinks" onclick="openTab(event, 'InsuranceRelevanceD')">D. Insurance Processes</button>  <button class="tablinks" onclick="openTab(event, 'InsuranceRelevanceE')">E. Relevance of Analytics</button>
+<button class="tablinks" onclick="openTab(event, 'Sect11A')">A. Relevance of Insurance</button>
+<button class="tablinks" onclick="openTab(event, 'Sect11B')">B. Analytics and Loss Data</button>
+<button class="tablinks" onclick="openTab(event, 'Sect11C')">C. What is Analytics?</button>
+<button class="tablinks" onclick="openTab(event, 'Sect11D')">D. Insurance Processes</button>  
+<button class="tablinks" onclick="openTab(event, 'Sect11E')">E. Relevance of Analytics</button>
 </div>
 
 
-<div id="InsuranceRelevanceA" class="tabcontent">
+<div id="Sect11A" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap1.pdf#page=3" width="100%" height="400"> </iframe>
   </div>
-<div id="InsuranceRelevanceB" class="tabcontent">
+<div id="Sect11B" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap1.pdf#page=4" width="100%" height="400"> </iframe>
   </div>
-<div id="InsuranceRelevanceC" class="tabcontent">
+<div id="Sect11C" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap1.pdf#page=5" width="100%" height="400"> </iframe>
   </div>
-<div id="InsuranceRelevanceD" class="tabcontent">
+<div id="Sect11D" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap1.pdf#page=6" width="100%" height="400"> </iframe>
   </div>
-  <div id="InsuranceRelevanceE" class="tabcontent">
+  <div id="Sect11E" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap1.pdf#page=7" width="100%" height="400"> </iframe>
   </div>
@@ -89,25 +90,25 @@ In this section, you learn how to:
 #### Overheads: Insurance Company Operations (Click Tab to View) {-}
 
 <div class="tab">
-  <button class="tablinks" onclick="openTab(event, 'InsCompOperationsA')">A. Insurance Company Operations I</button>
-  <button class="tablinks" onclick="openTab(event, 'InsCompOperationsB')">B. Insurance Company Operations II</button>
-  <button class="tablinks" onclick="openTab(event, 'InsCompOperationsC')">C. Operations – Initiating Insurance</button>
-  <button class="tablinks" onclick="openTab(event, 'InsCompOperationsD')">D. Big Data</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect12A')">A. Insurance Company Operations I</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect12B')">B. Insurance Company Operations II</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect12C')">C. Operations – Initiating Insurance</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect12D')">D. Big Data</button>
       </div>
 
-<div id="InsCompOperationsA" class="tabcontent">
+<div id="Sect12A" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap1.pdf#page=9" width="100%" height="400"> </iframe>
   </div>
-<div id="InsCompOperationsB" class="tabcontent">
+<div id="Sect12B" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap1.pdf#page=10" width="100%" height="400"> </iframe>
   </div>
-<div id="InsCompOperationsC" class="tabcontent">
+<div id="Sect12C" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap1.pdf#page=11" width="100%" height="400"> </iframe>
   </div>
-<div id="InsCompOperationsD" class="tabcontent">
+<div id="Sect12D" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap1.pdf#page=13" width="100%" height="400"> </iframe>
   </div>
@@ -142,35 +143,35 @@ Sections \@ref(Sec:LGPIF), \@ref(Sec:PropertyFundSeverity), and \@ref(Sec:LGPIFR
 #### Overheads: Introducing the Wisconsin Property Fund (Click Tab to View) {-}
 
 <div class="tab">
-  <button class="tablinks" onclick="openTab(event, 'PropertyFundIntroA')">A. Wisconsin Property Fund</button>
-  <button class="tablinks" onclick="openTab(event, 'PropertyFundIntroB')">B. LGPIF Policyholder A</button>
-  <button class="tablinks" onclick="openTab(event, 'PropertyFundIntroC')">C. LGPIF Policyholder B</button>
-  <button class="tablinks" onclick="openTab(event, 'PropertyFundIntroD')">D. Property Fund</button>
-  <button class="tablinks" onclick="openTab(event, 'PropertyFundIntroE')">E. Claims Frequency - R Code</button>
-  <button class="tablinks" onclick="openTab(event, 'PropertyFundIntroF')">F. Claims Frequency (2010)</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect13A')">A. Wisconsin Property Fund</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect13B')">B. LGPIF Policyholder A</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect13C')">C. LGPIF Policyholder B</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect13D')">D. Property Fund</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect13E')">E. Claims Frequency - R Code</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect13F')">F. Claims Frequency (2010)</button>
       </div>
 
-<div id="PropertyFundIntroA" class="tabcontent">
+<div id="Sect13A" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap1.pdf#page=16" width="100%" height="400"> </iframe>
   </div>
-<div id="PropertyFundIntroB" class="tabcontent">
+<div id="Sect13B" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap1.pdf#page=17" width="100%" height="400"> </iframe>
   </div>
-<div id="PropertyFundIntroC" class="tabcontent">
+<div id="Sect13C" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap1.pdf#page=18" width="100%" height="400"> </iframe>
   </div>
-<div id="PropertyFundIntroD" class="tabcontent">
+<div id="Sect13D" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap1.pdf#page=19" width="100%" height="400"> </iframe>
   </div>
-<div id="PropertyFundIntroE" class="tabcontent">
+<div id="Sect13E" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap1.pdf#page=20" width="100%" height="400"> </iframe>
   </div>
-<div id="PropertyFundIntroF" class="tabcontent">
+<div id="Sect13F" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap1.pdf#page=21" width="100%" height="400"> </iframe>
   </div>
@@ -302,41 +303,41 @@ success_msg("Getting started is always the hardest thing to do. Excellent start!
 #### Overheads: Claim Severity for the Wisconsin Property Fund (Click Tab to View) {-}
 
 <div class="tab">
-  <button class="tablinks" onclick="openTab(event, 'PropertyFundSeverityA')">A. Severity Distribution (2010)</button>
-  <button class="tablinks" onclick="openTab(event, 'PropertyFundSeverityB')">B. Claims Severity - R Code</button>
-  <button class="tablinks" onclick="openTab(event, 'PropertyFundSeverityC')">C. Claim Outcomes and Coverage by Year</button>
-  <button class="tablinks" onclick="openTab(event, 'PropertyFundSeverityD')">D. Analysis by Year - R Code</button>
-  <button class="tablinks" onclick="openTab(event, 'PropertyFundSeverityE')">E. Claim Frequency and Severity, Deductibles, and Coverage</button>
-  <button class="tablinks" onclick="openTab(event, 'PropertyFundSeverityF')">F. Claim Frequency and Severity, Deductibles, and Coverage -
+  <button class="tablinks" onclick="openTab(event, 'Sect14A')">A. Severity Distribution (2010)</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect14B')">B. Claims Severity - R Code</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect14C')">C. Claim Outcomes and Coverage by Year</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect14D')">D. Analysis by Year - R Code</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect14E')">E. Claim Frequency and Severity, Deductibles, and Coverage</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect14F')">F. Claim Frequency and Severity, Deductibles, and Coverage -
 R Code</button>
-  <button class="tablinks" onclick="openTab(event, 'PropertyFundSeverityF')">G. Cost of Insurance</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect14G')">G. Cost of Insurance</button>
       </div>
 
-<div id="PropertyFundSeverityA" class="tabcontent">
+<div id="Sect14A" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap1.pdf#page=23" width="100%" height="400"> </iframe>
   </div>
-<div id="PropertyFundSeverityB" class="tabcontent">
+<div id="Sect14B" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap1.pdf#page=24" width="100%" height="400"> </iframe>
   </div>
-<div id="PropertyFundSeverityC" class="tabcontent">
+<div id="Sect14C" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap1.pdf#page=25" width="100%" height="400"> </iframe>
   </div>
-<div id="PropertyFundSeverityD" class="tabcontent">
+<div id="Sect14D" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap1.pdf#page=26" width="100%" height="400"> </iframe>
   </div>
-<div id="PropertyFundSeverityE" class="tabcontent">
+<div id="Sect14E" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap1.pdf#page=27" width="100%" height="400"> </iframe>
   </div>
-<div id="PropertyFundSeverityF" class="tabcontent">
+<div id="Sect14F" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap1.pdf#page=28" width="100%" height="400"> </iframe>
   </div>
-<div id="PropertyFundSeverityG" class="tabcontent">
+<div id="Sect14G" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap1.pdf#page=29" width="100%" height="400"> </iframe>
   </div>
@@ -550,7 +551,6 @@ Much of insurance analytics is about making predictions of future behavior. To u
 
 <br>
 
-xx
 
 ```{r ex="LDA1.1.4.3", type="pre-exercise-code", tut=TRUE}
 Insample <- read.csv("https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/Data/Insample.csv", header=T,
@@ -602,31 +602,31 @@ success_msg("Excellent! Presenting the right summary statistics in a clean way i
 #### Overheads: Rating Variables for the Wisconsin Property Fund (Click Tab to View) {-}
 
 <div class="tab">
-  <button class="tablinks" onclick="openTab(event, 'RatingVariablesA')">A. Description of Rating Variables</button>
-  <button class="tablinks" onclick="openTab(event, 'RatingVariablesB')">B. Claims by Entity Type, Fire Class, and No Claim Credit</button>
-  <button class="tablinks" onclick="openTab(event, 'RatingVariablesC')">C. Claim Frequency and Severity, Deductibles, and Coverage -
+  <button class="tablinks" onclick="openTab(event, 'Sect15A')">A. Description of Rating Variables</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect15B')">B. Claims by Entity Type, Fire Class, and No Claim Credit</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect15C')">C. Claim Frequency and Severity, Deductibles, and Coverage -
 R Code</button>
-  <button class="tablinks" onclick="openTab(event, 'RatingVariablesD')">D. Claims by Entity Type and Alarm Credit Category</button>
-  <button class="tablinks" onclick="openTab(event, 'RatingVariablesE')">E. Initiating Insurance</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect15D')">D. Claims by Entity Type and Alarm Credit Category</button>
+  <button class="tablinks" onclick="openTab(event, 'Sect15E')">E. Initiating Insurance</button>
 </div>
 
-<div id="RatingVariablesA" class="tabcontent">
+<div id="Sect15A" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap1.pdf#page=31" width="100%" height="400"> </iframe>
   </div>
-<div id="RatingVariablesB" class="tabcontent">
+<div id="Sect15B" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap1.pdf#page=32" width="100%" height="400"> </iframe>
   </div>
-<div id="RatingVariablesC" class="tabcontent">
+<div id="Sect15C" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap1.pdf#page=33" width="100%" height="400"> </iframe>
   </div>
-<div id="RatingVariablesD" class="tabcontent">
+<div id="Sect15D" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   <iframe src="./Overheads/LDA1.Chap1.pdf#page=34" width="100%" height="400"> </iframe>
   </div>
-<div id="RatingVariablesE" class="tabcontent">
+<div id="Sect15E" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
   ![](./Overheads/LDA1.Chap1.pdf#page=34){width="100%" height="400"}
   </div>
@@ -739,5 +739,5 @@ success_msg("Excellent! Modifying someone else's code can be more difficult than
 ## Contributors {-}
 
 -  **Authors**. **Yvonne Chueh**, Central Washington University, **Paul Johnson**, University of Wisconsin-Madison, and **Edward (Jed) Frees**, University of Wisconsin-Madison and Australian National University, are the principal authors of the initial version of this chapter.
--  **Chapter Maintainers**. Please contact ??? and/or Jed <jfrees@bus.wisc.edu> for chapter comments and suggested improvments.
+-  **Chapter Maintainers**. Please contact ??? and/or Jed at <jfrees@bus.wisc.edu> for chapter comments and suggested improvements.
 

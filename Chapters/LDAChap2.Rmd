@@ -1,7 +1,7 @@
 
 # Frequency Modeling
 
-**Chapter description**
+**Chapter Description**
 
 A primary focus for insurers is estimating the magnitude of aggregate claims it must bear under its insurance contracts. Aggregate claims are affected by both the frequency and the severity of the insured event. Decomposing aggregate claims into these two components, each of which warrant significant attention, is essential for analysis and pricing. This chapter discusses frequency distributions, summary measures, and parameter estimation techniques.
 
@@ -19,9 +19,9 @@ A primary focus for insurers is estimating the magnitude of aggregate claims it 
 In this section, you learn how to:
 
 
-*  Determine quantities that summarize a distribution such as the distribution and survival function, as well as moments such as the mean and variance
-*  Define and compute the moment and probability generating functions
-*  Describe and understand relationships among three important frequency distributions, the binomial, Poisson, and negative binomial distributions
+*  Determine quantities that summarize a distribution such as the (cumulative) distribution and survival function, as well as moments such as the mean and variance.
+*  Define and compute the moment and probability generating functions.
+*  Describe and understand relationships among three important frequency distributions, the binomial, Poisson, and negative binomial distributions.
 
 
 ***
@@ -199,7 +199,7 @@ Assuming that the numbers of cyber events in different calendar quarters are mut
 **Instructions** 
 
 -  Graph the probability mass function (pmf) of the number of cyber events using the function `barplot()`. 
--  Calculate the pmf and the cumulative probability distribution function for $k = 0, 1, \ldots, 12$ cyber events
+-  Calculate the *pmf* and the cumulative probability distribution function for $k = 0, 1, \ldots, 12$ cyber events
 using the functions [dpois()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Poisson), [ppois()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Poisson). Create a data frame to present your results and display the data frame.
 -  From your data frame, identify the 95th percentile. Confirm your result using the [qpois()](https://www.rdocumentation.org/packages/stats/versions/3.3/topics/Poisson) function. 
 -  How are the probabilities changing over time? Plot the probability of zero cyber events versus quarter number $k = 0, 1, \ldots, 12$.
@@ -278,12 +278,12 @@ Instead, you decide to demonstrate these relationships graphically.
 :::: {.blackbox }
 **Instructions** 
 
--  Plot the probability mass function (pmf) of the binomial distribution with $m=12$ and $q=0.1$ over $k = 0, 1, \ldots, 12$ potential outcomes. Superimpose on this plot a Poisson pmf with the same mean using the [lines()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/lines) function.
+-  Plot the probability mass function (pmf) of the binomial distribution with $m=12$ and $q=0.1$ over $k = 0, 1, \ldots, 12$ potential outcomes. Superimpose on this plot a Poisson *pmf* with the same mean using the [lines()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/lines) function.
 -  Repeat this step with the same Poisson distribution but, for the binomial distribution, multiply $m$ by 5 and divide $q$ by 5. (You should see how the binomial becomes a better approximation to the Poisson.) 
--  Determine the pmf of the negative binomial distribution with mean parameter $r \beta$ and dispersion parameter $r=1$ using the function [dnbinom()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/NegBinomial). Use the same mean as for the binomial distribution.
+-  Determine the *pmf* of the negative binomial distribution with mean parameter $r \beta$ and dispersion parameter $r=1$ using the function [dnbinom()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/NegBinomial). Use the same mean as for the binomial distribution.
 -  Demonstrate the convergence of the negative binomial to the Poisson by creating side-by-side graphical comparisons. That is, using the [par(mfrow = ...)](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/par) syntax, compare:
     -  A plot of this negative binomial distribution pmf, superimposed with baseline Poisson distribution (with the same mean). 
-    -  A plot of the negative binomial distribution pmf with the same mean and dispersion parameter $r=100$, superimposed with baseline Poisson distribution.
+    -  A plot of the negative binomial distribution *pmf* with the same mean and dispersion parameter $r=100$, superimposed with baseline Poisson distribution.
 ::::
 
 <br>
@@ -360,9 +360,9 @@ success_msg("Excellent job! As you study actuarial data applications, do not shy
 
 In this section, you learn how to:
 
-*    Define the $(a,b,0)$ class of frequency distributions
-*    Discuss the importance of the recursive relationship underpinning this class of distributions
-*    Identify conditions under which this general class reduces to each of the binomial, Poisson, and negative binomial distributions
+*    Define the $(a,b,0)$ class of frequency distributions.
+*    Discuss the importance of the recursive relationship underpinning this class of distributions.
+*    Identify conditions under which this general class reduces to each of the binomial, Poisson, and negative binomial distributions.
 
 ***
 
@@ -412,7 +412,7 @@ where $N$ is a count random variable. From Section 2.3 of the text, we know that
 
 *  if $a=0$ and $b=\lambda$, then the recursion yields a Poisson distribution with parameter $\lambda$
 *  if $a=-q/(1-q)$ and $b=(m+1)q/(1+q)$, then the recursion yields a binomial distribution with parameters $m$ and $q$
-*  if $a=\beta/(1+\beta)$ and $b=(r-1)\beta/(1+\beta)$, then the recursion yields a negative distribution with parameters $r$ and $\beta$.
+*  if $a=\beta/(1+\beta)$ and $b=(r-1)\beta/(1+\beta)$, then the recursion yields a negative binomial distribution with parameters $r$ and $\beta$.
 
 The $(a,b,0)$ class is a foundation for other, more complex, distributions, so let us check that we understand the recursions.
 
@@ -613,9 +613,9 @@ success_msg("Superb! Working forwards and backwards is important in complex task
 
 In this section, you learn how to:
 
-*    Define a likelihood for a sample of observations from a discrete distribution
-*    Define the maximum likelihood estimator for a random sample of observations from a discrete distribution
-*    Calculate the maximum likelihood estimator for the binomial, Poisson, and negative binomial distributions
+*    Define a likelihood for a sample of observations from a discrete distribution.
+*    Define the maximum likelihood estimator (*mle*) for a random sample of observations from a discrete distribution.
+*    Calculate the *mle* for the binomial, Poisson, and negative binomial distributions.
 
 ***
 
@@ -702,8 +702,8 @@ In Exercise \@ref(Ex:CountDataCompression), the count data range was narrow - co
 :::: {.blackbox }
 **Instructions** 
 
--  Using the dataframe `Insample`, create a smaller data set based on year 2007 experience
--  From the 2007 experience, create a frequency table
+-  Using the dataframe `Insample`, create a smaller data set based on year 2007 experience.
+-  From the 2007 experience, create a frequency table.
 -  Store distinct claim counts observed into an array named $\bf values$.
 -  Store the frequency of claim counts into an array named $\bf m.vec$. 
 -  Use the array $\bf m.vec$ to determine the mean frequency.
@@ -791,7 +791,7 @@ In this assignment you are asked to plot the Poisson likelihood and the log-like
 
 -  Write the likelihood as a function of the parameter $\theta$.
 -  Create an array with values of $\theta = 1, 1.01, 1.02, \ldots, 5$.
--  Plot the likelihood over values of $\theta$. You may find useful the function [sapply()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/sapply) (It applies a function over a list or vector.)
+-  Plot the likelihood over values of $\theta$. You may find useful the function [sapply()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/sapply). (It applies a function over a list or vector.)
 -  Plot the log-likelihood over values of $\theta$.
 -  Superimpose a vertical line at the mean to emphasize that both the likelihood and the log-likelihood reach their maximum values at the mean. For this, use the [abline()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/abline) (this function adds one or more straight lines through the current plot).
 ::::
@@ -830,7 +830,7 @@ mtext("Log-likelihood",side=4,col="red",line=3)
 axis(4, ylim=c(-25,-16), col="red",col.axis="red",las=1) # Second y-axis
 axis(1,c(1,1.5,2,2.5,mean(x),3.5,4,4.5,5)) # Common x-axis
 mtext(expression(theta),side=1,col="black",line=2.5)
-# Vertical line at the common argmax (MLE)
+# Vertical line at the common argmax (mle)
 abline(v=mean(??),col="green")
 ```
 
@@ -853,7 +853,7 @@ mtext("Log-likelihood",side=4,col="red",line=3)
 axis(4, ylim=c(-25,-16), col="red",col.axis="red",las=1) # Second y-axis
 axis(1,c(1,1.5,2,2.5,mean(x),3.5,4,4.5,5)) # Common x-axis
 mtext(expression(theta),side=1,col="black",line=2.5)
-# Vertical line at the common argmax (MLE)
+# Vertical line at the common argmax (mle)
 abline(v=mean(x),col="green")
 ```
 
@@ -870,9 +870,9 @@ success_msg("Excellent job! In complex actuarial applications, maximum likelihoo
 **Assignment Text**
 
 In this assignment you are asked to fit the binomial model to a small set of count data, $\{1, 3, 3, 3, 5, 3, 0, 2, 4, 3, 4\}$. Recall that in this parameterization of the binomial model, $m$ is the potential number of 1's (the number of "trials").
-You will recall from [Section 2.4.2 of *Loss Data Analytics*](https://openacttexts.github.io/Loss-Data-Analytics/C-Frequency-Modeling.html#S:frequency-distributions-mle) that when $m$ is known, the *MLE* of $q$ is simply a sample average. Because $m$ is restricted to integer values, it is convenient to resort to brute force maximization of the *reduced* likelihood in order to find the *MLE* for $m$. But then it is a must to visually confirm the solution by plotting the reduced log-likelihood. 
+You will recall from [Section 2.4.2 of *Loss Data Analytics*](https://openacttexts.github.io/Loss-Data-Analytics/C-Frequency-Modeling.html#S:frequency-distributions-mle) that when $m$ is known, the *mle* of $q$ is simply a sample average. Because $m$ is restricted to integer values, it is convenient to resort to brute force maximization of the *reduced* likelihood in order to find the *mle* for $m$. But then it is a must to visually confirm the solution by plotting the reduced log-likelihood. 
 
-Note that it is important to check that the sample mean exceeds sample variance for the *MLE* of $m$ to be finite - lest the Poisson is the better model. The data are available in an array $\bf x$ and the array $\bf m.vec$ of Exercise \@ref(Ex:CountDataCompression) is also made available.
+Note that it is important to check that the sample mean exceeds sample variance for the *mle* of $m$ to be finite - lest the Poisson is the better model. The data are available in an array $\bf x$ and the array $\bf m.vec$ of Exercise \@ref(Ex:CountDataCompression) is also made available.
 
 :::: {.blackbox }
 **Instructions**
@@ -880,14 +880,14 @@ Note that it is important to check that the sample mean exceeds sample variance 
 - Develop the reduced likelihood function based on the compressed data in the array $\bf m.vec$.
 - The value of $m$ must be at least as large as the largest observed value in the sample. Calculate potential values of the reduced likelihood over a range beginning from the maximum value in $\bf m.vec$.
 - Determine the maximum likelihood estimators of the parameters $m$ and $q$ by selecting the largest likelihood. For this, you will find helpful the function [match()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/match) (it returns a vector of the positions of (first) matches of its first argument in its second).
-- To check your results, plot the likelihood function over a range of $m$. Superimpose a vertical line at the *MLE*.
+- To check your results, plot the likelihood function over a range of $m$. Superimpose a vertical line at the *mle*.
 - Check to see whether the sample mean is greater than the sample variance. Doing so, you can use the function [var()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/var) (it computes the variance using a denominator of $n-1$). To avoid this, the sample code instead uses `var(c(x,mean(x)))` instead of `var(x)`. Ask yourself why?
 ::::
 
 <br>
 
 ```{r ex="LDA1.2.3.4", type="hint", tut=TRUE}
-When interpreting the code, this exercise uses the more basic likelihood, in contrast to the more common log-likelihood function. Further, for a fixed *m*, the *MLE* of *q* is simply the average. So, we only need to do one dimensional optimization even though there are two parameters.
+When interpreting the code, this exercise uses the more basic likelihood, in contrast to the more common log-likelihood function. Further, for a fixed *m*, the *mle* of *q* is simply the average. So, we only need to do one dimensional optimization even though there are two parameters.
 ```
 
 
@@ -910,7 +910,7 @@ reduced_like<-function(para_m){
 # Compute the reduced likelihood across a range of values for m
 obj <- sapply(max(x):(3*max(x)),reduced_like)
 
-# MLE for m and q
+# mle for m and q
 m_MLE <- match(max(obj),obj)+max(x)-1
 q_MLE <- mean(x)/m_MLE
 # Visually check the reduced log-likelihood
@@ -958,9 +958,9 @@ success_msg("Excellent job! When comparing the mean to the variance for the basi
 
 **Assignment Text**
 
-In this assignment, you are asked to fit the negative binomial model to a small set of count data, $\{1,  1,  2,  6,  1,  1,  2,  5, 11\}$.  Because $r$, a parameter of the negative binomial distribution, is a positive real, it is convenient to use the `optimize` function for maximizing the *reduced* likelihood in order to find its *MLE*. It is always advisable to visually confirm the solution by plotting the reduced log-likelihood. 
+In this assignment, you are asked to fit the negative binomial model to a small set of count data, $\{1,  1,  2,  6,  1,  1,  2,  5, 11\}$.  Because $r$, a parameter of the negative binomial distribution, is a positive real number, it is convenient to use the `optimize` function for maximizing the *reduced* likelihood in order to find its *mle*. It is always advisable to visually confirm the solution by plotting the reduced log-likelihood. 
 
-Note that it is important to check that the sample mean is lower than sample variance for the *MLE* of $r$ to be finite - lest the Poisson is the better model. The data are available in an array $\bf x$ and the array $\bf m.vec$ of Exercise \@ref(Ex:CountDataCompression) is also made available.
+Note that it is important to check that the sample mean is lower than sample variance for the *mle* of $r$ to be finite - lest the Poisson is the better model. The data are available in an array $\bf x$ and the array $\bf m.vec$ of Exercise \@ref(Ex:CountDataCompression) is also made available.
 
 :::: {.blackbox }
 **Instructions**
@@ -968,14 +968,14 @@ Note that it is important to check that the sample mean is lower than sample var
 - Develop the reduced log-likelihood function based on the compressed data in the array $\bf m.vec$.
 - The optimization routine will need a range of potential values of $r$. The illustrative code uses a moment estimator (based on techniques that we will cover formally later in [Section 4.1.1 of *Loss Data Analytics*](https://openacttexts.github.io/Loss-Data-Analytics/C-ModelSelection.html#S:MS:NonParEst)).
 - Determine the value of $r$ that minimizes the reduced log-likelihood using the function [optimize()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/optimize) (a one dimensional optimization function). 
-- To check your results, plot the reduced log-likelihood function over a range of $r$. Superimpose a vertical line at the *MLE*.
+- To check your results, plot the reduced log-likelihood function over a range of $r$. Superimpose a vertical line at the *mle*.
 - Check to see whether the sample mean is smaller than the sample variance. Is this consistent with the negative binomial distribution?
 ::::
 
 <br>
 
 ```{r ex="LDA1.2.3.5", type="hint", tut=TRUE}
-For the negative binomial, at the *MLE*, we have of *r beta* is simply the average. So, we only need to do one dimensional optimization even though there are two parameters. Review [Section 2.4.2 of *Loss Data Analytics*](https://openacttexts.github.io/Loss-Data-Analytics/C-Frequency-Modeling.html#S:frequency-distributions-mle) for a reminder.
+For the negative binomial, at the *mle*, we have of *r beta* is simply the average. So, we only need to do one dimensional optimization even though there are two parameters. Review [Section 2.4.2 of *Loss Data Analytics*](https://openacttexts.github.io/Loss-Data-Analytics/C-Frequency-Modeling.html#S:frequency-distributions-mle) for a reminder.
 ```
 
 
@@ -1040,9 +1040,9 @@ success_msg("Superb! The importance of maximum likelihood estimation is valuable
 
 In this section, you learn how to:
 
-*    Define the $(a,b,1)$ class of frequency distributions and discuss the importance of the recursive relationship underpinning this class of distributions
-*    Interpret zero truncated and modified versions of the binomial, Poisson, and negative binomial distributions
-*    Compute probabilities using the recursive relationship
+*    Define the $(a,b,1)$ class of frequency distributions and discuss the importance of the recursive relationship underpinning this class of distributions.
+*    Interpret zero truncated and modified versions of the binomial, Poisson, and negative binomial distributions.
+*    Compute probabilities using the recursive relationship.
 
 ***
 
@@ -1059,9 +1059,9 @@ An earlier exercise used recursions for the $(a,b,0)$ class of distributions. Th
 - Setup equation in matrix form and solve for $a$ and $b$. Consider a $2 \times 2$ coefficient matrix $\bf C$ such that
 ${\bf C} \left(\begin{array}{c}a \\ b \end{array}\right) = \left(\begin{array}{c}p_3/p_2 \\ p_2/p_1 \end{array}\right)$. Write an expression for $\bf C$.
 - Invert the matrix $\bf C$ and solve for the vector of coefficients $\left(\begin{array}{c}a \\ b \end{array}\right)$.
-- Use the sign of the coefficients to identify the $(a,b,1)$ distribution
-- Use the functional form of this distribution to compute *pmf* up to $p_{100}$ directly
-- From these generated probabilities, determine the mean and the variance
+- Use the sign of the coefficients to identify the $(a,b,1)$ distribution.
+- Use the functional form of this distribution to compute *pmf* up to $p_{100}$ directly.
+- From these generated probabilities, determine the mean and the variance.
 - From the function form, use the closed form expressions for this distribution to check your mean and the variance calculations in the prior step.
 ::::
 
@@ -1127,9 +1127,9 @@ success_msg("Terrific! Working with matrices can save considerable time in high-
 
 In this section, you learn how to:
 
-*    Define a mixture distribution when the mixing component is based on a finite number of sub-groups
-*    Compute mixture distribution probabilities from mixing proportions and knowledge of the distribution of each subgroup
-*    Define a mixture distribution when the mixing component is continuous
+*    Define a mixture distribution when the mixing component is based on a finite number of sub-groups.
+*    Compute mixture distribution probabilities from mixing proportions and knowledge of the distribution of each subgroup.
+*    Define a mixture distribution when the mixing component is continuous.
 
 ***
 
@@ -1196,8 +1196,8 @@ In this exercise, we will compare the shape of the mixture distribution to the l
 :::: {.blackbox }
 **Instructions** 
 
--  Determine the probability mass functions for the low and risk populations for $k=0, \ldots, 20$ possible claim outcomes.
--  Compute the corresponding probability mass function for the mixture distribution
+-  Determine the probability mass functions for the low and high risk populations for $k=0, \ldots, 20$ possible claim outcomes.
+-  Compute the corresponding probability mass function for the mixture distribution.
 -  Plot the mixture distribution with superimposed lines for the low and high risk populations. Use different colors and plotting symbols for the three distributions to help viewers distinguish among them.
 -  Determine distribution functions for the low, high, and mixture distributions.
 -  Plot the mixture distribution function with superimposed lines for the low and high risk populations.
@@ -1307,7 +1307,7 @@ In this exercise, we will use `R` to calculate the probabilities that a randomly
 **Instructions** 
 
 -  Create a vector of proportions $\alpha$ and a vector of Poisson parameters $\lambda$.
--  Use the function [dpois()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Poisson) to obtain a vector of Poisson probability mass function (pmf) with different means for $k=3$ colds. Then, use the matrix operation [%*%](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/matmult) to obtain the mixture pmf as the inner product of the two vectors containing the Poisson pmfs and population percentages.
+-  Use the function [dpois()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Poisson) to obtain a vector of Poisson probability mass function (pmf) with different means for $k=3$ colds. Then, use the matrix operation [%*%](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/matmult) to obtain the mixture *pmf* as the inner product of the two vectors containing the Poisson pmfs and population percentages.
 -  In the same way, use the [ppois()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Poisson) function to compute the probability of at most 3 colds within a year.
 -  Now, consider $k=0, \ldots, 8$ colds during a year. For each value of $k$, determine the probability of $k$ colds within a year.
 -  Provide a [barplot()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/barplot) of the distribution of number of colds during a year over the range $k=0, \ldots, 8$.
@@ -1395,7 +1395,7 @@ where $g(\cdot;\alpha, \beta = \theta )$ is a gamma density. The proof of this r
 <br>
 
 ```{r ex="LDA1.2.5.3", type="hint", tut=TRUE}
-For the last part of this problem, it is easy to get confused about which is a df and which is a pmf (or pdf). Remember, we are integrating over different values of lambda and this distribution is determined by the gamma process. So, the gamma stays as a pdf.
+For the last part of this problem, it is easy to get confused about which is a df and which is a *pmf* (or *pdf*). Remember, we are integrating over different values of lambda and this distribution is determined by the gamma process. So, the gamma stays as a *pdf*.
 
 ```
 
@@ -1453,8 +1453,8 @@ success_msg("Excellent! An important strength of this computational approach (as
 
 In this section, you learn how to:
 
-*    Calculate a goodness of fit statistic to compare a hypothesized discrete distribution to a sample of discrete observations
-*    Compare the statistic to a reference distribution to assess the adequacy of the fit
+*    Calculate a goodness of fit statistic to compare a hypothesized discrete distribution to a sample of discrete observations.
+*    Compare the statistic to a reference distribution to assess the adequacy of the fit.
 
 ***
 
@@ -1502,15 +1502,15 @@ In this section, you learn how to:
 
 A dataset pertaining to a 1993 portfolio of 7,483 automobile insurance policies from a major Singaporean insurance company that contains several characteristics to explain automobile claim frequency is provided by the General Insurance Association of Singapore. The claims  frequency is contained in the field `Clm_Count`, and the data set has already been read into a data frame called `Insample` and made available to you. You can learn more about the data set at [Singapore Auto Claims](https://instruction.bus.wisc.edu/jfrees/jfreesbooks/Regression%20Modeling/BookWebDec2010/DataDescriptions.pdf) (see description of Table 19: Singapore Auto Claims on page 21).
 
-In this assignment, you are asked to fit a zero-modified Poisson using the *MLE* method and test the goodness of fit. In a sense, it is a continuation of the example discussed in [Section 2.7 of *Loss Data Analytics*](https://openacttexts.github.io/Loss-Data-Analytics/C-Frequency-Modeling.html#S:goodness-of-fitt)  where the inadequacy of the Poisson model was observed.
+In this assignment, you are asked to fit a zero-modified Poisson using the *mle* method and test the goodness of fit. In a sense, it is a continuation of the example discussed in [Section 2.7 of *Loss Data Analytics*](https://openacttexts.github.io/Loss-Data-Analytics/C-Frequency-Modeling.html#S:goodness-of-fitt)  where the inadequacy of the Poisson model was observed.
 
-The maximum likelihood estimator of $p_0$ is simply the number of zeros divided by the sample size. The *MLE* of $\lambda$ turns out to be the solution of the equation
+The *mle* of $p_0$ is simply the number of zeros divided by the sample size. The *mle* of $\lambda$ turns out to be the solution of the equation
 
 $$
 \frac{{\lambda}}{1-\exp({-\lambda})}=\frac{\sum_{k\geq0} k \cdot m_k}{n-m_0}.
 $$
 
-You can learn more about the development of the *MLE* below.
+You can learn more about the development of the *mle* below.
 
 `r HideProofTheory('MLECalc.1',"Verify Development of the MLE derivation for zero-modified Poisson")`
 
@@ -1524,12 +1524,12 @@ $$
 L(p_0,\lambda)= \underbrace{\left(p_0^{m_0} (1-p_0)^{n-m_0}\right)}_{\hbox{$p_0$-part}}\underbrace{\left( (1-\exp(-\lambda))^{-(n-m_0)} \lambda^{\sum_{k\geq1} km_k}\right)}_{\hbox{$\lambda$-part}} \underbrace{\left(\prod_{k\geq 1} (k!)^{m_k}\right)^{-1}}_\hbox{Constant} .
 $$
 
-The above observation implies maximizing the likelihood with respect to both the parameters can be reduced to two one-variable maximization problems. The first part is precisely a Bernoulli likelihood, the maximization results in the MLE of $p_0$ given by $\hat{p_0}=m_0/n$. Maximizing the second part implies that the MLE $\hat{\lambda}$ satisfies,
+The above observation implies maximizing the likelihood with respect to both the parameters can be reduced to two one-variable maximization problems. The first part is precisely a Bernoulli likelihood, the maximization results in the *mle* of $p_0$ given by $\hat{p_0}=m_0/n$. Maximizing the second part implies that the *mle* $\hat{\lambda}$ satisfies,
 
 $$
 \frac{\hat{\lambda}}{1-\exp(\hat{-\lambda})}=\frac{\sum_{k\geq0} k \cdot m_k}{n-m_0}.
 $$
-Observe that the right hand side equals $\bar{x}/(1-\hat{p_0})$. As an aside, the latter being the empirical mean of positive counts and  $\frac{{\lambda}}{1-\exp({-\lambda})}$ its population analog lend a method-of-moments interpretation for the *MLE*.  Computing $\hat{\lambda}$ then reduces to solving the equation 
+Observe that the right hand side equals $\bar{x}/(1-\hat{p_0})$. As an aside, the latter being the empirical mean of positive counts and  $\frac{{\lambda}}{1-\exp({-\lambda})}$ its population analog lend a method-of-moments interpretation for the *mle*.  Computing $\hat{\lambda}$ then reduces to solving the equation 
 $$
 \frac{{\lambda}}{1-\exp({-\lambda})}=\frac{\sum_{k\geq0} k \cdot m_k}{n-m_0}.
 $$
@@ -1547,15 +1547,15 @@ plot(lam<-(0:100)/10,lam/(1-exp(-lam)),type="l",xlab=expression(lambda),
 :::: {.blackbox }
 **Instructions** 
 
-- To get a feel for the data, start by generating the frequency table
-- Store distinct claim counts observed in array named values
-- Store the frequency of claim counts in $\bf m.vec$
-- Calculate sample mean of claim counts and the *MLE* for $p_0$
-- Code the function that provides the framework for determining the *MLE* of $\lambda$
-- Find the *MLE* of  $\lambda$ by solving for the root of the function using  [uniroot()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/uniroot) (This function searches the interval from lower to upper for a root (i.e., zero) of the function f with respect to its first argument.)
+- To get a feel for the data, start by generating the frequency table.
+- Store distinct claim counts observed in array named values.
+- Store the frequency of claim counts in $\bf m.vec$.
+- Calculate sample mean of claim counts and the *mle* for $p_0$.
+- Code the function that provides the framework for determining the *mle* of $\lambda$
+- Find the *mle* of  $\lambda$ by solving for the root of the function using  [uniroot()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/uniroot). (This function searches the interval from lower to upper for a root (i.e., zero) of the function f with respect to its first argument.)
 -  Construct a 2 by 1 vector containing the observed and estimated probabilities. The five bins are $\{0\}, \{1\},$ $\{2\}, \{3\}, \{4,5,...\}$.
 - Use a barplot to compare observed and estimated probabilities.
-- Compute the chi-square statistic and the 95th percentile of the appropriate chi- square distribution
+- Compute the chi-square statistic and the 95th percentile of the appropriate chi- square distribution.
 ::::
 
 <br>
@@ -1640,14 +1640,14 @@ ex() %>% check_object("lambda_MLE", undefined_msg = "Make sure to not remove `la
 data_fitmsg <- "Did you correctly specify the object `data_fit`?"
 ex() %>% check_object("data_fit", undefined_msg = "Make sure to not remove `data_fit`!") %>%check_equal(incorrect_msg=data_fitmsg)
 
-success_msg("Success! Now compare the above *MLE* for lambda with that for the Poisson model (see Section 2.7)")
+success_msg("Success! Now compare the above *mle* for lambda with that for the Poisson model (see Section 2.7)")
 ```
 
 
 ## Contributors {-}
 
 -  **Authors**. **N.D. Shyamalkumar**, The University of Iowa, **Michelle Xia**, Northern Illinois University, and **Edward (Jed) Frees**, University of Wisconsin-Madison and Australian National University, are the principal authors of the initial version of this chapter.
--  **Chapter Maintainers**. Please contact ??? and/or Jed <jfrees@bus.wisc.edu> for chapter comments and suggested improvments.
+-  **Chapter Maintainers**. Please contact ??? and/or Jed at <jfrees@bus.wisc.edu> for chapter comments and suggested improvements.
 
 
 
