@@ -8,7 +8,7 @@ exercise.-exploring-claim-severities
 exercise.-skewness-of-the-claim-severity-distribution
 exercise.-claim-severity-by-year
 Sec:LGPIFRatingVariaables
-exercise.-claim-by-entity-type-fire-class-and-no-claim-credit
+Ex:ClaimByType
 frequency-modeling
 basic-frequency-distributions
 exercise.-representing-the-number-of-cyber-events-with-a-binomial-distribution

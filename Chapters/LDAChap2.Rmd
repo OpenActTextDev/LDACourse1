@@ -18,11 +18,9 @@ A primary focus for insurers is estimating the magnitude of aggregate claims it 
 
 In this section, you learn how to:
 
-
-*  Determine quantities that summarize a distribution such as the (cumulative) distribution and survival function, as well as moments such as the mean and variance.
+*  Determine quantities that summarize a distribution such as the (cumulative) distribution as well as moments such as the mean and variance.
 *  Define and compute the moment and probability generating functions.
 *  Describe and understand relationships among three important frequency distributions, the binomial, Poisson, and negative binomial distributions.
-
 
 ***
 
@@ -802,7 +800,6 @@ In this assignment you are asked to plot the Poisson likelihood and the log-like
 To simplify matters even more, you could try with just three points.
 ```
 
-
 ```{r ex="LDA1.2.3.3", type="pre-exercise-code", tut=TRUE}
 x<-c(3, 6, 0, 2, 3, 4, 4, 2, 4, 4, 6, 2, 3, 0, 2, 3,
      1, 2, 4, 2)
@@ -815,8 +812,9 @@ m.vec[as.integer(names(table(x)))+1]=as.vector(table(x))
 # Likelihood Function
 Like  <-  function(theta){
   prod(dpois(0:max(x),theta)^??)
-}
+  }
 theta <- ??
+  
 par(mar=c(5, 5, 4, 5) + 0.1) # Plot Margins
 # Plot Likelihood
 plot(theta,sapply(??,Like),type="l",axes=FALSE,xlab="",ylab="")
@@ -827,8 +825,8 @@ par(new=TRUE) # Reuse Graph
 # Plot Log-likelihood
 plot(??,log(sapply(theta,??)),axes=FALSE,xlab="",ylab="",ylim=c(-65,-35),col="red",type="l")
 mtext("Log-likelihood",side=4,col="red",line=3)
-axis(4, ylim=c(-25,-16), col="red",col.axis="red",las=1) # Second y-axis
-axis(1,c(1,1.5,2,2.5,mean(x),3.5,4,4.5,5)) # Common x-axis
+axis(4, ylim=c(-25,-16), col="red",col.axis="red", las=1) # Second y-axis
+axis(1, c(1,1.5,2,2.5,mean(x),3.5,4,4.5,5) ) # Common x-axis
 mtext(expression(theta),side=1,col="black",line=2.5)
 # Vertical line at the common argmax (mle)
 abline(v=mean(??),col="green")
@@ -840,6 +838,7 @@ Like <- function(theta){
   prod(dpois(0:max(x),theta)^m.vec)
   }
 theta <- (100:500)/100
+
 par(mar=c(5, 5, 4, 5) + 0.1) # Plot Margins
 # Plot Likelihood
 plot(theta,sapply(theta,Like),type="l",axes=FALSE,xlab="",ylab="")
@@ -1046,9 +1045,13 @@ In this section, you learn how to:
 
 ***
 
-### Exercise. The (*a,b*,1) Distribution and its Moments
 
-**Assignment Text**
+### Exercise. The (*a,b*,1) Distribution and its Moments
+<img src = "ContributorPics\warning.jpg" width = "45" height = "45" style = "float:right; margin-left: 10px; margin-top: 7px" />
+(*As a reminder, when you see this symbol, it means that this exercise is challenging and you may wish to skip it on your first pass through the course.*)
+
+
+**Assignment Text** 
 
 An earlier exercise used recursions for the $(a,b,0)$ class of distributions. The $(a,b,1)$ features the same recursion but it starts at $k=2$. In this assignment you are given $p_1$, $p_2$ and $p_3$ (in an array $\bf p$) from an $(a,b,1)$ distribution. You are tasked to identify the distribution and compute its mean and variance. 
 
@@ -1371,6 +1374,7 @@ success_msg("Superb! This exercise explicitly includes only three sub-population
 
 
 ### Exercise. Gamma Mixture of Poissons
+<img src = "ContributorPics\warning.jpg" width = "45" height = "45" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
 **Assignment Text**
 
@@ -1497,6 +1501,7 @@ In this section, you learn how to:
 
 
 ### Exercise. Goodness of Fit: Zero-Modified Poisson
+<img src = "ContributorPics\warning.jpg" width = "45" height = "45" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
 **Assignment Text**
 

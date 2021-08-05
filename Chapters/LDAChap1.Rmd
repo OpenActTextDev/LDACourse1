@@ -633,7 +633,7 @@ R Code</button>
   
   
   
-### Exercise. Claim by Entity Type, Fire Class, and No Claim Credit
+### Exercise. Claim by Entity Type, Fire Class, and No Claim Credit {#Ex:ClaimByType}
 
 **Assignment Text**
 

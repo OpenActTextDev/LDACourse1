@@ -512,16 +512,17 @@ In this section, you learn how to:
   <iframe src="./Overheads/LDA1.Chap4.pdf#page=23" width="100%" height="400"> </iframe>
   </div>
   
-### Exercise. Probability-Probability (PP) plot
+### Exercise. Probability-Probability ($pp$) plot
+<img src = "ContributorPics\warning.jpg" width = "45" height = "45" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
 **Assignment Text**
 
-Probability-Probability (PP) plots can be used to corroborate the selection of parametric models. The Wisconsin Property Fund data has already been read into a data frame called `Insample` and we created subset data which contains the positive loss data called `positive_loss`. In this tutorial, you will generate PP plots with Gaussian and gamma distribution.
+Probability-probability ($pp$) plots can be used to corroborate the selection of parametric models. The Wisconsin Property Fund data has already been read into a data frame called `Insample` and we created subset data which contains the positive loss data called `positive_loss`. In this tutorial, you will generate $pp$ plots with Gaussian and gamma distribution.
 
 :::: {.blackbox }
 **Instructions**
 
--  Generate PP plots for the positive loss amount `y` using Gaussian and gamma. Based on PP plots, which parametric fitted model is closer to the empirical distribution?
+-  Generate $pp$ plots for the positive loss amount `y` using Gaussian and gamma. Based on the $pp$ plots, which parametric fitted model is closer to the empirical distribution?
 -  Use the function [glm(response~1,data=,family=Gamma(link=log))](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/glm) to fit generalized linear model (*glm*) with gamma family.
 -  Find the shape and rate parameters from the fitted gamma *glm*. (No action required on your part.)
 -  Use the function [glm(response~1,data=,family=gaussian(link=log))](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/glm) to fit generalized linear model (*glm*) with Gaussian distribution.
@@ -535,7 +536,7 @@ Probability-Probability (PP) plots can be used to corroborate the selection of p
 
 ```{r ex="LDA1.4.1.2_1", type="hint", tut=TRUE}
 
-We show the code that uses *glm* to find parameters. Stay tuned for more detailed information about *glm* in later chapters.
+We show the code that uses *glm* to find parameters.
 
 ```
 
@@ -605,19 +606,22 @@ abline(0,1)
 
 
 ```{r ex="LDA1.4.1.2_1", type="sct", tut=TRUE}
-success_msg("Good job! PP plot is able to compare cumulative probabilities under two models. Gamma is closer to the empirical distribution.")
+success_msg("Good job! The $pp$ plot is able to compare cumulative probabilities under two models. The gamma distribution is closer to the empirical distribution and so provides a better representation of the data.")
 ```
 
-### Exercise. Quantile-Quantile (QQ) plot
+**Editorial Note**. This exercise uses the [glm()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/glm) function to produce maximum likelihood estimates of certain classes of distributions including the gamma and Gaussian (normal). [Section 3.5 of *Loss Data Analytics*](https://openacttexts.github.io/Loss-Data-Analytics/C-Severity.html#S:MaxLikeEstimation) employs a comparable function, [vlgm()](https://www.rdocumentation.org/packages/VGAM/versions/1.1-5/topics/vglm). These functions are even more useful when employed in regression modeling contexts. Although regression modeling is outside the scope of this course, the exercise provides an initial exposure to these functions that are very useful in actuarial practice.
+
+
+### Exercise. Quantile-Quantile ($qq$) plot
   
 **Assignment Text**
 
-PP plot shows cumulative distribution functions, which can sometimes be difficult to detect where a fitted parametric distribution is deficient. As an alternative, it is common to use a quantile-quantile (QQ) plot. The Wisconsin Property Fund data has already been read into a data frame called `Insample` and we also created a subset data which includes only positive loss data called `positive_loss`. In this tutorial, you will generate QQ plots with Gaussian and gamma distribution.
+The $pp$ plot shows cumulative distribution functions, which can sometimes be difficult to detect where a fitted parametric distribution is deficient. As an alternative, it is common to use a quantile-quantile ($qq$) plot. The Wisconsin Property Fund data has already been read into a data frame called `Insample` and we also created a subset data which includes only positive loss data called `positive_loss`. In this tutorial, you will generate $qq$ plots with Gaussian and gamma distribution.
 
 :::: {.blackbox }
 **Instructions**
 
--  Generate QQ plots for the positive loss amount `y` using Gaussian and gamma. Based on the QQ plot, which parametric fitted model is closer to the empirical distribution?
+-  Generate $qq$ plots for the positive loss amount `y` using Gaussian and gamma. Based on the $qq$ plot, which parametric fitted model is closer to the empirical distribution?
 -  Find sample size, mean, variance, and standard deviation for the positive loss. `p_value` is a list of probabilities that is given here.  
 -  Use the function [qnorm()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Normal) to create quantile function for the Gaussian distribution.
 -  Use the function [qgamma()](https://www.rdocumentation.org/packages/Rlab/versions/2.15.1/topics/Gamma) to create quantile function for the gamma distribution.
@@ -704,7 +708,7 @@ abline(0,1)
 
 
 ```{r ex="LDA1.4.1.2_2", type="sct", tut=TRUE}
-success_msg("Good job! QQ plot compares two fitted models through their quantiles. Again, the gamma is better fit.")
+success_msg("Good job! The $qq$ plot compares two fitted models through their quantiles. Again, the gamma is better fit.")
 ```
 
 ***
@@ -776,7 +780,7 @@ ks.test(positive_loss$y, gamma)
 
 
 ```{r ex="LDA1.4.1.2_3", type="sct", tut=TRUE}
-success_msg("According to the Kolmogorov-Smirnov test, the two distribution functions are not equal. We have seen some deviations from the QQ graph and PP graph. We need to find a better parametric model.")
+success_msg("According to the Kolmogorov-Smirnov test, the two distribution functions are not equal. We have seen some deviations from the *qq* graph and *pp* graph. We need to find a better parametric model.")
 ```
 
 ***
