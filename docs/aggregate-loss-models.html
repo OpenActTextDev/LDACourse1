@@ -49,7 +49,6 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 <!-- Various toggle functions used throughout --> 
 <script language="javascript">
@@ -566,8 +565,8 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEwMDApICAgICAjIEZv
 <p><strong>Instructions</strong></p>
 <ul>
 <li>Use the function <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/optim">optim()</a> to find the maximum likelihood estimates of the frequency and severity distributions.</li>
-<li>For the likelihood of frequency component, we use <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/NegBinomial">dnbinom()</a>. Note that we use the same parametrization as in the <a href="https://openacttexts.github.io/Loss-Data-Analytics/C-Frequency-Modeling.html#S:basic-frequency-distributions">textbook</a> so that <span class="math inline">\(\text{size}=r\)</span> and <span class="math inline">\(\text{prob}=1/(1+\beta)\)</span>.</li>
-<li>For the likelihood of severity component, we use <a href="https://www.rdocumentation.org/packages/bayesmeta/versions/2.6/topics/dlomax">dlomax()</a>. Note that we use the same parametrization as in the <a href="https://openacttexts.github.io/Loss-Data-Analytics/C-Severity.html#S:ContinuousDistn">textbook</a> so that <span class="math inline">\(\text{shape}=\alpha\)</span> and <span class="math inline">\(\text{scale}=\theta\)</span>.</li>
+<li>For the likelihood of frequency component, we use <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/NegBinomial">dnbinom()</a>. Note that we use the same parametrization as in the <a href="https://openacttexts.github.io/Loss-Data-Analytics/C-Frequency-Modeling.html#S:important-frequency-distributions">Section 2.2 of <em>Loss Data Analytics</em></a> so that <span class="math inline">\(\text{size}=r\)</span> and <span class="math inline">\(\text{prob}=1/(1+\beta)\)</span>.</li>
+<li>For the likelihood of severity component, we use <a href="https://www.rdocumentation.org/packages/bayesmeta/versions/2.6/topics/dlomax">dlomax()</a>. Note that we use the same parametrization as in the <a href="https://openacttexts.github.io/Loss-Data-Analytics/C-Severity.html#S:ContinuousDistn">Section 3.2 of <em>Loss Data Analytics</em></a> so that <span class="math inline">\(\text{shape}=\alpha\)</span> and <span class="math inline">\(\text{scale}=\theta\)</span>.</li>
 </ul>
 </div>
 <p><br></p>

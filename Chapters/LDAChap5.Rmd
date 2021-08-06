@@ -319,8 +319,8 @@ In this assignment, we will fit a collective risk model for an actual portfolio 
 **Instructions**
 
 -  Use the function [optim()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/optim) to find the maximum likelihood estimates of the frequency and severity distributions.
-- For the likelihood of frequency component, we use [dnbinom()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/NegBinomial). Note that we use the same parametrization as in the [textbook](https://openacttexts.github.io/Loss-Data-Analytics/C-Frequency-Modeling.html#S:basic-frequency-distributions) so that $\text{size}=r$ and $\text{prob}=1/(1+\beta)$.
-- For the likelihood of severity component, we use [dlomax()](https://www.rdocumentation.org/packages/bayesmeta/versions/2.6/topics/dlomax). Note that we use the same parametrization as in the [textbook](https://openacttexts.github.io/Loss-Data-Analytics/C-Severity.html#S:ContinuousDistn) so that $\text{shape}=\alpha$ and $\text{scale}=\theta$.
+- For the likelihood of frequency component, we use [dnbinom()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/NegBinomial). Note that we use the same parametrization as in the [Section 2.2 of *Loss Data Analytics*](https://openacttexts.github.io/Loss-Data-Analytics/C-Frequency-Modeling.html#S:important-frequency-distributions) so that $\text{size}=r$ and $\text{prob}=1/(1+\beta)$.
+- For the likelihood of severity component, we use [dlomax()](https://www.rdocumentation.org/packages/bayesmeta/versions/2.6/topics/dlomax). Note that we use the same parametrization as in the [Section 3.2 of *Loss Data Analytics*](https://openacttexts.github.io/Loss-Data-Analytics/C-Severity.html#S:ContinuousDistn) so that $\text{shape}=\alpha$ and $\text{scale}=\theta$.
 ::::
 
 <br>

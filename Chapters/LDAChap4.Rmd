@@ -398,10 +398,10 @@ Solving the above for $\beta$, we see $\hat{\beta} = 1$.  Therefore the Negative
 
 Next, we use `R` to fit this and make a $qq$ plot.  It is important to understand that distributions are not uniquely parameterized, and there can be different conventions across fields, textbooks, and software.  Indeed, in `R` the function \texttt{qnbinom} defines the negative binomial as
 \[
-\Pr(X = x) = \frac{(x+n-1)!}{(n-1)!x!}p^n(1-p)^x, \hspace{5mm} x=0, 1, ...
+\Pr(X = k) = \frac{(k+n-1)!}{(n-1)!k!}p^n(1-p)^k, \hspace{5mm} k=0, 1, ...
 \]
 
-This matches the definition in the textbook by equating $x=k$, probability $p = \frac{1}{1+\beta}$, and size $r=n$.  It is very important to carefully consider the parameterization of any distribution you use in `R`.
+This matches the definition in the textbook by equating probability $p = \frac{1}{1+\beta}$, and size $r=n$.  It is very important to carefully consider the parameterization of any distribution you use in `R`.
 
 
 ```{r ex="LDA4.2.1.3", type="pre-exercise-code", tut=TRUE}
@@ -606,7 +606,7 @@ abline(0,1)
 
 
 ```{r ex="LDA1.4.1.2_1", type="sct", tut=TRUE}
-success_msg("Good job! The $pp$ plot is able to compare cumulative probabilities under two models. The gamma distribution is closer to the empirical distribution and so provides a better representation of the data.")
+success_msg("Good job! The *pp* plot is able to compare cumulative probabilities under two models. The gamma distribution is closer to the empirical distribution and so provides a better representation of the data.")
 ```
 
 **Editorial Note**. This exercise uses the [glm()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/glm) function to produce maximum likelihood estimates of certain classes of distributions including the gamma and Gaussian (normal). [Section 3.5 of *Loss Data Analytics*](https://openacttexts.github.io/Loss-Data-Analytics/C-Severity.html#S:MaxLikeEstimation) employs a comparable function, [vlgm()](https://www.rdocumentation.org/packages/VGAM/versions/1.1-5/topics/vglm). These functions are even more useful when employed in regression modeling contexts. Although regression modeling is outside the scope of this course, the exercise provides an initial exposure to these functions that are very useful in actuarial practice.
@@ -708,7 +708,7 @@ abline(0,1)
 
 
 ```{r ex="LDA1.4.1.2_2", type="sct", tut=TRUE}
-success_msg("Good job! The $qq$ plot compares two fitted models through their quantiles. Again, the gamma is better fit.")
+success_msg("Good job! The *qq* plot compares two fitted models through their quantiles. Again, the gamma is better fit.")
 ```
 
 ***
@@ -890,7 +890,7 @@ Placing insurance deductibles generate truncated data (from the left), while pol
 **Instructions**
 
 -  Create the hypothetical policy limit, 100000 USD, and attach it to `positive_loss` data.
--  Add actual payment column using `dplyr` data wrangling package. 
+-  Add actual payment column using [dplyr](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html) data wrangling package. 
 -  Add UnCensored column using the traditional method.
 ::::
 
