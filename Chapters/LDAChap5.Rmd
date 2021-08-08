@@ -492,7 +492,7 @@ In this section, we learn how to:
 
 
 ### Exercise. Collective Risk Model II
-<img src = "ContributorPics\warning.jpg" width = "45" height = "45" style = "float:right; margin-left: 10px; margin-top: 7px" />
+<img src = "ContributorPics\challenge.jpg" width = "65" height = "65" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
 **Assignment Text**
   
@@ -1145,7 +1145,7 @@ In this section, we learn how to:
 
 
 ### Exercise. Tweedie Distribution
-<img src = "ContributorPics\warning.jpg" width = "45" height = "45" style = "float:right; margin-left: 10px; margin-top: 7px" />
+<img src = "ContributorPics\challenge.jpg" width = "65" height = "65" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
 **Assignment Text**
   

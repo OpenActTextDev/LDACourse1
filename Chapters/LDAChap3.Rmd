@@ -890,7 +890,7 @@ success_msg("Well done!")
 ```
 
 ### Exercise. Creating a Mixture Distribution
-<img src = "ContributorPics\warning.jpg" width = "45" height = "45" style = "float:right; margin-left: 10px; margin-top: 7px" />
+<img src = "ContributorPics\challenge.jpg" width = "65" height = "65" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
 **Assignment Text**
 
@@ -1676,7 +1676,7 @@ success_msg("Well done!")
 
 
 ### Exercise. Finding Standard Errors for Maximum Likelihood Estimates
-<img src = "ContributorPics\warning.jpg" width = "45" height = "45" style = "float:right; margin-left: 10px; margin-top: 7px" />
+<img src = "ContributorPics\challenge.jpg" width = "65" height = "65" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
 **Assignment Text**
 

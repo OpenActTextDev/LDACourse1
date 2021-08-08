@@ -1047,7 +1047,7 @@ In this section, you learn how to:
 
 
 ### Exercise. The (*a,b*,1) Distribution and its Moments
-<img src = "ContributorPics\warning.jpg" width = "45" height = "45" style = "float:right; margin-left: 10px; margin-top: 7px" />
+<img src = "ContributorPics\challenge.jpg" width = "65" height = "65" style = "float:right; margin-left: 10px; margin-top: 7px" />
 (*As a reminder, when you see this symbol, it means that this exercise is challenging and you may wish to skip it on your first pass through the course.*)
 
 
@@ -1374,7 +1374,7 @@ success_msg("Superb! This exercise explicitly includes only three sub-population
 
 
 ### Exercise. Gamma Mixture of Poissons
-<img src = "ContributorPics\warning.jpg" width = "45" height = "45" style = "float:right; margin-left: 10px; margin-top: 7px" />
+<img src = "ContributorPics\challenge.jpg" width = "65" height = "65" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
 **Assignment Text**
 
@@ -1501,7 +1501,7 @@ In this section, you learn how to:
 
 
 ### Exercise. Goodness of Fit: Zero-Modified Poisson
-<img src = "ContributorPics\warning.jpg" width = "45" height = "45" style = "float:right; margin-left: 10px; margin-top: 7px" />
+<img src = "ContributorPics\challenge.jpg" width = "65" height = "65" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
 **Assignment Text**
 

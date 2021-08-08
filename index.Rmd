@@ -74,7 +74,7 @@ The intent is that this type of short course will eventually permeate throughout
     -  For other browsers we tested (Edge and Chrome), the page of the .pdf that you select on appears the first time. You can either refresh every time you select a new page or, an easier route, scroll down to the appropriate page to see the desired output.
 -  Let us know about other bugs you encounter. We may not be able to address them but at least we can add notes here to warn other users.    
 -  Some of the exercises are more challenging and you may wish to skip them on your first pass through the course. These are indicated with this symbol:
-<img src = "ContributorPics\warning.jpg" width = "45" height = "45" style = "float:right; margin-left: 10px; margin-top: 7px" />
+<img src = "ContributorPics\challenge.jpg" width = "65" height = "65" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
 
 ## A Word from our Sponsor: <br> Astin + Education = Astin Academy {-}
@@ -178,4 +178,11 @@ The project goal is to have the actuarial community author our learning resource
 <img src = "ContributorPics\19-Michelle_Xia-0820-WD-01.jpg" width = "150" height = "180" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
 -  **Michelle Xia** is an Associate Professor in in the Department of Statistics and Actuarial Science at Northern Illinois University. Michelle earned her Ph.D. in statistics from the University of British Columbia. Besides research, teaching and consulting at NIU, Michelle has over seven years of professional experience as an actuary, a predictive modeler and a statistician in the insurance and medical areas. Michelle's research is motivated by real-life problems, with current interests including predictive analytics, misrepresentation modeling, dependence modeling, insurance ratemaking and loss reserving.
+
+
+**Miscellaneous**
+
+We retrieved the [Challenge icon](http://www.clipartpanda.com/clipart_images/challenge-stamp-59956608) from [Clipart Panda](http://www.clipartpanda.com/) under a Creative Commons license.
+
+
 
