@@ -180,6 +180,14 @@ The project goal is to have the actuarial community author our learning resource
 
 -  **Michelle Xia** is an Associate Professor in in the Department of Statistics and Actuarial Science at Northern Illinois University. Michelle earned her Ph.D. in statistics from the University of British Columbia. Besides research, teaching and consulting at NIU, Michelle has over seven years of professional experience as an actuary, a predictive modeler and a statistician in the insurance and medical areas. Michelle's research is motivated by real-life problems, with current interests including predictive analytics, misrepresentation modeling, dependence modeling, insurance ratemaking and loss reserving.
 
+### Reviewers {-}
+
+Our goal is to have the actuarial community author our textbooks and short courses in a collaborative fashion. Part of the process involves reviewers who generously donated their time to help make this course better. They are:
+
+*  Motoharu Dei 
+*  Yumo Dong, Australian National University
+*  Motoya Kosaki
+*  Sahadeb Upretee, Central Washington University
 
 **Miscellaneous**
 
