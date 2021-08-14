@@ -1300,31 +1300,31 @@ In this section, you learn how to:
 
 <div id="Sect25A" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
-  <iframe src="./Overheads/LDA1.Chap2.pdf#page=35" width="100%" height="400"> </iframe>
+  <iframe src="./Overheads/LDA1.Chap2.pdf#page=46" width="100%" height="400"> </iframe>
   </div>
 <div id="Sect25B" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
-  <iframe src="./Overheads/LDA1.Chap2.pdf#page=36" width="100%" height="400"> </iframe>
+  <iframe src="./Overheads/LDA1.Chap2.pdf#page=47" width="100%" height="400"> </iframe>
   </div>
 <div id="Sect25C" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
-  <iframe src="./Overheads/LDA1.Chap2.pdf#page=37" width="100%" height="400"> </iframe>
+  <iframe src="./Overheads/LDA1.Chap2.pdf#page=48" width="100%" height="400"> </iframe>
   </div>
 <div id="Sect25D" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
-  <iframe src="./Overheads/LDA1.Chap2.pdf#page=38" width="100%" height="400"> </iframe>
+  <iframe src="./Overheads/LDA1.Chap2.pdf#page=49" width="100%" height="400"> </iframe>
   </div>
 <div id="Sect25E" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
-  <iframe src="./Overheads/LDA1.Chap2.pdf#page=39" width="100%" height="400"> </iframe>
+  <iframe src="./Overheads/LDA1.Chap2.pdf#page=50" width="100%" height="400"> </iframe>
   </div>
 <div id="Sect25F" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
-  <iframe src="./Overheads/LDA1.Chap2.pdf#page=40" width="100%" height="400"> </iframe>
+  <iframe src="./Overheads/LDA1.Chap2.pdf#page=51" width="100%" height="400"> </iframe>
   </div>
 <div id="Sect25G" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
-  <iframe src="./Overheads/LDA1.Chap2.pdf#page=41" width="100%" height="400"> </iframe>
+  <iframe src="./Overheads/LDA1.Chap2.pdf#page=52" width="100%" height="400"> </iframe>
   </div>
 
 
