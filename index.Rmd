@@ -66,7 +66,7 @@ The intent is that this type of short course will eventually permeate throughout
 
 **A Few More Tips**
 
--  For the videos, with this player you hit the **CC** button and then *English* to see close captions. You can also experiment with the speed of the video (the *1x* symbol) and other standard video player features.
+-  For the videos, with this player you hit the **CC** button and then *English* to see closed captions. You can also experiment with the speed of the video (the *1x* symbol) and other standard video player features.
 -  When completing the tutorial exercises, replace the question marks **??** by the appropriate code (in earlier versions, we used underscores).
 -  The graphical displays upon completion of the tutorial exercises appear only in the narrow window of the code and do not look good. This is a limitation of the *Datacamp* platform. For a more professional looking graph, in many cases you can simply copy the code and paste it into your own version of `R` to enhance its appearance. However, be careful with this approach. Sometimes, as part of the background, we pre-load data and libraries that you don't see unless you dig down. (How to do this? Go to our [Github site](https://github.com/OpenActTextDev/LDACourse1/)!)
 -  When a tutorial exercise finishes with a graph, the (green) success message is obscured. To see it, after completing the exercise, hit the “R-Console” button at the top. Then re-size the html page and immediately revert back to the full page mode. This procedure allows you to view the message.
