@@ -1,7 +1,7 @@
 ---
 title: "Frequency Modeling"
 author: "A short course authored by the Actuarial Community"
-date: "19 Jan 2021"
+date: "19 Aug 2021"
 output: 
   beamer_presentation:
     includes:
@@ -234,40 +234,146 @@ In this section, you learn how to:
 
 #  Estimating Frequency Distributions
 
-## Maximum Likelihood Estimation
 
--  Consider a random sample of claim frequency data 
-   -  There are a total of $n$ observations \vspace{2mm}
-   -  There are $n_k$ observations each with a claim count of $k$, where $k$ = 0, 1, 2, ...
-   -  $\sum^{\infty}_{k = 0} n_k$ = $n$
+## Basic Problem
 
--  Want to fit a count distribution to these data (Poisson, negative binomial, binomial, etc.); we want to estimate the
-parameter(s) of a count distribution using these data
+- Given a random sample from $p$ on $\{0,1,\ldots\}$
+  - Unknown $p$  
+  - Want to make *good* data-driven decisions
+- Using a statistical model $\{p_\theta|\theta\in\Theta\}$
+  - An indexed set of distributions
+- Assumed to contain $p$
+  - *Estimating* $\theta_0$ satisfying $p=p_{\theta_0}$
+  - for *optimal* decision making  
+- Two simplifying features
+  - Observations in $\{0,1,\ldots\}$
+  - $\Theta$ is a Euclidean subset
 
--  Objective of \textcolor{blue}{maximum likelihood estimation}: find the parameter value(s) that produce largest likelihood of observing data
+## Compression of Data
+
+- $x_1,\ldots,x_n$ - sample from $p$ on $\{0,1,\ldots\}$
+  - $m_k$ - number of observations equal to $k$
+  - Note that $\sum_{k\geq 0}m_k=n$
+  - In particular, atmost $n$ many $m_k$'s are non-zero
+- Justification for compressing data to $m_k$'s
+  - Likelihood Principle
+  - Sufficiency Principle
 
 
-## Likelihood and Log-Likelihood Functions
+## The Likelihood
 
-\scalefont{0.9}
+- Likelihood - $L(\cdot)$
+  - Function of parameter (index)
+- $L(\theta)=\prod_{1}^n p_\theta(x_i)$
+  - Likelihood Principle
+- All information on parameter is in $L$
+  - $L(\theta)=\prod_{i=1}^n p_\theta(x_i)=\prod_{k\geq 0} (p_\theta(k))^{m_k}$
+  - Depends only on $m_k$'s
+- Hence, reduction to $m_k$'s is lossless
 
--  Let $p_k$ denote the pmf for a count distribution 
--  \textcolor{blue}{Likelihood}: function of estimable parameter(s) of the distribution ($\boldsymbol\theta$) with data (measured by $n_k$ values, $k$ = 0, 1, 2, ...) fixed 
--  \textcolor{blue}{Likelihood function},
-$$
-L(\boldsymbol\theta) = (p_0)^{n_0}(p_1)^{n_1}(p_2)^{n_2} \cdots = \prod_{k=0}^{\infty} (p_k)^{n_k},
-$$
-evaluated at observed data
+## Maximum Likelihood (ML) Estimation
+- A simple statistical model - $\{p_1,p_2\}$
+  -  $\Theta=\{1,2\}$.
+  - $p_1(3)=0.8$; $p_1(5)=0.2$
+  - $p_2(3)=0.4$; $p_2(5)=0.6$
+- Data - $\tilde{x}=(3,3,5)$
+- $L(1)=0.8^2\cdot 0.2^1=0.128$; $L(2)=0.4^2\cdot0.6^1=0.096$
+  - Observations more likley under $p_1$
+  - MLE (of the parameter) is $1$
+  
+## ML Estimation - General Setup
+  
+- In general, MLE equals $\arg\max L(\theta)$
+- Log-likelihood $l(\cdot)$ given by 
+- $l(\theta):=\log L(\theta)$
+  - As $\log$ is strictly increasing on $(0,\infty)$
+  - $\arg\max L(\theta)$ = $\arg\max l(\theta)$
+  - MLE computation often involves calculus 
+- Convenient to work with log-likelihood $l(\cdot)$ 
+  - Constant factor drops off upon differentiation
+  - Numerically is more stable than likelihood
 
--  Alternatively, the \textcolor{blue}{log-likelihood function} is,
-$$
-l(\boldsymbol\theta) = \ln L(\mathbf{\theta}) = \sum_{k=0}^{\infty} n_k \ln(p_k),
-$$
+## Plot of Likelihood and Log-likelihood - Plots
 
--  Maximize either the likelihood or log-likelihood function with respect to the parameter(s) to get the most likely parameter value(s) given
-observed data: the \textcolor{blue}{maximum likelihood estimators (MLEs)} 
 
-\scalefont{1.1111}
+```{r plot Poisson,fig.height=5,echo=FALSE}
+x<-c(3, 6, 0, 2, 3, 4, 4, 2, 4, 4, 6, 2, 3, 0, 2, 3, 
+     1, 2, 4, 2)
+n<-rep(0,max(x)+1)
+n[as.integer(names(table(x)))+1]=as.vector(table(x))
+Like<-function(theta){
+  prod(dpois(0:max(x),theta)^n)
+}
+par(mar=c(5, 5, 4, 5) + 0.1)
+plot(theta<-(100:500)/100,sapply(theta,Like),type="l",axes=FALSE,xlab="",ylab="")
+axis(2, ylim=c(0,5e-17),col="black",las=1)  
+mtext("Likelihood",side=2,line=3.75)
+box()
+par(new=TRUE)
+plot(theta<-(100:500)/100,log(sapply(theta,Like)),axes=FALSE,xlab="",ylab="",ylim=c(-65,-35),col="red",type="l")
+mtext("Log-likelihood",side=4,col="red",line=3) 
+axis(4, ylim=c(-25,-16), col="red",col.axis="red",las=1)
+axis(1,c(1,1.5,2,2.5,mean(x),3.5,4,4.5,5))
+mtext(expression(theta),side=1,col="black",line=2.5)  
+legend("topleft",legend=c("Likelihood","Log-likelihood"),
+       text.col=c("black","red"),col=c("black","red"))
+abline(v=mean(x),col="green")
+```
+
+
+## MLE for Binomial and Negative Binomial
+
+
+## Binomial Model
+
+- In frequency modeling, binomial is a two parameter model 
+  - As $m$, apart from $q$, is taken to be unknown as well
+  - Unlike as presented in introductory statistics texts
+- Log-likelihood $l(m,q)$ equals 
+  - $\sum_{i=1}^n \log\left(\binom{m}{x_i}\right) + n \overline{x}\log(q) + n\left({m- \overline{x}}\right)\log(1-q)$
+    - $\overline{x} = n^{-1} \sum_{i=1}^n x_i$
+    - $m$ takes only non-negative integer values
+- For each fixed value of $m$, maximizing value of $q$ satisfies 
+  - $q\cdot m = \overline{x}$
+    - $\hat{m}_{MLE}=\arg \max\limits_{m\geq \max x_i} l(m,\overline{x}/m)$
+    - $\hat{q}_{MLE}= \overline{x}/  \hat{m}_{MLE}$ 
+- Caveat: $\hat{m}_{MLE}=\infty$ if sample variance is at least sample mean
+  - In which case it suggests use of a Poisson model 
+
+
+## Negative Binomial Model
+
+- Negative Binomial model is a two parameter model 
+  - Parameter $r$ is taken to be strictly positive valued
+  - Unlike as presented in introductory statistics texts
+- Log-likelihood $l(r,\beta)$ equals 
+  - $l(r,\beta)=\sum_{i=1}^n \log\binom{r+x_i-1}{x_i} -n(r+\overline{x}) \log(1+\beta) +n\overline{x}\log\beta,$
+  - $\overline{x} = n^{-1} \sum_{i=1}^n x_i$
+- $r$ is non-negative
+  - For each fixed value of $r$, maximizing value of $\beta$ satisfies 
+    - $\beta\cdot r = \overline{x}$
+    - $\hat{r}_{MLE}=\arg \max\limits_r l(r,\overline{x}/r)$; $\hat{\beta}_{MLE}= \overline{x}/  \hat{r}_{MLE}$ 
+  - A good starting point for optimizer from method of moments
+    - $r=\overline{x}^2/(sample\ variance - \overline{x})$
+- Caveat: $\hat{r}_{MLE}=\infty$ if sample variance is at most sample mean
+  - In which case it suggests use of a Poisson model 
+
+## Reason Behind non-existence of MLE
+
+- The Poisson is in a sense on the boundary of both
+  - The set of Binomials 
+    - m approaching infinity; constant mean
+  - The set of Negative Binomials 
+    - r approaching infinity; constant mean
+- But no binomial or a negative binomial is a Poisson
+- So MLE for binomial and negative binomial
+  - Like maximizing an increasing function on an open interval 
+    - $h(\cdot)$ on $(0,1)$ with $h(x)=x^2$ does not attain a maximum value
+    \vskip -0.5in
+    ```{r plot max,fig.width=3, fig.height=3,echo=FALSE}
+    plot(x<-(0:100)/100,x^2,type="l",xlab="x",ylab="h",xlim=c(0,1),ylim=c(0,1))
+    ```
+
 
 ## REVIEW
 
@@ -281,81 +387,134 @@ In this section, you learned how to:
 
 # Other Frequency Distributions
 
-## Other Frequency Distributions
-
--  Many other count distributions are needed in practice 
--  Three basic distributions (Poisson, binomial, negative binomial) can explain claim probabilities in terms of known (to insurer) variables such as age, sex, geographic location, etc.
--  This field of statistical study is known as \textcolor{blue}{regression analysis}
--  To extend basic count distributions, consider two approaches: 
-   -  Zero truncation or modification
-   -  Mixtures
 
 
-# Zero Truncation or Modification
+## Why do we need more frequency distributions?
 
-## Zero Truncation or Modification
+- $(a,b,0)$ class consists of three distributions
+  - Binomial, Poisson and the Negative Binomial
+- It is a two parameter family
+  - Hence, there are many more count distributions
+- Two natural ways of extending this class
+  - Both are actuarially driven
+- In a mathematical sense
+  - They are actuarially driven closure requirements
 
--   Modify probability of zero claims in terms of the $(a, b, 0)$ class
--   \textit{Definition}. A count distribution is a member of the \textcolor{blue}{($a, b$, 1) class} if probabilities $p_k$ satisfy
-$$
-\frac{p_k}{p_{k-1}}=a+\frac{b}{k},
-$$
-for constants $a,b$ and for $k=2,3, \ldots$ 
--   Note this starts at $k=2$, not $k=1$ (starts at $p_1$, not $p_0$)
--   All distributions in ($a, b$, 0) are part of ($a, b$, 1)
+## Heterogeneous Population
+
+- When encountered with a heterogenous population
+  - Divide them into homogeneous subpopulations
+- Actuaries commonly do so for risk rating
+  - Helps in statistical modeling too
+- (a,b,0) often works well in modeling subpopulations
+  - Even when not at the population level
+- Two distinct (a,b,0) subpopulations do not make a (a,b,0) population
+  
+## Visualizing Mixtures
+
+- Consider a portfolio of policies 
+  - Two sub-portfolios - sizes in the ratio 2:1
+  - Bin(2,1/4) and Bin(2,2/3) distributed 
+- Binomial with $m=2$ determined by $p_1$ and $p_2$ 
+  - As $p_0=1-p_1-p_2$
+\vskip -0.5in
+```{r plot Bernoulli, fig.width=5,fig.height=3,echo=FALSE}
+plot((p<-(0:50)/100)*(1-p)*2,p^2,type="l",ylim=c(0,1),xlim=c(0,0.6),xlab=expression('p'[1]),ylab=expression('p'[2]))
+lines((p<-(50:100)/100)*(1-p)*2,p^2,type="l")
+points(c(3/8,4/9),c(1/16,4/9),col=2,pch=20)
+lines(c(3/8,4/9),c(1/16,4/9),type="l",col=4)
+points(c(2/3,1/3)%*%c(3/8,4/9),c(2/3,1/3)%*%c(1/16,4/9),col=3,pch=18,cex=1/2)
+legend(0,0.7, legend=c("Subpopulation","Population"),col=c("red","green"),pch=c(20,18))
+```
+
+## Visualizing Mixtures
+
+- Consider a portfolio of policies 
+  - Two sub-portfolios - sizes in the ratio 2:1
+  - Bin(2,1/4) and Bin(2,2/3) distributed 
+- Binomial with $m=2$ determined by $p_1$ and $p_2$ 
+  - As $p_0=1-p_1-p_2$
+- Binomial ($m=2$) mixtures are in the shaded region
+
+\vskip -0.5in
+```{r plot Bernoulli1, fig.width=5,fig.height=3,echo=FALSE}
+plot((p<-(0:50)/100)*(1-p)*2,p^2,type="l",ylim=c(0,1),xlim=c(0,0.6),xlab=expression('p'[1]),ylab=expression('p'[2]),col=3)
+xx<-(p<-(0:50)/100)*(1-p)*2; 
+yy<-p^2;
+lines((p<-(50:100)/100)*(1-p)*2,p^2,type="l",col=3)
+xx<-c(xx,(p<-(50:100)/100)*(1-p)*2);
+yy<-c(yy,p^2);
+polygon(xx,yy,col=3)
+
+```
+
+## Mixtures in General
+
+- The above was a motivation for extension by mixing
+- Mixture distribution is a convex combination of distributions
+  - Finitely or infinitely many components
+- Section 2.5: mechanics of working with mixtures
+- We next discuss another natural extension
+
+## Zero - Modification
+
+- Employer provided insurance leads to redundant coverage
+  - An insured may not file claims on a policy
+- Results in outsized proportion of zero claims 
+  - ill-fitted by standard parametric families 
+      - Like those in the $(a,b,0)$-class
+- For $\{p_k\}_{k\geq 0}$ a probability mass function
+  - Zero-modified version $\{q_k\}_{k\geq 0}$
+\[ 
+q_k=\begin{cases}
+        q_0, & k=0;\\
+        (1-q_0)\frac{p_k}{1-p_0}, & k\geq1.
+        \end{cases}
+\]
+  - $q_0\in[0,1]$ - adds an extra parameter in the extension
+- Zero-modified versions of $(a,b,0)$ are practically well  motivated
+- Zero-truncated version is zero-modified with $q_0=0$
+  - Conditional distribution of claims given at least one claim
+  
+
+## Zero - Modification: Log plot of Prob. Mass Function
+
+- Ratio $p_{k+1}/p_k$ unchanged, for $k\geq 1$
+```{r plot ratio, plot.width=5,plot.height=4,echo=FALSE}
+plot(k<-0:6,(dbinom(k,6,0.25)),type="p",log='y',ylim=c(1e-4,1),ylab=expression('Prob. Mass Function - p'[k]),xlab="k")
+lines(k<-0:6,(c(a<-0.005,(1-a)/(1-dbinom(0,6,0.25))*dbinom(k[-1],6,0.25))),type="p",col=2)
+lines(k<-0:6,(c(a<-0.5,(1-a)/(1-dbinom(0,6,0.25))*dbinom(k[-1],6,0.25))),type="p",col=3)
+```
 
 
-## Zero Truncation or Modification
+## Zero - Modification of $(a,b,0)$ class
 
--   Pick a specific distribution in ($a, b$, 0) class, and consider $p_k$ for this member:
--   Let $p_k^M$ be corresponding probability for a member of $(a, b, 1)$ class, where $M$ stands for "modified"
--   Pick a new probability of zero claims, $p_0^M$, and define
-$$
-c = \frac{1-p_0^M}{1-p_0} .
-$$
--   Calculate the rest of the modified distribution as
-$$
-p_k^M =c p_k, \ \ \  k = 1, 2, ...
-$$
- -  \textit{Special Case: Truncated at Zero.} Assume probability of $N=0$ is zero:
- 
-$$
-p_k^T = \left \{
-\begin{array}{cc}
-0 & k=0\\ \frac{1}{1-p_0}p_k & k \ge 1\\
-\end{array}
-\right.
-$$
+- $(a,b,\mathbf{0})$ class defines, for $k\geq \mathbf{0}$,  the ratio
+\[p_{\mathbf{k+1}}/p_{\mathbf{k}}=(1+b/(\mathbf{k+1}))\]
+  - Zero-modification does not alter this ratio for $k\geq \mathbf{1}$
+- Zero-modified version of (a,b,0) distribution
+  - Satisfies same recurrence but starting from $k\geq \mathbf{1}$ 
+- $(a,b,1)$ class of distributions 
+  - Those satisfying the previous recurrence for $k\geq 1$
+  - $p_0\geq 0$ is arbitrary, and $p_1$ is chosen so that $\sum_{k\geq 0} p_k=1$
+  - The parameter set equals $p_0$, $a$ and $b$
+
+## The (a,b,1) Class
 
 
-## Modified Poisson Example 
+- For the $(a,b,0)$-class the valid values for $(a,b)$
+  - $a<0$, and $b\in\{-a,-2a,\ldots\}$ - Binomial
+  - $a=0$, and $b\geq 0$ - Poisson
+  - $a>0$, and $a+b\geq0$ - Negative Binomial
+- When recurrence relation is restricted to $k\geq 1$
+  - For $a>0$, constraint $a+b>0$ relaxes to $a+b/2>0$
+  - So (a,b,1)-class apart from zero-modified (a,b,0)-class includes
+    - Extended Truncated Neg. Binomial - $a>0$, \& $-a>b>-2a$
+    - Logarithmic Distribution - $a>0$, and $b=-a$
+    - And their zero-modified version
+    
+   
 
-\textit{Example: Zero Truncated/Modified Poisson}. For a Poisson distribution with mean 2, as a member of the ($a, b$, 0) class, $a=0$ and $b=\lambda=2$
-
-Use recursion $p_k = \lambda p_{k-1}/k= 2 p_{k-1}/k$, after determining starting probabilities
-
-\scalefont{0.6}
-\begin{tabular}{cccc}
-\hline
-k &     $p_k$ &   $p_k^T$ &   $p_k^M$ (where $p^M_0$ = 0.6) \\
-\hline
-0 & $p_0=e^{-\lambda}=0.135335$ &          $p_0^T$ = 0 &        $p_0^M$ = 0.6 \\
-1 & $p_1=p_0(0+\frac{\lambda}{1})=0.27067$ & $p_1^T=\frac{p_1}{1-p_0}=0.313035$ & $p_1^M$=$\frac{1-p_0^M}{1-p_0}~p_1=0.125214$ \\
-2 & $p_2=p_1\left( \frac{\lambda}{2}\right)=0.27067$ & $p_2^T=p_1^T\left(\frac{\lambda}{2}\right)=0.313035$ & $p_2^M=p_1^M\left(\frac{\lambda}{2}\right)=0.125214$ \\
-3 & $p_3=p_2\left(\frac{\lambda}{3}\right)=0.180447$ & $p_3^T=p_2^T\left(\frac{\lambda}{3}\right)=0.208690$ & $p_3^M=p_2^M\left(\frac{\lambda}{3}\right)=0.083476$ \\
-\hline
-\end{tabular}\scalefont{1.6667}
-
-
-## Modified Distribution Exercise 
-
-\textit{Exercise: Course 3, May 2000, Exercise 37.} You are given: 
-
--   $p_k$ denotes the probability that the number of claims equals $k$ for $k=0,1,2,\ldots$
--   $\frac{p_n}{p_m}=\frac{m!}{n!}, m\ge 0, n\ge 0$ 
-
-
-Using the corresponding zero-modified claim count distribution with $p_0^M=0.1$, calculate $p_1^M$
 
 
 ## REVIEW
@@ -482,17 +641,55 @@ In this section, you learned how to:
 
 # Goodness of Fit
 
+## The Goodness of Fit Problem
+
+- We discussed a small subset of count distributions 
+- None of them may be a good/useful model for the data at hand
+  -  *Goodness of Fit Problem* - determining if one is adequate
+- Need for a method to make sound decision on the fit
+  - Introducing one such is the goal of the section
+- We do so via an example
+
 ## Example: Singapore Automobile Data
 
--   A 1993 portfolio of $n=7,483$ automobile insurance policies from a major insurance company in Singapore.
--   The count variable is the number of automobile accidents per policyholder.
--    There were on average $ 0.06989$ accidents per person.
+-   A 1993 portfolio from a major insurance company in Singapore
+  - $7,483$ automobile insurance policies 
+  - Policy level data - count variable is the number of accidents
+- Maximum of 3 accidents per policy observed
+- Average of $69.89$ accidents per $1,000$ policies ($\overline{N}=0.06989$)
+
+\begin{center}
+{\bf Observed Accident Counts per Policy}
+$$
+\begin{array}{cr}
+\hline
+\text{Count} & \text{Observed} \\
+(k) & (m_k) \\
+\hline
+0 & 6,996 \\
+1 & 455 \\
+2 & 28 \\
+3 & 4 \\
+\hline Total & 7,483 \\ \hline
+\end{array}
+$$
+\end{center}
 
 
+
+## Fitting a Poisson
+
+
+-  With the Poisson distribution
+   -  The MLE of $\lambda$ is $\widehat{\lambda}=\overline{N}$.
+   -  Fitted probabilities $\widehat{p}_k$ below use $\widehat{\lambda}$
+   -  Fitted counts are 7,483  times the fitted probabilities
+- Created a cell for counts $\geq 4$
+  - To account for remaining fitted probability
+
+\begin{center}
 \scalefont{0.8}
-**Table. Comparison of Observed to Fitted Counts** 
-
-**Based on Singapore Automobile Data** 
+{\bf Table. Comparison of Observed to Fitted Counts}
 $$
 \begin{array}{crr}
 \hline
@@ -503,45 +700,30 @@ $$
 1 & 455 & 487.70 \\
 2 & 28 & 17.04 \\
 3 & 4 & 0.40 \\
-4 & 0 & 0.01 \\ 
+\geq 4 & 0 & 0.01 \\
 \hline Total & 7,483 & 7,483.00 \\ \hline
 \end{array}
 $$
+\end{center}
 
-\scalefont{1.25}
+##  Adequacy of the Poisson Model
 
-The average is $\bar{N} = \frac{0\cdot 6996 + 1 \cdot 455 + 2 \cdot 28 + 3 \cdot 4 + 4 \cdot 0}{7483} = 0.06989$.
 
-##  Singapore Data: Adequacy of the Poisson Model
-
--  With the Poisson distribution
-   -  The maximum likelihood estimator of $\lambda$ is $\widehat{\lambda}=\overline{N}$.
-   -  Estimated probabilities, using $\widehat{\lambda}$, are denoted as $\widehat{p}_k$.
-   -  Fitted counts are 7,483  times the fitted probabilities $(n\widehat{p}_j)$.
 -  For goodness of fit, consider *Pearson's chi-square statistic*
 $$
 \sum_k\frac{\left( m_k-n\widehat{p}_k \right) ^{2}}{n\widehat{p}_k}.
 $$
+- Has an asymptotic chi-square distribution
+    - If the Poisson distribution is the correct model 
+-   The degrees of freedom ($df$) equals 
+    - the number of cells minus one minus the number of estimated parameters.
+-   For the Singapore data
+    - $df=5-1-1=3$; $99$-th %ile equals $11.34487$
+    - The Pearson's statistic equals $41.98$ ($>11.34487$)
+    - The basic Poisson model is **inadequate**
+- In the exercise below, you will fit a zero-inflated Poisson
 
-   -   Assuming that the Poisson distribution is a correct model; this statistic has an asymptotic chi-square distribution
-   -   The degrees of freedom ($df$) equals the number of cells minus one minus the number of estimated parameters.
-   -   For the Singapore data, this is $df=5-1-1=3$.
-   -   The statistic is 41.98; the basic Poisson model is inadequate.
 
-
-## Example. Course C/Exam 4. May 2001, 19.
-
-During a one-year period, the number of accidents per day was distributed as follows:
-
-\begin{tabular}{l|rrrrrrr}\hline
-Number of Accidents &          0 &          1 &          2 &          3 &          4 &      5      \\
-Number of Days &        209 &        111 &         33 &          7 &          5 &          2
-\\ \hline
-\end{tabular}
-
-You use a chi-square test to measure the fit of a Poisson distribution with mean 0.60. The minimum expected number of observations in any group should be 5. The maximum number of groups should be used.
-
-Determine the chi-square statistic.
 
 ## REVIEW
 

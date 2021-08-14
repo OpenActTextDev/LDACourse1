@@ -618,6 +618,15 @@ In this section, you learn how to:
 ***
 
 
+####  Video: Estimating Frequency Distributions {-}
+
+<center>
+
+
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25717641/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_wr2ht513&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_78m5tjmh" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *"  frameborder="0" title="Kaltura Player"></iframe>
+
+</center>
+
 
 ### Exercise. Count Data Compression - 1 {#Ex:CountDataCompression}
 
@@ -769,7 +778,11 @@ ex() %>% check_function("barplot", not_called_msg =barplotmsg) %>% check_result(
 success_msg("Excellent job! There are 1138 distinct observations in the 2007 experience. Without any loss of information, these could be summarized into only 20 values, a terrific real world example of compression.")
 ```
 
-####  Video: Estimating a Poisson Frequency Distribution {-}
+
+
+
+
+####  Video: Fitting a Poisson Distribution {-}
 
 <center>
 
@@ -863,6 +876,13 @@ success_msg("Excellent job! In complex actuarial applications, maximum likelihoo
 ```
 
 
+####  Video: Fitting Binominal and Negative Binomial Distributions {-}
+
+<center>
+
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25717641/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_ys8n0r8y&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_z2zfn7ka" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *"  frameborder="0" title="Kaltura Player"></iframe>
+
+</center>
 
 ### Exercise. Fitting a Binomial Distribution
 
@@ -1045,9 +1065,17 @@ In this section, you learn how to:
 
 ***
 
+####  Video: Other Frequency Distributions {-}
+
+<center>
+
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25717641/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_pvbam51r&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_7m9q3vs0" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *"  frameborder="0" title="Kaltura Player"></iframe> 
+
+</center>
+
 
 ### Exercise. The (*a,b*,1) Distribution and its Moments
-<img src = "ContributorPics\challenge.jpg" width = "65" height = "65" style = "float:right; margin-left: 10px; margin-top: 7px" />
+<img src = "ContributorPics\hurdler.png" width = "65" height = "65" style = "float:right; margin-left: 10px; margin-top: 7px" />
 (*As a reminder, when you see this symbol, it means that this exercise is challenging and you may wish to skip it on your first pass through the course.*)
 
 
@@ -1090,6 +1118,8 @@ ab <- solve(C)%*%c(??,p[2]/p[1])
 ab[2]/ab[1]
 # Use the functional form of this distribution to compute pmf up to p_100 directly 
 p_comp <- ??
+  # Check for zero-modification
+p[??]-p_comp[??]
 # Mean and Variance
 c(mu<-sum(p_comp*(??:100)),sum(p_comp*(??:100)^2)-mu^2)
 # Check using closed form formulae for the first two moments
@@ -1107,6 +1137,8 @@ ab[2]/ab[1]
 # Since above equals -1, r=0 and it is logarithmic
 # p_k = -1/log(1-a) a^k/k
 p_comp <- -1/log(1-ab[1]) *ab[1]^(k<-(1:100))/(k)
+# Check for zero-modification
+p[1]-p_comp[1]
 # Mean and Variance
 c(mu <- sum(p_comp*k),sum(p_comp*k^2)-mu^2)
 # Check using formulae of logarithmic moments
@@ -1374,7 +1406,7 @@ success_msg("Superb! This exercise explicitly includes only three sub-population
 
 
 ### Exercise. Gamma Mixture of Poissons
-<img src = "ContributorPics\challenge.jpg" width = "65" height = "65" style = "float:right; margin-left: 10px; margin-top: 7px" />
+<img src = "ContributorPics\hurdler.png" width = "65" height = "65" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
 **Assignment Text**
 
@@ -1501,7 +1533,7 @@ In this section, you learn how to:
 
 
 ### Exercise. Goodness of Fit: Zero-Modified Poisson
-<img src = "ContributorPics\challenge.jpg" width = "65" height = "65" style = "float:right; margin-left: 10px; margin-top: 7px" />
+<img src = "ContributorPics\hurdler.png" width = "65" height = "65" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
 **Assignment Text**
 
