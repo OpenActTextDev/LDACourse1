@@ -46,7 +46,7 @@ The intent is that this type of short course will eventually permeate throughout
 ## How to Navigate this Tutorial {-}
 
 -  This online tutorial is designed to guide you through the foundations of modeling loss data. 
--  The anticipated completion time is approximately eight hours.
+-  The anticipated completion time is approximately ten hours.
 -  The tutorial assumes that you are familiar with the foundations in the statistical software `R`, such as Datacamp's [Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r%20) or Codecademy's [Learn R](https://www.codecademy.com/learn/learn-r).
 
 **Role of Video Introductions.** There are five chapters in this tutorial that summarize the foundations. Each chapter is subdivided into several sections. At the beginning of each section is a short video, typically 5-10 minutes, that summarizes the section key learning outcomes. Following the video, you can see more details about the underlying `R` code for the analysis presented in the video. 
@@ -180,7 +180,10 @@ The project goal is to have the actuarial community author our learning resource
 
 -  **Michelle Xia** is an Associate Professor in in the Department of Statistics and Actuarial Science at Northern Illinois University. Michelle earned her Ph.D. in statistics from the University of British Columbia. Besides research, teaching and consulting at NIU, Michelle has over seven years of professional experience as an actuary, a predictive modeler and a statistician in the insurance and medical areas. Michelle's research is motivated by real-life problems, with current interests including predictive analytics, misrepresentation modeling, dependence modeling, insurance ratemaking and loss reserving.
 
-### Reviewers {-}
+<br>
+
+
+**Reviewers**
 
 Our goal is to have the actuarial community author our textbooks and short courses in a collaborative fashion. Part of the process involves reviewers who generously donated their time to help make this course better. They are:
 
@@ -189,9 +192,11 @@ Our goal is to have the actuarial community author our textbooks and short cours
 *  Motoya Kosaki
 *  Sahadeb Upretee, Central Washington University
 
-**Miscellaneous**
 
-We retrieved the [Challenge icon](http://www.clipartpanda.com/clipart_images/challenge-stamp-59956608) from [Clipart Panda](http://www.clipartpanda.com/) under a Creative Commons license.
+
+<!-- **Miscellaneous** -->
+
+<!-- We retrieved the Challenge icon from [Nice png](https://www.nicepng.com/) under a Creative Commons license. -->
 
 
 

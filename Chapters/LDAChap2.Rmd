@@ -458,7 +458,7 @@ a = ??
 b = ??
 ab0.vecNB <-  1.1**(-12.4) -> p.new
 for (k in ??){
-  p.new <- p.new *(a+b/(k-1))
+  p.new <- p.new *(a+b/k)
   ab0.vecNB <- append(ab0.vecNB,p.new)
   }
 sum(abs(NegBinom.p_k - ??))
@@ -473,8 +473,8 @@ Poisson.p_k <- dpois(x=kvec, lambda=1.24)
 a = 0; 
 b = 1.24
 ab0.vecP <-  exp(-1.24) -> p.new
-for (k in 2:21){
-  p.new <- p.new *(a+b/(k-1))
+for (k in 1:20){
+  p.new <- p.new *(a+b/k)
   ab0.vecP <- append(ab0.vecP,p.new)
   }
 sum(abs(Poisson.p_k - ab0.vecP))
@@ -557,7 +557,7 @@ Poisson.p_k <- dpois(x=kvec, lambda=1.24)
 kvec[??] * Poisson.p_k[??/Poisson.p_k[-length(kvec)]
 
 Binom.p_k <- dbinom(x=kvec, prob = 0.1, size = 10) 
-outvec <- kvec[?? * Binom.p_k[??]/Binom.p_k[-length(kvec)]
+outvec <- kvec[??] * Binom.p_k[??]/Binom.p_k[-length(kvec)]
 ( a = ?? - ?? )
 ( b = ?? - a )
 
@@ -991,17 +991,17 @@ reduced_like<-function(para_m){
   else    0
   }
 # Compute the reduced likelihood across a range of values for m
-obj <- sapply(max(x):(3*max(x)),reduced_like)
+obj <- sapply(max(x):(3*max(x)),??)
 
 # mle for m and q
 m_MLE <- match(max(obj),obj)+max(x)-1
-q_MLE <- mean(x)/m_MLE
+q_MLE <- mean(x)/??
 # Visually check the reduced log-likelihood
-plot(max(x):(3*max(x)),log(obj),type="l",xlab="m",ylab=expression(l(m,bar(x)/m)))
+plot(max(x):(3*max(x)),log(??),type="l",xlab="m",ylab=expression(l(m,bar(x)/m)))
 abline(v=m_MLE,col="green")
 
 # Check if sample mean > sample variance
-c(mean(x), var(c(x,mean(x))))
+c(mean(??), var(c(x,mean(x))))
 ```
 
 ```{r ex="LDA1.2.3.4", type="solution", tut=TRUE}
@@ -1202,7 +1202,7 @@ ${\bf C} \left(\begin{array}{c}a \\ b \end{array}\right) = \left(\begin{array}{c
 - Use the sign of the coefficients to identify the $(a,b,1)$ distribution.
 - Use the functional form of this distribution to compute *pmf* up to $p_{100}$ directly.
 - From these generated probabilities, determine the mean and the variance.
-- From the function form, use the closed form expressions for this distribution to check your mean and the variance calculations in the prior step.
+- From the functional form, use the closed form expressions for this distribution to check your mean and the variance calculations in the prior step. See in particular [Section 18.2 of *Loss Data Analytics*](https://openacttexts.github.io/Loss-Data-Analytics/C-SummaryDistributions.html#the-ab1-class).
 ::::
 
 <br>
