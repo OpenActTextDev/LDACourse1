@@ -1351,7 +1351,7 @@ In this section, we learn how to:
 ## Contributors {-}
 
 -  **Authors**. **Himchan Jeong**, Simon Fraser University, and **Peng Shi**, University of Wisconsin-Madison, are the principal authors of the initial version of this chapter.
--  **Chapter Maintainers**. Please contact ??? and/or Jed at <jfrees@bus.wisc.edu> for chapter comments and suggested improvements.
+-  **Chapter Maintainers**. Please contact Himchan <himchan_jeong@sfu.ca> and/or Jed at <jfrees@bus.wisc.edu> for chapter comments and suggested improvements.
 
 
   

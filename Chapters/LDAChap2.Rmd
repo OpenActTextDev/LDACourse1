@@ -1791,7 +1791,7 @@ success_msg("Success! Now compare the above *mle* for lambda with that for the P
 ## Contributors {-}
 
 -  **Authors**. **N.D. Shyamalkumar**, The University of Iowa, **Michelle Xia**, Northern Illinois University, and **Edward (Jed) Frees**, University of Wisconsin-Madison and Australian National University, are the principal authors of the initial version of this chapter.
--  **Chapter Maintainers**. Please contact ??? and/or Jed at <jfrees@bus.wisc.edu> for chapter comments and suggested improvements.
+-  **Chapter Maintainers**. Please contact Michelle <cxia@niu.edu> and/or Jed at <jfrees@bus.wisc.edu> for chapter comments and suggested improvements.
 
 
 
