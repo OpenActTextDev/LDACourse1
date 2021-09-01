@@ -574,7 +574,7 @@ str(hist_data)
 success_msg("Well done!")
 ```
 
-### Exercise. Visualizing the Gamma Distribution
+### Exercise. Visualizing the Gamma Distribution {#Ex:VisualGamma}
 
 
 **Assignment Text**
