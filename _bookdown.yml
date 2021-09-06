@@ -4,7 +4,7 @@ rmd_files: ["index.Rmd",
             "ShowHide.Rmd",
             "Chapters/LDAChap1.Rmd",
             "Chapters/LDAChap2.Rmd", 
-            "Chapters/LDAChap3.Rmd",  
+            "Chapters/LDAChap3.Rmd", 
             "Chapters/LDAChap4.Rmd",   
             "Chapters/LDAChap5.Rmd"]            
 

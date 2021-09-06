@@ -7,7 +7,7 @@ The traditional loss distribution approach to modeling aggregate losses starts b
 
 :::: {.blackbox }
 
--  Although not needed to go through the tutorials, some users may wish to download the overheads that the videos are based on. <button download><a href="https://raw.githubusercontent.com/OpenActTexts/LDACourse1/main/LDA1.Overheads/LDA1.Chap3.pdf">Download Chapter Three overheads as a .pdf file.</a></button>
+-  Although not needed to go through the tutorials, some users may wish to download the overheads that the videos are based on. <button download><a href="https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/LDA1.Overheads/LDA1.Chap3.pdf">Download Chapter Three overheads as a .pdf file.</a></button>
 -  By watching the videos and working through the tutorial exercises, you will get an appreciation for distributions used to model the severity of losses. For a deeper dive, see the corresponding chapter in the textbook, [Chapter Three of *Loss Data Analytics*](https://openacttexts.github.io/Loss-Data-Analytics/C-Severity.html).
 :::: 
 
@@ -23,7 +23,9 @@ In this section, you learn how to work with some basic distributional quantities
 
 ***
 
+
 ####  Video: Basic Distributional Quantities  {-}
+
 
 <center>
 
@@ -115,7 +117,7 @@ invisible(lapply(X = 1:4, FUN = function(no){
   plot(x = anscombe[[paste0('x', no)]], y = anscombe[[paste0('y', no)]],
     type = 'p', xlab = 'x', ylab = 'y')
 }))
-mtext("Anscombe's 4 Regression Data Sets", outer = TRUE, cex = 1.5)
+mtext("Anscombe's 4 Regression data sets", outer = TRUE, cex = 1.5)
 par(op)
 ```
 
@@ -124,9 +126,10 @@ par(op)
 
 *  Extract the values `y1`, `y2`, `y3` and `y4` from the `anscombe` data frame. You will want to extract these as vectors not as single-column data frames.  
 *  Use [summary()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/summary) to understand the basic distributional properties of `y1`, `y2`, `y3` and `y4`.
-*  Use [mean()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/mean) to calculate the first raw moment of `y1`, `y2`, `y3` and `y4`. Assign the values to `Vec_Means`.
-*  Use [var()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/cor) to calculate the second raw moment of `y1`, `y2`, `y3` and `y4`. You should note that the `var()` function uses $n-1$ in the denominator to return an estimate of the population variance from the sample. Do you notice anything interesting about the results?
-*  There is no `base-R` function to calculate the coefficient of skewness. There are several approaches to calculate skewness if you explore the [help()](https://www.rdocumentation.org/packages/e1071/versions/1.7-4/topics/skewness) for the `type` argument of the `skewness` function from the [e1071](https://www.rdocumentation.org/packages/e1071/versions/1.7-7) package.  We will not use this package, but instead we will we calculate the equivalent of `type = 3` skewness using [sd()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/sd) in the denominator.
+*  Use [mean()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/mean) to calculate the first raw moment of `y1`, `y2`, `y3` and `y4`. Assign the values to `y_means`.
+*  Use [var()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/cor) to calculate the second raw moment of `y1`, `y2`, `y3` and `y4`. You should note that the var() function uses $n-1$ in the denominator to return an estimate of the population variance from the sample. Do you notice anything interesting about the results?
+*  Use [sd()](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/sd) to calculate the standard deviation of `y1`, `y2`, `y3` and `y4`. As with the var() function, sd() also uses $n-1$ in the denominator.
+*  There is no `base-R` function to calculate the coefficient of skewness. There are several approaches to calculate skewness if you explore the [help()](https://www.rdocumentation.org/packages/e1071/versions/1.7-4/topics/skewness) for the `type` argument of the `skewness` function from the [e1071](https://www.rdocumentation.org/packages/e1071/versions/1.7-7) package.  We will not use this package, but instead we will we calculate the equivalent of `type = 3` skewness using `var` in the denominator.
 :::: 
 
 <br>
@@ -142,37 +145,74 @@ data("anscombe")
 ```
 
 ```{r ex="LDA1.3.1.1", type="sample-code", tut=TRUE}
-# Summaries
-( Sum1 <- summary(anscombe$y1) ) #Example for the first data set in  Anscombe's quartet
-( Sum2 <- summary(anscombe$??) ) 
-( Sum3 <- summary(anscombe$??) ) 
-( Sum4 <- summary(anscombe$??) ) 
-# Vector of means
-( VecMean <- c(mean(anscombe$y1), mean(anscombe$??), mean(anscombe$??),
-  mean(anscombe$??)) )
-# Vector of variances
-( VecVar <- c(var(anscombe$??), var(anscombe$y2), var(anscombe$y3),
-  var(anscombe$??)) )
-# Skewness measure
-y1_skew <- mean((?? - mean(??))^??) / sd(??) ^ ??
+#Summary of Data
+s1<-summary(anscombe$y1) #Example for the first data set in  Anscombe's quartet
+s2<-summary(anscombe$??)
+s3<-summary(anscombe$??)
+s4<-summary(anscombe$??)
+s1
+s2
+s3
+s4
+
+#Vector of means
+c(mean(anscombe$y1), mean(anscombe$??), mean(anscombe$??),
+  mean(anscombe$??))
+
+#M<-c(mean(anscombe$y1), mean(anscombe$y2), mean(anscombe$y3),  mean(anscombe$y4))
+M1=mean(anscombe$y1)
+M2=mean(anscombe$y2)
+M3=mean(anscombe$y3)
+M4=mean(anscombe$y4)
+
+#Vector of variances
+c(var(anscombe$y1), var(anscombe$??), var(anscombe$??),
+  var(anscombe$??))
+V1<-var(anscombe$y1)
+V2<-var(anscombe$y2)
+V3<-var(anscombe$y3)
+V4<-var(anscombe$y4)
+
+# Skewness of data y1
+y1_skew <- mean((anscombe$y1 - mean(anscombe$??))^3) / sd(anscombe$y1) ^ 3
+y1_skew
+
 
 ```
 
 
 ```{r ex="LDA1.3.1.1", type="solution", tut=TRUE}
-# Summaries
-( Sum1 <- summary(anscombe$y1) ) #Example for the first data set in  Anscombe's quartet
-( Sum2 <- summary(anscombe$y2) ) 
-( Sum3 <- summary(anscombe$y3) ) 
-( Sum4 <- summary(anscombe$y4) ) 
-# Vector of means
-( VecMean <- c(mean(anscombe$y1), mean(anscombe$y2), mean(anscombe$y3),
-  mean(anscombe$y4)) )
-# Vector of variances
-( VecVar <- c(var(anscombe$y1), var(anscombe$y2), var(anscombe$y3),
-  var(anscombe$y4)) )
-# Skewness measure
-y1_skew <- mean((anscombe$y1 - mean(anscombe$y1))^3) / sd(anscombe$y1) ^ 3
+#Summary of Data
+s1<-summary(anscombe$y1) #Example for the first data set in  Anscombe's quartet
+s2<-summary(anscombe$y2)
+s3<-summary(anscombe$y3)
+s4<-summary(anscombe$y4)
+s1
+s2
+s3
+s4
+
+#Vector of means
+c(mean(anscombe$y1), mean(anscombe$y2), mean(anscombe$y3),
+  mean(anscombe$y4))
+
+#M<-c(mean(anscombe$y1), mean(anscombe$y2), mean(anscombe$y3),  mean(anscombe$y4))
+M1=mean(anscombe$y1)
+M2=mean(anscombe$y2)
+M3=mean(anscombe$y3)
+M4=mean(anscombe$y4)
+
+#Vector of variances
+c(var(anscombe$y1), var(anscombe$y2), var(anscombe$y3),
+  var(anscombe$y4))
+V1<-var(anscombe$y1)
+V2<-var(anscombe$y2)
+V3<-var(anscombe$y3)
+V4<-var(anscombe$y4)
+
+# Skewness of data y1
+y1_skew <- mean((anscombe$y1 - mean(anscombe$y1))^3) / (sd(anscombe$y1) ^ 3)
+y1_skew
 
 ```
 
@@ -183,51 +223,73 @@ Error1b <- "Did you call the function `summary` for y2?"
 Error1c <- "Did you call the function `summary` for y3?"
 Error1d <- "Did you call the function `summary` for y4?"
 
-Error2 <- "Did you correctly specify the arguments of the `mean` function?"
-Error3 <- "Did you correctly specify the arguments of the `variance` function?"
-Error4 <- "Did you correctly specify the arguments of the skewness expression?" 
+Error2a <- "Did you call the function `mean` for y1?"
+Error2b <- "Did you call the function `mean` for y2?"
+Error2c <- "Did you call the function `mean` for y3?"
+Error2d <- "Did you call the function `mean` for y4?"
 
-ex() %>% check_object("Sum1", undefined_msg = Error1a) %>% check_equal(incorrect_msg=Error1a)
-ex() %>% check_object("Sum2", undefined_msg = Error1b) %>% check_equal(incorrect_msg=Error1b)
-ex() %>% check_object("Sum3", undefined_msg = Error1c) %>% check_equal(incorrect_msg=Error1c)
-ex() %>% check_object("Sum4", undefined_msg = Error1d) %>% check_equal(incorrect_msg=Error1d)
+Error3a <- "Did you call the function `var`for y1?"
+Error3b <- "Did you call the function `var` for y2?"
+Error3c <- "Did you call the function `var` for y3?"
+Error3d <- "Did you call the function `var` for y4?"
 
-ex() %>% check_object("VecMean", undefined_msg = Error2) %>% check_equal(incorrect_msg=Error2)
-ex() %>% check_object("VecVar", undefined_msg = Error3)  %>% check_equal(incorrect_msg=Error3)
-ex() %>% check_object("y1_skew", undefined_msg = Error4) %>% check_equal(incorrect_msg=Error4)
 
-success_msg("Excellent! Presenting the right summary statistics in a clean way is important for communication of results. It is also very useful as you are trying to make sense of a data set.")
+
+#Error4 <- "Did you assign the object using correct skewness formula`?  # we disable because of data camp error 
+
+
+ex() %>% check_object("s1", undefined_msg = Error1a) %>% check_equal(incorrect_msg=Error1a)
+ex() %>% check_object("s2", undefined_msg = Error1b) %>% check_equal(incorrect_msg=Error1b)
+ex() %>% check_object("s3", undefined_msg = Error1c) %>% check_equal(incorrect_msg=Error1c)
+ex() %>% check_object("s4", undefined_msg = Error1d) %>% check_equal(incorrect_msg=Error1d)
+
+ex() %>% check_object("M1", undefined_msg = Error2a) %>% check_equal(incorrect_msg=Error2a)
+ex() %>% check_object("M2", undefined_msg = Error2b) %>% check_equal(incorrect_msg=Error2b)
+ex() %>% check_object("M3", undefined_msg = Error2c) %>% check_equal(incorrect_msg=Error2c)
+ex() %>% check_object("M4", undefined_msg = Error2d) %>% check_equal(incorrect_msg=Error2d)
+
+ex() %>% check_object("V1", undefined_msg = Error3a) %>% check_equal(incorrect_msg=Error3a)
+ex() %>% check_object("V2", undefined_msg = Error3b) %>% check_equal(incorrect_msg=Error3b)
+ex() %>% check_object("V2", undefined_msg = Error3c) %>% check_equal(incorrect_msg=Error3c)
+ex() %>% check_object("V4", undefined_msg = Error3d) %>% check_equal(incorrect_msg=Error3d)
+
+
+#ex() %>% check_object("y1_skew", undefined_msg = Error4) %>% check_equal(incorrect_msg=Error4)
+
+
+
+#success_msg("Excellent! Presenting the right summary statistics in a clean way is important for communication of results. It is also very useful as you are trying to make sense of a data set.")
 ```
 
 ### Exercise. Determining Boxplots and Quantiles
 
 **Assignment Text**
 
-The [boxplot()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/boxplot) function produces box-and-whisker plots. Specifically, the `boxplot()` function returns certain statistics and produces a plot as a side effect. Explore the documentation  to understand the values returned. In particular review the information returned by the `stats` attribute of this object.
+The [boxplot()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/boxplot) function produces box-and-whisker plots of grouped values. The boxplot() function returns certain statistics and produces a plot as a side effect. Explore the documentation  to understand the values returned. In particular review the information returned by the `stats` attribute of this object.
 
-The Wisconsin Property Fund data has already been read into a data frame called `Insample`. These data consist of claim experience for fund members over the years 2006-2010, inclusive. It includes claim values `y` as well as the claim year `Year`. For this exercise we will work with the natural logarithm of the claim values which are in the `lny` variable. The data have been filtered to exclude zero claims and then saved into a data frame named `Insample_nz`.
+The Wisconsin Property Fund data has already been read into a data frame called `Insample`. These data consist of claim experience for fund members over the years 2006-2010, inclusive. It includes claim values `y` as well as the claim year `Year`. For this exercise we will work with the natural logarithm of the claim values which are in the `lny` variable. We have filtered the data to exclude zero claims and saved the resulting data frame as `Insample_nz`.
 
 :::: {.blackbox }
 **Instructions**
 
-*  We start with code to generate the boxplot. Note that `R` creates the boxplot as a side effect while returning information about the data. (`R` does not print the information to the console by default. You will have to assign the return of the boxplot function to an object to access.)
-*  What is the class of the object returned by the boxplot function?    
-*  Access the `stats` attribute of the object returned and check that the third column provides results for year 2008.
-*  Create a global variable, named `lny_2008`, for logarithmic claims corresponding to year 2008.
-*  Use the [quantile()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/quantile) function and replicate the "hinge" values for the 2008 box. (We ignore the values returned for the whiskers as they are not a function of the quantiles of the distribution.)    
-*  **Follow up.** We selected the 2008 year because it has an odd number of observations. Use the quantile() function on a vector with an even number such as `1:100` and access the 25th percentile. Are you surprised by the result? Review the details for the `type` argument to the quantile() to understand the various approached to determining quantiles.  
+We provide the code to generate the boxplot. Note that the `R` creates the boxplot as a side effect while returning information about the data. (`R` does not print the information to the console by default. You will have to assign the return of the boxplot function to an object to access.)
+
+* What is the class of the of the object returned by the boxplot function?    
+* Access the `stats` attribute of the object returned.    
+* Use the [quantile()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/quantile) function and replicate the "hinge" values for 2008 box. We will ignore the values returned for the whiskers as they are not a function of the quantiles of the distribution.    
+*  We selected the 2008 year because it has an odd number of observations. Use the quantile() function on a vector with an even number such as `1:100` and access the 25th percentile. Are you surprised by the result? Review the details for the `type` argument to the quantile() to understand the various approached to determining quantiles.  
 :::: 
 
 <br>
 
 ```{r ex="LDA1.3.1.2", type="hint", tut=TRUE}
-Review [Section 3.1.2 of *Loss Data Analytics*](https://openacttexts.github.io/Loss-Data-Analytics/C-Severity.html#S:LS:Quantiles) to get an overview of quantiles.
+[Section 3.1.2 of *Loss Data Analytics*](https://openacttexts.github.io/Loss-Data-Analytics/C-Severity.html#S:LS:Quantiles) gives an overview of quantiles.
                                          
 ```
 
 
 ```{r ex="LDA1.3.1.2", type="pre-exercise-code", tut=TRUE}
-Insample <- read.csv("https://raw.githubusercontent.com/OpenActTexts/LDACourse1/main/Data/Insample.csv", header=T, na.strings=c("."), stringsAsFactors = FALSE)
+Insample <- read.csv("https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/Data/Insample.csv", header=T, na.strings=c("."), stringsAsFactors = FALSE)
 Insample_nz <- Insample[Insample$y > 0,]
 ```
 
@@ -237,8 +299,8 @@ class(??)
 my_boxplot$??
 my_boxplot$stats[,_] #2008
 
-#  2008 Experience
 lny_2008 <- Insample_nz$lny[Insample_nz$Year == 2008]
+
 quantile(lny_2008, ??) # lower hinge
 ??(lny_2008) # median through a dedicated function
 quantile(lny_2008, ??) # median
@@ -251,10 +313,9 @@ quantile(lny_2008, ??) # upper hinge
 my_boxplot <- boxplot(formula = lny ~ Year, data = Insample_nz)
 class(my_boxplot)
 my_boxplot$stats
-my_boxplot$stats[,3] #2008
-
-#  2008 Experience
+my_boxplot$stats[,3] #2010
 lny_2008 <- Insample_nz$lny[Insample_nz$Year == 2008]
+
 quantile(lny_2008, 1/4) # lower hinge
 median(lny_2008) # median
 quantile(lny_2008, 3/4) # upper hinge
@@ -263,17 +324,23 @@ quantile(lny_2008, 3/4) # upper hinge
 
 
 ```{r ex="LDA1.3.1.2", type="sct", tut=TRUE}
+
 Error1 <- "Did you call the function ` boxplot` for lny~ Year?"
 Error2 <- "Did you call the function `quantile` for (lny_2008, 1/4)?"
 Error3 <- "Did you call the function `median` for lny_2008?"
 Error4 <- "Did you call the function `quantile` (lny_2008,3/4)?"
+
+
 
 ex() %>% check_object("my_boxplot", undefined_msg = Error1) %>% check_equal(incorrect_msg=Error1)
 ex() %>% check_function("quantile", not_called_msg=Error2) %>% check_result() %>% check_equal(incorrect_msg=Error2)
 ex() %>% check_function("median", not_called_msg=Error3) %>% check_result() %>% check_equal(incorrect_msg=Error3)
 ex() %>% check_function("quantile", not_called_msg=Error4) %>% check_result() %>% check_equal(incorrect_msg=Error4)
 
-success_msg("Well done! Due to their simplicity, you will encounter boxplots extensively when trying to visualize more complex multivariate relationships. It is helpful to reinforce your understanding of this fundamental tool in this relatively simple context.")
+
+
+
+success_msg("Well done!")
 ```
 
 ### Exercise. Gamma Moment Generating Function
@@ -304,15 +371,15 @@ There are several `R` functions that you will find useful:
 <br>
 
 
-```{r ex="LDA1.3.1.3", type="hint", tut=TRUE}
+```{r ex="LDA1.3.1.3.1", type="hint", tut=TRUE}
 Take some time to explore the online `R` documentation. In particular, take time to understand the required class of each argument.
 ```
 
-```{r ex="LDA1.3.1.3", type="pre-exercise-code", tut=TRUE}
+```{r ex="LDA1.3.1.3.1", type="pre-exercise-code", tut=TRUE}
 
 ```
 
-```{r ex="LDA1.3.1.3", type="sample-code", tut=TRUE}
+```{r ex="LDA1.3.1.3.1", type="sample-code", tut=TRUE}
 
 mgf <- parse(text = "??")
 
@@ -326,23 +393,25 @@ eval(expr = ??)
 
 ```
 
-```{r ex="LDA1.3.1.3", type="solution", tut=TRUE}
-mgf <- parse(text = "(1- theta * t) ^ -alpha")
+```{r ex="LDA1.3.1.3.1", type="solution", tut=TRUE}
+
+mgf <- parse(text = "(1- theta * t) ^ (-alpha)")
 
 class(x = mgf)
-
-t <- 0
 alpha <- 2
 theta <- 10
+t <- 0
+
 
 eval(expr = mgf)
 ```
 
-```{r ex="LDA1.3.1.3", type="sct", tut=TRUE}
-Erroralpha <- "Did you use the correct formula for `alpha`?"
-ex() %>% check_object("alpha", undefined_msg = Erroralpha) %>% check_equal(incorrect_msg=Erroralpha)
+```{r ex="LDA1.3.1.3.1", type="sct", tut=TRUE}
+#Errormgf <- "Did you use the correct formula for mgf?"
+#ex() %>% check_object("mgf", undefined_msg = Errormgf) %>% check_equal(incorrect_msg=Errormgf)
 
-success_msg("Well done! Some equate knowledge of 'environments' in R as being what is classically known as a 'power user'. It is not for everyone but it still nice to know that this powerful approach exists. You never know when you might need it." )
+
+success_msg("Well done!")
 ```
 
 ### Exercise. Visualizing Moment Generating Functions
@@ -377,26 +446,23 @@ plot(tbase, fun.val, ylim = c(0,120), type = "l")
 
 <br>
 
-```{r ex="LDA1.3.1.4", type="hint", tut=TRUE}
+```{r ex="LDA1.3.1.3.2", type="hint", tut=TRUE}
 Take some time to explore the online `R` documentation. In particular, take time to understand the required class of each argument.
 ```
 
 
-```{r ex="LDA1.3.1.4", type="sample-code", tut=TRUE}
+```{r ex="LDA1.3.1.3.2", type="sample-code", tut=TRUE}
 
 dMxtdt <- D(expr = parse(text = "??"), name = '??')
-
-??
 
 d2Mxtdt2 <- D(
   D(expr = parse(text = "??"), name = '??'),
   "t")
 
-??
 
 ```
 
-```{r ex="LDA1.3.1.4", type="solution", tut=TRUE}
+```{r ex="LDA1.3.1.3.2", type="solution", tut=TRUE}
 dMxtdt <- D(expr = parse(text = "(1- theta * t) ^ -alpha"), name = 't')
 
 dMxtdt
@@ -409,14 +475,14 @@ dM2xtdt
 
 ```
 
-```{r ex="LDA1.3.1.4", type="sct", tut=TRUE}
+```{r ex="LDA1.3.1.3.2", type="sct", tut=TRUE}
 errordMxtd<-" Did you correctly specify the formula ?"
 errordM2xtd<-" Did you correctly specify the formula ?"
 
 ex() %>% check_object("dMxtdt", undefined_msg=errordMxtd) %>% check_equal(incorrect_msg=errordMxtd)
 ex() %>% check_object("dM2xtdt", undefined_msg=errordM2xtd) %>% check_equal(incorrect_msg=errordM2xtd)
 
-success_msg("Well done! The ability to parse expression is another somewhat advanced concept in `R`. Through this tutorial problem, we hope that you can see how this seemingly esoteric concept can be pretty handy.")
+success_msg("Well done!")
 ```
 
 ### Exercise. Determining Moments using Moment Generating Functions
@@ -435,12 +501,12 @@ Recall that you can determine the $n^{th}$ moment of of $X$ as the $n^{th}$ deri
 
 <br>
 
-```{r ex="LDA1.3.1.5", type="hint", tut=TRUE}
+```{r ex="LDA1.3.1.3.3", type="hint", tut=TRUE}
 Take some time to explore the online `R` documentation. In particular, take time to understand the required class of each argument.
 ```
 
 
-```{r ex="LDA1.3.1.5", type="pre-exercise-code", tut=TRUE}
+```{r ex="LDA1.3.1.3.3", type="pre-exercise-code", tut=TRUE}
 Mxtdt <- D(expr = parse(text = "(1- theta * t) ^ -alpha"), name = 't')
 M2xtdt <- D(
   D(expr = parse(text = "(1- theta * t) ^ -alpha"), name = 't'),
@@ -452,7 +518,7 @@ t <- 0
 ```
 
 
-```{r ex="LDA1.3.1.5", type="sample-code", tut=TRUE}
+```{r ex="LDA1.3.1.3.3", type="sample-code", tut=TRUE}
 
 # mean 
 EX <- eval(??)
@@ -466,7 +532,7 @@ EX2 <- eval(??)
 
 ```
 
-```{r ex="LDA1.3.1.5", type="solution", tut=TRUE}
+```{r ex="LDA1.3.1.3.3", type="solution", tut=TRUE}
 
 # mean 
 EX <- eval(Mxtdt)
@@ -479,14 +545,15 @@ EX2 - EX ^ 2
 
 ```
 
-```{r ex="LDA1.3.1.5", type="sct", tut=TRUE}
+```{r ex="LDA1.3.1.3.3", type="sct", tut=TRUE}
 errorEX<-" Did you correctly specify the formula ?"
 errorEX2<-" Did you correctly specify the formula ?"
 
 ex() %>% check_object("EX", undefined_msg=errorEX) %>% check_equal(incorrect_msg=errorEX)
 ex() %>% check_object("EX2", undefined_msg=errorEX2) %>% check_equal(incorrect_msg=errorEX2)
 
-success_msg("Well done! Being able to compute derivatives goes to the heart of calculus, the foundation of much of quantitative reasoning. We already know how important the moments of any distribution are -- this tutorial problem reinforces in an explicit way how a moment generating function can be used to 'generate' moments.")
+
+success_msg("Well done!")
 ```
 
 
@@ -571,37 +638,37 @@ For the exercises in the section, we will focus on the gamma distribution from [
   </div>
 
 
-### Exercise. Visualizing a Distribution using a Histogram
+### Exercise. 
 
 **Assignment Text**
 
-We will be working with the Wisconsin Property Fund data. We have read the data and created a vector of the logarithm of non-zero claim values. The name of that vector is `wisc_prop.`
+We will be working with the Wisconsin Property Fund data. We have read the data and created a vector of the `log` of non-zero claim values. The name of that vector is `wisc_prop.`
 
 :::: {.blackbox }
 **Instructions**
 
 -   Use the [hist()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/hist) function to plot a histogram of `wisc_prop`.
--   Review the help for `hist()` and note that the histogram is drawn as a "side-effect." We can access the information generated with the histogram by assigning the result to an object. For this exercise, you should assign that information to `hist_data`. Note the class of `hist_data`.
+-   Review the help for hist() and note that the histogram is drawn as a "side-effect." We can access the information generated with the histogram by assigning the result to an object. For this exercise, you should assign that information to `hist_data`. Note the class of `hist_data`.
 -   Use the [str()](https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/str) function to review the structure of elements of the list returned by the histogram function hist().
 :::: 
 
 <br>
 
 ```{r ex="LDA1.3.2.1", type="hint", tut=TRUE}
-Recall that, when you specify the `log()` in `R`, you get natural logarithmic values, not base 10 (common) nor base 2. 
+Take some time to explore the online `R` documentation. In particular, take time to understand the required class of each argument.
 ```
 
 ```{r ex="LDA1.3.2.1", type="pre-exercise-code", tut=TRUE}
-wisc_prop <- read.csv("https://raw.githubusercontent.com/OpenActTexts/LDACourse1/main/Data/Insample.csv", header=T, na.strings=c("."), stringsAsFactors = FALSE)
+wisc_prop <- read.csv("https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/Data/Insample.csv", header=T, na.strings=c("."), stringsAsFactors = FALSE)
 wisc_prop <- log(wisc_prop$y[wisc_prop$y > 0])
 
 ```
 
 ```{r ex="LDA1.3.2.1", type="sample-code", tut=TRUE}
 
-hist_data <- hist(??)
+hist_data <- hist(x = "??")
 
-class(??)
+class(x = ??)
 
 str(object = ??)
 ```
@@ -613,21 +680,22 @@ str(hist_data)
 ```
 
 ```{r ex="LDA1.3.2.1", type="sct", tut=TRUE}
-errorhist_data<-"Did you correctly specify the data?"
+
+errorhist_data<-" Did you correctly specify data?"
 
 ex() %>% check_object("hist_data", undefined_msg=errorhist_data) %>% check_equal(incorrect_msg=errorhist_data)
 
 success_msg("Well done!")
 ```
 
-### Exercise. Visualizing the Gamma Distribution {#Ex:VisualGamma}
+### Exercise. Visualizing the Gamma Distribution
 
 
 **Assignment Text**
 
 From the histogram, we will develop an intuition as to whether a gamma distribution is likely to fit this data reasonably well. Consider whether the data is uni-modal and whether it is right-skewed. It appears to be which would support the modeling of log-claim sizes using the gamma distribution.
 
-You'll note that the $y$-axis of the histogram displays counts. In contrast, the `dgamma` function returns density values. So we can not add a gamma distribution to the histogram and compare to the data. Instead we first need to plot the density values of the data. To plot probability densities, we will use set the `probability` argument to hist to `TRUE`. You should note the following from the documentation of `hist`:
+You'll note that the $y$-axis of the histogram displays counts. In contrast, the `dgamma` function returns density values. So we can't add a gamma distribution to the histogram and compare to the data. Instead we first need to plot the density values of the data. To plot probability densities, we will use set the `probability` argument to hist to `TRUE`. You should note the following from the documentation of `hist`:
 
 -   The relationship between the that the `probability` and `freq` arguments to `hist`.
 -   There is a `density` argument to `hist`. As first, you may think this refers to the (probability) density function, but that argument specifies a plotting feature.
@@ -649,13 +717,13 @@ In later sections, we'll review approaches to parameter estimation. In this sect
 <br>
 
 ```{r ex="LDA1.3.2.2", type="pre-exercise-code", tut=TRUE}
-wisc_prop <- read.csv("https://raw.githubusercontent.com/OpenActTexts/LDACourse1/main/Data/Insample.csv", header=T, na.strings=c("."), stringsAsFactors = FALSE)
+wisc_prop <- read.csv("https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/Data/Insample.csv", header=T, na.strings=c("."), stringsAsFactors = FALSE)
 wisc_prop <- log(wisc_prop$y[wisc_prop$y > 0])
 ```
 
 ```{r ex="LDA1.3.2.2", type="sample-code", tut=TRUE}
 
-hist_data <- hist(x = ??, probability = ??, ylim=c(0,0.35))
+hist_data <- hist(x = ??, probability = ??)
 gamma_scale <- var(??) / mean(??)
 gamma_shape <- mean(??) / gamma_scale
 curve(dgamma(x, shape = ??, scale = ??), add = TRUE, col = 'red' )
@@ -667,7 +735,7 @@ curve(dgamma(x, shape = ??, scale = ?? -  ??), add = TRUE, col = 'green')
 
 
 ```{r ex="LDA1.3.2.2", type="solution", tut=TRUE}
-hist_data <- hist(x = wisc_prop, probability = TRUE, ylim=c(0,0.35))
+hist_data <- hist(x = wisc_prop, probability = TRUE)
 gamma_scale <- var(wisc_prop) / mean(wisc_prop)
 gamma_shape <- mean(wisc_prop) / gamma_scale
 curve(dgamma(x, shape = gamma_shape, scale = gamma_scale), add = TRUE, col = 'red' )
@@ -678,6 +746,16 @@ curve(dgamma(x, shape = gamma_shape + 0, scale = gamma_scale -  0.05), add = TRU
 ```
 
 ```{r ex="LDA1.3.2.2", type="sct", tut=TRUE}
+
+hist_data <- hist(x = wisc_prop, probability = TRUE)
+gamma_scale <- var(wisc_prop) / mean(wisc_prop)
+gamma_shape <- mean(wisc_prop) / gamma_scale
+curve(dgamma(x, shape = gamma_shape, scale = gamma_scale), add = TRUE, col = 'red' )
+gamma_scale
+gamma_shape
+curve(dgamma(x, shape = gamma_shape + 3, scale = gamma_scale +  0), add = TRUE, col = 'blue')
+curve(dgamma(x, shape = gamma_shape + 0, scale = gamma_scale -  0.05), add = TRUE, col = 'green')
+
 errorhist_data<-" Did you correctly specify data?"
 ergamma_scale<-"Did you correctly specify the ratio of variance over mean?"
 ergamma_shape<-"Did you correctly specify the ratio of mean over gamma_scale?"
@@ -686,8 +764,7 @@ ex() %>% check_object("hist_data", undefined_msg=errorhist_data) %>% check_equal
 ex() %>% check_object("gamma_scale", undefined_msg=ergamma_scale) %>% check_equal(incorrect_msg=ergamma_scale)
 ex() %>% check_object("gamma_shape", undefined_msg=ergamma_shape) %>% check_equal(incorrect_msg=ergamma_shape)
 
-success_msg("Success! It is handy to be able to compare to a 'real' distribution (generated empirically by the data) to a 'theoretical' one (from a parametric family). It simply makes an audience much more comfortable with your analysis. Use this approach extensively, particularly when presenting results.")
-
+success_msg("Well done!")
 ```
 
 ### Exercise. Creating a Pareto Density Function {#Ex:CreateParetoDensityFct}
@@ -712,8 +789,6 @@ For this exercise we will write a `R` function to find the density (the pdf) of 
 ```
 
 ```{r ex="LDA1.3.2.3", type="hint", tut=TRUE}
-
-You will also find a summary of the Pareto distribution in [Section 18.2.2 of  *Loss Data Analytics*](https://openacttexts.github.io/Loss-Data-Analytics/C-SummaryDistributions.html#two-parameter-distributions).
 
 ```
 
@@ -740,7 +815,7 @@ erdpareto<-"Did you correctly specify density function?"
 
 ex() %>% check_object("dpareto", undefined_msg=erdpareto) %>% check_equal(incorrect_msg=erdpareto)
 
-success_msg("Well done! A language like `R` is appealing to an actuarial audience because it is so easy to extend its basic capabilities through some pretty basic programming, such as creation of functions. Although analysts enjoy having scripts written in advance, often it is simply easier to build your own functions from basic principles. This has the real added advantage of you knowing exactly what the function is doing -- after all, you wrote it!")
+success_msg("Well done!")
 ```
 
 ## Methods of Creating New Distributions
@@ -899,11 +974,10 @@ In this exercise we generate the probability density function (*pdf*) of the gam
 <br>
 
 ```{r ex="LDA1.3.3.1", type="pre-exercise-code", tut=TRUE}
-Insample <- read.csv("https://raw.githubusercontent.com/OpenActTexts/LDACourse1/main/Data/Insample.csv", header=T, na.strings=c("."), stringsAsFactors=FALSE)
+Insample <- read.csv("https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/Data/Insample.csv", header=T, na.strings=c("."), stringsAsFactors=FALSE)
 ```
 
 ```{r ex="LDA1.3.3.1", type="hint", tut=TRUE}
-You can get some theoretical background on transforming variables in  [Section 3.3 of  *Loss Data Analytics*](https://openacttexts.github.io/Loss-Data-Analytics/C-Severity.html#MethodsCreation).
 
 ```
 
@@ -946,13 +1020,14 @@ plot(y,fy,type="l",lty=1,xlab="log claim severity", ylab="density",ylim=c(0,0.3)
 
 
 ```{r ex="LDA1.3.3.1", type="sct", tut=TRUE}
+
 erfx<-"Did you correctly specify shape and scale parameters?"
 erfy<-"Did you correctly specify formula fx times x?"
 
 ex() %>% check_object("fx", undefined_msg=erfx) %>% check_equal(incorrect_msg=erfx)
 ex() %>% check_object("fy", undefined_msg=erfy) %>% check_equal(incorrect_msg=erfy)
 
-success_msg("Success! You will see that it is common in insurance and risk management claims to encounter distributions that have 'long tails' - by this, we mean where there is a large probability of having an extremely large value. To handle this, it is common to take transforms, such as a log, to even start to think about how to represent the data using a model.")
+success_msg("Well done!")
 ```
 
 ### Exercise. Creating a Mixture Distribution
@@ -999,7 +1074,7 @@ $${\small \begin{matrix}
 <br>
 
 ```{r ex="LDA1.3.3.2", type="pre-exercise-code", tut=TRUE}
-Insample <- read.csv("https://raw.githubusercontent.com/OpenActTexts/LDACourse1/main/Data/Insample.csv", header=T, na.strings=c("."), stringsAsFactors=FALSE)
+Insample <- read.csv("https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/Data/Insample.csv", header=T, na.strings=c("."), stringsAsFactors=FALSE)
 ```
 
 ```{r ex="LDA1.3.3.2", type="hint", tut=TRUE}
@@ -1099,7 +1174,7 @@ ertheta<-"Did you correctly type values of given thetas?"
 ex() %>% check_object("alpha", undefined_msg=eralpha) %>% check_equal(incorrect_msg=eralpha)
 ex() %>% check_object("theta", undefined_msg=ertheta) %>% check_equal(incorrect_msg=ertheta)
 
-success_msg("Well done! Mixtures are complicated. They are part of the foundation material because, in many cases, they fit the data very, very well.")
+success_msg("Well done!")
 ```
 
 
@@ -1314,12 +1389,12 @@ success_msg("Well done!")
 
 **Assignment Text**
 
-Now, assume that an insurer provides coverage for the first \$ 5 million of claims.
+Now, assume that an insurer provides coverage for the first $ 5 million of claims.
 
 :::: {.blackbox }
 **Instruction**
 
-* Calculate the expected value of the claims insured with a \$ 5 million policy limit using the [levlnorm()](https://www.rdocumentation.org/packages/actuar/versions/3.1-4/topics/LognormalMoments) function and then compare to the amounts insured from `claims`.
+* Calculate the expected value of the claims insured with a $ 5 million policy limit using the levlnorm() function and then compare to the amounts insured from `claims`.
 :::: 
 
 <br>
@@ -1385,14 +1460,14 @@ success_msg("Well done!")
 
 When an insurer provides coverage with a deductible, only a portion of claims result in reimbursement. The claims that do produce reimbursement have a greater average value than the average value for all claims. 
 
-For this exercise, assume that an insurer provides coverage for the first \$ 5 million of claims in excess of a \$ 1 million deductible.  Note that this coverage is sometimes stated as  \$ 4 million excess of \$ 1 million (or shorthand notation such as \$ 4 mln xs \$ 1 mln).
+For this exercise, assume that an insurer provides coverage for the first \$ 5 million of claims in excess of a \$ 1 million deductible.  Note that this coverage is sometimes stated as  \$ 4 million excess of \$ 1 million (or shorthand notation such as \$4 mln xs \$1 mln).
 
 :::: {.blackbox }
 **Instructions**
 
 *  Determine the number of `claims` resulting in reimbursement. Compare to the expected value of the number of claims requiring reimbursement calculated using the `plnorm` function.
-*  Calculate the amounts insured. Do this in two steps. First, subset `claims` to only include amounts in excess of \$ 1 million. Second, calculate the average value of those claims.
-*  Calculate the expected value of the claims insured subject to a \$ 1 million deductible and a \$ 5 million policy limit using the [levlnorm()](https://www.rdocumentation.org/packages/actuar/versions/3.1-4/topics/LognormalMoments) and [plnorm()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Lognormal)  function and the compare to the amounts you calculated in the prior step. Note that these are the 'ground-up' values meaning that they include the amounts within the deductible.
+*  Calculate the amounts insured. Do this in two steps. First, subset `claims` to only include amounts in excess of \$1 million. Second, calculate the average value of those claims.
+*  Calculate the expected value of the claims insured subject to a \$1 million deductible and a \$5 million policy limit using the `levlnorm` and `plnorm` function and the compare to the amounts you calculated in the prior step. Note that these are the 'ground-up' values meaning that they include the amounts within the deductible.
 :::: 
 
 <br>
@@ -1522,12 +1597,12 @@ success_msg("Well done!")
 
 **Assignment Text**
 
-For this exercise, assume that an insurer provides coverage for the first \$ 5 million of claims in excess of a \$ 1 million deductible.  Note that this coverage is sometimes states as \$ 4 million excess of \$ 1 million (or shorthand notation such as \$ 4 mln xs \$ 1 mln). (This is the same as the prior exercise.) However, now you should assume that there is a 20% coinsurance provision. The number of claims will not differ from the prior exercise, so will focus on the average value.
+For this exercise, assume that an insurer provides coverage for the first \$5 million of claims in excess of a \$1 million deductible.  Note that this coverage is sometimes states as \$4 million excess of \$1 million (or shorthand notation such as \$4mln xs \$1 mln). (This is the same as the prior exercise.) However, now you should assume that there is a 20% coinsurance provision. The number of claims will not differ from the prior exercise, so will focus on the average value.
 
 :::: {.blackbox }
 **Instructions**
 
-* Calculate the expected insured value of the claims subject to a \$ 1 million deductible and 20% coinsurance and a \$ 5 million policy limit using the `levlnorm()` and `plnorm()` functions and the compare to the amounts insured from `claims`. In contrast to the prior exercise, calculate the insured value of the claim rather than the ground-up value.
+* Calculate the expected insured value of the claims subject to a \$1 million deductible and 20% coinsurance and a \$5 million policy limit using the [levlnorm()](https://www.rdocumentation.org/packages/actuar/versions/3.1-4/topics/LognormalMoments) and [plnorm()](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Lognormal) function and the compare to the amounts insured from `claims`. In contrast to the prior exercise, calculate the insured value of the claim rather than the ground-up value.
 :::: 
 
 <br>
@@ -1555,11 +1630,12 @@ levlnorm <- function(limit, meanlog, sdlog){
 
 
 ```{r ex="LDA1.3.4.4", type="sample-code", tut=TRUE}
+
 ### Claim amounts insured under a $1 million deductible with a $5 million policy limit
 ### with 20% coinsurance
 
 #Average Value
-insured <- claims[claims > ??]
+( insured <- claims[claims > ??] )
 ( M <- mean(pmin(??, ??) - ??) * (1 - ??) )
 
 #Average Value
@@ -1571,11 +1647,12 @@ insured <- claims[claims > ??]
 
 
 ```{r ex="LDA1.3.4.4", type="solution", tut=TRUE}
+
 ### Claim amounts insured under a $1 million deductible with a $5 million policy limit   
 ### with 20% coinsurance
 
 #Average Value
-insured <- claims[claims > 1e6]
+( insured <- claims[claims > 1e6] )
 ( M <- mean(pmin(5e6, insured) - 1e6) * (1 - 0.2) )
 
 #Average Value
@@ -1688,7 +1765,7 @@ Because we have two parameters in a Pareto distribution, undertaking maximum lik
 <br>
 
 ```{r ex="LDA1.3.5.1", type="pre-exercise-code", tut=TRUE}
-Insample <- read.csv("https://raw.githubusercontent.com/OpenActTexts/LDACourse1/main/Data/Insample.csv", header=T, na.strings=c("."), stringsAsFactors=FALSE)
+Insample <- read.csv("https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/Data/Insample.csv", header=T, na.strings=c("."), stringsAsFactors=FALSE)
 
 dpareto <- function(x,shape,scale){
   shape*(scale^shape)/((scale+x)^(shape+1))
@@ -1800,7 +1877,7 @@ Some useful `R` functions for this exercise are:
 <br>
 
 ```{r ex="LDA1.3.5.2", type="pre-exercise-code", tut=TRUE}
-Insample <- read.csv("https://raw.githubusercontent.com/OpenActTexts/LDACourse1/main/Data/Insample.csv", header=T, na.strings=c("."), stringsAsFactors=FALSE)
+Insample <- read.csv("https://raw.githubusercontent.com/OpenActTextDev/LDACourse1/main/Data/Insample.csv", header=T, na.strings=c("."), stringsAsFactors=FALSE)
 claims<-subset(Insample,yAvg>0)$yAvg
 dpareto <- function(x,shape,scale){
   shape*(scale^shape)/((scale+x)^(shape+1))
@@ -1867,6 +1944,6 @@ success_msg("Well done!")
 ## Contributors {-}
 
 -  **Authors**. **Tim Higgins** , Australian National University, **Fei Huang**, University of New South Wales (UNSW) Sydney, **Nii-Armah Okine**, Appalachian State University, and **Rajesh (Raj) Sahasrabuddhe**, Oliver Wyman Actuarial Consulting, are the principal authors of the initial version of this chapter.
--  **Chapter Maintainers**. Please contact Nii <okinean@appstate.edu> and/or Jed at <jfrees@bus.wisc.edu> for chapter comments and suggested improvements.
+-  **Chapter Maintainers**. Please contact ??? and/or Jed at <jfrees@bus.wisc.edu> for chapter comments and suggested improvements.
 
 

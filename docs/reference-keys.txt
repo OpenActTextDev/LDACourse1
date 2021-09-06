@@ -39,7 +39,7 @@ exercise.-gamma-moment-generating-function
 exercise.-visualizing-moment-generating-functions
 exercise.-determining-moments-using-moment-generating-functions
 continuous-distributions
-exercise.
+exercise.-visualizing-a-distribution-using-a-histogram
 Ex:VisualGamma
 Ex:CreateParetoDensityFct
 methods-of-creating-new-distributions
