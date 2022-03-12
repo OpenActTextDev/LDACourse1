@@ -1787,6 +1787,16 @@ ex() %>% check_object("data_fit", undefined_msg = "Make sure to not remove `data
 success_msg("Success! Now compare the above *mle* for lambda with that for the Poisson model (see Section 2.7)")
 ```
 
+## A Practicing Actuary's Perspective {-}
+
+Here is a perspective of Chapter Two from **Motoharu Dei,** an actuary and data scientist with Accenture and part of an ASTIN research group with the Institute of Actuaries of Japan. 
+
+<center>
+
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25717641/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_4pe1xuv2&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_lrj0edti" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *"  frameborder="0" title="Kaltura Player"></iframe>
+
+</center>
+
 
 ## Contributors {-}
 
