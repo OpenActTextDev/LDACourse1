@@ -1442,7 +1442,7 @@ success_msg("Nice!")
 ```
   
 
-## Contributors {-}
+## Chapter Contributors {-}
 
 -  **Authors**. **Rob Erhardt**, Wake Forest University, **Brian Hartman**, Brigham Young University, and **Zhiyu (Frank) Quan**, University of Illinois at Urbana-Champaign, are the principal authors of the initial version of this chapter.
 -  **Chapter Maintainers**. Please contact Frank at <zquan@illinois.edu> and/or Jed at <jfrees@bus.wisc.edu> for chapter comments and suggested improvements.

@@ -1789,7 +1789,7 @@ success_msg("Success! Now compare the above *mle* for lambda with that for the P
 
 ## A Practicing Actuary's Perspective {-}
 
-Here is a perspective of Chapter Two from **Motoharu Dei,** an actuary and data scientist with Accenture and part of an ASTIN research group with the Institute of Actuaries of Japan. 
+Here is a perspective on Chapter Two from **Motoharu Dei,** an actuary and data scientist with Accenture and part of an ASTIN research group with the Institute of Actuaries of Japan. 
 
 <center>
 
@@ -1798,7 +1798,7 @@ Here is a perspective of Chapter Two from **Motoharu Dei,** an actuary and data 
 </center>
 
 
-## Contributors {-}
+## Chapter Contributors {-}
 
 -  **Authors**. **N.D. Shyamalkumar**, The University of Iowa, **Michelle Xia**, Northern Illinois University, and **Edward (Jed) Frees**, University of Wisconsin-Madison and Australian National University, are the principal authors of the initial version of this chapter.
 -  **Chapter Maintainers**. Please contact Michelle <cxia@niu.edu> and/or Jed at <jfrees@bus.wisc.edu> for chapter comments and suggested improvements.
