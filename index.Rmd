@@ -191,6 +191,14 @@ The project goal is to have the actuarial community author our learning resource
 
 <br>
 
+<img src = "ContributorPics\Roosevelt-MosleyEdit.jpg" width = "150" height = "180" style = "float:right; margin-left: 10px; margin-top: 7px" />
+
+-  **Roosevelt Mosley** is a principal and consulting actuary with Pinnacle Actuarial Resources and has been in the property/casualty industry since 1994. His skill set includes predictive analytics applications for all insurance functions, ratemaking and product development, competitive analysis and litigation support. Roosevelt is the current president-elect of the CAS and has served on numerous task forces, committees and boards throughout his career.
+
+
+<br>
+
+
 
 **Reviewers**
 
